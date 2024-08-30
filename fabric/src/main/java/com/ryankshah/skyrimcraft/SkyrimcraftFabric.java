@@ -5,18 +5,22 @@ import com.ryankshah.skyrimcraft.character.attachment.Character;
 import com.ryankshah.skyrimcraft.character.attachment.ExtraCharacter;
 import com.ryankshah.skyrimcraft.character.attachment.LevelUpdates;
 import com.ryankshah.skyrimcraft.character.attachment.StatIncreases;
+import com.ryankshah.skyrimcraft.network.character.OpenCharacterCreationScreen;
 import com.ryankshah.skyrimcraft.registry.EntityRegistry;
 import com.ryankshah.skyrimcraft.world.CommonSpawning;
+import commonnetwork.api.Dispatcher;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.EntityTrackingEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.impl.attachment.AttachmentRegistryImpl;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
 public class SkyrimcraftFabric implements ModInitializer
@@ -58,6 +62,24 @@ public class SkyrimcraftFabric implements ModInitializer
         EntityRegistry.registerEntityAttributes(FabricDefaultAttributeRegistry::register);
 
         initAttachments();
+
+        // Open the character creation screen if first login / world created
+        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+            Player player = handler.player;
+            if(player instanceof ServerPlayer serverPlayer) {
+                Character character = Character.get(serverPlayer);
+                if (!character.getHasSetup()) {
+                    final OpenCharacterCreationScreen packet = new OpenCharacterCreationScreen(character.getHasSetup());
+                    Dispatcher.sendToClient(packet, serverPlayer);
+                }
+            }
+        });
+
+        ServerPlayerEvents.
+
+//        ServerTickEvents.END_SERVER_TICK.register(server -> {
+//            ServerPlayer serverPlayer = server.getPlayerList().
+//        });
 
         CommonSpawning.placements();
 

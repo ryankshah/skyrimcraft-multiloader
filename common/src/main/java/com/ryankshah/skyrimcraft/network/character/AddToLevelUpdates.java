@@ -3,6 +3,7 @@ package com.ryankshah.skyrimcraft.network.character;
 import com.ryankshah.skyrimcraft.Constants;
 import com.ryankshah.skyrimcraft.character.attachment.LevelUpdates;
 import com.ryankshah.skyrimcraft.platform.Services;
+import com.ryankshah.skyrimcraft.screen.SkyrimGuiOverlay;
 import com.ryankshah.skyrimcraft.util.LevelUpdate;
 import commonnetwork.api.Dispatcher;
 import commonnetwork.networking.data.PacketContext;
@@ -52,7 +53,7 @@ public record AddToLevelUpdates(String updateName, int level, int levelUpRenderT
                     Minecraft.getInstance().getToasts().addToast(new SystemToast(SystemToast.SystemToastId.NARRATOR_TOGGLE, Component.literal("Level Up"), Component.literal("You have a new attribute point to use!")));
                 }
                 //TODO: add gui overlay
-//                SkyrimGuiOverlay.LEVEL_UPDATES.add(new LevelUpdate(context.message().updateName, context.message().level, context.message().levelUpRenderTime));
+                SkyrimGuiOverlay.LEVEL_UPDATES.add(new LevelUpdate(context.message().updateName, context.message().level, context.message().levelUpRenderTime));
             });
         } else {
             ServerPlayer player = context.sender();
