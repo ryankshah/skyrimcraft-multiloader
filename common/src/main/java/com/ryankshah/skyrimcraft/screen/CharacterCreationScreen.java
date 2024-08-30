@@ -1,6 +1,5 @@
 package com.ryankshah.skyrimcraft.screen;
 
-import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -54,7 +53,7 @@ public class CharacterCreationScreen extends Screen
 
     @Override
     public boolean isPauseScreen() {
-        return false;
+        return true;
     }
 
     @Override
@@ -171,6 +170,7 @@ public class CharacterCreationScreen extends Screen
     public static void renderPlayer(GuiGraphics graphics, int p_228187_0_, int p_228187_1_, int p_228187_2_, float p_228187_3_, float p_228187_4_, LivingEntity p_228187_5_, Race currentRaceObject) {
         float f = (float)Math.atan((double)(p_228187_3_ / 40.0F));
         float f1 = (float)Math.atan((double)(p_228187_4_ / 40.0F));
+        graphics.pose().pushPose();
         graphics.pose().translate((float)p_228187_0_, (float)p_228187_1_, 300F);
         graphics.pose().scale(1.0F, 1.0F, -1.0F);
         graphics.pose().translate(0.0D, 0.0D, 1000.0D);

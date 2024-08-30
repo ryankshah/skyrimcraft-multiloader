@@ -75,8 +75,6 @@ public class SkyrimcraftFabric implements ModInitializer
             }
         });
 
-        ServerPlayerEvents.
-
 //        ServerTickEvents.END_SERVER_TICK.register(server -> {
 //            ServerPlayer serverPlayer = server.getPlayerList().
 //        });

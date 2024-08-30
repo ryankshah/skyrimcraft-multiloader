@@ -11,6 +11,7 @@ import com.ryankshah.skyrimcraft.network.spell.UpdateShoutCooldown;
 import com.ryankshah.skyrimcraft.registry.EntityRegistry;
 import com.ryankshah.skyrimcraft.registry.KeysRegistry;
 import com.ryankshah.skyrimcraft.screen.MenuScreen;
+import com.ryankshah.skyrimcraft.screen.SkyrimGuiOverlay;
 import com.ryankshah.skyrimcraft.util.ClientUtil;
 import commonnetwork.api.Dispatcher;
 import net.fabricmc.api.ClientModInitializer;
@@ -63,8 +64,10 @@ public class SkyrimcraftFabricClient implements ClientModInitializer
             }
         });
 
-        HudRenderCallback.EVENT.register((guiGraphics, deltaTime) -> {
-        });
+//        HudRenderCallback.EVENT.register((guiGraphics, deltaTime) -> {
+//            SkyrimGuiOverlay.SkyrimCompass compass = new SkyrimGuiOverlay.SkyrimCompass();
+//            compass.render(guiGraphics, deltaTime);
+//        });
 
         ClientTickEvents.END_CLIENT_TICK.register(this::handleClientTicks);
     }

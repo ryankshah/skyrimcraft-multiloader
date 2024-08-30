@@ -10,11 +10,11 @@ import net.minecraft.world.entity.EntityType;
 public class SkyrimcraftCommon
 {
     public static void init() {
+        ModEffects.init();
         AdvancementTriggersRegistry.init();
         AttributeRegistry.init();
         SkyrimcraftLootConditionTypes.init();
         DamageTypeRegistry.init();
-        ModEffects.init();
         KeysRegistry.init();
 
         ItemRegistry.init();

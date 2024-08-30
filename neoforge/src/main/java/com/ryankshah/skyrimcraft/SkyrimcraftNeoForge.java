@@ -63,21 +63,21 @@ public class SkyrimcraftNeoForge
     }
 
     // TODO add this in fabric as well...
-    public void modifyEntityAttributes(EntityAttributeModificationEvent e) {
-        e.getTypes().forEach(entity -> {
-            e.add(entity, AttributeRegistry.MAX_MAGICKA.asHolder());
-            e.add(entity, AttributeRegistry.MAGICKA_REGEN.asHolder());
-            e.add(entity, AttributeRegistry.MAX_STAMINA.asHolder());
-            e.add(entity, AttributeRegistry.POISON_RESIST.asHolder());
-            e.add(entity, AttributeRegistry.SHOCK_RESIST.asHolder());
-            e.add(entity, AttributeRegistry.FIRE_RESIST.asHolder());
-            e.add(entity, AttributeRegistry.FROST_RESIST.asHolder());
-            e.add(entity, AttributeRegistry.POISON_POWER.asHolder());
-            e.add(entity, AttributeRegistry.SHOCK_POWER.asHolder());
-            e.add(entity, AttributeRegistry.FIRE_POWER.asHolder());
-            e.add(entity, AttributeRegistry.FROST_POWER.asHolder());
-        });
-    }
+//    public void modifyEntityAttributes(EntityAttributeModificationEvent e) {
+//        e.getTypes().forEach(entity -> {
+//            e.add(entity, AttributeRegistry.MAX_MAGICKA.asHolder());
+//            e.add(entity, AttributeRegistry.MAGICKA_REGEN.asHolder());
+//            e.add(entity, AttributeRegistry.MAX_STAMINA.asHolder());
+//            e.add(entity, AttributeRegistry.POISON_RESIST.asHolder());
+//            e.add(entity, AttributeRegistry.SHOCK_RESIST.asHolder());
+//            e.add(entity, AttributeRegistry.FIRE_RESIST.asHolder());
+//            e.add(entity, AttributeRegistry.FROST_RESIST.asHolder());
+//            e.add(entity, AttributeRegistry.POISON_POWER.asHolder());
+//            e.add(entity, AttributeRegistry.SHOCK_POWER.asHolder());
+//            e.add(entity, AttributeRegistry.FIRE_POWER.asHolder());
+//            e.add(entity, AttributeRegistry.FROST_POWER.asHolder());
+//        });
+//    }
 
     //TODO: add spawn placements
 //    public static void addSpawnPlacements(SpawnPlacementRegisterEvent event) {

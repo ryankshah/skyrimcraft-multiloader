@@ -2,11 +2,14 @@ package com.ryankshah.skyrimcraft.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.ryankshah.skyrimcraft.effect.ModEffects;
+import com.ryankshah.skyrimcraft.registry.AttributeRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec3;
@@ -49,5 +52,20 @@ public abstract class LivingEntityMixin extends Entity
             return;
         }
         travel(v3);
+    }
+
+    @ModifyReturnValue(method = "createLivingAttributes", at = @At("TAIL"))
+    private static AttributeSupplier.Builder createLivingAttributes(AttributeSupplier.Builder original) {
+        return original.add(AttributeRegistry.MAX_MAGICKA.asHolder())
+            .add(AttributeRegistry.MAGICKA_REGEN.asHolder())
+            .add(AttributeRegistry.MAX_STAMINA.asHolder())
+            .add(AttributeRegistry.POISON_RESIST.asHolder())
+            .add(AttributeRegistry.SHOCK_RESIST.asHolder())
+            .add(AttributeRegistry.FIRE_RESIST.asHolder())
+            .add(AttributeRegistry.FROST_RESIST.asHolder())
+            .add(AttributeRegistry.POISON_POWER.asHolder())
+            .add(AttributeRegistry.SHOCK_POWER.asHolder())
+            .add(AttributeRegistry.FIRE_POWER.asHolder())
+            .add(AttributeRegistry.FROST_POWER.asHolder());
     }
 }
