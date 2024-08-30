@@ -83,13 +83,6 @@ public class Character
             Character::new
     );
 
-//    public static final StreamCodec<ByteBuf, UpdateCharacter> STREAM_CODEC = StreamCodec.composite(
-//            ByteBufCodecs.BOOL,
-//            Character::getHasSetup,
-//
-//            Character::new
-//    );
-
     private boolean hasSetup;
     private float magicka, maxMagicka, magickaRegenModifier;
     private int characterLevel, characterTotalXp;

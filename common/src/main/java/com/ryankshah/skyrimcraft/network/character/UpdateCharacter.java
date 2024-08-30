@@ -24,7 +24,7 @@ public record UpdateCharacter(Character character)
             UpdateCharacter::new
     );
 
-    public UpdateCharacter(final FriendlyByteBuf buffer) {
+    public UpdateCharacter(final RegistryFriendlyByteBuf buffer) {
         this(buffer.readJsonWithCodec(Character.CODEC));
     }
 

@@ -48,12 +48,11 @@ public class CharacterCreationScreen extends Screen
         currentRaceObject = races.get(currentRace);
         final CreateCharacter createCharacter = new CreateCharacter(currentRaceObject.getId(), false);
         Dispatcher.sendToServer(createCharacter);
-//        PacketDistributor.SERVER.noArg().send(createCharacter);
     }
 
     @Override
     public boolean isPauseScreen() {
-        return true;
+        return false;
     }
 
     @Override
