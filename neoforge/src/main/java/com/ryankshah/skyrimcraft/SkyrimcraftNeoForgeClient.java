@@ -18,6 +18,13 @@ public class SkyrimcraftNeoForgeClient
     }
 
     @SubscribeEvent
+    public static void onEntityRenderLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        SkyrimcraftCommonClient.getLayerDefinitions().forEach(
+                (layerdef, model) -> event.registerLayerDefinition(layerdef, () -> model)
+        );
+    }
+
+    @SubscribeEvent
     public static void addPlayerLayers(EntityRenderersEvent.AddLayers event) {
         for(PlayerSkin.Model skin : event.getSkins()) {
             ((PlayerRenderer)event.getSkin(skin)).addLayer(new RenderRaceLayer(event.getSkin(skin)));
