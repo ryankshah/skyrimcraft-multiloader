@@ -1,11 +1,17 @@
 package com.ryankshah.skyrimcraft;
 
+import com.ryankshah.skyrimcraft.character.feature.render.RenderRaceLayer;
+import com.ryankshah.skyrimcraft.character.feature.render.SpectralLayerRenderer;
 import com.ryankshah.skyrimcraft.registry.KeysRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.client.resources.PlayerSkin;
+import net.minecraft.world.entity.EntityType;
 
 public class SkyrimcraftFabricClient implements ClientModInitializer
 {
@@ -26,5 +32,12 @@ public class SkyrimcraftFabricClient implements ClientModInitializer
         //BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.IRIS_FLOWER.get(), RenderType.cutout());
 
         SkyrimcraftCommonClient.registerRenderers(EntityRendererRegistry::register, BlockEntityRenderers::register);
+
+        LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
+            if (entityType == EntityType.PLAYER) {
+                registrationHelper.register(new RenderRaceLayer((PlayerRenderer) entityRenderer));
+                registrationHelper.register(new SpectralLayerRenderer((PlayerRenderer) entityRenderer));
+            }
+        });
     }
 }
