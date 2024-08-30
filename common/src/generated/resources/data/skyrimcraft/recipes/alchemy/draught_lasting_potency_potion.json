@@ -1,0 +1,18 @@
+{
+  "type": "skyrimcraft:alchemy",
+  "category": "REGENERATE HEALTH",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:garlic"
+    },
+    {
+      "item": "skyrimcraft:salt_pile"
+    }
+  ],
+  "level": 2,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:draught_lasting_potency_potion"
+  },
+  "xp": 1
+}

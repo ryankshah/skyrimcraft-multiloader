@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_highborn": {
+      "conditions": {
+        "skill": "skyrimcraft:highborn"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Highborn spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Highborn"
+  },
+  "requirements": [
+    [
+      "spell_learned_highborn"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

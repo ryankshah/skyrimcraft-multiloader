@@ -1,0 +1,18 @@
+{
+  "type": "skyrimcraft:forge",
+  "category": "daedric",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:ebony_ingot"
+    },
+    {
+      "item": "skyrimcraft:daedra_heart"
+    }
+  ],
+  "level": 90,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:daedric_helmet"
+  },
+  "xp": 16
+}

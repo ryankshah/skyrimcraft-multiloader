@@ -1,0 +1,6 @@
+{
+  "parent": "skyrimcraft:item/greatsword_blocking",
+  "textures": {
+    "layer0": "skyrimcraft:item/elven_greatsword"
+  }
+}

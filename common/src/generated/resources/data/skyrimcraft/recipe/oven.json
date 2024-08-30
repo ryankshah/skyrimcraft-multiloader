@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "minecraft:stone_bricks"
+    },
+    "s": {
+      "item": "minecraft:stone"
+    }
+  },
+  "pattern": [
+    " b ",
+    "b b",
+    "sss"
+  ],
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:oven"
+  }
+}

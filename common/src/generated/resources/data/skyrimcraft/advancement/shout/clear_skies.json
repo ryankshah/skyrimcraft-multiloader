@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:shout/root",
+  "criteria": {
+    "spell_learned_clear_skies": {
+      "conditions": {
+        "skill": "skyrimcraft:clear_skies"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Clear Skies shout",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:shout_block"
+    },
+    "title": "Clear Skies"
+  },
+  "requirements": [
+    [
+      "spell_learned_clear_skies"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

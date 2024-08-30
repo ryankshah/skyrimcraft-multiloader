@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_waterbreathing": {
+      "conditions": {
+        "skill": "skyrimcraft:waterbreathing"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Waterbreathing spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Waterbreathing"
+  },
+  "requirements": [
+    [
+      "spell_learned_waterbreathing"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

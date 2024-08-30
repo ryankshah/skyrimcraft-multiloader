@@ -1,0 +1,258 @@
+{
+    "name": "skyrimcraft:skyrim_dungeon/pool",
+    "fallback": "minecraft:empty",
+    "elements": [
+        {
+            "weight": 60,
+            "element": {
+                "location": "skyrimcraft:cave_room_1",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 60,
+            "element": {
+                "location": "skyrimcraft:cave_room_2",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 80,
+            "element": {
+                "location": "skyrimcraft:corridor_1",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 80,
+            "element": {
+                "location": "skyrimcraft:corridor_2",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 80,
+            "element": {
+                "location": "skyrimcraft:corridor_3",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 100,
+            "element": {
+                "location": "skyrimcraft:corridor_connector_2sides",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 100,
+            "element": {
+                "location": "skyrimcraft:corridor_connector_3sides",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 100,
+            "element": {
+                "location": "skyrimcraft:corridor_connector_4sides",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 60,
+            "element": {
+                "location": "skyrimcraft:corridor_deadend_1",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 60,
+            "element": {
+                "location": "skyrimcraft:corridor_deadend_2",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 60,
+            "element": {
+                "location": "skyrimcraft:corridor_deadend_3",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 70,
+            "element": {
+                "location": "skyrimcraft:corridor_sideways_1",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 70,
+            "element": {
+                "location": "skyrimcraft:corridor_sideways_2",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 70,
+            "element": {
+                "location": "skyrimcraft:corridor_sideways_3",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 50,
+            "element": {
+                "location": "skyrimcraft:double_corridor_1",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 50,
+            "element": {
+                "location": "skyrimcraft:double_corridor_2",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 5,
+            "element": {
+                "location": "skyrimcraft:final_room",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 20,
+            "element": {
+                "location": "skyrimcraft:library_room_1",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 20,
+            "element": {
+                "location": "skyrimcraft:library_room_2",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 20,
+            "element": {
+                "location": "skyrimcraft:library_room_ruined_1",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 20,
+            "element": {
+                "location": "skyrimcraft:library_room_ruined_2",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 70,
+            "element": {
+                "location": "skyrimcraft:loot_room_1",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 70,
+            "element": {
+                "location": "skyrimcraft:loot_room_2",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 70,
+            "element": {
+                "location": "skyrimcraft:loot_room_3",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 60,
+            "element": {
+                "location": "skyrimcraft:loot_room_deadend_1",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 60,
+            "element": {
+                "location": "skyrimcraft:loot_room_deadend_2",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+        {
+            "weight": 40,
+            "element": {
+                "location": "skyrimcraft:skeleton_room",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        },
+		{
+            "weight": 40,
+            "element": {
+                "location": "skyrimcraft:spider_room",
+                "processors": "minecraft:empty",
+                "projection": "rigid",
+                "element_type": "minecraft:single_pool_element"
+            }
+        }
+    ]
+}

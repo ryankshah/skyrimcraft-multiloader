@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "g": {
+      "item": "minecraft:glass_bottle"
+    },
+    "p": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    " g ",
+    "ppp",
+    "p p"
+  ],
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:alchemy_table"
+  }
+}

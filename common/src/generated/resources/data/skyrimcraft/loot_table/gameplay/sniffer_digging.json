@@ -1,0 +1,76 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.5
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "skyrimcraft:taproot"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.5
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "skyrimcraft:fire_salts"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.5
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "skyrimcraft:salt_pile"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.5
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "skyrimcraft:dwarven_oil"
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 3.0,
+        "min": 1.0
+      }
+    }
+  ],
+  "random_sequence": "skyrimcraft:gameplay/sniffer_digging"
+}

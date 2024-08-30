@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_berserker_rage": {
+      "conditions": {
+        "skill": "skyrimcraft:berserker_rage"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Berserker Rage spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Berserker Rage"
+  },
+  "requirements": [
+    [
+      "spell_learned_berserker_rage"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

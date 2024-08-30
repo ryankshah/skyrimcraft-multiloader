@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_chain_lightning": {
+      "conditions": {
+        "skill": "skyrimcraft:lightning"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Chain Lightning spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Chain Lightning"
+  },
+  "requirements": [
+    [
+      "spell_learned_chain_lightning"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

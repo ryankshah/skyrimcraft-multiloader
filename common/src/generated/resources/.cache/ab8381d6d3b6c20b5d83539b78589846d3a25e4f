@@ -1,0 +1,18 @@
+// 1.21.1	2024-08-29T18:21:19.0675039	Tags for minecraft:block mod id skyrimcraft
+94aa69413c717798401573e379ab1609470c54ea data/minecraft/tags/block/mineable/pickaxe.json
+5a4f99d8192ad136c22c332217c30c6d6dc58b6c data/minecraft/tags/block/needs_diamond_tool.json
+ed82db5c79de6b925090425922231a5426a8e8e1 data/minecraft/tags/block/needs_iron_tool.json
+79c85616ca049f99cf95b4b5476e4b6883ef7918 data/skyrimcraft/tags/block/ores/corundum_ore.json
+790b7a420c6db9c36ecd346e69ad4550e2ca5a1d data/skyrimcraft/tags/block/ores/deepslate_corundum_ore.json
+b037de099c2af3696e0a244cd2aa959de3c32aac data/skyrimcraft/tags/block/ores/deepslate_ebony_ore.json
+089c682a5ed8755cb0158db0d03d09b614926972 data/skyrimcraft/tags/block/ores/deepslate_malachite_ore.json
+8c941f480a2ce0dfc396ba4bcb2ba3bc802a8d74 data/skyrimcraft/tags/block/ores/deepslate_moonstone_ore.json
+85dcd5dde023714c304c8e2de45b218478a34134 data/skyrimcraft/tags/block/ores/deepslate_orichalcum_ore.json
+6f1cad715fa51b8ec19acc13fd3bc3242c138f1f data/skyrimcraft/tags/block/ores/deepslate_quicksilver_ore.json
+c20a4de3b2f5023ac7eb3a56edcfcb3c85ecacab data/skyrimcraft/tags/block/ores/deepslate_silver_ore.json
+8d44caf531d21387f93643a0939b8532f9ba44be data/skyrimcraft/tags/block/ores/ebony_ore.json
+4f1780bb52eb00644fa509ba24a0f500e79f660f data/skyrimcraft/tags/block/ores/malachite_ore.json
+a3b1133a90b035e20d98ad6bc2ca7f82646a63de data/skyrimcraft/tags/block/ores/moonstone_ore.json
+25694e449ee75a380f76a1d4aa1e9c70c989609b data/skyrimcraft/tags/block/ores/orichalcum_ore.json
+e87490863c5289c74c83ac7643426dbc568faa86 data/skyrimcraft/tags/block/ores/quicksilver_ore.json
+e25037dbf92e2e854b24322fbe40152407ee7ee0 data/skyrimcraft/tags/block/ores/silver_ore.json

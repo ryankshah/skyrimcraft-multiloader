@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:snowy_slopes",
+    "minecraft:grove"
+  ],
+  "features": "skyrimcraft:trees/skyrim_tree_3",
+  "step": "vegetal_decoration"
+}

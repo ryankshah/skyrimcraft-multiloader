@@ -1,0 +1,35 @@
+{
+  "feature": "skyrimcraft:trees/skyrim_tree_3",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "weight": 9,
+            "data": 1
+          },
+          {
+            "weight": 1,
+            "data": {
+              "type": "minecraft:uniform",
+              "min_inclusive": 0,
+              "max_inclusive": 0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

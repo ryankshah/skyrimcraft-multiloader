@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "skyrimcraft:block/sovngarde_portal_ns"
+    },
+    "axis=z": {
+      "model": "skyrimcraft:block/sovngarde_portal_ew"
+    }
+  }
+}

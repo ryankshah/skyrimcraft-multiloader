@@ -1,0 +1,15 @@
+{
+  "type": "skyrimcraft:forge",
+  "category": "ebony",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:ebony_ingot"
+    }
+  ],
+  "level": 80,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:ebony_sword"
+  },
+  "xp": 5
+}

@@ -1,0 +1,46 @@
+{
+	"fallback": "minecraft:empty",
+	"elements": [
+		{
+		"weight": 3,
+		"element": {
+			"element_type": "minecraft:empty_pool_element"
+			}
+		},
+		{
+		"weight": 3,
+		"element": {
+			"location": "skyrimcraft:village/roads/straight",
+			"processors": "minecraft:empty",
+			"projection": "terrain_matching",
+			"element_type": "minecraft:single_pool_element"
+			}
+		},
+		{
+		"weight": 2,
+		"element": {
+			"location": "skyrimcraft:village/roads/join_l",
+			"processors": "minecraft:empty",
+			"projection": "terrain_matching",
+			"element_type": "minecraft:single_pool_element"
+			}
+		},
+		{
+		"weight": 2,
+		"element": {
+			"location": "skyrimcraft:village/roads/join_t",
+			"processors": "minecraft:empty",
+			"projection": "terrain_matching",
+			"element_type": "minecraft:single_pool_element"
+			}
+		},
+		{
+		"weight": 1,
+		"element": {
+			"location": "skyrimcraft:village/roads/join_x",
+			"processors": "minecraft:empty",
+			"projection": "terrain_matching",
+			"element_type": "minecraft:single_pool_element"
+			}
+	}]
+}

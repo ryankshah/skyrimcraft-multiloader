@@ -1,0 +1,35 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:snowy_beach",
+    "minecraft:snowy_plains",
+    "minecraft:snowy_slopes",
+    "minecraft:snowy_taiga"
+  ],
+  "spawners": [
+    {
+      "type": "skyrimcraft:sabre_cat",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 4
+    },
+    {
+      "type": "skyrimcraft:giant",
+      "maxCount": 2,
+      "minCount": 2,
+      "weight": 1
+    },
+    {
+      "type": "skyrimcraft:draugr",
+      "maxCount": 2,
+      "minCount": 2,
+      "weight": 40
+    },
+    {
+      "type": "skyrimcraft:dwarven_spider",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 40
+    }
+  ]
+}

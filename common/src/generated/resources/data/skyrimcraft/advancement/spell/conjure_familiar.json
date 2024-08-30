@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_conjure_familiar": {
+      "conditions": {
+        "skill": "skyrimcraft:conjure_familiar"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Conjure Familiar spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Conjure Familiar"
+  },
+  "requirements": [
+    [
+      "spell_learned_conjure_familiar"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

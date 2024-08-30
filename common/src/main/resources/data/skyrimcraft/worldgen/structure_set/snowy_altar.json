@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "skyrimcraft:snowy_altar",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1625767175,
+    "spacing": 32,
+    "separation": 24
+  }
+}

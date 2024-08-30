@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_deepslate_quicksilver_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "skyrimcraft:deepslate_quicksilver_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "skyrimcraft:quicksilver_ingot_from_smelting_deepslate_quicksilver_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_deepslate_quicksilver_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "skyrimcraft:quicksilver_ingot_from_smelting_deepslate_quicksilver_ore"
+    ]
+  }
+}

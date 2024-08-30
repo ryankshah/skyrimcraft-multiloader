@@ -1,0 +1,41 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.monarchbutterfly.fly": {
+			"loop": true,
+			"animation_length": 2.5,
+			"bones": {
+				"Wing1": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -45]
+						},
+						"1.25": {
+							"vector": [0, 0, 45],
+							"easing": "easeInOutSine"
+						},
+						"2.5": {
+							"vector": [0, 0, -45],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"Wing2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 45]
+						},
+						"1.25": {
+							"vector": [0, 0, -45],
+							"easing": "easeInOutSine"
+						},
+						"2.5": {
+							"vector": [0, 0, 45],
+							"easing": "easeInOutSine"
+						}
+					}
+				}
+			}
+		}
+	}
+}

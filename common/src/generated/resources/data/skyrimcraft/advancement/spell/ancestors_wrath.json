@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_ancestors_wrath": {
+      "conditions": {
+        "skill": "skyrimcraft:ancestors_wrath"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Ancestors Wrath spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Ancestors Wrath"
+  },
+  "requirements": [
+    [
+      "spell_learned_ancestors_wrath"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

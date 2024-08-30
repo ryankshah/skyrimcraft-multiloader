@@ -1,0 +1,20 @@
+{
+  "parent": "skyrimcraft:item/greatsword",
+  "overrides": [
+    {
+      "model": "skyrimcraft:item/glass_greatsword_no_use",
+      "predicate": {
+        "skyrimcraft:no_use": 1.0
+      }
+    },
+    {
+      "model": "skyrimcraft:item/glass_greatsword_blocking",
+      "predicate": {
+        "skyrimcraft:blocking": 1.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "skyrimcraft:item/glass_greatsword"
+  }
+}

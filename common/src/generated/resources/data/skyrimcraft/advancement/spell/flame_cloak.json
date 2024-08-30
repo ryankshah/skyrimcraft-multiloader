@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_flame_cloak": {
+      "conditions": {
+        "skill": "skyrimcraft:flame_cloak"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Flame Cloak spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Flame Cloak"
+  },
+  "requirements": [
+    [
+      "spell_learned_flame_cloak"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

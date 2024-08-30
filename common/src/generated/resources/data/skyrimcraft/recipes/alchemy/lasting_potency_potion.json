@@ -1,0 +1,18 @@
+{
+  "type": "skyrimcraft:alchemy",
+  "category": "REGENERATE HEALTH",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:salmon_roe"
+    },
+    {
+      "item": "skyrimcraft:garlic"
+    }
+  ],
+  "level": 2,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:lasting_potency_potion"
+  },
+  "xp": 1
+}

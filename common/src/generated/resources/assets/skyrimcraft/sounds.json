@@ -1,0 +1,78 @@
+{
+  "draugr_attack": {
+    "sounds": [
+      "skyrimcraft:draugr_attack"
+    ],
+    "subtitle": "sound.skyrimcraft.draugr_attack"
+  },
+  "draugr_grunt": {
+    "sounds": [
+      "skyrimcraft:draugr_grunt"
+    ],
+    "subtitle": "sound.skyrimcraft.draugr_grunt"
+  },
+  "fire_spell_cast": {
+    "sounds": [
+      "skyrimcraft:fire_spell_cast"
+    ],
+    "subtitle": "sound.skyrimcraft.fire_spell_cast"
+  },
+  "freeze_spell_hit": {
+    "sounds": [
+      "skyrimcraft:freeze_spell_hit"
+    ],
+    "subtitle": "sound.skyrimcraft.freeze_spell_hit"
+  },
+  "skyrim_caves": {
+    "sounds": [
+      {
+        "name": "skyrimcraft:cave_ambience_1",
+        "stream": true,
+        "volume": 0.75,
+        "weight": 2
+      },
+      {
+        "name": "skyrimcraft:cave_ambience_2",
+        "stream": true,
+        "volume": 0.75,
+        "weight": 2
+      },
+      {
+        "name": "skyrimcraft:cave_ambience_3",
+        "stream": true,
+        "volume": 0.75,
+        "weight": 2
+      },
+      {
+        "name": "skyrimcraft:cave_ambience_4",
+        "stream": true,
+        "volume": 0.75,
+        "weight": 2
+      },
+      {
+        "name": "skyrimcraft:cave_ambience_5",
+        "stream": true,
+        "volume": 0.75,
+        "weight": 2
+      }
+    ],
+    "subtitle": "sound.skyrimcraft.skyrim_caves"
+  },
+  "swamp_ambient": {
+    "sounds": [
+      {
+        "name": "skyrimcraft:swamp_ambient",
+        "stream": true,
+        "volume": 0.75,
+        "weight": 4
+      }
+    ],
+    "subtitle": "sound.skyrimcraft.swamp_ambient"
+  },
+  "unrelenting_force_cast": {
+    "sounds": [
+      "skyrimcraft:unrelenting_force_cast"
+    ],
+    "subtitle": "sound.skyrimcraft.unrelenting_force_cast"
+  }
+}

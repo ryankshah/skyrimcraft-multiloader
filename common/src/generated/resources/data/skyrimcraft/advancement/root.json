@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "skyrimcraft_login": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {}
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
+    "description": "Your adventure begins here...",
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:sweet_roll"
+    },
+    "show_toast": false,
+    "title": "Skyrimcraft"
+  },
+  "requirements": [
+    [
+      "skyrimcraft_login"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

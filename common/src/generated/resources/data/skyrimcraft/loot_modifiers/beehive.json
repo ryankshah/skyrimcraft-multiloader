@@ -1,0 +1,10 @@
+{
+  "type": "skyrimcraft:add_table",
+  "conditions": [
+    {
+      "block": "minecraft:beehive",
+      "condition": "minecraft:block_state_property"
+    }
+  ],
+  "table": "skyrimcraft:beehive"
+}

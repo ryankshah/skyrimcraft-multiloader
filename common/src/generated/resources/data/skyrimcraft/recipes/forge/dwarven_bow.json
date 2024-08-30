@@ -1,0 +1,15 @@
+{
+  "type": "skyrimcraft:forge",
+  "category": "dwarven",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  ],
+  "level": 30,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:dwarven_bow"
+  },
+  "xp": 5
+}

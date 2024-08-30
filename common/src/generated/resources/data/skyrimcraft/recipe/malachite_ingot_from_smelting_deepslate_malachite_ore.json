@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "malachite_ingot",
+  "ingredient": {
+    "item": "skyrimcraft:deepslate_malachite_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:malachite_ingot"
+  }
+}

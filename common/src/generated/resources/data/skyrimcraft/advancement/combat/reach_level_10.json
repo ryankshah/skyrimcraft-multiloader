@@ -1,0 +1,25 @@
+{
+  "parent": "skyrimcraft:combat/root",
+  "criteria": {
+    "level_10": {
+      "conditions": {
+        "level": 10
+      },
+      "trigger": "skyrimcraft:level_up"
+    }
+  },
+  "display": {
+    "description": "Reach Combat Level 10",
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:iron_sword"
+    },
+    "title": "Level 10"
+  },
+  "requirements": [
+    [
+      "level_10"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

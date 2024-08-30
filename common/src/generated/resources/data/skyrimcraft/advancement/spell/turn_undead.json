@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_turn_undead": {
+      "conditions": {
+        "skill": "skyrimcraft:turn_undead"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Turn Undead spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Turn Undead"
+  },
+  "requirements": [
+    [
+      "spell_learned_turn_undead"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

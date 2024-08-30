@@ -1,0 +1,21 @@
+{
+  "type": "skyrimcraft:forge",
+  "category": "glass",
+  "ingredients": [
+    {
+      "item": "minecraft:leather"
+    },
+    {
+      "item": "skyrimcraft:moonstone_ingot"
+    },
+    {
+      "item": "skyrimcraft:malachite_ingot"
+    }
+  ],
+  "level": 70,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:glass_leggings"
+  },
+  "xp": 5
+}

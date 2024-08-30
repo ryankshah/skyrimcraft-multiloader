@@ -1,0 +1,11 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:windswept_hills",
+    "minecraft:old_growth_spruce_taiga",
+    "minecraft:old_growth_pine_taiga",
+    "minecraft:forest"
+  ],
+  "features": "skyrimcraft:trees/skyrim_tree_1",
+  "step": "vegetal_decoration"
+}

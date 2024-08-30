@@ -1,0 +1,216 @@
+{
+  "variants": {
+    "empty=false,facing=east,open=false": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster",
+        "y": 90
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open",
+        "y": 90
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty",
+        "y": 90
+      }
+    ],
+    "empty=false,facing=east,open=true": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster",
+        "y": 90
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open",
+        "y": 90
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty",
+        "y": 90
+      }
+    ],
+    "empty=false,facing=north,open=false": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster"
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open"
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty"
+      }
+    ],
+    "empty=false,facing=north,open=true": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster"
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open"
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty"
+      }
+    ],
+    "empty=false,facing=south,open=false": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster",
+        "y": 180
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open",
+        "y": 180
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty",
+        "y": 180
+      }
+    ],
+    "empty=false,facing=south,open=true": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster",
+        "y": 180
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open",
+        "y": 180
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty",
+        "y": 180
+      }
+    ],
+    "empty=false,facing=west,open=false": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster",
+        "y": 270
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open",
+        "y": 270
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty",
+        "y": 270
+      }
+    ],
+    "empty=false,facing=west,open=true": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster",
+        "y": 270
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open",
+        "y": 270
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty",
+        "y": 270
+      }
+    ],
+    "empty=true,facing=east,open=false": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster",
+        "y": 90
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open",
+        "y": 90
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty",
+        "y": 90
+      }
+    ],
+    "empty=true,facing=east,open=true": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster",
+        "y": 90
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open",
+        "y": 90
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty",
+        "y": 90
+      }
+    ],
+    "empty=true,facing=north,open=false": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster"
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open"
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty"
+      }
+    ],
+    "empty=true,facing=north,open=true": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster"
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open"
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty"
+      }
+    ],
+    "empty=true,facing=south,open=false": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster",
+        "y": 180
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open",
+        "y": 180
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty",
+        "y": 180
+      }
+    ],
+    "empty=true,facing=south,open=true": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster",
+        "y": 180
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open",
+        "y": 180
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty",
+        "y": 180
+      }
+    ],
+    "empty=true,facing=west,open=false": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster",
+        "y": 270
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open",
+        "y": 270
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty",
+        "y": 270
+      }
+    ],
+    "empty=true,facing=west,open=true": [
+      {
+        "model": "skyrimcraft:block/pearl_oyster",
+        "y": 270
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_open",
+        "y": 270
+      },
+      {
+        "model": "skyrimcraft:block/pearl_oyster_empty",
+        "y": 270
+      }
+    ]
+  }
+}

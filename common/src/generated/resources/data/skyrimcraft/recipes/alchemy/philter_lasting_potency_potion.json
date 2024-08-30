@@ -1,0 +1,18 @@
+{
+  "type": "skyrimcraft:alchemy",
+  "category": "REGENERATE HEALTH",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:salt_pile"
+    },
+    {
+      "item": "skyrimcraft:dwarven_oil"
+    }
+  ],
+  "level": 2,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:philter_lasting_potency_potion"
+  },
+  "xp": 1
+}

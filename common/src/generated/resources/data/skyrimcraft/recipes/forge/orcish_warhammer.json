@@ -1,0 +1,18 @@
+{
+  "type": "skyrimcraft:forge",
+  "category": "orcish",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "skyrimcraft:orichalcum_ingot"
+    }
+  ],
+  "level": 50,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:orcish_warhammer"
+  },
+  "xp": 5
+}

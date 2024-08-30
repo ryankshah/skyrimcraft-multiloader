@@ -1,0 +1,23 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:river",
+    "minecraft:beach",
+    "minecraft:cold_ocean",
+    "minecraft:ocean"
+  ],
+  "spawners": [
+    {
+      "type": "skyrimcraft:abecean_longfin",
+      "maxCount": 4,
+      "minCount": 2,
+      "weight": 4
+    },
+    {
+      "type": "skyrimcraft:cyrodilic_spadetail",
+      "maxCount": 4,
+      "minCount": 2,
+      "weight": 4
+    }
+  ]
+}

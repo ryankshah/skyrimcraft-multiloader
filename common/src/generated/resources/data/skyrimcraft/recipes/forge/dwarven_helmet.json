@@ -1,0 +1,21 @@
+{
+  "type": "skyrimcraft:forge",
+  "category": "dwarven",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:leather_strips"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "skyrimcraft:steel_ingot"
+    }
+  ],
+  "level": 30,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:dwarven_helmet"
+  },
+  "xp": 5
+}

@@ -1,0 +1,38 @@
+{
+  "parent": "skyrimcraft:root",
+  "criteria": {
+    "take_arrow_to_knee": {
+      "conditions": {
+        "damage": {
+          "type": {
+            "tags": [
+              {
+                "expected": true,
+                "id": "minecraft:is_projectile"
+              }
+            ]
+          }
+        }
+      },
+      "trigger": "minecraft:entity_hurt_player"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "I used to be an adventurer like you. Then I took an arrow in the knee..."
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:arrow"
+    },
+    "title": {
+      "translate": "Take An Arrow To The Knee"
+    }
+  },
+  "requirements": [
+    [
+      "take_arrow_to_knee"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

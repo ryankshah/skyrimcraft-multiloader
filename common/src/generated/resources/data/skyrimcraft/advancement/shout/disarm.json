@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:shout/root",
+  "criteria": {
+    "spell_learned_disarm": {
+      "conditions": {
+        "skill": "skyrimcraft:disarm"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Disarm shout",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:shout_block"
+    },
+    "title": "Disarm"
+  },
+  "requirements": [
+    [
+      "spell_learned_disarm"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

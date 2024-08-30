@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "skyrimcraft:block/weapon_rack",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "skyrimcraft:block/weapon_rack"
+    },
+    "facing=south": {
+      "model": "skyrimcraft:block/weapon_rack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "skyrimcraft:block/weapon_rack",
+      "y": 270
+    }
+  }
+}

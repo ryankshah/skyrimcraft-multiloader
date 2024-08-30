@@ -1,0 +1,15 @@
+{
+  "type": "skyrimcraft:forge",
+  "category": "iron",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  ],
+  "level": 1,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:iron_warhammer"
+  },
+  "xp": 5
+}

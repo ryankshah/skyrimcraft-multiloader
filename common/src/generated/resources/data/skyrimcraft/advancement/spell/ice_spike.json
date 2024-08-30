@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_ice_spike": {
+      "conditions": {
+        "skill": "skyrimcraft:ice_spike"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Ice Spike spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Ice Spike"
+  },
+  "requirements": [
+    [
+      "spell_learned_ice_spike"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

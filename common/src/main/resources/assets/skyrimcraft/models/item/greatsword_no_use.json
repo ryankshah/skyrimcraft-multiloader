@@ -1,0 +1,6 @@
+{
+  "parent": "skyrimcraft:item/greatsword",
+  "textures": {
+    "layer1": "minecraft:item/barrier"
+  }
+}

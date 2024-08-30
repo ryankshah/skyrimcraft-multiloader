@@ -1,0 +1,25 @@
+{
+  "parent": "skyrimcraft:root",
+  "criteria": {
+    "deal_damage": {
+      "trigger": "minecraft:player_hurt_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": "Skyrimcraft Combat Achievements",
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:daedric_sword"
+    },
+    "show_toast": false,
+    "title": "Combat"
+  },
+  "requirements": [
+    [
+      "deal_damage"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

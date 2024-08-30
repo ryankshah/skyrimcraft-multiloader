@@ -1,0 +1,42 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.lunarmoth.fly": {
+			"loop": true,
+			"animation_length": 3,
+			"bones": {
+				"bone": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, -45]
+						},
+						"1.5": {
+							"vector": [0, 0, 45],
+							"easing": "easeInOutCubic"
+						},
+						"3.0": {
+							"vector": [0, 0, -45],
+							"easing": "easeInOutCubic"
+						}
+					}
+				},
+				"bone2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 45]
+						},
+						"1.5": {
+							"vector": [0, 0, -45],
+							"easing": "easeInOutCubic"
+						},
+						"3.0": {
+							"vector": [0, 0, 45],
+							"easing": "easeInOutCubic"
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

@@ -1,0 +1,22 @@
+{
+  "entries": [
+    "skyrimcraft:bee",
+    "skyrimcraft:gameplay/piglin_bartering",
+    "skyrimcraft:grass_pod_from_small_vegetation",
+    "skyrimcraft:gem_drops_from_ores",
+    "skyrimcraft:salmon",
+    "skyrimcraft:gameplay/sniffer_digging",
+    "skyrimcraft:goat",
+    "skyrimcraft:chests/buried_treasure",
+    "skyrimcraft:chests/stronghold_corridor",
+    "skyrimcraft:beehive",
+    "skyrimcraft:chests/shipwreck_supply",
+    "skyrimcraft:chests/abandoned_mineshaft",
+    "skyrimcraft:chests/simple_dungeon",
+    "skyrimcraft:evoker",
+    "skyrimcraft:witch",
+    "skyrimcraft:chests/desert_pyramid",
+    "skyrimcraft:spider"
+  ],
+  "replace": false
+}

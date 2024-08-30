@@ -1,0 +1,7 @@
+{
+  "parent": "skyrimcraft:item/greatsword_no_use",
+  "textures": {
+    "layer0": "skyrimcraft:item/iron_greatsword",
+    "layer1": "minecraft:item/barrier"
+  }
+}

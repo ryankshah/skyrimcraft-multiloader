@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "skyrimcraft:ojukars_monument",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 9908282721,
+    "spacing": 32,
+    "separation": 16
+  }
+}

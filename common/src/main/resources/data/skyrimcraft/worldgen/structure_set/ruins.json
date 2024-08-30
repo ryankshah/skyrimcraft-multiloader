@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "skyrimcraft:ruins_1",
+      "weight": 1
+    },
+    {
+      "structure": "skyrimcraft:ruins_2",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 5677389012,
+    "spacing": 32,
+    "separation": 16
+  }
+}

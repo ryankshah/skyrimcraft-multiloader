@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "skyrimcraft:item/longbow_pulling_2"
+  }
+}

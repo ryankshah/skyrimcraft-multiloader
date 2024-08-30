@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "skyrimcraft:shout_wall",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1625767175,
+    "spacing": 16,
+    "separation": 6
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "skyrimcraft:forge",
+  "category": "steel",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "skyrimcraft:steel_ingot"
+    }
+  ],
+  "level": 1,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:steel_mace"
+  },
+  "xp": 5
+}

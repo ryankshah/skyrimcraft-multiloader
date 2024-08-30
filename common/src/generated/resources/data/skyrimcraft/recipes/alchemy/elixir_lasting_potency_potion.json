@@ -1,0 +1,18 @@
+{
+  "type": "skyrimcraft:alchemy",
+  "category": "REGENERATE HEALTH",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:dwarven_oil"
+    },
+    {
+      "item": "skyrimcraft:fire_salts"
+    }
+  ],
+  "level": 2,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:elixir_lasting_potency_potion"
+  },
+  "xp": 1
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_fireball": {
+      "conditions": {
+        "skill": "skyrimcraft:fireball"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Fireball spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Fireball"
+  },
+  "requirements": [
+    [
+      "spell_learned_fireball"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

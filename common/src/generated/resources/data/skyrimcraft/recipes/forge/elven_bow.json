@@ -1,0 +1,15 @@
+{
+  "type": "skyrimcraft:forge",
+  "category": "elven",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:quicksilver_ingot"
+    }
+  ],
+  "level": 30,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:elven_bow"
+  },
+  "xp": 5
+}

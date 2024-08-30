@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_voice_of_the_emperor": {
+      "conditions": {
+        "skill": "skyrimcraft:voice_of_the_emperor"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Voice of the Emperor spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Voice of the Emperor"
+  },
+  "requirements": [
+    [
+      "spell_learned_voice_of_the_emperor"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,21 @@
+{
+  "type": "skyrimcraft:forge",
+  "category": "elven",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "skyrimcraft:moonstone_ingot"
+    },
+    {
+      "item": "skyrimcraft:quicksilver_ingot"
+    }
+  ],
+  "level": 30,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:elven_greatsword"
+  },
+  "xp": 5
+}

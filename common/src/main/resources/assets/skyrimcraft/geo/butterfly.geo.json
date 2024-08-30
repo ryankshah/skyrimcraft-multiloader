@@ -1,0 +1,48 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.butterfly",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [0, 1, 1.5],
+					"cubes": [
+						{"origin": [-1, 0, -1], "size": [2, 2, 5], "uv": [0, 10]},
+						{"origin": [-0.75, 0.25, -2], "size": [1.5, 1.5, 1.5], "uv": [0, 0]},
+						{"origin": [-0.7, 1, -2.75], "size": [0.5, 0.5, 1], "pivot": [-0.25, 1.25, -2], "rotation": [0, -7.5, 7.5], "uv": [0, 2]},
+						{"origin": [0.2, 1, -2.75], "size": [0.5, 0.5, 1], "pivot": [0.25, 1.25, -2], "rotation": [0, 7.5, -7.5], "uv": [0, 2]}
+					]
+				},
+				{
+					"name": "wings",
+					"parent": "body",
+					"pivot": [0.25, 1.25, -2]
+				},
+				{
+					"name": "right_wing",
+					"parent": "wings",
+					"pivot": [-1, 1, 1.5],
+					"cubes": [
+						{"origin": [-5, 0.5, -0.5], "size": [4, 1, 4], "uv": [0, 5]}
+					]
+				},
+				{
+					"name": "left_wing",
+					"parent": "wings",
+					"pivot": [1, 1, 1.5],
+					"cubes": [
+						{"origin": [1, 0.5, -0.5], "size": [4, 1, 4], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

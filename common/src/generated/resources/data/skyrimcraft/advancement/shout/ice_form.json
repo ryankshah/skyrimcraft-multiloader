@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:shout/root",
+  "criteria": {
+    "spell_learned_ice_form": {
+      "conditions": {
+        "skill": "skyrimcraft:ice_form"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Ice Form shout",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:shout_block"
+    },
+    "title": "Ice Form"
+  },
+  "requirements": [
+    [
+      "spell_learned_ice_form"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

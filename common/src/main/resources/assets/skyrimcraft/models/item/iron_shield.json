@@ -1,0 +1,169 @@
+{
+	"credit": "Made with Blockbench",
+	"gui_light": "front",
+	"textures": {
+		"0": "skyrimcraft:item/iron_shield"
+	},
+	"elements": [
+		{
+			"name": "handle",
+			"from": [7, 6, 1],
+			"to": [9, 10, 5],
+			"faces": {
+				"north": {"uv": [2, 10.5, 3, 12.5], "texture": "#0"},
+				"east": {"uv": [0, 10.5, 2, 12.5], "texture": "#0"},
+				"south": {"uv": [5, 10.5, 6, 12.5], "texture": "#0"},
+				"west": {"uv": [3, 10.5, 5, 12.5], "texture": "#0"},
+				"up": {"uv": [3, 10.5, 2, 8.5], "texture": "#0"},
+				"down": {"uv": [4, 8.5, 3, 10.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "shield_1",
+			"from": [2, 2, 0],
+			"to": [14, 14, 1],
+			"faces": {
+				"north": {"uv": [0.5, 0.5, 6.5, 6.5], "texture": "#0"},
+				"east": {"uv": [0, 0.5, 0.5, 6.5], "texture": "#0"},
+				"south": {"uv": [7, 0.5, 13, 6.5], "texture": "#0"},
+				"west": {"uv": [6.5, 0.5, 7, 6.5], "texture": "#0"},
+				"up": {"uv": [6.5, 0.5, 0.5, 0], "texture": "#0"},
+				"down": {"uv": [12.5, 0, 6.5, 0.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "shield_2",
+			"from": [3, 1, 0],
+			"to": [13, 2, 1],
+			"faces": {
+				"north": {"uv": [0.5, 7, 5.5, 7.5], "texture": "#0"},
+				"east": {"uv": [0, 7, 0.5, 7.5], "texture": "#0"},
+				"south": {"uv": [6, 7, 11, 7.5], "texture": "#0"},
+				"west": {"uv": [5.5, 7, 6, 7.5], "texture": "#0"},
+				"up": {"uv": [5.5, 7, 0.5, 6.5], "texture": "#0"},
+				"down": {"uv": [10.5, 6.5, 5.5, 7], "texture": "#0"}
+			}
+		},
+		{
+			"name": "shield_3",
+			"from": [5, 0, 0],
+			"to": [11, 1, 1],
+			"faces": {
+				"north": {"uv": [4.5, 10, 7.5, 10.5], "texture": "#0"},
+				"east": {"uv": [4, 10, 4.5, 10.5], "texture": "#0"},
+				"south": {"uv": [8, 10, 11, 10.5], "texture": "#0"},
+				"west": {"uv": [7.5, 10, 8, 10.5], "texture": "#0"},
+				"up": {"uv": [7.5, 10, 4.5, 9.5], "texture": "#0"},
+				"down": {"uv": [10.5, 9.5, 7.5, 10], "texture": "#0"}
+			}
+		},
+		{
+			"name": "shield_4",
+			"from": [3, 14, 0],
+			"to": [13, 15, 1],
+			"faces": {
+				"north": {"uv": [0.5, 8, 5.5, 8.5], "texture": "#0"},
+				"east": {"uv": [0, 8, 0.5, 8.5], "texture": "#0"},
+				"south": {"uv": [6, 8, 11, 8.5], "texture": "#0"},
+				"west": {"uv": [5.5, 8, 6, 8.5], "texture": "#0"},
+				"up": {"uv": [5.5, 8, 0.5, 7.5], "texture": "#0"},
+				"down": {"uv": [10.5, 7.5, 5.5, 8], "texture": "#0"}
+			}
+		},
+		{
+			"name": "shield_5",
+			"from": [5, 15, 0],
+			"to": [11, 16, 1],
+			"faces": {
+				"north": {"uv": [4.5, 9, 7.5, 9.5], "texture": "#0"},
+				"east": {"uv": [4, 9, 4.5, 9.5], "texture": "#0"},
+				"south": {"uv": [8, 9, 11, 9.5], "texture": "#0"},
+				"west": {"uv": [7.5, 9, 8, 9.5], "texture": "#0"},
+				"up": {"uv": [7.5, 9, 4.5, 8.5], "texture": "#0"},
+				"down": {"uv": [10.5, 8.5, 7.5, 9], "texture": "#0"}
+			}
+		},
+		{
+			"name": "shield_6",
+			"from": [14, 3, 0],
+			"to": [15, 13, 1],
+			"faces": {
+				"north": {"uv": [8.5, 11, 9, 16], "texture": "#0"},
+				"east": {"uv": [8, 11, 8.5, 16], "texture": "#0"},
+				"south": {"uv": [9.5, 11, 10, 16], "texture": "#0"},
+				"west": {"uv": [9, 11, 9.5, 16], "texture": "#0"},
+				"up": {"uv": [9, 11, 8.5, 10.5], "texture": "#0"},
+				"down": {"uv": [9.5, 10.5, 9, 11], "texture": "#0"}
+			}
+		},
+		{
+			"name": "shield_7",
+			"from": [15, 5, 0],
+			"to": [16, 11, 1],
+			"faces": {
+				"north": {"uv": [11.5, 7, 12, 10], "texture": "#0"},
+				"east": {"uv": [11, 7, 11.5, 10], "texture": "#0"},
+				"south": {"uv": [12.5, 7, 13, 10], "texture": "#0"},
+				"west": {"uv": [12, 7, 12.5, 10], "texture": "#0"},
+				"up": {"uv": [12, 7, 11.5, 6.5], "texture": "#0"},
+				"down": {"uv": [12.5, 6.5, 12, 7], "texture": "#0"}
+			}
+		},
+		{
+			"name": "shield_8",
+			"from": [1, 3, 0],
+			"to": [2, 13, 1],
+			"faces": {
+				"north": {"uv": [6.5, 11, 7, 16], "texture": "#0"},
+				"east": {"uv": [6, 11, 6.5, 16], "texture": "#0"},
+				"south": {"uv": [7.5, 11, 8, 16], "texture": "#0"},
+				"west": {"uv": [7, 11, 7.5, 16], "texture": "#0"},
+				"up": {"uv": [7, 11, 6.5, 10.5], "texture": "#0"},
+				"down": {"uv": [7.5, 10.5, 7, 11], "texture": "#0"}
+			}
+		},
+		{
+			"name": "shield_9",
+			"from": [0, 5, 0],
+			"to": [1, 11, 1],
+			"faces": {
+				"north": {"uv": [10.5, 11, 11, 14], "texture": "#0"},
+				"east": {"uv": [10, 11, 10.5, 14], "texture": "#0"},
+				"south": {"uv": [11.5, 11, 12, 14], "texture": "#0"},
+				"west": {"uv": [11, 11, 11.5, 14], "texture": "#0"},
+				"up": {"uv": [11, 11, 10.5, 10.5], "texture": "#0"},
+				"down": {"uv": [11.5, 10.5, 11, 11], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [90, 0, 0],
+			"translation": [0, -6, 2.5]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [90, 0, 0],
+			"translation": [0, -6, 2.5]
+		},
+		"firstperson_righthand": {
+			"translation": [0, 0, 7.5]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, 0, 7.5]
+		},
+		"ground": {
+			"translation": [0, 4, 4]
+		},
+		"fixed": {
+			"translation": [0, 0, 2.75]
+		}
+	},
+	"overrides": [
+		{
+			"predicate": {
+				"skyrimcraft:blocking": 1.0
+			},
+			"model": "skyrimcraft:item/iron_shield_blocking"
+		}
+	]
+}

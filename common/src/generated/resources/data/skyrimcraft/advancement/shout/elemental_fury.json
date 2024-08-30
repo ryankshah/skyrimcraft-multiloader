@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:shout/root",
+  "criteria": {
+    "spell_learned_elemental_fury": {
+      "conditions": {
+        "skill": "skyrimcraft:elemental_fury"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Elemental Fury shout",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:shout_block"
+    },
+    "title": "Elemental Fury"
+  },
+  "requirements": [
+    [
+      "spell_learned_elemental_fury"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_night_eye": {
+      "conditions": {
+        "skill": "skyrimcraft:night_eye"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Night Eye spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Night Eye"
+  },
+  "requirements": [
+    [
+      "spell_learned_night_eye"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

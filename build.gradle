@@ -1,0 +1,26 @@
+plugins {
+    // see https://fabricmc.net/develop/ for new versions
+    id 'fabric-loom' version '1.7-SNAPSHOT' apply false
+    // see https://projects.neoforged.net/neoforged/moddevgradle for new versions
+    id 'net.neoforged.moddev' version '1.0.17' apply false
+    id 'com.matyrobbrt.mc.registrationutils' version '1.21.0-0.2.1'
+}
+
+registrationUtils {
+    group 'com.example.examplemod.registration'
+    projects {
+        fabric { type 'fabric' } // The fabric project
+        neoforge { type 'neoforge' } // The neoforge project
+        common { type 'common' } // The common project
+    }
+}
+
+repositories {
+    maven {
+        url = "https://jm.gserv.me/repository/maven-public/"
+    }
+    maven {
+        name = "SmartBrainLib (SBL) Maven Repo"
+        url = "https://dl.cloudsmith.io/public/tslat/sbl/maven/"
+    }
+}

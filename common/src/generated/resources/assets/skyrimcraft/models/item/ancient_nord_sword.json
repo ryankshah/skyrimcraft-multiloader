@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "skyrimcraft:item/ancient_nord_sword"
+  }
+}

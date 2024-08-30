@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_battle_cry": {
+      "conditions": {
+        "skill": "skyrimcraft:battle_cry"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Battle Cry spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Battle Cry"
+  },
+  "requirements": [
+    [
+      "spell_learned_battle_cry"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

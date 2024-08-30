@@ -1,0 +1,40 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "minecraft:plains",
+    "minecraft:sunflower_plains",
+    "minecraft:meadow"
+  ],
+  "spawners": [
+    {
+      "type": "skyrimcraft:blue_butterfly",
+      "maxCount": 5,
+      "minCount": 3,
+      "weight": 20
+    },
+    {
+      "type": "skyrimcraft:monarch_butterfly",
+      "maxCount": 5,
+      "minCount": 3,
+      "weight": 20
+    },
+    {
+      "type": "skyrimcraft:blue_dartwing",
+      "maxCount": 5,
+      "minCount": 3,
+      "weight": 20
+    },
+    {
+      "type": "skyrimcraft:orange_dartwing",
+      "maxCount": 5,
+      "minCount": 3,
+      "weight": 20
+    },
+    {
+      "type": "skyrimcraft:lunar_moth",
+      "maxCount": 5,
+      "minCount": 3,
+      "weight": 20
+    }
+  ]
+}

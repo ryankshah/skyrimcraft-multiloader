@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.25,
+  "group": "moonstone_ingot",
+  "ingredient": {
+    "item": "skyrimcraft:deepslate_moonstone_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:moonstone_ingot"
+  }
+}

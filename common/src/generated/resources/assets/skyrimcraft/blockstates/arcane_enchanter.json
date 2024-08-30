@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "skyrimcraft:block/arcane_enchanter",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "skyrimcraft:block/arcane_enchanter"
+    },
+    "facing=south": {
+      "model": "skyrimcraft:block/arcane_enchanter",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "skyrimcraft:block/arcane_enchanter",
+      "y": 270
+    }
+  }
+}

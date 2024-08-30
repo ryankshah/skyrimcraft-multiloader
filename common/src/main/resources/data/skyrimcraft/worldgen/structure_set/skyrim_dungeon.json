@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "skyrimcraft:skyrim_dungeon",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1933777277,
+    "spacing": 32,
+    "separation": 16
+  }
+}

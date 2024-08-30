@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:shout/root",
+  "criteria": {
+    "spell_learned_unrelenting_force": {
+      "conditions": {
+        "skill": "skyrimcraft:unrelenting_force"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Unrelenting Force shout",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:shout_block"
+    },
+    "title": "Unrelenting Force"
+  },
+  "requirements": [
+    [
+      "spell_learned_unrelenting_force"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

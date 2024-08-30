@@ -1,0 +1,14 @@
+{
+	"structures": [
+		{
+			"structure": "skyrimcraft:village",
+			"weight": 1
+		}
+	],
+	"placement": {
+		"type": "minecraft:random_spread",
+		"salt": 19011220,
+		"spacing": 34,
+		"separation": 8
+	}
+}

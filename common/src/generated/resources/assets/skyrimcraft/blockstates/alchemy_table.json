@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "skyrimcraft:block/alchemy_table",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "skyrimcraft:block/alchemy_table"
+    },
+    "facing=south": {
+      "model": "skyrimcraft:block/alchemy_table",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "skyrimcraft:block/alchemy_table",
+      "y": 270
+    }
+  }
+}

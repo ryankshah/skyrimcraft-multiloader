@@ -1,0 +1,35 @@
+{
+  "type": "skyrimcraft:add_table",
+  "conditions": [
+    {
+      "condition": "minecraft:any_of",
+      "terms": [
+        {
+          "block": "minecraft:coal_ore",
+          "condition": "minecraft:block_state_property"
+        },
+        {
+          "block": "minecraft:deepslate_coal_ore",
+          "condition": "minecraft:block_state_property"
+        },
+        {
+          "block": "minecraft:copper_ore",
+          "condition": "minecraft:block_state_property"
+        },
+        {
+          "block": "minecraft:deepslate_copper_ore",
+          "condition": "minecraft:block_state_property"
+        },
+        {
+          "block": "minecraft:iron_ore",
+          "condition": "minecraft:block_state_property"
+        },
+        {
+          "block": "minecraft:deepslate_iron_ore",
+          "condition": "minecraft:block_state_property"
+        }
+      ]
+    }
+  ],
+  "table": "skyrimcraft:oregemdrops"
+}

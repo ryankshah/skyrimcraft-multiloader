@@ -1,0 +1,24 @@
+{
+  "type": "skyrimcraft:oven",
+  "category": "food",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:salt_pile"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "minecraft:potato"
+    }
+  ],
+  "level": 1,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:potato_bread"
+  },
+  "xp": 5
+}

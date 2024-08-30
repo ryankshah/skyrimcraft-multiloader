@@ -1,0 +1,21 @@
+{
+  "type": "skyrimcraft:forge",
+  "category": "elven",
+  "ingredients": [
+    {
+      "item": "minecraft:leather"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "skyrimcraft:moonstone_ingot"
+    }
+  ],
+  "level": 30,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:elven_helmet"
+  },
+  "xp": 5
+}

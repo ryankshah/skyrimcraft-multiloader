@@ -1,0 +1,14 @@
+{
+  "type": "skyrimcraft:nbt_feature",
+  "config": {
+    "nbt_entries": [
+      {
+        "resourcelocation": "skyrimcraft:trees/skyrim_tree_2",
+        "weight": 1
+      }
+    ],
+    "allow_liquid": false,
+    "processors": "skyrimcraft:trees/skyrim_tree_2",
+    "height_offset": 0
+  }
+}
