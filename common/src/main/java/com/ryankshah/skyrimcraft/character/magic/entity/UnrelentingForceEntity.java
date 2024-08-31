@@ -84,12 +84,21 @@ public class UnrelentingForceEntity extends AbstractHurtingProjectile
             ServerLevel level = (ServerLevel) this.level();
 
             // Get origins
-            Vec3 origin = new Vec3(getX(), getY(), getZ());
-            float radius = 1.375f * (1f + ((float)(startingPosition.distanceToSqr(origin)/64f)));
-            Vec3 normal = getLookAngle();
-            Set<Vec3> circlePoints = ClientUtil.circle(origin, normal, radius, 8);
-            for(Vec3 point : circlePoints) {
-                level.sendParticles(ParticleTypes.CLOUD, getForward().x + point.x, getForward().y + point.y, getForward().z + point.z, 4, 0, 0, 0, 0);
+//            Vec3 origin = new Vec3(getX(), getY(), getZ());
+//            float radius = 1.375f * (1f + ((float)(startingPosition.distanceToSqr(origin)/64f)));
+//            Vec3 normal = getDeltaMovement().normalize(); //getLookAngle();
+//            Set<Vec3> circlePoints = ClientUtil.circle(origin, normal, radius, 8);
+//            for(Vec3 point : circlePoints) {
+//                level.sendParticles(ParticleTypes.CLOUD, getForward().x + point.x, getForward().y + point.y, getForward().z + point.z, 4, 0, 0, 0, 0);
+//            }
+            Vec3 currentPosition = new Vec3(getX(), getY(), getZ());
+            float distanceFromStart = (float) startingPosition.distanceTo(currentPosition);
+            float radius = 1.375f * (1f + (distanceFromStart / 64f));
+            Vec3 normal = getDeltaMovement().normalize();
+            Set<Vec3> circlePoints = ClientUtil.circle(currentPosition, normal, radius, 8);
+
+            for (Vec3 point : circlePoints) {
+                level.sendParticles(ParticleTypes.CLOUD, point.x, point.y, point.z, 4, 0, 0, 0, 0);
             }
         }
 
@@ -124,16 +133,27 @@ public class UnrelentingForceEntity extends AbstractHurtingProjectile
     public void onImpact(HitResult result) {
         if (!this.level().isClientSide) {
             if(result.getType() != HitResult.Type.MISS) {
-                AABB aabb = getBoundingBox();
+//                AABB aabb = getBoundingBox();
+                AABB aabb = getBoundingBox().inflate(2.0);
                 List<Entity> entitiesInBoundingBox = this.level().getEntities(this.shootingEntity, aabb);
 
-                for(Entity entity : entitiesInBoundingBox) {
-                    if(entity instanceof LivingEntity livingEntity && livingEntity != shootingEntity) {
-                        if((!livingEntity.isInWater() || !livingEntity.isInLava())) {
-                            livingEntity.knockback(2F, (double) Mth.sin(this.getYRot() * ((float) Math.PI / 180F)), (double) (-Mth.cos(this.getYRot() * ((float) Math.PI / 180F))));
+                Vec3 motionVec = this.getDeltaMovement().normalize();
+                for (Entity entity : entitiesInBoundingBox) {
+                    if (entity instanceof LivingEntity livingEntity && livingEntity != shootingEntity) {
+                        if ((!livingEntity.isInWater() || !livingEntity.isInLava())) {
+                            livingEntity.knockback(2F, -motionVec.x, -motionVec.z); // Apply knockback away from the entity's motion
                         }
                     }
                 }
+//                for(Entity entity : entitiesInBoundingBox) {
+//                    if(entity instanceof LivingEntity livingEntity && livingEntity != shootingEntity) {
+//                        if((!livingEntity.isInWater() || !livingEntity.isInLava())) {
+//                            Vec3 motionVec = this.getDeltaMovement().normalize(); // Use normalized motion vector for knockback direction
+//                            livingEntity.knockback(2F, motionVec.x, motionVec.z); // Apply knockback in the direction of the entity's motion
+//                            //livingEntity.knockback(2F, (double) Mth.sin(this.getYRot() * ((float) Math.PI / 180F)), (double) (-Mth.cos(this.getYRot() * ((float) Math.PI / 180F))));
+//                        }
+//                    }
+//                }
             }
 //            if (result.getType() == HitResult.Type.ENTITY) {
 //                Entity entity = ((EntityHitResult)result).getEntity();

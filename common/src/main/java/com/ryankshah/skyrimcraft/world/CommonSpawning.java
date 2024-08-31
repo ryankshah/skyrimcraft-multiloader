@@ -15,6 +15,39 @@ import java.util.List;
 
 public class CommonSpawning
 {
+    public static List<MobSpawnSettings.SpawnerData> WATER_MOB_SPAWNS = List.of(
+            new MobSpawnSettings.SpawnerData(EntityRegistry.ABECEAN_LONGFIN.get(), 4, 2, 4),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.CYRODILIC_SPADETAIL.get(), 4, 2, 4)
+    );
+
+    public static List<MobSpawnSettings.SpawnerData> CAVE_MOB_SPAWNS = List.of(
+            new MobSpawnSettings.SpawnerData(EntityRegistry.DRAUGR.get(), 40, 2, 3),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.DWARVEN_SPIDER.get(), 40, 1, 2)
+    );
+
+    public static List<MobSpawnSettings.SpawnerData> PLAINS_MOB_SPAWNS = List.of(
+            new MobSpawnSettings.SpawnerData(EntityRegistry.SABRE_CAT.get(), 4, 1, 2)
+    );
+
+    public static List<MobSpawnSettings.SpawnerData> SNOW_MOB_SPAWNS = List.of(
+            new MobSpawnSettings.SpawnerData(EntityRegistry.SABRE_CAT.get(), 4, 1, 2),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.GIANT.get(), 1, 2, 2),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.DRAUGR.get(), 40, 2, 2),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.DWARVEN_SPIDER.get(), 40, 1, 2)
+    );
+
+    public static List<MobSpawnSettings.SpawnerData> DRIPSTONE_MOB_SPAWNS = List.of(
+            new MobSpawnSettings.SpawnerData(EntityRegistry.TORCHBUG.get(), 40, 4, 6)
+    );
+
+    public static List<MobSpawnSettings.SpawnerData> PLAINS_FLYING_MOB_SPAWNS = List.of(
+            new MobSpawnSettings.SpawnerData(EntityRegistry.BLUE_BUTTERFLY.get(), 20, 3, 5),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.MONARCH_BUTTERFLY.get(), 20, 3, 5),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.BLUE_DARTWING.get(), 20, 3, 5),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.ORANGE_DARTWING.get(), 20, 3, 5),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.LUNAR_MOTH.get(), 20, 3, 5)
+    );
+
     public static void placements() {
         SpawnPlacements.register(EntityRegistry.DWARVEN_SPIDER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, DwarvenSpider::checkSpawnRules);
         SpawnPlacements.register(EntityRegistry.DRAUGR.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Draugr::checkSpawnRules);

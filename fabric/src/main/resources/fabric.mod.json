@@ -17,6 +17,9 @@
     "entrypoints": {
         "main": [
             "com.ryankshah.skyrimcraft.SkyrimcraftFabric"
+        ],
+        "client": [
+            "com.ryankshah.skyrimcraft.SkyrimcraftFabricClient"
         ]
     },
     "mixins": [

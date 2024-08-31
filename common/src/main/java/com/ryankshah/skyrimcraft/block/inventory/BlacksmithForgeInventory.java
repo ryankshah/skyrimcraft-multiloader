@@ -3,35 +3,22 @@ package com.ryankshah.skyrimcraft.block.inventory;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeInput;
 
-public class IAlchemyInventory implements Container, RecipeInput {
+public class BlacksmithForgeInventory implements Container {
     /**
      * Returns the number of slots in the inventory.
      */
-    @Override
     public int getContainerSize() {
         return 0;
     }
 
-    @Override
     public boolean isEmpty() {
         return true;
     }
 
-    /**
-     * Returns the stack in the given slot.
-     *
-     * @param index
-     */
     @Override
-    public ItemStack getItem(int index) {
-        return ItemStack.EMPTY;
-    }
-
-    @Override
-    public int size() {
-        return 0;
+    public ItemStack getItem(int i) {
+        return null;
     }
 
     /**
@@ -40,7 +27,6 @@ public class IAlchemyInventory implements Container, RecipeInput {
      * @param index
      * @param count
      */
-    @Override
     public ItemStack removeItem(int index, int count) {
         return ItemStack.EMPTY;
     }
@@ -50,7 +36,6 @@ public class IAlchemyInventory implements Container, RecipeInput {
      *
      * @param index
      */
-    @Override
     public ItemStack removeItemNoUpdate(int index) {
         return ItemStack.EMPTY;
     }
@@ -61,14 +46,12 @@ public class IAlchemyInventory implements Container, RecipeInput {
      * @param index
      * @param stack
      */
-    @Override
     public void setItem(int index, ItemStack stack) {    }
 
     /**
      * For tile entities, ensures the chunk containing the tile entity is saved to disk later - the game won't think it
      * hasn't changed and skip it.
      */
-    @Override
     public void setChanged() {   }
 
     /**
@@ -76,11 +59,9 @@ public class IAlchemyInventory implements Container, RecipeInput {
      *
      * @param player
      */
-    @Override
     public boolean stillValid(Player player) {
         return false;
     }
 
-    @Override
     public void clearContent() {    }
 }

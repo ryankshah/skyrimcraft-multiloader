@@ -4,9 +4,11 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.ryankshah.skyrimcraft.character.attachment.Character;
 import com.ryankshah.skyrimcraft.character.magic.effect.BoltEffect;
 import com.ryankshah.skyrimcraft.character.magic.entity.render.BoltRenderer;
 import com.ryankshah.skyrimcraft.registry.ParticleRegistry;
+import com.ryankshah.skyrimcraft.util.CodecUtils;
 import com.ryankshah.skyrimcraft.util.ProjectileHelper;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -18,6 +20,9 @@ import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -97,9 +102,31 @@ public class EmittingLightningParticle extends TextureSheetParticle {
 //            }
 //        };
 
+        public static final StreamCodec<RegistryFriendlyByteBuf, EmittingLightningParticleOptions> STREAM_CODEC = StreamCodec.composite(
+                ByteBufCodecs.VECTOR3F,
+                EmittingLightningParticleOptions::getColor,
+                ByteBufCodecs.FLOAT,
+                EmittingLightningParticleOptions::getScalar,
+                ByteBufCodecs.INT,
+                EmittingLightningParticleOptions::getLifetime,
+                EmittingLightningParticleOptions::new
+        );
+
         @Override
         public @NotNull ParticleType<?> getType() {
             return ParticleRegistry.EMITTING_LIGHTNING.get();
+        }
+
+        public Vector3f getColor() {
+            return color;
+        }
+
+        public float getScalar() {
+            return scalar;
+        }
+
+        public int getLifetime() {
+            return lifetime;
         }
 
         public static Vector3f readColorVector3f(StringReader reader) throws CommandSyntaxException {

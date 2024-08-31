@@ -129,6 +129,7 @@ public class BlueDartwing extends PathfinderMob implements GeoEntity
     private <E extends BlueDartwing> PlayState dartwingController(final software.bernie.geckolib.animation.AnimationState<BlueDartwing> event) {
         AnimationController<BlueDartwing> controller = event.getController();
         controller.transitionLength(0);
+        controller.setAnimationSpeed(10.0f);
 
         return event.setAndContinue(IDLE);
     }

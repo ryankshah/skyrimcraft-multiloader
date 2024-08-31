@@ -15,23 +15,6 @@ import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
 import org.jetbrains.annotations.ApiStatus;
 
-/**
- * <p>Loot modifier that rolls one loot table (the "subtable" and adds the results to the loot being modified (the "target table").
- * Loot modifiers are not rolled for the subtable, as that could result in the subtables'
- * items being modified twice (by downstream loot modifiers modifying the target table).</p>
- *
- * <p> Json format:
- *
- * <pre>
- * {
- *   "type": "neoforge:add_table",
- *   "conditions": [], // conditions block to predicate target tables by
- *   "table": "namespace:loot_table_id" // subtable to roll loot for to add to the target table(s)
- * }
- * </pre>
- *
- * </p>
- */
 public class AddTableLootModifier extends LootModifier
 {
     public static final MapCodec<AddTableLootModifier> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(

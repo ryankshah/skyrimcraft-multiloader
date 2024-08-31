@@ -124,23 +124,12 @@ public class PlayerEvents
             ServerPlayer player = (ServerPlayer) playerEntity;
             ServerLevel level = (ServerLevel) player.level();
 
-//                level.registryAccess().registry(QuestRegistry.QUESTS_REGISTRY_KEY).ifPresent(
-//                        registry -> System.out.println(registry.stream().toList())
-//                );
-
-            // TODO: see below...
-            //                if(!PositionTrigger.Instance.located(LocationPredicate.inFeature(Structure.VILLAGE)).matches(world, player.getX(), player.getY(), player.getZ())) {
-            //                    return;
-            //                }
-
-            // TODO: check if structures can even generate.
             List<ResourceKey<Structure>> structuresList = List.of(BuiltinStructures.VILLAGE_DESERT, BuiltinStructures.VILLAGE_TAIGA,
                     BuiltinStructures.VILLAGE_PLAINS, BuiltinStructures.VILLAGE_SNOWY, BuiltinStructures.VILLAGE_SAVANNA, BuiltinStructures.SHIPWRECK, BuiltinStructures.SHIPWRECK_BEACHED,
                     BuiltinStructures.FORTRESS, BuiltinStructures.MINESHAFT, BuiltinStructures.MINESHAFT_MESA);
 
             List<TagKey<Structure>> structureTags = List.of(StructureTags.VILLAGE, StructureTags.MINESHAFT, TagsRegistry.StructureTagsInit.NETHER_FORTRESS, StructureTags.SHIPWRECK);
 
-            // TODO: We should do this check after we do the player bounds check...
             for (TagKey<Structure> structure : structureTags) {
                 BlockPos featureStartPos = locateFeatureStartChunkFromPlayerBlockPos(level, player.blockPosition(), structure);
                 if (featureStartPos != null && structure != null) {
@@ -148,15 +137,8 @@ public class PlayerEvents
                     List<CompassFeature> playerCompassFeatures = character.getCompassFeatures();
                     CompassFeature compassFeature = new CompassFeature(UUID.randomUUID().toString(), structure, featureStartPos);
                     if (playerCompassFeatures.isEmpty() || playerCompassFeatures.stream().noneMatch(feature -> feature.equals(compassFeature))) {
-//                                System.out.println(playerCompassFeatures);
-//                            character.addCompassFeature(compassFeature);
-//                            playerCompassFeatures.add(compassFeature);
                         final AddToCompassFeatures features = new AddToCompassFeatures(compassFeature.getId(), compassFeature.getFeature().location(), compassFeature.getBlockPos());
-//                            character.setCompassFeatures(playerCompassFeatures);
                         Dispatcher.sendToServer(features);
-//                            PacketDistributor.SERVER.noArg().send(features);
-
-//                                System.out.println(playerCompassFeatures);
                     }
                 }
             }

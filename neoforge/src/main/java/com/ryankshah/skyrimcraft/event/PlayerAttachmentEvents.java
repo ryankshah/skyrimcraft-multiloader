@@ -45,15 +45,15 @@ public class PlayerAttachmentEvents
         }
     }
 
-    @SubscribeEvent
-    public static void track(PlayerEvent.StartTracking event) {
-        if(event.getEntity() instanceof Player player) {
-            Character.playerStartTracking(player);
-            ExtraCharacter.playerStartTracking(player);
-            LevelUpdates.playerStartTracking(player);
-            StatIncreases.playerStartTracking(player);
-        }
-    }
+//    @SubscribeEvent
+//    public static void track(PlayerEvent.StartTracking event) {
+//        if(event.getEntity() instanceof Player player) {
+//            Character.playerStartTracking(player);
+//            ExtraCharacter.playerStartTracking(player);
+//            LevelUpdates.playerStartTracking(player);
+//            StatIncreases.playerStartTracking(player);
+//        }
+//    }
 
     @SubscribeEvent
     public static void playerDeath(LivingDeathEvent event) {

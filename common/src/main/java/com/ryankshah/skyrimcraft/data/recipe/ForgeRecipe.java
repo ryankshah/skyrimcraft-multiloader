@@ -1,6 +1,7 @@
 package com.ryankshah.skyrimcraft.data.recipe;
 
-import com.ryankshah.skyrimcraft.block.inventory.IForgeInventory;
+import com.ryankshah.skyrimcraft.block.inventory.BlacksmithForgeInventory;
+import com.ryankshah.skyrimcraft.block.inventory.BlankRecipeInput;
 import com.ryankshah.skyrimcraft.registry.RecipeRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -12,7 +13,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class ForgeRecipe implements Recipe<IForgeInventory>
+public class ForgeRecipe implements Recipe<BlankRecipeInput>
 {
     protected final String category;
     protected final ItemStack stackToCreate;
@@ -40,12 +41,12 @@ public class ForgeRecipe implements Recipe<IForgeInventory>
     }
 
     @Override
-    public boolean matches(IForgeInventory p_77569_1_, Level p_77569_2_) {
+    public boolean matches(BlankRecipeInput p_77569_1_, Level p_77569_2_) {
         return this.recipeItems.stream().allMatch(item -> item.test(p_77569_1_.getItem(0)));
     }
 
     @Override
-    public ItemStack assemble(IForgeInventory pCraftingContainer, HolderLookup.Provider pRegistries) {
+    public ItemStack assemble(BlankRecipeInput pCraftingContainer, HolderLookup.Provider pRegistries) {
         return this.stackToCreate.copy();
     }
 

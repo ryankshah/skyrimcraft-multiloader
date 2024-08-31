@@ -1,9 +1,7 @@
 package com.ryankshah.skyrimcraft.data.recipe;
 
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.ryankshah.skyrimcraft.block.inventory.IAlchemyInventory;
-import com.ryankshah.skyrimcraft.data.recipe.serial.AlchemyRecipeSerializer;
+import com.ryankshah.skyrimcraft.block.inventory.AlchemyInventory;
+import com.ryankshah.skyrimcraft.block.inventory.BlankRecipeInput;
 import com.ryankshah.skyrimcraft.registry.RecipeRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -15,9 +13,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Optional;
-
-public class AlchemyRecipe implements Recipe<IAlchemyInventory>
+public class AlchemyRecipe implements Recipe<BlankRecipeInput>
 {
     protected final String category;
     protected final ItemStack stackToCreate;
@@ -45,12 +41,12 @@ public class AlchemyRecipe implements Recipe<IAlchemyInventory>
     }
 
     @Override
-    public boolean matches(IAlchemyInventory p_77569_1_, Level p_77569_2_) {
+    public boolean matches(BlankRecipeInput p_77569_1_, Level p_77569_2_) {
         return this.recipeItems.stream().allMatch(item -> item.test(p_77569_1_.getItem(0)));
     }
 
     @Override
-    public ItemStack assemble(IAlchemyInventory pCraftingContainer, HolderLookup.Provider pRegistries) {
+    public ItemStack assemble(BlankRecipeInput pCraftingContainer, HolderLookup.Provider pRegistries) {
         return this.stackToCreate.copy();
     }
 

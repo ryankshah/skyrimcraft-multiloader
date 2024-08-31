@@ -5,10 +5,10 @@
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ServerPlayerMixin"
+    "ServerPlayerMixin",
+    "SkyrimGuiOverlayMixin"
   ],
   "client": [
-    "SkyrimGuiOverlayMixin"
   ],
   "server": [],
   "injectors": {

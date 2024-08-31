@@ -129,6 +129,7 @@ public class BlueButterfly extends PathfinderMob implements GeoEntity
     private <E extends BlueButterfly> PlayState butterflyController(final software.bernie.geckolib.animation.AnimationState<BlueButterfly> event) {
         AnimationController<BlueButterfly> controller = event.getController();
         controller.transitionLength(0);
+        controller.setAnimationSpeed(10.0f);
 
         return event.setAndContinue(IDLE);
     }

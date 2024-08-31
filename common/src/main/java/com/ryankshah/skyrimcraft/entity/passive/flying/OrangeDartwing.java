@@ -129,6 +129,7 @@ public class OrangeDartwing extends PathfinderMob implements GeoEntity
     private <E extends OrangeDartwing> PlayState dartwingController(final software.bernie.geckolib.animation.AnimationState<OrangeDartwing> event) {
         AnimationController<OrangeDartwing> controller = event.getController();
         controller.transitionLength(0);
+        controller.setAnimationSpeed(10.0f);
 
         return event.setAndContinue(IDLE);
     }

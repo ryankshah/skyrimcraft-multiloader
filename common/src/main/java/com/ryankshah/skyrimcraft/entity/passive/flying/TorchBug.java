@@ -129,6 +129,7 @@ public class TorchBug extends PathfinderMob implements GeoEntity
     private <E extends TorchBug> PlayState torchbugController(final software.bernie.geckolib.animation.AnimationState<TorchBug> event) {
         AnimationController<TorchBug> controller = event.getController();
         controller.transitionLength(0);
+        controller.setAnimationSpeed(10.0f);
 
         return event.setAndContinue(IDLE);
     }

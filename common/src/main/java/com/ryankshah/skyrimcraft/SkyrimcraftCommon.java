@@ -16,6 +16,7 @@ public class SkyrimcraftCommon
         SkyrimcraftLootConditionTypes.init();
         DamageTypeRegistry.init();
         KeysRegistry.init();
+        EntityRegistry.init();
 
         ItemRegistry.init();
         BlockRegistry.init();
@@ -24,7 +25,6 @@ public class SkyrimcraftCommon
         RecipeRegistry.init();
         TagsRegistry.init();
 
-        EntityRegistry.init();
         ParticleRegistry.init();
         ParticleRenderTypeRegistry.init();
         RenderTypeRegistry.init();

@@ -129,6 +129,7 @@ public class LunarMoth extends PathfinderMob implements GeoEntity
     private <E extends LunarMoth> PlayState mothController(final software.bernie.geckolib.animation.AnimationState<LunarMoth> event) {
         AnimationController<LunarMoth> controller = event.getController();
         controller.transitionLength(0);
+        controller.setAnimationSpeed(10.0f);
 
         return event.setAndContinue(IDLE);
     }

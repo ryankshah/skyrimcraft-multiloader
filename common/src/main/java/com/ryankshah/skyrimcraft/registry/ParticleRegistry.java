@@ -26,7 +26,7 @@ public class ParticleRegistry
 
                 @Override
                 public StreamCodec<? super RegistryFriendlyByteBuf, EmittingLightningParticle.EmittingLightningParticleOptions> streamCodec() {
-                    return null;
+                    return EmittingLightningParticle.EmittingLightningParticleOptions.STREAM_CODEC;
                 }
             });
 
@@ -39,7 +39,7 @@ public class ParticleRegistry
 
                 @Override
                 public StreamCodec<? super RegistryFriendlyByteBuf, LightningParticle.LightningParticleOptions> streamCodec() {
-                    return null;
+                    return LightningParticle.LightningParticleOptions.STREAM_CODEC;
                 }
             });
 

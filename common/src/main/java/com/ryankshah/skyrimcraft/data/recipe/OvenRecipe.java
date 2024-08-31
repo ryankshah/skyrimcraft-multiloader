@@ -1,6 +1,6 @@
 package com.ryankshah.skyrimcraft.data.recipe;
 
-import com.ryankshah.skyrimcraft.block.inventory.IOvenInventory;
+import com.ryankshah.skyrimcraft.block.inventory.BlankRecipeInput;
 import com.ryankshah.skyrimcraft.registry.RecipeRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -12,7 +12,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class OvenRecipe implements Recipe<IOvenInventory>
+public class OvenRecipe implements Recipe<BlankRecipeInput>
 {
     protected final String category;
     protected final ItemStack stackToCreate;
@@ -40,12 +40,12 @@ public class OvenRecipe implements Recipe<IOvenInventory>
     }
 
     @Override
-    public boolean matches(IOvenInventory p_77569_1_, Level p_77569_2_) {
+    public boolean matches(BlankRecipeInput p_77569_1_, Level p_77569_2_) {
         return this.recipeItems.stream().allMatch(item -> item.test(p_77569_1_.getItem(0)));
     }
 
     @Override
-    public ItemStack assemble(IOvenInventory pCraftingContainer, HolderLookup.Provider pRegistries) {
+    public ItemStack assemble(BlankRecipeInput pCraftingContainer, HolderLookup.Provider pRegistries) {
         return this.stackToCreate.copy();
     }
 

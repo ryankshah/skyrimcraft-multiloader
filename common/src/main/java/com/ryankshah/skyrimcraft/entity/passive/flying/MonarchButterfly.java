@@ -129,6 +129,7 @@ public class MonarchButterfly extends PathfinderMob implements GeoEntity
     private <E extends MonarchButterfly> PlayState butterflyController(final software.bernie.geckolib.animation.AnimationState<MonarchButterfly> event) {
         AnimationController<MonarchButterfly> controller = event.getController();
         controller.transitionLength(0);
+        controller.setAnimationSpeed(10.0f);
 
         return event.setAndContinue(IDLE);
     }

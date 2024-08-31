@@ -37,7 +37,7 @@ public class ForgeRecipeProvider implements DataProvider, IConditionBuilder
     public static Map<String, ForgeRecipe> RECIPES;
 
     public ForgeRecipeProvider(PackOutput p_248933_, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        this.recipePathProvider = p_248933_.createPathProvider(PackOutput.Target.DATA_PACK, "recipes");
+        this.recipePathProvider = p_248933_.createPathProvider(PackOutput.Target.DATA_PACK, "recipe");
         this.lookupProvider = lookupProvider;
         RECIPES = new HashMap<>();
     }

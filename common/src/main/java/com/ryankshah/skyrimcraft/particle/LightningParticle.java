@@ -2,7 +2,9 @@ package com.ryankshah.skyrimcraft.particle;
 
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.ryankshah.skyrimcraft.registry.ParticleRegistry;
 import com.ryankshah.skyrimcraft.registry.ParticleRenderTypeRegistry;
 import io.netty.buffer.ByteBuf;
@@ -14,12 +16,15 @@ import net.minecraft.client.particle.TextureSheetParticle;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.ShriekParticleOption;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.ExtraCodecs;
 import net.minecraft.util.Mth;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
@@ -83,6 +88,34 @@ public class LightningParticle extends TextureSheetParticle {
 //                return new LightningParticleOptions(LightningParticleOptions.readColorFromNetwork(buf), buf.readFloat(), buf.readInt());
 //            }
 //        };
+
+//        public static final MapCodec<LightningParticle.LightningParticleOptions> CODEC = RecordCodecBuilder.mapCodec(
+//                p_235952_ -> p_235952_.group(
+//                        Vec3.CODEC.fieldOf("color").forGetter(p_235954_ -> p_235954_.color)
+//                ).apply(p_235952_, LightningParticle.LightningParticleOptions::new)
+//        );
+
+        public static final StreamCodec<RegistryFriendlyByteBuf, LightningParticle.LightningParticleOptions> STREAM_CODEC = StreamCodec.composite(
+                ByteBufCodecs.VECTOR3F,
+                LightningParticle.LightningParticleOptions::getColor,
+                ByteBufCodecs.FLOAT,
+                LightningParticle.LightningParticleOptions::getScalar,
+                ByteBufCodecs.INT,
+                LightningParticle.LightningParticleOptions::getLifetime,
+                LightningParticle.LightningParticleOptions::new
+        );
+
+        public Vector3f getColor() {
+            return color;
+        }
+
+        public float getScalar() {
+            return scalar;
+        }
+
+        public int getLifetime() {
+            return lifetime;
+        }
 
         @Override
         public @NotNull ParticleType<?> getType() {

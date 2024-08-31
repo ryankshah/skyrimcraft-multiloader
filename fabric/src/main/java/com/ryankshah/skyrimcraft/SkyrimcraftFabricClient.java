@@ -27,6 +27,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -35,8 +36,20 @@ import java.util.Map;
 
 public class SkyrimcraftFabricClient implements ClientModInitializer
 {
+    protected SkyrimGuiOverlay.SkyrimCompass compass = new SkyrimGuiOverlay.SkyrimCompass();
+    protected SkyrimGuiOverlay.SkyrimMagicka magicka = new SkyrimGuiOverlay.SkyrimMagicka();
+    protected SkyrimGuiOverlay.SkyrimSpells spells = new SkyrimGuiOverlay.SkyrimSpells();
+    protected SkyrimGuiOverlay.SkyrimTargetHealth targetHealth = new SkyrimGuiOverlay.SkyrimTargetHealth();
+    protected SkyrimGuiOverlay.SkyrimHealth health = new SkyrimGuiOverlay.SkyrimHealth();
+    protected SkyrimGuiOverlay.SkyrimStamina stamina = new SkyrimGuiOverlay.SkyrimStamina();
+    protected SkyrimGuiOverlay.SkyrimArmorIcons armorIcons = new SkyrimGuiOverlay.SkyrimArmorIcons();
+    protected SkyrimGuiOverlay.SkyrimAir air = new SkyrimGuiOverlay.SkyrimAir();
+    protected SkyrimGuiOverlay.SkyrimCrosshair crosshair = new SkyrimGuiOverlay.SkyrimCrosshair();
+    protected SkyrimGuiOverlay.SkyrimXPBar xpBar = new SkyrimGuiOverlay.SkyrimXPBar();
+
     @Override
     public void onInitializeClient() {
+        // TODO: fix all of this shit
         KeyBindingHelper.registerKeyBinding(KeysRegistry.MENU_KEY.get());
         KeyBindingHelper.registerKeyBinding(KeysRegistry.SPELL_SLOT_1_KEY.get());
         KeyBindingHelper.registerKeyBinding(KeysRegistry.SPELL_SLOT_2_KEY.get());
@@ -52,22 +65,29 @@ public class SkyrimcraftFabricClient implements ClientModInitializer
         //BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.IRIS_FLOWER.get(), RenderType.cutout());
 
         SkyrimcraftCommonClient.registerRenderers(EntityRendererRegistry::register, BlockEntityRenderers::register);
-
         SkyrimcraftCommonClient.getLayerDefinitions().forEach(
                 (layerdef, model) -> EntityModelLayerRegistry.registerModelLayer(layerdef, () -> model)
         );
 
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityType == EntityType.PLAYER) {
-                registrationHelper.register(new RenderRaceLayer((PlayerRenderer) entityRenderer));
                 registrationHelper.register(new SpectralLayerRenderer((PlayerRenderer) entityRenderer));
+                registrationHelper.register(new RenderRaceLayer((PlayerRenderer) entityRenderer));
             }
         });
 
-//        HudRenderCallback.EVENT.register((guiGraphics, deltaTime) -> {
-//            SkyrimGuiOverlay.SkyrimCompass compass = new SkyrimGuiOverlay.SkyrimCompass();
-//            compass.render(guiGraphics, deltaTime);
-//        });
+        HudRenderCallback.EVENT.register((guiGraphics, deltaTime) -> {
+            compass.render(guiGraphics, deltaTime);
+            magicka.render(guiGraphics, deltaTime);
+            spells.render(guiGraphics, deltaTime);
+            targetHealth.render(guiGraphics, deltaTime);
+            health.render(guiGraphics, deltaTime);
+            stamina.render(guiGraphics, deltaTime);
+            armorIcons.render(guiGraphics, deltaTime);
+            air.render(guiGraphics, deltaTime);
+            crosshair.render(guiGraphics, deltaTime);
+            xpBar.render(guiGraphics, deltaTime);
+        });
 
         ClientTickEvents.END_CLIENT_TICK.register(this::handleClientTicks);
     }
