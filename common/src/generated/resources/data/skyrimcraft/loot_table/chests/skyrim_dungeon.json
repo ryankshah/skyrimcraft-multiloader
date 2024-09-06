@@ -501,6 +501,51 @@
             }
           ],
           "name": "skyrimcraft:flawed_amethyst"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.25
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "skyrimcraft:tomato_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.25
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "skyrimcraft:cabbage_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.25
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "skyrimcraft:garlic"
         }
       ],
       "name": "skyrim_dungeon_table",

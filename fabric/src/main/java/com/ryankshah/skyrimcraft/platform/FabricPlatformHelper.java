@@ -1,10 +1,8 @@
 package com.ryankshah.skyrimcraft.platform;
 
 import com.ryankshah.skyrimcraft.SkyrimcraftFabric;
+import com.ryankshah.skyrimcraft.character.attachment.*;
 import com.ryankshah.skyrimcraft.character.attachment.Character;
-import com.ryankshah.skyrimcraft.character.attachment.ExtraCharacter;
-import com.ryankshah.skyrimcraft.character.attachment.LevelUpdates;
-import com.ryankshah.skyrimcraft.character.attachment.StatIncreases;
 import com.ryankshah.skyrimcraft.platform.services.IPlatformHelper;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
 import net.fabricmc.loader.api.FabricLoader;
@@ -69,6 +67,16 @@ public class FabricPlatformHelper implements IPlatformHelper {
     @Override
     public void setStatIncreases(Player player, StatIncreases statIncreases) {
         ((AttachmentTarget)player).setAttached(SkyrimcraftFabric.STAT_INCREASES_DATA, statIncreases);
+    }
+
+    @Override
+    public PlayerQuests getQuests(Player player) {
+        return player == null ? new PlayerQuests() : ((AttachmentTarget)player).getAttachedOrCreate(SkyrimcraftFabric.QUEST_DATA, PlayerQuests::new);
+    }
+
+    @Override
+    public void setQuestData(Player player, PlayerQuests playerQuests) {
+        ((AttachmentTarget)player).setAttached(SkyrimcraftFabric.QUEST_DATA, playerQuests);
     }
 
     @Override

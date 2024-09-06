@@ -5,10 +5,14 @@ import com.example.examplemod.registration.RegistryObject;
 import com.ryankshah.skyrimcraft.Constants;
 import com.ryankshah.skyrimcraft.character.magic.SpellRegistry;
 import com.ryankshah.skyrimcraft.character.skill.SkillRegistry;
+import com.ryankshah.skyrimcraft.effect.ModEffects;
 import com.ryankshah.skyrimcraft.item.*;
 import com.ryankshah.skyrimcraft.item.potion.*;
+import com.ryankshah.skyrimcraft.util.ClientUtil;
 import com.ryankshah.skyrimcraft.util.IngredientEffect;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -24,7 +28,7 @@ public class ItemRegistry
 
     public static final RegistryObject<Item, Item> SWEET_ROLL = ITEMS.register("sweet_roll",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
@@ -34,65 +38,59 @@ public class ItemRegistry
             ));
     public static final RegistryObject<Item, Item> GARLIC_BREAD = ITEMS.register("garlic_bread",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
+                            .effect(new MobEffectInstance(ModEffects.CURE_DISEASE.asHolder(), 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> POTATO_BREAD = ITEMS.register("potato_bread",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> TOMATO = ITEMS.register("tomato",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> APPLE_PIE = ITEMS.register("apple_pie",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> MAMMOTH_STEAK = ITEMS.register("mammoth_steak",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> VENISON = ITEMS.register("venison",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> CABBAGE = ITEMS.register("cabbage",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> TOMATO_SOUP = ITEMS.register("tomato_soup",
@@ -101,7 +99,6 @@ public class ItemRegistry
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> APPLE_CABBAGE_STEW = ITEMS.register("apple_cabbage_stew",
@@ -110,16 +107,13 @@ public class ItemRegistry
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> APPLE_DUMPLING = ITEMS.register("apple_dumpling",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
-                            .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> BEEF_STEW = ITEMS.register("beef_stew",
@@ -128,7 +122,6 @@ public class ItemRegistry
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> CABBAGE_SOUP = ITEMS.register("cabbage_soup",
@@ -137,7 +130,6 @@ public class ItemRegistry
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> CABBAGE_POTATO_SOUP = ITEMS.register("cabbage_potato_soup",
@@ -146,97 +138,88 @@ public class ItemRegistry
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> CHICKEN_DUMPLING = ITEMS.register("chicken_dumpling",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> CLAM_MEAT = ITEMS.register("clam_meat",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> SLICED_GOAT_CHEESE = ITEMS.register("sliced_goat_cheese",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> SLICED_EIDAR_CHEESE = ITEMS.register("sliced_eidar_cheese",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> GOURD = ITEMS.register("gourd",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> LEEK = ITEMS.register("leek",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> LEG_OF_GOAT = ITEMS.register("leg_of_goat",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
+                            .effect(new MobEffectInstance(MobEffects.HUNGER, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> LEG_OF_GOAT_ROAST = ITEMS.register("leg_of_goat_roast",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> HORSE_MEAT = ITEMS.register("horse_meat",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
+                            .effect(new MobEffectInstance(MobEffects.HUNGER, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> HORSE_HAUNCH = ITEMS.register("horse_haunch",
             () -> new Item(new Item.Properties()
-                    .stacksTo(16)
+                    .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
                             .build())
             ));
     public static final RegistryObject<Item, Item> VEGETABLE_SOUP = ITEMS.register("vegetable_soup",
@@ -245,7 +228,162 @@ public class ItemRegistry
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
                             .saturationModifier(0.2f)
-                            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2), 1f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> ASH_YAM = ITEMS.register("ash_yam",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> ASH_YAM_SLIPS = ITEMS.register("ash_yam_slips",
+            () -> new ItemNameBlockItem(BlockRegistry.ASH_YAM_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item, Item> BOILED_CREME_TREAT = ITEMS.register("boiled_creme_treat",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> BRAIDED_BREAD = ITEMS.register("braided_bread",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> CLAM_CHOWDER = ITEMS.register("clam_chowder",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(16)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> ELSWEYR_FONDUE = ITEMS.register("elsweyr_fondue",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(16)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .effect(new MobEffectInstance(ModEffects.MAGICKA_REGEN.asHolder(), 500, 2), 1f)
+//                                    .effect(new MobEffectInstance(ModEffects.FORTIFY_MAGICKA.asHolder(), 500, 2), 1f)
+        .build())
+            ));
+    public static final RegistryObject<Item, Item> GREEN_APPLE = ITEMS.register("green_apple",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> GRILLED_LEEKS = ITEMS.register("grilled_leeks",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> HONEY_NUT_TREAT = ITEMS.register("honey_nut_treat",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> JAZBAY_GRAPES = ITEMS.register("jazbay_grapes",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> JAZBAY_CROSTATA = ITEMS.register("jazbay_crostata",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> JUNIPER_BERRIES = ITEMS.register("juniper_berries",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> JUNIPER_BERRY_CROSTATA = ITEMS.register("juniper_berry_crostata",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> LAVENDER = ITEMS.register("lavender",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> LAVENDER_DUMPLING = ITEMS.register("lavender_dumpling",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> MAMMOTH_CHEESE_BOWL = ITEMS.register("mammoth_cheese_bowl",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(16)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> POTATO_SOUP = ITEMS.register("potato_soup",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(16)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> RABBIT_HAUNCH = ITEMS.register("rabbit_haunch",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> SNOWBERRIES = ITEMS.register("snowberries",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
+                            .build())
+            ));
+    public static final RegistryObject<Item, Item> SNOWBERRY_CROSTATA = ITEMS.register("snowberry_crostata",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(64)
+                    .food(new FoodProperties.Builder()
+                            .nutrition(5)
+                            .saturationModifier(0.2f)
                             .build())
             ));
 
@@ -269,6 +407,7 @@ public class ItemRegistry
 
     public static final RegistryObject<Item, Item> GARLIC = ITEMS.register("garlic", () -> new ItemNameBlockItem(BlockRegistry.GARLIC_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item, Item> TOMATO_SEEDS = ITEMS.register("tomato_seeds", () -> new ItemNameBlockItem(BlockRegistry.TOMATO_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item, Item> CABBAGE_SEEDS = ITEMS.register("cabbage_seeds", () -> new ItemNameBlockItem(BlockRegistry.CABBAGE_CROP.get(), new Item.Properties()));
 
     public static final RegistryObject<Item, Item> CORUNDUM_INGOT = ITEMS.register("corundum_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item, Item> DWARVEN_METAL_INGOT = ITEMS.register("dwarven_metal_ingot", () -> new Item(new Item.Properties()));
@@ -621,4 +760,79 @@ public class ItemRegistry
     public static final RegistryObject<Item, Item> DRAUGR_SPAWN_EGG = ITEMS.register("draugr_spawn_egg", () -> new SpawnEggItem(EntityRegistry.DRAUGR.get(), 0x505050, 0x606060, new Item.Properties()));
     public static final RegistryObject<Item, Item> KHAJIIT_SPAWN_EGG = ITEMS.register("khajiit_spawn_egg", () -> new SpawnEggItem(EntityRegistry.KHAJIIT.get(), 0x505050, 0x606060, new Item.Properties()));
     public static final RegistryObject<Item, Item> FALMER_SPAWN_EGG = ITEMS.register("falmer_spawn_egg", () -> new SpawnEggItem(EntityRegistry.FALMER.get(), 0x505050, 0x606060, new Item.Properties()));
+
+    public static void registerItemModelProperties() {
+        registerTwoHandedProperties(ANCIENT_NORD_BATTLEAXE.get());
+        registerTwoHandedProperties(ANCIENT_NORD_GREATSWORD.get());
+        registerBowProperties(ANCIENT_NORD_BOW.get());
+
+        registerTwoHandedProperties(DAEDRIC_BATTLEAXE.get());
+        registerTwoHandedProperties(DAEDRIC_GREATSWORD.get());
+        registerTwoHandedProperties(DAEDRIC_WARHAMMER.get());
+        registerBowProperties(DAEDRIC_BOW.get());
+        registerShield(DAEDRIC_SHIELD.get());
+
+        registerTwoHandedProperties(DRAGONBONE_BATTLEAXE.get());
+        registerTwoHandedProperties(DRAGONBONE_GREATSWORD.get());
+        registerTwoHandedProperties(DRAGONBONE_WARHAMMER.get());
+        registerBowProperties(DRAGONBONE_BOW.get());
+
+        registerTwoHandedProperties(DWARVEN_BATTLEAXE.get());
+        registerTwoHandedProperties(DWARVEN_GREATSWORD.get());
+        registerTwoHandedProperties(DWARVEN_WARHAMMER.get());
+        registerBowProperties(DWARVEN_BOW.get());
+        registerShield(DWARVEN_SHIELD.get());
+
+        registerTwoHandedProperties(EBONY_BATTLEAXE.get());
+        registerTwoHandedProperties(EBONY_GREATSWORD.get());
+        registerTwoHandedProperties(EBONY_WARHAMMER.get());
+        registerBowProperties(EBONY_BOW.get());
+        registerShield(EBONY_SHIELD.get());
+
+        registerTwoHandedProperties(ELVEN_BATTLEAXE.get());
+        registerTwoHandedProperties(ELVEN_GREATSWORD.get());
+        registerTwoHandedProperties(ELVEN_WARHAMMER.get());
+        registerBowProperties(ELVEN_BOW.get());
+        registerShield(ELVEN_SHIELD.get());
+
+        registerTwoHandedProperties(GLASS_BATTLEAXE.get());
+        registerTwoHandedProperties(GLASS_GREATSWORD.get());
+        registerTwoHandedProperties(GLASS_WARHAMMER.get());
+        registerBowProperties(GLASS_BOW.get());
+        registerShield(GLASS_SHIELD.get());
+
+        registerTwoHandedProperties(IRON_BATTLEAXE.get());
+        registerTwoHandedProperties(IRON_GREATSWORD.get());
+        registerTwoHandedProperties(IRON_WARHAMMER.get());
+        registerShield(IRON_SHIELD.get());
+
+        registerTwoHandedProperties(ORCISH_BATTLEAXE.get());
+        registerTwoHandedProperties(ORCISH_GREATSWORD.get());
+        registerTwoHandedProperties(ORCISH_WARHAMMER.get());
+        registerBowProperties(ORCISH_BOW.get());
+        registerShield(ORCISH_SHIELD.get());
+
+        registerTwoHandedProperties(STEEL_BATTLEAXE.get());
+        registerTwoHandedProperties(STEEL_GREATSWORD.get());
+        registerTwoHandedProperties(STEEL_WARHAMMER.get());
+        registerShield(STEEL_SHIELD.get());
+
+        // misc
+        registerBowProperties(HUNTING_BOW.get());
+        registerBowProperties(LONGBOW.get());
+    }
+
+    private static void registerTwoHandedProperties(Item item) {
+        ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "no_use"), ClientUtil::noUse);
+        ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "blocking"), ClientUtil::blocking);
+    }
+
+    private static void registerBowProperties(Item item) {
+        ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "pulling"), ClientUtil::pulling);
+        ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "pull"), ClientUtil::pull);
+    }
+
+    private static void registerShield(Item item) {
+        ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "blocking"), ClientUtil::blocking);
+    }
 }

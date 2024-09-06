@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/crop",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "crop": "skyrimcraft:block/ash_yam_stage2",
+    "particle": "skyrimcraft:block/ash_yam_stage2"
+  }
+}

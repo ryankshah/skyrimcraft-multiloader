@@ -1,9 +1,7 @@
 package com.ryankshah.skyrimcraft.platform.services;
 
+import com.ryankshah.skyrimcraft.character.attachment.*;
 import com.ryankshah.skyrimcraft.character.attachment.Character;
-import com.ryankshah.skyrimcraft.character.attachment.ExtraCharacter;
-import com.ryankshah.skyrimcraft.character.attachment.LevelUpdates;
-import com.ryankshah.skyrimcraft.character.attachment.StatIncreases;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
@@ -52,6 +50,9 @@ public interface IPlatformHelper {
 
     StatIncreases getStatIncreases(Player player);
     void setStatIncreases(Player player, StatIncreases statIncreases);
+
+    PlayerQuests getQuests(Player player);
+    void setQuestData(Player player, PlayerQuests playerQuests);
 
     boolean doesEntityHavePersistentData(LivingEntity entity, String id);
     void setEntityPersistentData(LivingEntity entity, String id, long value);

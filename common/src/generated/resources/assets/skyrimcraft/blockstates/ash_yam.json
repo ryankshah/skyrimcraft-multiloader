@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "skyrimcraft:block/ash_yam_stage0"
+    },
+    "age=1": {
+      "model": "skyrimcraft:block/ash_yam_stage0"
+    },
+    "age=2": {
+      "model": "skyrimcraft:block/ash_yam_stage1"
+    },
+    "age=3": {
+      "model": "skyrimcraft:block/ash_yam_stage1"
+    },
+    "age=4": {
+      "model": "skyrimcraft:block/ash_yam_stage2"
+    },
+    "age=5": {
+      "model": "skyrimcraft:block/ash_yam_stage2"
+    },
+    "age=6": {
+      "model": "skyrimcraft:block/ash_yam_stage2"
+    },
+    "age=7": {
+      "model": "skyrimcraft:block/ash_yam_stage3"
+    }
+  }
+}

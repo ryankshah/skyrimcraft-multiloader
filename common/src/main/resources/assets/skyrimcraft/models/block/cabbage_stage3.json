@@ -1,0 +1,109 @@
+{
+	"render_type": "minecraft:cutout",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "skyrimcraft:block/cabbage_stage3",
+		"particle": "skyrimcraft:block/cabbage_stage3"
+	},
+	"elements": [
+		{
+			"from": [6.5, 0, 6.5],
+			"to": [9.5, 3, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [3.5, 0, 6.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 1.5, 1.5], "texture": "#0"},
+				"east": {"uv": [1.5, 0, 0, 1.5], "texture": "#0"},
+				"south": {"uv": [0, 0, 1.5, 1.5], "texture": "#0"},
+				"west": {"uv": [1.5, 0, 0, 1.5], "texture": "#0"},
+				"up": {"uv": [3, 1.5, 1.5, 0], "texture": "#0"},
+				"down": {"uv": [4.5, 1.5, 3, 0], "texture": "#0"}
+			}
+		},
+		{
+			"name": "cube inverted",
+			"from": [9.5, 3, 9.5],
+			"to": [6.5, 0, 6.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [3.5, 0, 6.5]},
+			"faces": {
+				"north": {"uv": [0, 1.5, 1.5, 0], "texture": "#0"},
+				"east": {"uv": [1.5, 1.5, 0, 0], "texture": "#0"},
+				"south": {"uv": [0, 1.5, 1.5, 0], "texture": "#0"},
+				"west": {"uv": [1.5, 1.5, 0, 0], "texture": "#0"},
+				"up": {"uv": [3, 1.5, 4.5, 0], "texture": "#0"},
+				"down": {"uv": [1.5, 1.5, 3, 0], "texture": "#0"}
+			}
+		},
+		{
+			"from": [6, -0.00092, 9.50038],
+			"to": [10, -0.00092, 13.50038],
+			"rotation": {"angle": -45, "axis": "x", "origin": [8, -0.00092, 9.50038]},
+			"faces": {
+				"up": {"uv": [0, 4, 2, 2], "texture": "#0"},
+				"down": {"uv": [0, 2, 2, 4], "texture": "#0"}
+			}
+		},
+		{
+			"from": [6, -0.00092, 2.49962],
+			"to": [10, -0.00092, 6.49962],
+			"rotation": {"angle": 45, "axis": "x", "origin": [8, -0.00092, 6.49962]},
+			"faces": {
+				"up": {"uv": [0, 2, 2, 4], "texture": "#0"},
+				"down": {"uv": [0, 4, 2, 2], "texture": "#0"}
+			}
+		},
+		{
+			"from": [8.06093, -0.64764, 6],
+			"to": [12.06093, -0.64764, 10],
+			"rotation": {"angle": 45, "axis": "z", "origin": [8, 1.41329, 8]},
+			"faces": {
+				"up": {"uv": [0, 2, 2, 4], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [0, 4, 2, 2], "rotation": 270, "texture": "#0"}
+			}
+		},
+		{
+			"from": [3.93907, -0.64764, 6],
+			"to": [7.93907, -0.64764, 10],
+			"rotation": {"angle": -45, "axis": "z", "origin": [8, 1.41329, 8]},
+			"faces": {
+				"up": {"uv": [0, 4, 2, 2], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [0, 2, 2, 4], "rotation": 270, "texture": "#0"}
+			}
+		},
+		{
+			"from": [5.5, -0.50227, 9.02006],
+			"to": [10.5, -0.50227, 14.02006],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 0.95578, 8]},
+			"faces": {
+				"up": {"uv": [2.5, 2, 5, 4.5], "texture": "#0"},
+				"down": {"uv": [5, 4.5, 2.5, 2], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5.5, -0.50227, 1.97994],
+			"to": [10.5, -0.50227, 6.97994],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 0.95578, 8]},
+			"faces": {
+				"up": {"uv": [2.5, 4.5, 5, 2], "texture": "#0"},
+				"down": {"uv": [5, 2, 2.5, 4.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [9.02006, -0.50227, 5.5],
+			"to": [14.02006, -0.50227, 10.5],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [8, 0.95578, 8]},
+			"faces": {
+				"up": {"uv": [2.5, 4.5, 5, 2], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [5, 2, 2.5, 4.5], "rotation": 270, "texture": "#0"}
+			}
+		},
+		{
+			"from": [1.97994, -0.50227, 5.5],
+			"to": [6.97994, -0.50227, 10.5],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [8, 0.95578, 8]},
+			"faces": {
+				"up": {"uv": [2.5, 2, 5, 4.5], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [5, 4.5, 2.5, 2], "rotation": 270, "texture": "#0"}
+			}
+		}
+	]
+}

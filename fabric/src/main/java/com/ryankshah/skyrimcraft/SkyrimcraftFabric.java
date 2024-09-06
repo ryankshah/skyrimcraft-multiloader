@@ -1,10 +1,8 @@
 package com.ryankshah.skyrimcraft;
 
 import com.mojang.serialization.Codec;
+import com.ryankshah.skyrimcraft.character.attachment.*;
 import com.ryankshah.skyrimcraft.character.attachment.Character;
-import com.ryankshah.skyrimcraft.character.attachment.ExtraCharacter;
-import com.ryankshah.skyrimcraft.character.attachment.LevelUpdates;
-import com.ryankshah.skyrimcraft.character.attachment.StatIncreases;
 import com.ryankshah.skyrimcraft.character.magic.SpellRegistry;
 import com.ryankshah.skyrimcraft.character.skill.SkillRegistry;
 import com.ryankshah.skyrimcraft.effect.ModEffects;
@@ -12,6 +10,7 @@ import com.ryankshah.skyrimcraft.goal.DismayGoal;
 import com.ryankshah.skyrimcraft.goal.UndeadFleeGoal;
 import com.ryankshah.skyrimcraft.item.SkyrimArmor;
 import com.ryankshah.skyrimcraft.item.SkyrimTwoHandedSword;
+import com.ryankshah.skyrimcraft.loot.SkyrimcraftLootTables;
 import com.ryankshah.skyrimcraft.network.character.AddToTargetingEntities;
 import com.ryankshah.skyrimcraft.network.character.OpenCharacterCreationScreen;
 import com.ryankshah.skyrimcraft.network.character.UpdateCurrentTarget;
@@ -27,6 +26,7 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.impl.attachment.AttachmentRegistryImpl;
@@ -75,6 +75,12 @@ public class SkyrimcraftFabric implements ModInitializer
                     .initializer(StatIncreases::new)
                     .persistent(StatIncreases.CODEC)
                     .buildAndRegister(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "stat_increases"));
+
+    public static AttachmentType<PlayerQuests> QUEST_DATA =
+            AttachmentRegistryImpl.<PlayerQuests>builder()
+                    .initializer(PlayerQuests::new)
+                    .persistent(PlayerQuests.CODEC)
+                    .buildAndRegister(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "quests"));
 
     public static AttachmentType<Long> CONJURE_FAMILIAR_SPELL_DATA =
             AttachmentRegistryImpl.<Long>builder()
@@ -142,6 +148,7 @@ public class SkyrimcraftFabric implements ModInitializer
 
         // TODO Below: refer to fieldtofork fabric
         //LootTableEvents.MODIFY.register((lootTableResourceKey, lootBuilder, lootTableSource) -> { });
+        SkyrimcraftLootTables.addLootTables();
     }
 
     public static void initAttachments() {
@@ -150,6 +157,7 @@ public class SkyrimcraftFabric implements ModInitializer
             ExtraCharacter.playerJoinWorld(handler.player);
             LevelUpdates.playerJoinWorld(handler.player);
             StatIncreases.playerJoinWorld(handler.player);
+            PlayerQuests.playerJoinWorld(handler.player);
         });
         ServerLivingEntityEvents.AFTER_DEATH.register((entity, damageSource) -> {
             if(entity instanceof Player player) {
@@ -157,6 +165,7 @@ public class SkyrimcraftFabric implements ModInitializer
                 ExtraCharacter.playerDeath(player);
                 LevelUpdates.playerDeath(player);
                 StatIncreases.playerDeath(player);
+                PlayerQuests.playerDeath(player);
             }
         });
         ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register((player, origin, destination) -> {
@@ -164,18 +173,21 @@ public class SkyrimcraftFabric implements ModInitializer
             ExtraCharacter.playerChangedDimension(player);
             LevelUpdates.playerChangedDimension(player);
             StatIncreases.playerChangedDimension(player);
+            PlayerQuests.playerChangedDimension(player);
         });
         ServerPlayerEvents.COPY_FROM.register((oldPlayer, newPlayer, alive) -> {
             Character.playerClone(alive, newPlayer, oldPlayer);
             ExtraCharacter.playerClone(alive, newPlayer, oldPlayer);
             LevelUpdates.playerClone(alive, newPlayer, oldPlayer);
             StatIncreases.playerClone(alive, newPlayer, oldPlayer);
+            PlayerQuests.playerClone(alive, newPlayer, oldPlayer);
         });
         ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> {
             Character.playerClone(alive, newPlayer, oldPlayer);
             ExtraCharacter.playerClone(alive, newPlayer, oldPlayer);
             LevelUpdates.playerClone(alive, newPlayer, oldPlayer);
             StatIncreases.playerClone(alive, newPlayer, oldPlayer);
+            PlayerQuests.playerClone(alive, newPlayer, oldPlayer);
         });
 //        EntityTrackingEvents.START_TRACKING.register((trackedEntity, player) -> {
 //            Character.playerStartTracking(player);

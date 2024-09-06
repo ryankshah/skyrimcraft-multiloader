@@ -195,6 +195,21 @@ public class BlockRegistry
             ));
     public static final RegistryObject<Item, BlockItem> PURPLE_MOUNTAIN_FLOWER_ITEM = ItemRegistry.ITEMS.register("purple_mountain_flower", () ->
             new SkyrimBlockItemIngredient(PURPLE_MOUNTAIN_FLOWER.get(), new Item.Properties(), IngredientEffect.RESTORE_STAMINA, IngredientEffect.FORTIFY_SNEAK, IngredientEffect.LINGERING_DAMAGE_MAGICKA, IngredientEffect.RESIST_FROST));
+    public static final RegistryObject<Block, Block> LAVENDER = registerBlock("lavender_block",
+            () -> new SkyrimFlower(
+                    MobEffects.SATURATION,
+                    7,
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.PLANT)
+                            .noCollission()
+                            .instabreak()
+                            .sound(SoundType.GRASS)
+                            .offsetType(BlockBehaviour.OffsetType.XZ)
+                            .pushReaction(PushReaction.DESTROY)
+            ));
+    public static final RegistryObject<Item, BlockItem> LAVENDER_ITEM = ItemRegistry.ITEMS.register("lavender_block", () ->
+            new SkyrimBlockItemIngredient(LAVENDER.get(), new Item.Properties(), IngredientEffect.RESTORE_STAMINA, IngredientEffect.FORTIFY_SNEAK, IngredientEffect.LINGERING_DAMAGE_MAGICKA, IngredientEffect.RESIST_FROST));
+
     public static final RegistryObject<Block, Block> CANIS_ROOT_BLOCK = registerBlock("canis_root",
             () -> new CanisRoot(
                     BlockBehaviour.Properties.of()
@@ -254,6 +269,24 @@ public class BlockRegistry
                     .pushReaction(PushReaction.DESTROY)
     ));
     public static final RegistryObject<Block, Block> GARLIC_CROP = registerBlock("garlic", () -> new GarlicCrop(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .noCollission()
+                    .randomTicks()
+                    .instabreak()
+                    .sound(SoundType.CROP)
+                    .pushReaction(PushReaction.DESTROY)
+    ));
+    public static final RegistryObject<Block, Block> CABBAGE_CROP = registerBlock("cabbage", () -> new CabbageCrop(
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .noCollission()
+                    .randomTicks()
+                    .instabreak()
+                    .sound(SoundType.CROP)
+                    .pushReaction(PushReaction.DESTROY)
+    ));
+    public static final RegistryObject<Block, Block> ASH_YAM_CROP = registerBlock("ash_yam", () -> new AshYamCrop(
             BlockBehaviour.Properties.of()
                     .mapColor(MapColor.PLANT)
                     .noCollission()

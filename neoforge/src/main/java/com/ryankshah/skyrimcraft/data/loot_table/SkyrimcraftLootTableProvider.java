@@ -558,6 +558,15 @@ public class SkyrimcraftLootTableProvider implements LootTableSubProvider
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.25F, 1.0F)))
                         .apply(EnchantedCountIncreaseFunction.lootingMultiplier(pRegistries, UniformGenerator.between(1.0F, 2.0F)))
                 )
+                .add(LootItem.lootTableItem(ItemRegistry.TOMATO_SEEDS.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.25F, 1.0F)))
+                )
+                .add(LootItem.lootTableItem(ItemRegistry.CABBAGE_SEEDS.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.25F, 1.0F)))
+                )
+                .add(LootItem.lootTableItem(ItemRegistry.GARLIC.get())
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.25F, 1.0F)))
+                )
         );
 
         pOutput.accept(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Constants.MODID, "chests/skyrim_dungeon")), dungeonTable);
@@ -703,6 +712,18 @@ public class SkyrimcraftLootTableProvider implements LootTableSubProvider
                         )
                         .add(LootItem.lootTableItem(ItemRegistry.FLAME_CLOAK_SPELLBOOK.get())
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.5F, 1.0F)))
+                        )
+                        .add(LootItem.lootTableItem(ItemRegistry.TOMATO_SEEDS.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.25F, 1.0F)))
+                        )
+                        .add(LootItem.lootTableItem(ItemRegistry.CABBAGE_SEEDS.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.25F, 1.0F)))
+                        )
+                        .add(LootItem.lootTableItem(ItemRegistry.GARLIC.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.25F, 1.0F)))
+                        )
+                        .add(LootItem.lootTableItem(ItemRegistry.SWEET_ROLL.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.25F, 1.0F)))
                         )
         );
 

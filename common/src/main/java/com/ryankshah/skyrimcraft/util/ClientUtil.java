@@ -13,6 +13,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.behavior.BehaviorUtils;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix4f;
@@ -189,4 +190,24 @@ public class ClientUtil
 
         return cache.toString();
     } // wrap()
+
+    public static float noUse(ItemStack sword, ClientLevel clientWorld, LivingEntity entity, int i) {
+        return entity != null && entity.getMainHandItem() == sword && entity.getOffhandItem() != ItemStack.EMPTY ? 1.0F : 0.0F;
+    }
+
+    public static float blocking(ItemStack itemStack, ClientLevel clientWorld, LivingEntity livingEntity, int i) {
+        return livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemStack ? 1.0F : 0.0F;
+    }
+
+    public static float pulling(ItemStack bow, ClientLevel clientWorld, LivingEntity livingEntity, int i) {
+        return livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == bow ? 1.0F : 0.0F;
+    }
+
+    public static float pull(ItemStack bow, ClientLevel clientWorld, LivingEntity livingEntity, int i) {
+        if (livingEntity == null) {
+            return 0.0F;
+        } else {
+            return livingEntity.getUseItem() != bow ? 0.0F : (float)(bow.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks()) / 20.0F;
+        }
+    }
 }

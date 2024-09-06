@@ -4,6 +4,7 @@ plugins {
 }
 
 repositories {
+    mavenCentral()
     maven {
         url = "https://jm.gserv.me/repository/maven-public/"
     }
@@ -18,7 +19,6 @@ repositories {
         name = "SmartBrainLib (SBL) Maven Repo"
         url = "https://dl.cloudsmith.io/public/tslat/sbl/maven/"
     }
-    mavenCentral()
 }
 
 dependencies {
@@ -34,6 +34,7 @@ dependencies {
     modImplementation 'mysticdrew:common-networking-fabric:1.0.16-1.21'
     modImplementation "software.bernie.geckolib:geckolib-fabric-${geckolib_version}"
     modImplementation "net.tslat.smartbrainlib:SmartBrainLib-fabric-1.21:${sbl_version}"
+    modCompileOnlyApi group: 'info.journeymap', name: 'journeymap-api-fabric', version: project.journeymap_api_version, changing: true
 }
 
 loom {

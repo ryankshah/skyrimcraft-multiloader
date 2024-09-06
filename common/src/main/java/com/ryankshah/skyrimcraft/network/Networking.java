@@ -39,6 +39,7 @@ public class Networking
         Network.registerPacket(UpdateExtraCharacter.type(), UpdateExtraCharacter.class, UpdateExtraCharacter.CODEC, UpdateExtraCharacter::handle);
         Network.registerPacket(UpdateLevelUpdates.type(), UpdateLevelUpdates.class, UpdateLevelUpdates.CODEC, UpdateLevelUpdates::handle);
         Network.registerPacket(UpdateStatIncreases.type(), UpdateStatIncreases.class, UpdateStatIncreases.CODEC, UpdateStatIncreases::handle);
+        Network.registerPacket(UpdatePlayerQuests.type(), UpdatePlayerQuests.class, UpdatePlayerQuests.CODEC, UpdatePlayerQuests::handle);
         Network.registerPacket(FinishAlchemyRecipe.type(), FinishAlchemyRecipe.class,  FinishAlchemyRecipe.CODEC, FinishAlchemyRecipe::handle);
         Network.registerPacket(FinishOvenRecipe.type(), FinishOvenRecipe.class,  FinishOvenRecipe.CODEC, FinishOvenRecipe::handle);
         Network.registerPacket(FinishForgeRecipe.type(), FinishForgeRecipe.class,  FinishForgeRecipe.CODEC, FinishForgeRecipe::handle);

@@ -1,0 +1,123 @@
+{
+	"render_type": "minecraft:cutout",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "skyrimcraft:block/cabbage_stage5",
+		"particle": "skyrimcraft:block/cabbage_stage5"
+	},
+	"elements": [
+		{
+			"from": [6, 0, 6],
+			"to": [10, 4, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 0, 6]},
+			"faces": {
+				"north": {"uv": [9.5, 3.5, 11.5, 5.5], "texture": "#0"},
+				"east": {"uv": [11.5, 3.5, 9.5, 5.5], "texture": "#0"},
+				"south": {"uv": [9.5, 3.5, 11.5, 5.5], "texture": "#0"},
+				"west": {"uv": [11.5, 3.5, 9.5, 5.5], "texture": "#0"},
+				"up": {"uv": [13.5, 5.5, 11.5, 3.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5.5, 0, 5.5],
+			"to": [10.5, 5, 10.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [3.5, 0, 5.5]},
+			"faces": {
+				"north": {"uv": [6.5, 0, 9, 2.5], "texture": "#0"},
+				"east": {"uv": [9, 0, 6.5, 2.5], "texture": "#0"},
+				"south": {"uv": [6.5, 0, 9, 2.5], "texture": "#0"},
+				"west": {"uv": [9, 0, 6.5, 2.5], "texture": "#0"},
+				"up": {"uv": [9, 5, 6.5, 2.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5, 0, 5],
+			"to": [11, 6, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [3, 0, 5]},
+			"faces": {
+				"north": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"east": {"uv": [3, 0, 0, 3], "texture": "#0"},
+				"south": {"uv": [0, 0, 3, 3], "texture": "#0"},
+				"west": {"uv": [3, 0, 0, 3], "texture": "#0"},
+				"up": {"uv": [3, 6, 0, 3], "texture": "#0"},
+				"down": {"uv": [6, 0, 3, 3], "texture": "#0"}
+			}
+		},
+		{
+			"name": "cube inverted",
+			"from": [11, 6, 11],
+			"to": [5, 0, 5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [3, 0, 5]},
+			"faces": {
+				"north": {"uv": [0, 3, 3, 0], "texture": "#0"},
+				"east": {"uv": [3, 3, 0, 0], "texture": "#0"},
+				"south": {"uv": [0, 3, 3, 0], "texture": "#0"},
+				"west": {"uv": [3, 3, 0, 0], "texture": "#0"},
+				"up": {"uv": [3, 0, 6, 3], "texture": "#0"},
+				"down": {"uv": [0, 6, 3, 3], "texture": "#0"}
+			}
+		},
+		{
+			"name": "cube inverted",
+			"from": [10, 4, 10],
+			"to": [6, 0, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 0, 6]},
+			"faces": {
+				"north": {"uv": [9.5, 5.5, 11.5, 3.5], "texture": "#0"},
+				"east": {"uv": [11.5, 5.5, 9.5, 3.5], "texture": "#0"},
+				"south": {"uv": [9.5, 5.5, 11.5, 3.5], "texture": "#0"},
+				"west": {"uv": [11.5, 5.5, 9.5, 3.5], "texture": "#0"},
+				"down": {"uv": [11.5, 5.5, 13.5, 3.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "cube inverted",
+			"from": [10.5, 5, 10.5],
+			"to": [5.5, 0, 5.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [3.5, 0, 5.5]},
+			"faces": {
+				"north": {"uv": [6.5, 2.5, 9, 0], "texture": "#0"},
+				"east": {"uv": [9, 2.5, 6.5, 0], "texture": "#0"},
+				"south": {"uv": [6.5, 2.5, 9, 0], "texture": "#0"},
+				"west": {"uv": [9, 2.5, 6.5, 0], "texture": "#0"},
+				"down": {"uv": [6.5, 5, 9, 2.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5, -1.5, 2.37868],
+			"to": [11, -1.5, 7.37868],
+			"rotation": {"angle": 45, "axis": "x", "origin": [8, 2.12132, 8]},
+			"faces": {
+				"up": {"uv": [12, 2.5, 15, 0], "texture": "#0"},
+				"down": {"uv": [15, 0, 12, 2.5], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5, -1.5, 8.62132],
+			"to": [11, -1.5, 13.62132],
+			"rotation": {"angle": -45, "axis": "x", "origin": [8, 2.12132, 8]},
+			"faces": {
+				"up": {"uv": [12, 0, 15, 2.5], "texture": "#0"},
+				"down": {"uv": [15, 2.5, 12, 0], "texture": "#0"}
+			}
+		},
+		{
+			"from": [2.37868, -1.5, 5],
+			"to": [7.37868, -1.5, 11],
+			"rotation": {"angle": -45, "axis": "z", "origin": [8, 2.12132, 8]},
+			"faces": {
+				"up": {"uv": [12, 0, 15, 2.5], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [15, 2.5, 12, 0], "rotation": 270, "texture": "#0"}
+			}
+		},
+		{
+			"from": [8.62132, -1.5, 5],
+			"to": [13.62132, -1.5, 11],
+			"rotation": {"angle": 45, "axis": "z", "origin": [8, 2.12132, 8]},
+			"faces": {
+				"up": {"uv": [12, 2.5, 15, 0], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [15, 0, 12, 2.5], "rotation": 270, "texture": "#0"}
+			}
+		}
+	]
+}

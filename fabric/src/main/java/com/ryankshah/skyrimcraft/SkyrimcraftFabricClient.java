@@ -8,8 +8,12 @@ import com.ryankshah.skyrimcraft.character.magic.SpellRegistry;
 import com.ryankshah.skyrimcraft.network.skill.HandlePickpocket;
 import com.ryankshah.skyrimcraft.network.spell.CastSpell;
 import com.ryankshah.skyrimcraft.network.spell.UpdateShoutCooldown;
+import com.ryankshah.skyrimcraft.particle.EmittingLightningParticle;
+import com.ryankshah.skyrimcraft.particle.LightningParticle;
 import com.ryankshah.skyrimcraft.registry.EntityRegistry;
+import com.ryankshah.skyrimcraft.registry.ItemRegistry;
 import com.ryankshah.skyrimcraft.registry.KeysRegistry;
+import com.ryankshah.skyrimcraft.registry.ParticleRegistry;
 import com.ryankshah.skyrimcraft.screen.MenuScreen;
 import com.ryankshah.skyrimcraft.screen.SkyrimGuiOverlay;
 import com.ryankshah.skyrimcraft.util.ClientUtil;
@@ -17,6 +21,7 @@ import commonnetwork.api.Dispatcher;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
@@ -24,6 +29,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRe
 import net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents;
 import net.fabricmc.fabric.mixin.client.rendering.InGameHudMixin;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.network.chat.Component;
@@ -75,6 +81,11 @@ public class SkyrimcraftFabricClient implements ClientModInitializer
                 registrationHelper.register(new RenderRaceLayer((PlayerRenderer) entityRenderer));
             }
         });
+
+        ItemRegistry.registerItemModelProperties();
+
+        ParticleFactoryRegistry.getInstance().register(ParticleRegistry.LIGHTNING.get(), LightningParticle.Provider::new);
+        ParticleFactoryRegistry.getInstance().register(ParticleRegistry.EMITTING_LIGHTNING.get(), EmittingLightningParticle.Provider::new);
 
         HudRenderCallback.EVENT.register((guiGraphics, deltaTime) -> {
             compass.render(guiGraphics, deltaTime);

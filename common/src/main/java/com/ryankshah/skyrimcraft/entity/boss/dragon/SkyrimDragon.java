@@ -1,5 +1,9 @@
 package com.ryankshah.skyrimcraft.entity.boss.dragon;
 
+import com.ryankshah.skyrimcraft.entity.boss.dragon.goal.DragonLandingGoal;
+import com.ryankshah.skyrimcraft.entity.boss.dragon.goal.DragonMeleeAttackGoal;
+import com.ryankshah.skyrimcraft.entity.boss.dragon.goal.DragonRangedShoutGoal;
+import com.ryankshah.skyrimcraft.entity.boss.dragon.goal.DragonTargetPlayerGoal;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -10,6 +14,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -22,16 +27,19 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.RangedAttackMob;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.tslat.smartbrainlib.api.SmartBrainOwner;
 import net.tslat.smartbrainlib.api.core.BrainActivityGroup;
 import net.tslat.smartbrainlib.api.core.SmartBrainProvider;
 import net.tslat.smartbrainlib.api.core.behaviour.FirstApplicableBehaviour;
 import net.tslat.smartbrainlib.api.core.behaviour.OneRandomBehaviour;
+import net.tslat.smartbrainlib.api.core.behaviour.custom.attack.AnimatableMeleeAttack;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.attack.AnimatableRangedAttack;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.look.LookAtTarget;
 import net.tslat.smartbrainlib.api.core.behaviour.custom.move.MoveToWalkTarget;
@@ -80,15 +88,38 @@ public class SkyrimDragon extends PathfinderMob implements GeoEntity, Enemy, Fly
 
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
 
+    private boolean attacking, isLanding;
+
     public SkyrimDragon(EntityType<? extends PathfinderMob> type, Level worldIn) {
         super(type, worldIn);
         this.setHealth(this.getMaxHealth());
         this.noPhysics = true;
         this.noCulling = true;
         this.xpReward = XP_REWARD_BOSS;
+        this.setFlying(true); // Ensure the dragon starts flying
+        this.setNoGravity(true); // Disable gravity while flying
 
         this.moveControl = new DragonMoveController(this); //new FlyingMoveControl(this, 20, true);
 //        this.navigation = new FlyingPathNavigation(this, worldIn);
+        // Add combat AI goals
+        this.goalSelector.addGoal(1, new DragonLandingGoal(this));          // Landing goal
+        this.goalSelector.addGoal(2, new DragonMeleeAttackGoal(this, 1.0D, true));  // Melee attack on the ground
+        this.goalSelector.addGoal(3, new DragonRangedShoutGoal(this));       // Shout/fireball attack in the air
+
+        // Add targeting goals
+        this.targetSelector.addGoal(1, new DragonTargetPlayerGoal(this));    // Target only survival players
+    }
+
+    // Call this method when you want the dragon to land
+    public void tryLanding() {
+        if (!isFlying()) return;
+
+        // Logic to determine when the dragon should land
+        Player target = (Player) this.getTarget();
+        if (target != null && this.distanceTo(target) < 20.0D) {
+            this.isLanding = true;
+            this.setFlying(false); // Switch to walking/ground movement
+        }
     }
 
     @Override
@@ -200,6 +231,11 @@ public class SkyrimDragon extends PathfinderMob implements GeoEntity, Enemy, Fly
             pointer.setY(getBlockY() - ++i);
 
         return i;
+    }
+
+    public boolean isReadyToLand() {
+        // Detect how close the dragon is to the ground
+        return this.getY() - this.level().getHeight(Heightmap.Types.MOTION_BLOCKING, Mth.floor(this.getX()), Mth.floor(this.getZ())) < 5; // Example: 5 blocks above ground
     }
 
     /**
@@ -367,9 +403,83 @@ public class SkyrimDragon extends PathfinderMob implements GeoEntity, Enemy, Fly
         return new SmartBrainProvider<>(this);
     }
 
+//    @Override
+//    protected void customServerAiStep() {
+//        tickBrain(this);
+//    }
+
     @Override
-    protected void customServerAiStep() {
+    public void tick() {
+        super.tick();
+
+        if (this.isFlying()) {
+            this.setNoGravity(true); // Disable gravity while flying
+        } else {
+            this.setNoGravity(false); // Enable gravity when on the ground
+        }
+
+        // If the dragon is landing, reduce its height gradually
+        if (isLanding) {
+            if (this.getY() > 2.0D) { // Avoid sinking below ground
+                this.setDeltaMovement(0, -0.1D, 0);  // Slowly lower the dragon
+            } else {
+                this.isLanding = false;  // Once landed, stop
+            }
+        }
+    }
+
+    protected void findTarget() {
+        // Iterate through all nearby players
+        List<Player> players = this.level().getEntitiesOfClass(Player.class, this.getBoundingBox().inflate(50)); // 50-block range
+
+        Player closestPlayer = null;
+        double closestDistance = Double.MAX_VALUE;
+
+        for (Player player : players) {
+            // Only target players in Survival or Adventure mode
+            if (!player.isCreative()) {
+                double distance = this.distanceTo(player);
+
+                // Find the closest player in range
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestPlayer = player;
+                }
+            }
+        }
+
+        // If we found a valid player, set the target
+        if (closestPlayer != null) {
+            this.setTarget(closestPlayer);
+        }
+    }
+
+    @Override
+    public void customServerAiStep() {
+        super.customServerAiStep();
+
         tickBrain(this);
+
+        // Check if the dragon should become non-idle
+        Player nearestPlayer = this.level().getNearestPlayer(this, 32);
+        if (nearestPlayer != null || this.getLastHurtByMob() != null) {
+            // Enter fight phase
+            this.setAnimationState(5);  // BITE if close
+            if (!this.onGround()) {
+                this.setAnimationState(6);  // TAKE_OFF if not on ground
+            }
+        } else {
+            // Idle phases
+            if (this.onGround()) {
+                if (this.getRandom().nextFloat() < 0.5F) {
+                    this.setAnimationState(3);  // STAND
+                } else {
+                    this.setAnimationState(4);  // WALK
+                }
+            } else {
+                this.setAnimationState(0);  // FLY_IDLE
+            }
+        }
     }
 
     @Override
@@ -386,41 +496,68 @@ public class SkyrimDragon extends PathfinderMob implements GeoEntity, Enemy, Fly
     }
 
     @Override
-    public BrainActivityGroup<SkyrimDragon> getIdleTasks() { // These are the tasks that run when the mob isn't doing anything else (usually)
+    public BrainActivityGroup<SkyrimDragon> getIdleTasks() {
         return BrainActivityGroup.idleTasks(
-                new FirstApplicableBehaviour<SkyrimDragon>(      // Run only one of the below behaviours, trying each one in order. Include the generic type because JavaC is silly
-                        new TargetOrRetaliate<>(),            // Set the attack target and walk target based on nearby entities
-                        new SetPlayerLookTarget<>(),          // Set the look target for the nearest player
+                new FirstApplicableBehaviour<SkyrimDragon>(
+                        new TargetOrRetaliate<>(),
+                        new SetPlayerLookTarget<>(),
                         new SetRandomLookTarget<>()
-                ),         // Set a random look target
-                new SetRandomFlyingTarget<>()
-                        .verticalWeight(e -> -4)
-                        .whenStarting(a -> a.getEntityData().set(PREV_ANIMATION_STATE, a.getEntityData().get(ANIMATION_STATE)))
-                        .whenStarting(a -> a.getEntityData().set(ANIMATION_STATE, 0)),
-                new OneRandomBehaviour<>(                 // Run a random task from the below options
+                ),
+                new OneRandomBehaviour<>(
+                        new SetRandomFlyingTarget<>()
+                                .verticalWeight(e -> -4)
+                                .whenStarting(a -> {
+                                    a.getEntityData().set(PREV_ANIMATION_STATE, a.getEntityData().get(ANIMATION_STATE));
+                                    if (a.onGround()) {
+                                        a.getEntityData().set(ANIMATION_STATE, 3);  // STAND
+                                    } else {
+                                        a.getEntityData().set(ANIMATION_STATE, 0);  // FLY_IDLE
+                                    }
+                                }),
                         new SetRandomHoverTarget<>()
-                                .whenStarting(a -> a.getEntityData().set(PREV_ANIMATION_STATE, a.getEntityData().get(ANIMATION_STATE)))
-                                .whenStarting(a -> a.getEntityData().set(ANIMATION_STATE, 0))
-//                        new Idle<>().runFor(entity -> entity.getRandom().nextInt(300, 600))
-                ) // Do nothing for 15->30 seconds
-//                new SetRandomWalkTarget<>() // Set a random walk target to a nearby position
+                                .whenStarting(a -> {
+                                    a.getEntityData().set(PREV_ANIMATION_STATE, a.getEntityData().get(ANIMATION_STATE));
+                                    if (!a.onGround()) {
+                                        a.getEntityData().set(ANIMATION_STATE, 0);  // FLY_IDLE
+                                    }
+                                })
+                )
         );
     }
 
+
     @Override
-    public BrainActivityGroup<SkyrimDragon> getFightTasks() { // These are the tasks that handle fighting
+    public BrainActivityGroup<SkyrimDragon> getFightTasks() {
         return BrainActivityGroup.fightTasks(
-                new InvalidateAttackTarget(), // Cancel fighting if the target is no longer valid
-                new SetWalkTargetToAttackTarget<>(),      // Set the walk target to the attack target
-                new AnimatableRangedAttack<>(0)
-                        .whenStarting(a -> a.getEntityData().set(PREV_ANIMATION_STATE, a.getEntityData().get(ANIMATION_STATE)))
-                        .whenStarting(a -> a.getEntityData().set(ANIMATION_STATE, 1))
-                        .runFor(t -> 40) // 2 seconds (20 ticks per second * 2)
-                        .whenStopping(a -> a.getEntityData().set(PREV_ANIMATION_STATE, a.getEntityData().get(ANIMATION_STATE)))
-                        .whenStopping(a -> a.getEntityData().set(ANIMATION_STATE, 0)) // reset to fly_idle
-                        .cooldownFor(t -> 600) // 30 seconds
+                new InvalidateAttackTarget(),
+                new SetWalkTargetToAttackTarget<>(),
+                new FirstApplicableBehaviour<SkyrimDragon>(
+                        new AnimatableMeleeAttack<>(0)
+                                .whenStarting(a -> {
+                                    a.getEntityData().set(PREV_ANIMATION_STATE, a.getEntityData().get(ANIMATION_STATE));
+                                    a.getEntityData().set(ANIMATION_STATE, 5);  // BITE
+                                })
+                                .cooldownFor(t -> 20),  // Attempt bite every second if nearby
+                        new AnimatableRangedAttack<>(0)
+                                .whenStarting(a -> {
+                                    if (!a.onGround()) {
+                                        a.getEntityData().set(ANIMATION_STATE, 6);  // TAKE_OFF
+                                    }
+                                })
+                                .runFor(t -> 40) // Use shout and breathe in air
+                                .whenStopping(a -> a.getEntityData().set(ANIMATION_STATE, 0))  // Reset to FLY_IDLE
+                                .cooldownFor(t -> 600)  // 30 seconds cooldown
+                ),
+                new FirstApplicableBehaviour<SkyrimDragon>(
+                        new SetRandomFlyingTarget<>()
+                                .whenStarting(a -> {
+                                    if (!a.onGround() && a.getRandom().nextBoolean()) {
+                                        a.getEntityData().set(ANIMATION_STATE, 7);  // GLIDE
+                                    }
+                                }),
+                        new SetRandomLookTarget<>()
+                )
         );
-//                new AnimatableMeleeAttack<>(0)); // Melee attack the target if close enough
     }
 
     @Override
@@ -432,37 +569,65 @@ public class SkyrimDragon extends PathfinderMob implements GeoEntity, Enemy, Fly
         return false;
     }
 
+//    @Override
+//    public void travel(Vec3 pTravelVector) {
+//        if (this.isControlledByLocalInstance()) {
+//            if (this.isInWater()) {
+//                this.moveRelative(0.02F, pTravelVector);
+//                this.move(MoverType.SELF, this.getDeltaMovement());
+//                this.setDeltaMovement(this.getDeltaMovement().scale(0.8F));
+//            } else if (this.isInLava()) {
+//                this.moveRelative(0.02F, pTravelVector);
+//                this.move(MoverType.SELF, this.getDeltaMovement());
+//                this.setDeltaMovement(this.getDeltaMovement().scale(0.5));
+//            } else {
+//                BlockPos ground = getBlockPosBelowThatAffectsMyMovement();
+//                float f = 0.91F;
+//                if (this.onGround()) {
+//                    f = this.level().getBlockState(ground).getBlock().getFriction() * 0.91F;
+//                }
+//
+//                float f1 = 0.16277137F / (f * f * f);
+//                f = 0.91F;
+//                if (this.onGround()) {
+//                    f = this.level().getBlockState(ground).getBlock().getFriction() * 0.91F;
+//                }
+//
+//                this.moveRelative(this.onGround() ? 0.1F * f1 : 0.02F, pTravelVector);
+//                this.move(MoverType.SELF, this.getDeltaMovement());
+//                this.setDeltaMovement(this.getDeltaMovement().scale((double)f));
+//            }
+//        }
+//
+//        this.calculateEntityAnimation(false);
+//    }
+
+    public boolean isAttacking() {
+        return this.attacking;
+    }
+
+    public void setAttacking(boolean attacking) {
+        this.attacking = attacking;
+    }
+
     @Override
     public void travel(Vec3 pTravelVector) {
-        if (this.isControlledByLocalInstance()) {
-            if (this.isInWater()) {
-                this.moveRelative(0.02F, pTravelVector);
-                this.move(MoverType.SELF, this.getDeltaMovement());
-                this.setDeltaMovement(this.getDeltaMovement().scale(0.8F));
-            } else if (this.isInLava()) {
-                this.moveRelative(0.02F, pTravelVector);
-                this.move(MoverType.SELF, this.getDeltaMovement());
-                this.setDeltaMovement(this.getDeltaMovement().scale(0.5));
+        if (this.onGround() && pTravelVector.lengthSqr() > 0.1D) {
+            // Walking or standing
+            if (this.isAttacking()) {
+                this.setAnimationState(4);  // WALK if moving on the ground
             } else {
-                BlockPos ground = getBlockPosBelowThatAffectsMyMovement();
-                float f = 0.91F;
-                if (this.onGround()) {
-                    f = this.level().getBlockState(ground).getBlock().getFriction() * 0.91F;
-                }
-
-                float f1 = 0.16277137F / (f * f * f);
-                f = 0.91F;
-                if (this.onGround()) {
-                    f = this.level().getBlockState(ground).getBlock().getFriction() * 0.91F;
-                }
-
-                this.moveRelative(this.onGround() ? 0.1F * f1 : 0.02F, pTravelVector);
-                this.move(MoverType.SELF, this.getDeltaMovement());
-                this.setDeltaMovement(this.getDeltaMovement().scale((double)f));
+                this.setAnimationState(3);  // STAND if idle on the ground
+            }
+        } else if (!this.onGround()) {
+            // In air, handle TAKE_OFF or GLIDE transitions
+            if (this.isAttacking()) {
+                this.setAnimationState(7);  // GLIDE
+            } else {
+                this.setAnimationState(0);  // FLY_IDLE
             }
         }
-
-        this.calculateEntityAnimation(false);
+        super.travel(pTravelVector);
     }
 
     @Override

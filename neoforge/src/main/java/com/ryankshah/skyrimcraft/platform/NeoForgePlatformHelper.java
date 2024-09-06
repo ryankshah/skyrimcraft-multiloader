@@ -1,10 +1,8 @@
 package com.ryankshah.skyrimcraft.platform;
 
 import com.ryankshah.skyrimcraft.SkyrimcraftNeoForge;
+import com.ryankshah.skyrimcraft.character.attachment.*;
 import com.ryankshah.skyrimcraft.character.attachment.Character;
-import com.ryankshah.skyrimcraft.character.attachment.ExtraCharacter;
-import com.ryankshah.skyrimcraft.character.attachment.LevelUpdates;
-import com.ryankshah.skyrimcraft.character.attachment.StatIncreases;
 import com.ryankshah.skyrimcraft.platform.services.IPlatformHelper;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -69,6 +67,16 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
     @Override
     public void setStatIncreases(Player player, StatIncreases statIncreases) {
         player.setData(SkyrimcraftNeoForge.STAT_INCREASES, statIncreases);
+    }
+
+    @Override
+    public PlayerQuests getQuests(Player player) {
+        return player == null ? new PlayerQuests() : player.getData(SkyrimcraftNeoForge.QUESTS);
+    }
+
+    @Override
+    public void setQuestData(Player player, PlayerQuests playerQuests) {
+        player.setData(SkyrimcraftNeoForge.QUESTS, playerQuests);
     }
 
     @Override

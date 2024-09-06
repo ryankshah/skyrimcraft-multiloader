@@ -3,14 +3,15 @@ package com.ryankshah.skyrimcraft.data.block;
 import com.ryankshah.skyrimcraft.Constants;
 import com.ryankshah.skyrimcraft.block.PearlOysterBlock;
 import com.ryankshah.skyrimcraft.registry.BlockRegistry;
-import com.ryankshah.skyrimcraft.registry.ItemRegistry;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class BlockData
@@ -58,6 +59,7 @@ public class BlockData
         provider.addBlock(BlockRegistry.BLUE_MOUNTAIN_FLOWER, "Blue Mountain Flower");
         provider.addBlock(BlockRegistry.YELLOW_MOUNTAIN_FLOWER, "Yellow Mountain Flower");
         provider.addBlock(BlockRegistry.PURPLE_MOUNTAIN_FLOWER, "Purple Mountain Flower");
+        provider.addBlock(BlockRegistry.LAVENDER, "Lavender");
 
         provider.addBlock(BlockRegistry.BLEEDING_CROWN_BLOCK, "Bleeding Crown");
         provider.addBlock(BlockRegistry.WHITE_CAP_BLOCK, "White Cap");
@@ -70,6 +72,54 @@ public class BlockData
 
         provider.addBlock(BlockRegistry.TOMATO_CROP, "Tomatoes");
         provider.addBlock(BlockRegistry.GARLIC_CROP, "Garlic");
+    }
+
+    private static String name(Block block) {
+        return key(block).getPath();
+    }
+
+    private static ResourceLocation key(Block block) {
+        return BuiltInRegistries.BLOCK.getKey(block);
+    }
+
+    public static void threeStageCrop(BlockStateProvider provider, Block block) {
+        ResourceLocation blockKey = key(block);
+        String path = blockKey.getPath();
+
+        ModelFile stage0 = provider.models().getBuilder(key(block) + "_stage0")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/crop")))
+                .texture("crop", provider.modLoc("block/" + name(block) + "_stage0"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block) + "_stage0"));
+        ModelFile stage1 = provider.models().getBuilder(name(block) + "_stage1")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/crop")))
+                .texture("crop", provider.modLoc("block/" + name(block) + "_stage1"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block) + "_stage1"));
+        ModelFile stage2 = provider.models().getBuilder(key(block) + "_stage2")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/crop")))
+                .texture("crop", provider.modLoc("block/" + name(block) + "_stage2"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block) + "_stage2"));
+        ModelFile stage3 = provider.models().getBuilder(key(block) + "_stage3")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/crop")))
+                .texture("crop", provider.modLoc("block/" + name(block) + "_stage3"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block) + "_stage3"));
+
+        provider.getVariantBuilder(block).forAllStatesExcept(state ->
+        {
+            ModelFile mf = switch (state.getValue(CropBlock.AGE)) {
+                case 0, 1 -> stage0;
+                case 2, 3 -> stage1;
+                case 4, 5, 6 -> stage2;
+                case 7 -> stage3;
+                default -> stage0;
+            };
+            return ConfiguredModel.builder()
+                    .modelFile(mf)
+                    .build();
+        });
     }
 
     public static void addBlockStateModels(BlockStateProvider provider) {
@@ -103,12 +153,12 @@ public class BlockData
 
         normalBlock(provider, BlockRegistry.SHOUT_BLOCK.get());
 
-
-
         flowerBlock(provider, BlockRegistry.RED_MOUNTAIN_FLOWER.get());
         flowerBlock(provider, BlockRegistry.BLUE_MOUNTAIN_FLOWER.get());
         flowerBlock(provider, BlockRegistry.YELLOW_MOUNTAIN_FLOWER.get());
         flowerBlock(provider, BlockRegistry.PURPLE_MOUNTAIN_FLOWER.get());
+
+        flowerBlock(provider, BlockRegistry.LAVENDER.get());
 
         crossBlock(provider, BlockRegistry.CANIS_ROOT_BLOCK.get());
 
@@ -136,29 +186,6 @@ public class BlockData
                             .build();
                 });
 
-//                .partialState().with(PearlOysterBlock.IS_OPEN, true)
-//                .modelForState().modelFile(provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/pearl_oyster_open"))).addModel()
-//                .partialState().with(PearlOysterBlock.IS_EMPTY, true)
-//                .modelForState().modelFile(provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/pearl_oyster_empty"))).addModel()
-//                .partialState().with(PearlOysterBlock.IS_OPEN, false)
-//                .modelForState().modelFile(provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/pearl_oyster"))).addModel();
-
-//        forAllStates(state -> {
-//            boolean open = state.getValue(PearlOysterBlock.IS_OPEN);
-//            boolean empty = state.getValue(PearlOysterBlock.IS_EMPTY);
-//            Direction facing = state.getValue(PearlOysterBlock.FACING);
-//
-//            return ConfiguredModel.builder()
-//                    .modelFile(open ?
-//                            (empty ?
-//                                    provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/pearl_oyster_empty")) :
-//                                    provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/pearl_oyster_open"))
-//                            ) :
-//                            provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/pearl_oyster"))
-//                    )
-//                    .rotationY(((int) facing.toYRot() + 180) % 360) // 180 is default angle offset
-//                    .build();
-//        });
         provider.simpleBlockItem(BlockRegistry.PEARL_OYSTER_BLOCK.get(), provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/pearl_oyster")));
 
         provider.horizontalBlock(BlockRegistry.ALCHEMY_TABLE.get(), state -> provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/alchemy_table")));
@@ -178,6 +205,8 @@ public class BlockData
 
         provider.horizontalBlock(BlockRegistry.ARCANE_ENCHANTER.get(), state -> provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/arcane_enchanter")));
         provider.simpleBlockItem(BlockRegistry.ARCANE_ENCHANTER.get(), provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/arcane_enchanter")));
+
+        threeStageCrop(provider, BlockRegistry.ASH_YAM_CROP.get());
 
 //        provider.horizontalBlock(SOVNGARDE_PORTAL.get(), state -> provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/sovngarde_portal")));
 //        provider.simpleBlockItem(SOVNGARDE_PORTAL.get(), provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/sovngarde_portal")));

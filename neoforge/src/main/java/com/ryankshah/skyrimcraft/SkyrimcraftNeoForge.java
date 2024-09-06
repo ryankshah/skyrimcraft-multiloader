@@ -1,10 +1,8 @@
 package com.ryankshah.skyrimcraft;
 
 import com.mojang.serialization.Codec;
+import com.ryankshah.skyrimcraft.character.attachment.*;
 import com.ryankshah.skyrimcraft.character.attachment.Character;
-import com.ryankshah.skyrimcraft.character.attachment.ExtraCharacter;
-import com.ryankshah.skyrimcraft.character.attachment.LevelUpdates;
-import com.ryankshah.skyrimcraft.character.attachment.StatIncreases;
 import com.ryankshah.skyrimcraft.data.DataGenerators;
 import com.ryankshah.skyrimcraft.data.loot_table.SkyrimLootModifiers;
 import com.ryankshah.skyrimcraft.entity.creature.AbeceanLongfin;
@@ -40,6 +38,8 @@ public class SkyrimcraftNeoForge
             "level_updates", () -> AttachmentType.builder(() -> new LevelUpdates()).serialize(LevelUpdates.CODEC).copyOnDeath().build());
     public static final Supplier<AttachmentType<StatIncreases>> STAT_INCREASES = ATTACHMENT_TYPES.register(
             "stat_increases", () -> AttachmentType.builder(StatIncreases::new).serialize(StatIncreases.CODEC).copyOnDeath().build());
+    public static final Supplier<AttachmentType<PlayerQuests>> QUESTS = ATTACHMENT_TYPES.register(
+            "quests", () -> AttachmentType.builder(PlayerQuests::new).serialize(PlayerQuests.CODEC).copyOnDeath().build());
 
     public static final Supplier<AttachmentType<Long>> CONJURE_FAMILIAR_SPELL_DATA = ATTACHMENT_TYPES.register(
             "conjure_familiar_spell_data", () -> AttachmentType.builder(() -> 0L).serialize(Codec.LONG).build());

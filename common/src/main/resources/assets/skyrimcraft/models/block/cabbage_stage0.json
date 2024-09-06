@@ -1,0 +1,46 @@
+{
+	"render_type": "minecraft:cutout",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "skyrimcraft:block/cabbage_stage0",
+		"particle": "skyrimcraft:block/cabbage_stage0"
+	},
+	"elements": [
+		{
+			"from": [7, -0.00071, 6.04646],
+			"to": [9, -0.00071, 8.04646],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, -0.00071, 8.04646]},
+			"faces": {
+				"up": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"down": {"uv": [0, 1, 1, 0], "texture": "#0"}
+			}
+		},
+		{
+			"from": [7, -0.00071, 7.95354],
+			"to": [9, -0.00071, 9.95354],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, -0.00071, 7.95354]},
+			"faces": {
+				"up": {"uv": [0, 1, 1, 0], "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#0"}
+			}
+		},
+		{
+			"from": [6.18937, 0.0462, 7],
+			"to": [8.18937, 0.0462, 9],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [8, 0.38198, 8]},
+			"faces": {
+				"up": {"uv": [0, 1, 1, 0], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "rotation": 270, "texture": "#0"}
+			}
+		},
+		{
+			"from": [7.81063, 0.0462, 7],
+			"to": [9.81063, 0.0462, 9],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [8, 0.38198, 8]},
+			"faces": {
+				"up": {"uv": [0, 0, 1, 1], "rotation": 90, "texture": "#0"},
+				"down": {"uv": [0, 1, 1, 0], "rotation": 270, "texture": "#0"}
+			}
+		}
+	]
+}

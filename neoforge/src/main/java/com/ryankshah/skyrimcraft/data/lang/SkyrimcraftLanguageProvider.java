@@ -23,6 +23,23 @@ public class SkyrimcraftLanguageProvider extends LanguageProvider
         add(CreativeTabRegistry.SKYRIMCRAFT_ALL_TITLE, "Skyrimcraft");
         add(CreativeTabRegistry.SKYRIMCRAFT_MAGIC_TITLE, "Skyrimcraft Magic");
 
+        add("effect.skyrimcraft.ethereal", "Ethereal");
+        add("effect.skyrimcraft.frozen", "Frozen");
+        add("effect.skyrimcraft.magicka_regen", "Magicka Regen");
+        add("effect.skyrimcraft.spectral", "Spectral");
+        add("effect.skyrimcraft.undead_flee", "Undead Flee");
+        add("effect.skyrimcraft.dismay", "Dismay");
+        add("effect.skyrimcraft.water_walking", "Water Walking");
+        add("effect.skyrimcraft.paralysis", "Paralysis");
+        add("effect.skyrimcraft.cure_disease", "Cure Disease");
+        add("effect.skyrimcraft.cure_poison", "Cure Poison");
+        add("effect.skyrimcraft.flame_cloak", "Flame Cloak");
+        add("effect.skyrimcraft.hist", "Hist");
+        add("effect.skyrimcraft.adrenaline_rush", "Adrenaline Rush");
+        add("effect.skyrimcraft.battle_cry", "Battle Cry");
+        add("effect.skyrimcraft.calm", "Calm");
+
+
         // Spellbook
         add("spellbook.tooltip.name", "Grants you use of the %s spell!");
         add("spellbook.tooltip.difficulty", "Spell Difficulty: %s");

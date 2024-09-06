@@ -80,6 +80,7 @@ public class SkyrimcraftBlockLootTables extends BlockLootSubProvider
         dropSelf(BlockRegistry.BLUE_MOUNTAIN_FLOWER.get());
         dropSelf(BlockRegistry.YELLOW_MOUNTAIN_FLOWER.get());
         dropSelf(BlockRegistry.PURPLE_MOUNTAIN_FLOWER.get());
+        dropOther(BlockRegistry.LAVENDER.get(), ItemRegistry.LAVENDER.get());
 
         dropSelf(BlockRegistry.CANIS_ROOT_BLOCK.get());
         dropSelf(BlockRegistry.BLEEDING_CROWN_BLOCK.get());
@@ -100,6 +101,15 @@ public class SkyrimcraftBlockLootTables extends BlockLootSubProvider
         LootItemCondition.Builder ilootcondition$garliccrop = LootItemBlockStatePropertyCondition.hasBlockStateProperties(BlockRegistry.GARLIC_CROP.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7));
         add(BlockRegistry.GARLIC_CROP.get(), createCropDrops(BlockRegistry.GARLIC_CROP.get(), ItemRegistry.GARLIC.get(), ItemRegistry.GARLIC.get(), ilootcondition$garliccrop));
+
+        LootItemCondition.Builder ilootcondition$cabbagecrop = LootItemBlockStatePropertyCondition.hasBlockStateProperties(BlockRegistry.CABBAGE_CROP.get())
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7));
+        add(BlockRegistry.CABBAGE_CROP.get(), createCropDrops(BlockRegistry.CABBAGE_CROP.get(), ItemRegistry.CABBAGE.get(), ItemRegistry.CABBAGE_SEEDS.get(), ilootcondition$cabbagecrop));
+
+        LootItemCondition.Builder ilootcondition$ashyamcrop = LootItemBlockStatePropertyCondition.hasBlockStateProperties(BlockRegistry.ASH_YAM_CROP.get())
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7));
+        add(BlockRegistry.ASH_YAM_CROP.get(), createCropDrops(BlockRegistry.ASH_YAM_CROP.get(), ItemRegistry.ASH_YAM.get(), ItemRegistry.ASH_YAM_SLIPS.get(), ilootcondition$ashyamcrop));
+
 
         LootTable.Builder birdsNestDrops = LootTable.lootTable().withPool(LootPool.lootPool()
                         .name("birdsNestPool")

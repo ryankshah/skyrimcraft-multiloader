@@ -258,6 +258,66 @@
             }
           ],
           "name": "skyrimcraft:flame_cloak_spellbook"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.25
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "skyrimcraft:tomato_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.25
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "skyrimcraft:cabbage_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.25
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "skyrimcraft:garlic"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.25
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "skyrimcraft:sweet_roll"
         }
       ],
       "rolls": {
