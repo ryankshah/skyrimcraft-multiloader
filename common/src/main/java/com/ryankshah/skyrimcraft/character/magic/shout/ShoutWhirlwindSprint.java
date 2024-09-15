@@ -26,6 +26,11 @@ public class ShoutWhirlwindSprint extends Spell //implements IForgeRegistryEntry
     }
 
     @Override
+    public String getShoutName() {
+        return "Wuld Nah Qest";
+    }
+
+    @Override
     public List<String> getDescription() {
         List<String> desc = new ArrayList<>();
         desc.add("The Thu'um rushes forward,");

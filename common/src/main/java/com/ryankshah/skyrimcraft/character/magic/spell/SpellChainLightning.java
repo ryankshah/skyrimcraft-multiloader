@@ -52,7 +52,7 @@ public class SpellChainLightning extends Spell
 
     @Override
     public float getCost() {
-        return 4.0f;
+        return 1.0f;
     }
 
     @Override
@@ -79,6 +79,9 @@ public class SpellChainLightning extends Spell
     public CastReference getCastReference() {
         return CastReference.HOLD;
     }
+
+    @Override
+    public boolean isContinuous() { return true; }
 
     @Override
     public void onCast() {

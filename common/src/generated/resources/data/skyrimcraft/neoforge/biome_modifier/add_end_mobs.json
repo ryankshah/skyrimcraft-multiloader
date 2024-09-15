@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "minecraft:end_highlands",
+  "spawners": {
+    "type": "skyrimcraft:vale_sabre_cat",
+    "maxCount": 2,
+    "minCount": 1,
+    "weight": 20
+  }
+}

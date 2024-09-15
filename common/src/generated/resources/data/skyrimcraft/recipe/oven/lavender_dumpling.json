@@ -1,0 +1,21 @@
+{
+  "type": "skyrimcraft:oven",
+  "category": "food",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:flour"
+    },
+    {
+      "item": "skyrimcraft:snowberries"
+    },
+    {
+      "item": "skyrimcraft:lavender"
+    }
+  ],
+  "level": 1,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:lavender_dumpling"
+  },
+  "xp": 5
+}

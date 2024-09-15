@@ -36,6 +36,7 @@ public class SpellRegistry
     public static Supplier<Spell> FROST_BREATH = SPELLS.register("frost_breath", () -> new ShoutFrostBreath(9));
     public static Supplier<Spell> DRAGON_ASPECT = SPELLS.register("dragon_aspect", () -> new ShoutDragonAspect(10));
     public static Supplier<Spell> ELEMENTAL_FURY = SPELLS.register("elemental_fury", () -> new ShoutElementalFury(11));
+    public static Supplier<Spell> FIRE_BREATH = SPELLS.register("fire_breath", () -> new ShoutFireBreath(12));
 
     // Spells
     public static Supplier<Spell> FIREBALL = SPELLS.register("fireball", () -> new SpellFireball(20));
@@ -49,7 +50,8 @@ public class SpellRegistry
     public static Supplier<Spell> DETECT_LIFE = SPELLS.register("detect_life", () -> new SpellDetectLife(28));
     public static Supplier<Spell> CANDLELIGHT = SPELLS.register("candlelight", () -> new SpellCandlelight(29));
     public static Supplier<Spell> WATERBREATHING = SPELLS.register("waterbreathing", () -> new SpellWaterbreathing(30));
-//    public static Supplier<Spell> WATERBREATHING = SPELLS.register("waterbreathing", () -> new SpellWaterbreathing(30));
+    public static Supplier<Spell> OAKFLESH = SPELLS.register("oakflesh", () -> new SpellOakflesh(31));
+    // public static Supplier<Spell> WATERBREATHING = SPELLS.register("waterbreathing", () -> new SpellWaterbreathing(32));
 
     // Powers
     public static Supplier<Spell> HIGHBORN = SPELLS.register("highborn", () -> new PowerHighborn(80));

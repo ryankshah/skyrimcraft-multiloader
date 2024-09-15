@@ -1,5 +1,6 @@
 package com.ryankshah.skyrimcraft.character.skill.type;
 
+import com.ryankshah.skyrimcraft.character.skill.Perk;
 import com.ryankshah.skyrimcraft.character.skill.Skill;
 
 import java.util.AbstractMap;

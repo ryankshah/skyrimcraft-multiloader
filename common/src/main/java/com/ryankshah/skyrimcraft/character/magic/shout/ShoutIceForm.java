@@ -28,6 +28,11 @@ public class ShoutIceForm extends Spell //implements IForgeRegistryEntry<ISpell>
     }
 
     @Override
+    public String getShoutName() {
+        return "Iiz Slen Nus";
+    }
+
+    @Override
     public List<String> getDescription() {
         List<String> desc = new ArrayList<>();
         desc.add("Your Thu'um freezes an");

@@ -50,7 +50,7 @@ public class SpellHealing extends Spell
 
     @Override
     public float getCost() {
-        return 2.0f;
+        return 1.0f;
     }
 
     @Override
@@ -67,6 +67,9 @@ public class SpellHealing extends Spell
     public SpellDifficulty getDifficulty() {
         return SpellDifficulty.NOVICE;
     }
+
+    @Override
+    public boolean isContinuous() { return true; }
 
     @Override
     public int getBaseXp() {

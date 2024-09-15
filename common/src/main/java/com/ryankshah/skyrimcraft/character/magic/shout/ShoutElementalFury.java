@@ -23,6 +23,11 @@ public class ShoutElementalFury extends Spell //implements IForgeRegistryEntry<I
     }
 
     @Override
+    public String getShoutName() {
+        return "Su Grah Dun";
+    }
+
+    @Override
     public List<String> getDescription() {
         List<String> desc = new ArrayList<>();
         desc.add("The Thu'um imbues your arms");

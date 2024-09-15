@@ -22,6 +22,11 @@ public class ShoutBecomeEthereal extends Spell { // implements IForgeRegistryEnt
     }
 
     @Override
+    public String getShoutName() {
+        return "Feim Zii Gron";
+    }
+
+    @Override
     public List<String> getDescription() {
         List<String> desc = new ArrayList<>();
         desc.add("The Thu'um reaches out to");

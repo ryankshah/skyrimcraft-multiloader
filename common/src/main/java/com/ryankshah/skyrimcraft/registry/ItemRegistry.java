@@ -7,6 +7,7 @@ import com.ryankshah.skyrimcraft.character.magic.SpellRegistry;
 import com.ryankshah.skyrimcraft.character.skill.SkillRegistry;
 import com.ryankshah.skyrimcraft.effect.ModEffects;
 import com.ryankshah.skyrimcraft.item.*;
+import com.ryankshah.skyrimcraft.item.ArmorMaterials;
 import com.ryankshah.skyrimcraft.item.potion.*;
 import com.ryankshah.skyrimcraft.util.ClientUtil;
 import com.ryankshah.skyrimcraft.util.IngredientEffect;
@@ -17,6 +18,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.Supplier;
 
@@ -299,7 +301,7 @@ public class ItemRegistry
                             .build())
             ));
     public static final RegistryObject<Item, Item> JAZBAY_GRAPES = ITEMS.register("jazbay_grapes",
-            () -> new Item(new Item.Properties()
+            () -> new ItemNameBlockItem(BlockRegistry.JAZBAY_GRAPE_BUSH.get(), new Item.Properties()
                     .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
@@ -315,7 +317,7 @@ public class ItemRegistry
                             .build())
             ));
     public static final RegistryObject<Item, Item> JUNIPER_BERRIES = ITEMS.register("juniper_berries",
-            () -> new Item(new Item.Properties()
+            () -> new ItemNameBlockItem(BlockRegistry.JUNIPER_BERRY_BUSH.get(), new Item.Properties()
                     .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
@@ -362,16 +364,8 @@ public class ItemRegistry
                             .saturationModifier(0.2f)
                             .build())
             ));
-    public static final RegistryObject<Item, Item> RABBIT_HAUNCH = ITEMS.register("rabbit_haunch",
-            () -> new Item(new Item.Properties()
-                    .stacksTo(64)
-                    .food(new FoodProperties.Builder()
-                            .nutrition(5)
-                            .saturationModifier(0.2f)
-                            .build())
-            ));
     public static final RegistryObject<Item, Item> SNOWBERRIES = ITEMS.register("snowberries",
-            () -> new Item(new Item.Properties()
+            () -> new ItemNameBlockItem(BlockRegistry.SNOWBERRY_BUSH.get(), new Item.Properties()
                     .stacksTo(64)
                     .food(new FoodProperties.Builder()
                             .nutrition(5)
@@ -477,10 +471,10 @@ public class ItemRegistry
 
     //// COMBAT ////
     // Ancient Nord
-    public static final Supplier<SkyrimArmor> ANCIENT_NORD_HELMET = ITEMS.register("ancient_nord_helmet", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.ANCIENT_NORD, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> ANCIENT_NORD_CHESTPLATE = ITEMS.register("ancient_nord_chestplate", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.ANCIENT_NORD, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> ANCIENT_NORD_LEGGINGS = ITEMS.register("ancient_nord_leggings", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.ANCIENT_NORD, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> ANCIENT_NORD_BOOTS = ITEMS.register("ancient_nord_boots", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.ANCIENT_NORD, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> ANCIENT_NORD_HELMET = ITEMS.register("ancient_nord_helmet", () -> new SkyrimArmor(ArmorMaterials.ANCIENT_NORD, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> ANCIENT_NORD_CHESTPLATE = ITEMS.register("ancient_nord_chestplate", () -> new SkyrimArmor(ArmorMaterials.ANCIENT_NORD, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> ANCIENT_NORD_LEGGINGS = ITEMS.register("ancient_nord_leggings", () -> new SkyrimArmor(ArmorMaterials.ANCIENT_NORD, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> ANCIENT_NORD_BOOTS = ITEMS.register("ancient_nord_boots", () -> new SkyrimArmor(ArmorMaterials.ANCIENT_NORD, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
     //    public static final Supplier<Item> ANCIENT_NORD_ARROW = ITEMS.register("ancient_nord_arrow", () -> new SkyrimArrow.AncientNordArrow(new Item.Properties(), "Ancient Nord Arrow"));
     public static final Supplier<SwordItem> ANCIENT_NORD_SWORD = ITEMS.register("ancient_nord_sword", () -> new SwordItem(ItemTier.ANCIENT_NORD, new Item.Properties()));
     public static final Supplier<SkyrimTwoHandedSword> ANCIENT_NORD_BATTLEAXE = ITEMS.register("ancient_nord_battleaxe", () -> new SkyrimTwoHandedSword(ItemTier.ANCIENT_NORD, new Item.Properties()));
@@ -488,10 +482,10 @@ public class ItemRegistry
     public static final Supplier<SwordItem> ANCIENT_NORD_WAR_AXE = ITEMS.register("ancient_nord_war_axe", () -> new SwordItem(ItemTier.ANCIENT_NORD, new Item.Properties()));
     public static final Supplier<BowItem> ANCIENT_NORD_BOW = ITEMS.register("ancient_nord_bow", () -> new BowItem(new BowItem.Properties()));
     // Daedric
-    public static final Supplier<SkyrimArmor> DAEDRIC_HELMET = ITEMS.register("daedric_helmet", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.DAEDRIC, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> DAEDRIC_CHESTPLATE = ITEMS.register("daedric_chestplate", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.DAEDRIC, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> DAEDRIC_LEGGINGS = ITEMS.register("daedric_leggings", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.DAEDRIC, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> DAEDRIC_BOOTS = ITEMS.register("daedric_boots", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.DAEDRIC, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> DAEDRIC_HELMET = ITEMS.register("daedric_helmet", () -> new SkyrimArmor(ArmorMaterials.DAEDRIC, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> DAEDRIC_CHESTPLATE = ITEMS.register("daedric_chestplate", () -> new SkyrimArmor(ArmorMaterials.DAEDRIC, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> DAEDRIC_LEGGINGS = ITEMS.register("daedric_leggings", () -> new SkyrimArmor(ArmorMaterials.DAEDRIC, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> DAEDRIC_BOOTS = ITEMS.register("daedric_boots", () -> new SkyrimArmor(ArmorMaterials.DAEDRIC, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
     public static final Supplier<ShieldItem> DAEDRIC_SHIELD = ITEMS.register("daedric_shield", () -> new ShieldItem(new Item.Properties().stacksTo(1)));
     //    public static final Supplier<Item> DAEDRIC_ARROW = ITEMS.register("daedric_arrow", () -> new SkyrimArrow.DaedricArrow(new Item.Properties().fireResistant(), "Daedric Arrow"));
     public static final Supplier<SwordItem> DAEDRIC_DAGGER = ITEMS.register("daedric_dagger", () -> new SwordItem(ItemTier.DAEDRIC, (new Item.Properties()).fireResistant()));
@@ -513,10 +507,10 @@ public class ItemRegistry
     public static final Supplier<SwordItem> DRAGONBONE_WAR_AXE = ITEMS.register("dragonbone_war_axe", () -> new SwordItem(ItemTier.DRAGONBONE, (new Item.Properties()).fireResistant()));
     public static final Supplier<SkyrimTwoHandedSword> DRAGONBONE_WARHAMMER = ITEMS.register("dragonbone_warhammer", () -> new SkyrimTwoHandedSword(ItemTier.DRAGONBONE, (new Item.Properties()).fireResistant()));
     // Dwarven
-    public static final Supplier<SkyrimArmor> DWARVEN_HELMET = ITEMS.register("dwarven_helmet", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.DWARVEN, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> DWARVEN_CHESTPLATE = ITEMS.register("dwarven_chestplate", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.DWARVEN, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> DWARVEN_LEGGINGS = ITEMS.register("dwarven_leggings", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.DWARVEN, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> DWARVEN_BOOTS = ITEMS.register("dwarven_boots", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.DWARVEN, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> DWARVEN_HELMET = ITEMS.register("dwarven_helmet", () -> new SkyrimArmor(ArmorMaterials.DWARVEN, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> DWARVEN_CHESTPLATE = ITEMS.register("dwarven_chestplate", () -> new SkyrimArmor(ArmorMaterials.DWARVEN, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> DWARVEN_LEGGINGS = ITEMS.register("dwarven_leggings", () -> new SkyrimArmor(ArmorMaterials.DWARVEN, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> DWARVEN_BOOTS = ITEMS.register("dwarven_boots", () -> new SkyrimArmor(ArmorMaterials.DWARVEN, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
     public static final Supplier<ShieldItem> DWARVEN_SHIELD = ITEMS.register("dwarven_shield", () -> new ShieldItem(new Item.Properties().stacksTo(1)));
     //    public static final Supplier<SwordItem> DWARVEN_ARROW = ITEMS.register("dwarven_arrow", () -> new SkyrimArrow.DwarvenArrow(new Item.Properties().fireResistant(), "Dwarven Arrow"));
     public static final Supplier<SwordItem> DWARVEN_DAGGER = ITEMS.register("dwarven_dagger", () -> new SwordItem(ItemTier.DWARVEN, (new Item.Properties()).fireResistant()));
@@ -528,10 +522,10 @@ public class ItemRegistry
     public static final Supplier<SwordItem> DWARVEN_WAR_AXE = ITEMS.register("dwarven_war_axe", () -> new SwordItem(ItemTier.DWARVEN, (new Item.Properties()).fireResistant()));
     public static final Supplier<SkyrimTwoHandedSword> DWARVEN_WARHAMMER = ITEMS.register("dwarven_warhammer", () -> new SkyrimTwoHandedSword(ItemTier.DWARVEN, (new Item.Properties()).fireResistant()));
     // Ebony
-    public static final Supplier<SkyrimArmor> EBONY_HELMET = ITEMS.register("ebony_helmet", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.EBONY, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> EBONY_CHESTPLATE = ITEMS.register("ebony_chestplate", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.EBONY, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> EBONY_LEGGINGS = ITEMS.register("ebony_leggings", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.EBONY, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> EBONY_BOOTS = ITEMS.register("ebony_boots", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.EBONY, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> EBONY_HELMET = ITEMS.register("ebony_helmet", () -> new SkyrimArmor(ArmorMaterials.EBONY, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> EBONY_CHESTPLATE = ITEMS.register("ebony_chestplate", () -> new SkyrimArmor(ArmorMaterials.EBONY, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> EBONY_LEGGINGS = ITEMS.register("ebony_leggings", () -> new SkyrimArmor(ArmorMaterials.EBONY, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> EBONY_BOOTS = ITEMS.register("ebony_boots", () -> new SkyrimArmor(ArmorMaterials.EBONY, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
     public static final Supplier<ShieldItem> EBONY_SHIELD = ITEMS.register("ebony_shield", () -> new ShieldItem(new Item.Properties().stacksTo(1)));
     //    public static final Supplier<SwordItem> EBONY_ARROW = ITEMS.register("ebony_arrow", () -> new SkyrimArrow.EbonyArrow(new Item.Properties().fireResistant(), "Ebony Arrow"));
     public static final Supplier<SwordItem> EBONY_DAGGER = ITEMS.register("ebony_dagger", () -> new SwordItem(ItemTier.EBONY, (new Item.Properties()).fireResistant()));
@@ -543,10 +537,10 @@ public class ItemRegistry
     public static final Supplier<SwordItem> EBONY_WAR_AXE = ITEMS.register("ebony_war_axe", () -> new SwordItem(ItemTier.EBONY, (new Item.Properties()).fireResistant()));
     public static final Supplier<SkyrimTwoHandedSword> EBONY_WARHAMMER = ITEMS.register("ebony_warhammer", () -> new SkyrimTwoHandedSword(ItemTier.EBONY, (new Item.Properties()).fireResistant()));
     // Elven
-    public static final Supplier<SkyrimArmor> ELVEN_HELMET = ITEMS.register("elven_helmet", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.ELVEN, SkyrimArmor.Type.HELMET, new Item.Properties(), false));
-    public static final Supplier<SkyrimArmor> ELVEN_CHESTPLATE = ITEMS.register("elven_chestplate", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.ELVEN, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), false));
-    public static final Supplier<SkyrimArmor> ELVEN_LEGGINGS = ITEMS.register("elven_leggings", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.ELVEN, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), false));
-    public static final Supplier<SkyrimArmor> ELVEN_BOOTS = ITEMS.register("elven_boots", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.ELVEN, SkyrimArmor.Type.BOOTS, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> ELVEN_HELMET = ITEMS.register("elven_helmet", () -> new SkyrimArmor(ArmorMaterials.ELVEN, SkyrimArmor.Type.HELMET, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> ELVEN_CHESTPLATE = ITEMS.register("elven_chestplate", () -> new SkyrimArmor(ArmorMaterials.ELVEN, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> ELVEN_LEGGINGS = ITEMS.register("elven_leggings", () -> new SkyrimArmor(ArmorMaterials.ELVEN, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> ELVEN_BOOTS = ITEMS.register("elven_boots", () -> new SkyrimArmor(ArmorMaterials.ELVEN, SkyrimArmor.Type.BOOTS, new Item.Properties(), false));
     public static final Supplier<ShieldItem> ELVEN_SHIELD = ITEMS.register("elven_shield", () -> new ShieldItem(new Item.Properties().stacksTo(1)));
     //    public static final Supplier<SwordItem> ELVEN_ARROW = ITEMS.register("elven_arrow", () -> new SkyrimArrow.ElvenArrow(new Item.Properties().fireResistant(), "Elven Arrow"));
     public static final Supplier<SwordItem> ELVEN_DAGGER = ITEMS.register("elven_dagger", () -> new SwordItem(ItemTier.ELVEN, (new Item.Properties()).fireResistant()));
@@ -558,19 +552,19 @@ public class ItemRegistry
     public static final Supplier<SwordItem> ELVEN_WAR_AXE = ITEMS.register("elven_war_axe", () -> new SwordItem(ItemTier.ELVEN, (new Item.Properties()).fireResistant()));
     public static final Supplier<SkyrimTwoHandedSword> ELVEN_WARHAMMER = ITEMS.register("elven_warhammer", () -> new SkyrimTwoHandedSword(ItemTier.ELVEN, (new Item.Properties()).fireResistant()));
     // Falmer
-    public static final Supplier<SkyrimArmor> FALMER_HELMET = ITEMS.register("falmer_helmet", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.FALMER, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> FALMER_CHESTPLATE = ITEMS.register("falmer_chestplate", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.FALMER, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> FALMER_LEGGINGS = ITEMS.register("falmer_leggings", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.FALMER, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> FALMER_BOOTS = ITEMS.register("falmer_boots", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.FALMER, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> FALMER_HELMET = ITEMS.register("falmer_helmet", () -> new SkyrimArmor(ArmorMaterials.FALMER, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> FALMER_CHESTPLATE = ITEMS.register("falmer_chestplate", () -> new SkyrimArmor(ArmorMaterials.FALMER, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> FALMER_LEGGINGS = ITEMS.register("falmer_leggings", () -> new SkyrimArmor(ArmorMaterials.FALMER, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> FALMER_BOOTS = ITEMS.register("falmer_boots", () -> new SkyrimArmor(ArmorMaterials.FALMER, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
     //    public static final Supplier<SwordItem> FALMER_ARROW = ITEMS.register("falmer_arrow", () -> new SkyrimArrow.FalmerArrow(new Item.Properties().fireResistant(), "Falmer Arrow"));
     public static final Supplier<SwordItem> FALMER_SWORD = ITEMS.register("falmer_sword", () -> new SwordItem(ItemTier.FALMER, (new Item.Properties()).fireResistant()));
     public static final Supplier<BowItem> FALMER_BOW = ITEMS.register("falmer_bow", () -> new BowItem(new BowItem.Properties()));
     public static final Supplier<SwordItem> FALMER_WAR_AXE = ITEMS.register("falmer_war_axe", () -> new SwordItem(ItemTier.FALMER, (new Item.Properties()).fireResistant()));
     // Glass
-    public static final Supplier<SkyrimArmor> GLASS_HELMET = ITEMS.register("glass_helmet", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.GLASS, SkyrimArmor.Type.HELMET, new Item.Properties(), false));
-    public static final Supplier<SkyrimArmor> GLASS_CHESTPLATE = ITEMS.register("glass_chestplate", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.GLASS, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), false));
-    public static final Supplier<SkyrimArmor> GLASS_LEGGINGS = ITEMS.register("glass_leggings", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.GLASS, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), false));
-    public static final Supplier<SkyrimArmor> GLASS_BOOTS = ITEMS.register("glass_boots", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.GLASS, SkyrimArmor.Type.BOOTS, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> GLASS_HELMET = ITEMS.register("glass_helmet", () -> new SkyrimArmor(ArmorMaterials.GLASS, SkyrimArmor.Type.HELMET, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> GLASS_CHESTPLATE = ITEMS.register("glass_chestplate", () -> new SkyrimArmor(ArmorMaterials.GLASS, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> GLASS_LEGGINGS = ITEMS.register("glass_leggings", () -> new SkyrimArmor(ArmorMaterials.GLASS, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> GLASS_BOOTS = ITEMS.register("glass_boots", () -> new SkyrimArmor(ArmorMaterials.GLASS, SkyrimArmor.Type.BOOTS, new Item.Properties(), false));
     public static final Supplier<ShieldItem> GLASS_SHIELD = ITEMS.register("glass_shield", () -> new ShieldItem(new Item.Properties().stacksTo(1)));
     //    public static final Supplier<SwordItem> GLASS_ARROW = ITEMS.register("glass_arrow", () -> new SkyrimArrow.GlassArrow(new Item.Properties(), "Glass Arrow"));
     public static final Supplier<SwordItem> GLASS_DAGGER = ITEMS.register("glass_dagger", () -> new SwordItem(ItemTier.GLASS, (new Item.Properties())));
@@ -582,15 +576,15 @@ public class ItemRegistry
     public static final Supplier<SwordItem> GLASS_WAR_AXE = ITEMS.register("glass_war_axe", () -> new SwordItem(ItemTier.GLASS, (new Item.Properties())));
     public static final Supplier<SkyrimTwoHandedSword> GLASS_WARHAMMER = ITEMS.register("glass_warhammer", () -> new SkyrimTwoHandedSword(ItemTier.GLASS, (new Item.Properties())));
     // Imperial
-    public static final Supplier<SkyrimArmor> IMPERIAL_HELMET = ITEMS.register("imperial_helmet", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.IMPERIAL, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> IMPERIAL_CHESTPLATE = ITEMS.register("imperial_chestplate", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.IMPERIAL, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> IMPERIAL_LEGGINGS = ITEMS.register("imperial_leggings", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.IMPERIAL, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> IMPERIAL_BOOTS = ITEMS.register("imperial_boots", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.IMPERIAL, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> IMPERIAL_HELMET = ITEMS.register("imperial_helmet", () -> new SkyrimArmor(ArmorMaterials.IMPERIAL, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> IMPERIAL_CHESTPLATE = ITEMS.register("imperial_chestplate", () -> new SkyrimArmor(ArmorMaterials.IMPERIAL, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> IMPERIAL_LEGGINGS = ITEMS.register("imperial_leggings", () -> new SkyrimArmor(ArmorMaterials.IMPERIAL, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> IMPERIAL_BOOTS = ITEMS.register("imperial_boots", () -> new SkyrimArmor(ArmorMaterials.IMPERIAL, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
     public static final Supplier<SwordItem> IMPERIAL_SWORD = ITEMS.register("imperial_sword", () -> new SwordItem(Tiers.IRON, (new Item.Properties()).fireResistant()));
     // Iron (Skyrim)
-    public static final Supplier<SkyrimArmor> IRON_HELMET = ITEMS.register("iron_helmet", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.IRON, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> IRON_CHESTPLATE = ITEMS.register("iron_chestplate", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.IRON, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> IRON_LEGGINGS = ITEMS.register("iron_leggings", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.IRON, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> IRON_HELMET = ITEMS.register("iron_helmet", () -> new SkyrimArmor(ArmorMaterials.IRON, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> IRON_CHESTPLATE = ITEMS.register("iron_chestplate", () -> new SkyrimArmor(ArmorMaterials.IRON, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> IRON_LEGGINGS = ITEMS.register("iron_leggings", () -> new SkyrimArmor(ArmorMaterials.IRON, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
     public static final Supplier<SkyrimArmor> IRON_BOOTS = ITEMS.register("iron_boots", () -> new SkyrimArmor(net.minecraft.world.item.ArmorMaterials.IRON, SkyrimArmor.Type.BOOTS, new Item.Properties(),true));
     public static final Supplier<ShieldItem> IRON_SHIELD = ITEMS.register("iron_shield", () -> new ShieldItem(new Item.Properties().stacksTo(1)));
     //    public static final Supplier<SwordItem> IRON_ARROW = ITEMS.register("iron_arrow", () -> new SkyrimArrow.IronArrow(new Item.Properties().fireResistant(), "Iron Arrow"));
@@ -602,10 +596,10 @@ public class ItemRegistry
     public static final Supplier<SwordItem> IRON_WAR_AXE = ITEMS.register("iron_war_axe", () -> new SwordItem(Tiers.IRON, (new Item.Properties()).fireResistant()));
     public static final Supplier<SkyrimTwoHandedSword> IRON_WARHAMMER = ITEMS.register("iron_warhammer", () -> new SkyrimTwoHandedSword(Tiers.IRON, (new Item.Properties()).fireResistant()));
     // Orcish
-    public static final Supplier<SkyrimArmor> ORCISH_HELMET = ITEMS.register("orcish_helmet", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.ORCISH, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> ORCISH_CHESTPLATE = ITEMS.register("orcish_chestplate", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.ORCISH, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> ORCISH_LEGGINGS = ITEMS.register("orcish_leggings", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.ORCISH, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> ORCISH_BOOTS = ITEMS.register("orcish_boots", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.ORCISH, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> ORCISH_HELMET = ITEMS.register("orcish_helmet", () -> new SkyrimArmor(ArmorMaterials.ORCISH, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> ORCISH_CHESTPLATE = ITEMS.register("orcish_chestplate", () -> new SkyrimArmor(ArmorMaterials.ORCISH, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> ORCISH_LEGGINGS = ITEMS.register("orcish_leggings", () -> new SkyrimArmor(ArmorMaterials.ORCISH, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> ORCISH_BOOTS = ITEMS.register("orcish_boots", () -> new SkyrimArmor(ArmorMaterials.ORCISH, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
     public static final Supplier<ShieldItem> ORCISH_SHIELD = ITEMS.register("orcish_shield", () -> new ShieldItem(new Item.Properties().stacksTo(1)));
     //    public static final Supplier<SwordItem> ORCISH_ARROW = ITEMS.register("orcish_arrow", () -> new SkyrimArrow.OrcishArrow(new Item.Properties().fireResistant(), "Orcish Arrow"));
     public static final Supplier<SwordItem> ORCISH_DAGGER = ITEMS.register("orcish_dagger", () -> new SwordItem(ItemTier.ORCISH, (new Item.Properties()).fireResistant()));
@@ -631,10 +625,10 @@ public class ItemRegistry
     public static final Supplier<SwordItem> STEEL_WAR_AXE = ITEMS.register("steel_war_axe", () -> new SwordItem(ItemTier.STEEL, (new Item.Properties()).fireResistant()));
     public static final Supplier<SkyrimTwoHandedSword> STEEL_WARHAMMER = ITEMS.register("steel_warhammer", () -> new SkyrimTwoHandedSword(ItemTier.STEEL, (new Item.Properties()).fireResistant()));
     // Stormcloak + Stormcloak Officer Armor
-    public static final Supplier<SkyrimArmor> STORMCLOAK_OFFICER_HELMET = ITEMS.register("stormcloak_officer_helmet", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.STORMCLOAK, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> STORMCLOAK_OFFICER_CHESTPLATE = ITEMS.register("stormcloak_officer_chestplate", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.STORMCLOAK, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> STORMCLOAK_OFFICER_LEGGINGS = ITEMS.register("stormcloak_officer_leggings", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.STORMCLOAK, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
-    public static final Supplier<SkyrimArmor> STORMCLOAK_OFFICER_BOOTS = ITEMS.register("stormcloak_officer_boots", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.STORMCLOAK, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> STORMCLOAK_OFFICER_HELMET = ITEMS.register("stormcloak_officer_helmet", () -> new SkyrimArmor(ArmorMaterials.STORMCLOAK, SkyrimArmor.Type.HELMET, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> STORMCLOAK_OFFICER_CHESTPLATE = ITEMS.register("stormcloak_officer_chestplate", () -> new SkyrimArmor(ArmorMaterials.STORMCLOAK, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> STORMCLOAK_OFFICER_LEGGINGS = ITEMS.register("stormcloak_officer_leggings", () -> new SkyrimArmor(ArmorMaterials.STORMCLOAK, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), true));
+    public static final Supplier<SkyrimArmor> STORMCLOAK_OFFICER_BOOTS = ITEMS.register("stormcloak_officer_boots", () -> new SkyrimArmor(ArmorMaterials.STORMCLOAK, SkyrimArmor.Type.BOOTS, new Item.Properties(), true));
 
     //// MISC ////
     // Hunting bow
@@ -642,15 +636,15 @@ public class ItemRegistry
     // Longbow
     public static final Supplier<BowItem> LONGBOW = ITEMS.register("longbow", () -> new BowItem(new BowItem.Properties()));
     // Scaled armor
-    public static final Supplier<SkyrimArmor> SCALED_HELMET = ITEMS.register("scaled_helmet", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.SCALED, SkyrimArmor.Type.HELMET, new Item.Properties(), false));
-    public static final Supplier<SkyrimArmor> SCALED_CHESTPLATE = ITEMS.register("scaled_chestplate", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.SCALED, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), false));
-    public static final Supplier<SkyrimArmor> SCALED_LEGGINGS = ITEMS.register("scaled_leggings", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.SCALED, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), false));
-    public static final Supplier<SkyrimArmor> SCALED_BOOTS = ITEMS.register("scaled_boots", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.SCALED, SkyrimArmor.Type.BOOTS, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> SCALED_HELMET = ITEMS.register("scaled_helmet", () -> new SkyrimArmor(ArmorMaterials.SCALED, SkyrimArmor.Type.HELMET, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> SCALED_CHESTPLATE = ITEMS.register("scaled_chestplate", () -> new SkyrimArmor(ArmorMaterials.SCALED, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> SCALED_LEGGINGS = ITEMS.register("scaled_leggings", () -> new SkyrimArmor(ArmorMaterials.SCALED, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> SCALED_BOOTS = ITEMS.register("scaled_boots", () -> new SkyrimArmor(ArmorMaterials.SCALED, SkyrimArmor.Type.BOOTS, new Item.Properties(), false));
     // Hide armor
-    public static final Supplier<SkyrimArmor> HIDE_HELMET = ITEMS.register("hide_helmet", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.HIDE, SkyrimArmor.Type.HELMET, new Item.Properties(), false));
-    public static final Supplier<SkyrimArmor> HIDE_CHESTPLATE = ITEMS.register("hide_chestplate", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.HIDE, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), false));
-    public static final Supplier<SkyrimArmor> HIDE_LEGGINGS = ITEMS.register("hide_leggings", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.HIDE, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), false));
-    public static final Supplier<SkyrimArmor> HIDE_BOOTS = ITEMS.register("hide_boots", () -> new SkyrimArmor(com.ryankshah.skyrimcraft.item.ArmorMaterials.HIDE, SkyrimArmor.Type.BOOTS, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> HIDE_HELMET = ITEMS.register("hide_helmet", () -> new SkyrimArmor(ArmorMaterials.HIDE, SkyrimArmor.Type.HELMET, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> HIDE_CHESTPLATE = ITEMS.register("hide_chestplate", () -> new SkyrimArmor(ArmorMaterials.HIDE, SkyrimArmor.Type.CHESTPLATE, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> HIDE_LEGGINGS = ITEMS.register("hide_leggings", () -> new SkyrimArmor(ArmorMaterials.HIDE, SkyrimArmor.Type.LEGGINGS, new Item.Properties(), false));
+    public static final Supplier<SkyrimArmor> HIDE_BOOTS = ITEMS.register("hide_boots", () -> new SkyrimArmor(ArmorMaterials.HIDE, SkyrimArmor.Type.BOOTS, new Item.Properties(), false));
 
     // Swords
     public static final Supplier<SwordItem> CHILLREND = ITEMS.register("chillrend", () -> new SwordItem(ItemTier.STEEL, (new Item.Properties()).fireResistant()));
@@ -744,9 +738,17 @@ public class ItemRegistry
     public static final RegistryObject<Item, Item> PHILTER_OF_HAGGLING = ITEMS.register("philter_of_haggling", () -> new HagglingPotion(new Item.Properties(), 2, 30));
     public static final RegistryObject<Item, Item> ELIXIR_OF_HAGGLING = ITEMS.register("elixir_of_haggling", () -> new HagglingPotion(new Item.Properties(), 3, 60));
 
+    public static final RegistryObject<Item, Item> POTION_OF_TRUE_SHOT = ITEMS.register("potion_of_true_shot", () -> new TrueShotPotion(new Item.Properties(),1, 60));
+    public static final RegistryObject<Item, Item> DRAUGHT_OF_TRUE_SHOT = ITEMS.register("draught_of_true_shot", () -> new TrueShotPotion(new Item.Properties(), 2, 60));
+    public static final RegistryObject<Item, Item> PHILTER_OF_TRUE_SHOT = ITEMS.register("philter_of_true_shot", () -> new TrueShotPotion(new Item.Properties(), 3, 60));
+    public static final RegistryObject<Item, Item> ELIXIR_OF_TRUE_SHOT = ITEMS.register("elixir_of_true_shot", () -> new TrueShotPotion(new Item.Properties(), 4, 60));
+
+
     // Unique and non-levelled potions
     public static final RegistryObject<Item, Item> PHILTER_OF_THE_PHANTOM_POTION = ITEMS.register("philter_of_the_phantom_potion", () -> new SpectralPotion(new Item.Properties(), 600));
     public static final RegistryObject<Item, Item> POTION_OF_WATERWALKING = ITEMS.register("potion_of_waterwalking", () -> new WaterWalkingPotion(new Item.Properties(), 1, 1200));
+    public static final RegistryObject<Item, Item> POTION_OF_CURE_DISEASES = ITEMS.register("potion_of_cure_diseases", () -> new CureDiseasesPotion(new Item.Properties(), 200));
+    public static final RegistryObject<Item, Item> POTION_OF_CURE_POISON = ITEMS.register("potion_of_cure_poison", () -> new CurePoisonPotion(new Item.Properties(), 200));
 
     public static final RegistryObject<Item, Item> SABRE_CAT_SPAWN_EGG = ITEMS.register("sabre_cat_spawn_egg", () -> new SpawnEggItem(EntityRegistry.SABRE_CAT.get(), 0x505050, 0x606060, new Item.Properties()));
     public static final RegistryObject<Item, Item> GIANT_SPAWN_EGG = ITEMS.register("giant_spawn_egg", () -> new SpawnEggItem(EntityRegistry.GIANT.get(), 0x505050, 0x606060, new Item.Properties()));

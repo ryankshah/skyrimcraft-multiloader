@@ -51,7 +51,6 @@ public class SkyrimcraftItemModelProvider extends ItemModelProvider
         item(ItemRegistry.BEEF_STEW.get());
         item(ItemRegistry.CABBAGE_SOUP.get());
         item(ItemRegistry.CABBAGE_POTATO_SOUP.get());
-        item(ItemRegistry.CHICKEN_DUMPLING.get());
         item(ItemRegistry.CLAM_MEAT.get());
         item(ItemRegistry.SLICED_GOAT_CHEESE.get());
         item(ItemRegistry.SLICED_EIDAR_CHEESE.get());
@@ -62,6 +61,12 @@ public class SkyrimcraftItemModelProvider extends ItemModelProvider
         item(ItemRegistry.HORSE_MEAT.get());
         item(ItemRegistry.HORSE_HAUNCH.get());
         item(ItemRegistry.VEGETABLE_SOUP.get());
+        item(ItemRegistry.MAMMOTH_CHEESE_BOWL.get());
+        item(ItemRegistry.HONEY_NUT_TREAT.get());
+        item(ItemRegistry.GRILLED_LEEKS.get());
+        item(ItemRegistry.ELSWEYR_FONDUE.get());
+        item(ItemRegistry.CLAM_CHOWDER.get());
+        item(ItemRegistry.BRAIDED_BREAD.get());
 
         item(ItemRegistry.TOMATO_SEEDS.get());
 
@@ -78,6 +83,7 @@ public class SkyrimcraftItemModelProvider extends ItemModelProvider
         item(ItemRegistry.SKOOMA.get());
         item(ItemRegistry.SPICED_WINE.get());
         item(ItemRegistry.WINE.get());
+        item(ItemRegistry.BOILED_CREME_TREAT.get());
 
         item(ItemRegistry.CORUNDUM_INGOT.get());
         item(ItemRegistry.DWARVEN_METAL_INGOT.get());
@@ -384,6 +390,8 @@ public class SkyrimcraftItemModelProvider extends ItemModelProvider
 
         item(ItemRegistry.PHILTER_OF_THE_PHANTOM_POTION.get());
         item(ItemRegistry.POTION_OF_WATERWALKING.get());
+        item(ItemRegistry.POTION_OF_CURE_DISEASES.get());
+        item(ItemRegistry.POTION_OF_CURE_POISON.get());
 
         item(ItemRegistry.LASTING_POTENCY_POTION.get());
         item(ItemRegistry.DRAUGHT_LASTING_POTENCY_POTION.get());
@@ -395,6 +403,11 @@ public class SkyrimcraftItemModelProvider extends ItemModelProvider
         item(ItemRegistry.DRAUGHT_OF_HAGGLING.get());
         item(ItemRegistry.PHILTER_OF_HAGGLING.get());
         item(ItemRegistry.ELIXIR_OF_HAGGLING.get());
+
+        item(ItemRegistry.POTION_OF_TRUE_SHOT.get());
+        item(ItemRegistry.DRAUGHT_OF_TRUE_SHOT.get());
+        item(ItemRegistry.PHILTER_OF_TRUE_SHOT.get());
+        item(ItemRegistry.ELIXIR_OF_TRUE_SHOT.get());
 
         BlockData.addBlockItemModels(this);
     }

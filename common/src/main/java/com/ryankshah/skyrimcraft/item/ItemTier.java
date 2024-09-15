@@ -4,6 +4,7 @@ import com.ryankshah.skyrimcraft.registry.ItemRegistry;
 import com.ryankshah.skyrimcraft.registry.TagsRegistry;
 import com.ryankshah.skyrimcraft.util.SimpleTier;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public class ItemTier

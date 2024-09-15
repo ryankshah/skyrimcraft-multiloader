@@ -222,43 +222,43 @@ public class Character
         List<SkillWrapper> skillWrappers = new ArrayList<>(Stream.generate(SkillWrapper::new).limit(skills.size()).collect(Collectors.toList()));
         for(Skill skill : skills) {
             if(skill.getID() == SkillRegistry.SMITHING.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), smithing, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), smithing, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.HEAVY_ARMOR.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), heavyarmor, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), heavyarmor, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.BLOCK.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), block, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), block, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.TWO_HANDED.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), twohand, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), twohand, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.ONE_HANDED.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), onehand, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), onehand, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.ARCHERY.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), archery, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), archery, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.LIGHT_ARMOR.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), lightarmor, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), lightarmor, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.SNEAK.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), sneak, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), sneak, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.LOCKPICKING.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), lockpick, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), lockpick, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.PICKPOCKET.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), pickpocket, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), pickpocket, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.SPEECH.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), speech, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), speech, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.ALCHEMY.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), alchemy, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), alchemy, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.ILLUSION.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), illusion, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), illusion, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.CONJURATION.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), conj, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), conj, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.DESTRUCTION.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), destruct, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), destruct, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.RESTORATION.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), restoration, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), restoration, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.ALTERATION.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), alteration, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), alteration, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.ALCHEMY.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), alchemy, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), alchemy, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
             if(skill.getID() == SkillRegistry.ENCHANTING.get().getID())
-                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), enchanting, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset()));
+                skillWrappers.set(skill.getID(), new SkillWrapper(skill, skill.getID(), enchanting, skill.getTotalXp(), skill.getXpProgress(), skill.getSkillUseMultiplier(), skill.getSkillUseOffset(), skill.getSkillImproveMultiplier(), skill.getSkillImproveOffset(), skill.getSkillPerks()));
 
 //            skills.set(skill.getID(), skill);
         }

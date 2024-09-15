@@ -44,7 +44,8 @@ public class SpellBook extends Item
 //            PacketDistributor.SERVER.noArg().send(addSpell);
             playerIn.displayClientMessage(Component.translatable("spellbook.learn", Component.translatable(spell.get().getName()).withStyle(ChatFormatting.RED)), false);
             playerIn.awardStat(Stats.ITEM_USED.get(this));
-            itemstack.shrink(1);
+            playerIn.getInventory().removeItem(playerIn.getInventory().findSlotMatchingItem(itemstack), 1);
+//            itemstack.shrink(1);
         } else {
             playerIn.displayClientMessage(Component.translatable("spellbook.known"), false);
         }

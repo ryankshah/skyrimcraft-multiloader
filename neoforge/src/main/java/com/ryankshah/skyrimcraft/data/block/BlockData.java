@@ -1,18 +1,31 @@
 package com.ryankshah.skyrimcraft.data.block;
 
 import com.ryankshah.skyrimcraft.Constants;
+import com.ryankshah.skyrimcraft.block.JazbayGrapeBushBlock;
 import com.ryankshah.skyrimcraft.block.PearlOysterBlock;
 import com.ryankshah.skyrimcraft.registry.BlockRegistry;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.data.models.blockstates.PropertyDispatch;
+import net.minecraft.data.models.blockstates.Variant;
+import net.minecraft.data.models.blockstates.VariantProperties;
+import net.minecraft.data.models.model.ModelTemplate;
+import net.minecraft.data.models.model.ModelTemplates;
+import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.LanguageProvider;
+
+import java.util.function.Function;
 
 public class BlockData
 {
@@ -61,6 +74,10 @@ public class BlockData
         provider.addBlock(BlockRegistry.PURPLE_MOUNTAIN_FLOWER, "Purple Mountain Flower");
         provider.addBlock(BlockRegistry.LAVENDER, "Lavender");
 
+        provider.addBlock(BlockRegistry.JAZBAY_GRAPE_BUSH, "Jazbay Grape Bush");
+        provider.addBlock(BlockRegistry.JUNIPER_BERRY_BUSH, "Juniper Berry Bush");
+        provider.addBlock(BlockRegistry.SNOWBERRY_BUSH, "Snowberry Bush");
+
         provider.addBlock(BlockRegistry.BLEEDING_CROWN_BLOCK, "Bleeding Crown");
         provider.addBlock(BlockRegistry.WHITE_CAP_BLOCK, "White Cap");
         provider.addBlock(BlockRegistry.BLISTERWORT_BLOCK, "Blisterwort");
@@ -72,54 +89,6 @@ public class BlockData
 
         provider.addBlock(BlockRegistry.TOMATO_CROP, "Tomatoes");
         provider.addBlock(BlockRegistry.GARLIC_CROP, "Garlic");
-    }
-
-    private static String name(Block block) {
-        return key(block).getPath();
-    }
-
-    private static ResourceLocation key(Block block) {
-        return BuiltInRegistries.BLOCK.getKey(block);
-    }
-
-    public static void threeStageCrop(BlockStateProvider provider, Block block) {
-        ResourceLocation blockKey = key(block);
-        String path = blockKey.getPath();
-
-        ModelFile stage0 = provider.models().getBuilder(key(block) + "_stage0")
-                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/crop")))
-                .texture("crop", provider.modLoc("block/" + name(block) + "_stage0"))
-                .renderType("cutout")
-                .texture("particle", provider.modLoc("block/" + name(block) + "_stage0"));
-        ModelFile stage1 = provider.models().getBuilder(name(block) + "_stage1")
-                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/crop")))
-                .texture("crop", provider.modLoc("block/" + name(block) + "_stage1"))
-                .renderType("cutout")
-                .texture("particle", provider.modLoc("block/" + name(block) + "_stage1"));
-        ModelFile stage2 = provider.models().getBuilder(key(block) + "_stage2")
-                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/crop")))
-                .texture("crop", provider.modLoc("block/" + name(block) + "_stage2"))
-                .renderType("cutout")
-                .texture("particle", provider.modLoc("block/" + name(block) + "_stage2"));
-        ModelFile stage3 = provider.models().getBuilder(key(block) + "_stage3")
-                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/crop")))
-                .texture("crop", provider.modLoc("block/" + name(block) + "_stage3"))
-                .renderType("cutout")
-                .texture("particle", provider.modLoc("block/" + name(block) + "_stage3"));
-
-        provider.getVariantBuilder(block).forAllStatesExcept(state ->
-        {
-            ModelFile mf = switch (state.getValue(CropBlock.AGE)) {
-                case 0, 1 -> stage0;
-                case 2, 3 -> stage1;
-                case 4, 5, 6 -> stage2;
-                case 7 -> stage3;
-                default -> stage0;
-            };
-            return ConfiguredModel.builder()
-                    .modelFile(mf)
-                    .build();
-        });
     }
 
     public static void addBlockStateModels(BlockStateProvider provider) {
@@ -208,6 +177,10 @@ public class BlockData
 
         threeStageCrop(provider, BlockRegistry.ASH_YAM_CROP.get());
 
+        threeStageBush(provider, BlockRegistry.JAZBAY_GRAPE_BUSH.get());
+        threeStageBush(provider, BlockRegistry.JUNIPER_BERRY_BUSH.get());
+        threeStageBush(provider, BlockRegistry.SNOWBERRY_BUSH.get());
+
 //        provider.horizontalBlock(SOVNGARDE_PORTAL.get(), state -> provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/sovngarde_portal")));
 //        provider.simpleBlockItem(SOVNGARDE_PORTAL.get(), provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/sovngarde_portal")));
     }
@@ -274,5 +247,93 @@ public class BlockData
         String path = blockKey.getPath();
 
         provider.simpleBlock(block, provider.models().crop(path, provider.modLoc("block/" + path)).renderType("cutout"));
+    }
+
+    public static void threeStageCrop(BlockStateProvider provider, Block block) {
+        ResourceLocation blockKey = key(block);
+        String path = blockKey.getPath();
+
+        ModelFile stage0 = provider.models().getBuilder(key(block) + "_stage0")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/crop")))
+                .texture("crop", provider.modLoc("block/" + name(block) + "_stage0"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block) + "_stage0"));
+        ModelFile stage1 = provider.models().getBuilder(name(block) + "_stage1")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/crop")))
+                .texture("crop", provider.modLoc("block/" + name(block) + "_stage1"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block) + "_stage1"));
+        ModelFile stage2 = provider.models().getBuilder(key(block) + "_stage2")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/crop")))
+                .texture("crop", provider.modLoc("block/" + name(block) + "_stage2"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block) + "_stage2"));
+        ModelFile stage3 = provider.models().getBuilder(key(block) + "_stage3")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/crop")))
+                .texture("crop", provider.modLoc("block/" + name(block) + "_stage3"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block) + "_stage3"));
+
+        provider.getVariantBuilder(block).forAllStatesExcept(state ->
+        {
+            ModelFile mf = switch (state.getValue(CropBlock.AGE)) {
+                case 0, 1 -> stage0;
+                case 2, 3 -> stage1;
+                case 4, 5, 6 -> stage2;
+                case 7 -> stage3;
+                default -> stage0;
+            };
+            return ConfiguredModel.builder()
+                    .modelFile(mf)
+                    .build();
+        });
+    }
+
+    public static void threeStageBush(BlockStateProvider provider, Block block) {
+        ResourceLocation blockKey = key(block);
+        String path = blockKey.getPath();
+
+        ModelFile stage0 = provider.models().getBuilder(key(block) + "_stage0")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/cross")))
+                .texture("cross", provider.modLoc("block/" + name(block) + "_stage0"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block) + "_stage0"));
+        ModelFile stage1 = provider.models().getBuilder(name(block) + "_stage1")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/cross")))
+                .texture("cross", provider.modLoc("block/" + name(block) + "_stage1"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block) + "_stage1"));
+        ModelFile stage2 = provider.models().getBuilder(key(block) + "_stage2")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/cross")))
+                .texture("cross", provider.modLoc("block/" + name(block) + "_stage2"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block) + "_stage2"));
+        ModelFile stage3 = provider.models().getBuilder(key(block) + "_stage3")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/cross")))
+                .texture("cross", provider.modLoc("block/" + name(block) + "_stage3"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block) + "_stage3"));
+
+        provider.getVariantBuilder(block).forAllStatesExcept(state ->
+        {
+            ModelFile mf = switch (state.getValue(BlockStateProperties.AGE_3)) {
+                case 0 -> stage0;
+                case 1 -> stage1;
+                case 2 -> stage2;
+                case 3 -> stage3;
+                default -> stage0;
+            };
+            return ConfiguredModel.builder()
+                    .modelFile(mf)
+                    .build();
+        });
+    }
+
+    private static String name(Block block) {
+        return key(block).getPath();
+    }
+
+    private static ResourceLocation key(Block block) {
+        return BuiltInRegistries.BLOCK.getKey(block);
     }
 }

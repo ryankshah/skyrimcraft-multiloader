@@ -21,6 +21,11 @@ public class ShoutUnrelentingForce extends Spell //implements IForgeRegistryEntr
     }
 
     @Override
+    public String getShoutName() {
+        return "Fus Roh Dah";
+    }
+
+    @Override
     public List<String> getDescription() {
         List<String> desc = new ArrayList<>();
         desc.add("Your voice is raw power,");

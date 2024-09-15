@@ -12,6 +12,7 @@ import com.ryankshah.skyrimcraft.character.magic.entity.render.UnrelentingForceR
 import com.ryankshah.skyrimcraft.entity.boss.dragon.render.SkyrimDragonRenderer;
 import com.ryankshah.skyrimcraft.entity.creature.model.DraugrModel;
 import com.ryankshah.skyrimcraft.entity.creature.model.SkeeverModel;
+import com.ryankshah.skyrimcraft.entity.creature.model.VenomfangSkeeverModel;
 import com.ryankshah.skyrimcraft.entity.creature.render.*;
 import com.ryankshah.skyrimcraft.entity.npc.model.FalmerModel;
 import com.ryankshah.skyrimcraft.entity.npc.model.KhajiitModel;
@@ -50,6 +51,7 @@ public class SkyrimcraftCommonClient
 
         // Mobs
         entityRenderers.accept(EntityRegistry.SABRE_CAT.get(), SabreCatRenderer::new);
+        entityRenderers.accept(EntityRegistry.VALE_SABRE_CAT.get(), ValeSabreCatRenderer::new);
         entityRenderers.accept(EntityRegistry.GIANT.get(), GiantRenderer::new);
         entityRenderers.accept(EntityRegistry.MAMMOTH.get(), MammothRenderer::new);
         entityRenderers.accept(EntityRegistry.DRAGON.get(), SkyrimDragonRenderer::new);
@@ -67,6 +69,7 @@ public class SkyrimcraftCommonClient
         entityRenderers.accept(EntityRegistry.FALMER.get(), FalmerRenderer::new);
 
         entityRenderers.accept(EntityRegistry.SKEEVER.get(), SkeeverRenderer::new);
+        entityRenderers.accept(EntityRegistry.VENOMFANG_SKEEVER.get(), VenomfangSkeeverRenderer::new);
 
         entityRenderers.accept(EntityRegistry.ABECEAN_LONGFIN.get(), AbeceanLongfinRenderer::new);
         entityRenderers.accept(EntityRegistry.CYRODILIC_SPADETAIL.get(), CyrodilicSpadetailRenderer::new);
@@ -84,6 +87,7 @@ public class SkyrimcraftCommonClient
             builder.put(KhajiitHeadModel.LAYER_LOCATION, KhajiitHeadModel.createBodyLayer());
             builder.put(KhajiitTailModel.LAYER_LOCATION, KhajiitTailModel.createBodyLayer());
             builder.put(SkeeverModel.LAYER_LOCATION, SkeeverModel.createBodyLayer());
+            builder.put(VenomfangSkeeverModel.LAYER_LOCATION, VenomfangSkeeverModel.createBodyLayer());
             builder.put(KhajiitModel.LAYER_LOCATION, KhajiitModel.createBodyLayer());
             builder.put(KhajiitModel.OUTER_ARMOR_LAYER_LOCATION, outerArmor);
             builder.put(KhajiitModel.INNER_ARMOR_LAYER_LOCATION, innerArmor);

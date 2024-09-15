@@ -26,6 +26,11 @@ public class ShoutDragonAspect extends Spell //implements IForgeRegistryEntry<IS
     }
 
     @Override
+    public String getShoutName() {
+        return "Mul Qah Diiv";
+    }
+
+    @Override
     public List<String> getDescription() {
         List<String> desc = new ArrayList<>();
         desc.add("Take on the mighty aspect of a");

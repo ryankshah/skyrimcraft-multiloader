@@ -15,6 +15,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
+import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +111,84 @@ public class MenuScreen extends Screen
 //        minecraft.getTextureManager().bind(AbstractGui.GUI_ICONS_LOCATION);
     }
 
+    // Helper method to check if mouse is over a given area
+    private boolean isMouseOver(int mouseX, int mouseY, int x, int y, int width, int height) {
+        return mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
+    }
+
+    @Override
+    public boolean isMouseOver(double mouseX, double mouseY) {
+        // Calculate positions of menu directions
+        int skillsX = this.width / 2 - font.width(SKILLS) / 2;
+        int skillsY = this.height / 2 - 65;
+        int mapX = this.width / 2 - font.width(MAP) / 2;
+        int mapY = this.height / 2 + 55;
+        int questsX = this.width / 2 + 99 - font.width(QUESTS) / 2;
+        int questsY = this.height / 2 - 4;
+        int magicX = this.width / 2 - 103 - 2*font.width(MAGIC);
+        int magicY = this.height / 2 - 4;
+
+        // Detect mouse hover and update currentDirection
+        if (isMouseOver((int)mouseX, (int)mouseY, skillsX, skillsY, font.width(SKILLS), font.lineHeight)) {
+            currentDirection = Direction.NORTH;
+            GLFW.glfwSetCursor(minecraft.getWindow().getWindow(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_HAND_CURSOR));
+            return true;
+        } else if (isMouseOver((int)mouseX, (int)mouseY, mapX, mapY, font.width(MAP), font.lineHeight)) {
+            currentDirection = Direction.SOUTH;
+            GLFW.glfwSetCursor(minecraft.getWindow().getWindow(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_HAND_CURSOR));
+            return true;
+        } else if (isMouseOver((int)mouseX, (int)mouseY, questsX, questsY, font.width(QUESTS), font.lineHeight)) {
+            currentDirection = Direction.WEST;
+            GLFW.glfwSetCursor(minecraft.getWindow().getWindow(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_HAND_CURSOR));
+            return true;
+        } else if (isMouseOver((int)mouseX, (int)mouseY, magicX, magicY, font.width(MAGIC), font.lineHeight)) {
+            currentDirection = Direction.EAST;
+            GLFW.glfwSetCursor(minecraft.getWindow().getWindow(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_HAND_CURSOR));
+            return true;
+        } else {
+            currentDirection = Direction.NONE;
+            GLFW.glfwSetCursor(minecraft.getWindow().getWindow(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_ARROW_CURSOR));
+        }
+        
+        return super.isMouseOver(mouseX, mouseY);
+    }
+
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if (button == 0) { // Left click
+            if (currentDirection == Direction.NORTH) {
+                GLFW.glfwSetCursor(minecraft.getWindow().getWindow(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_ARROW_CURSOR));
+                minecraft.setScreen(null);
+                minecraft.setScreen(new SkillScreen());
+            } else if (currentDirection == Direction.SOUTH) {
+                GLFW.glfwSetCursor(minecraft.getWindow().getWindow(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_ARROW_CURSOR));
+                minecraft.setScreen(null);
+                minecraft.player.displayClientMessage(Component.translatable("skyrimcraft.menu.option.unavailable"), false);
+            } else if (currentDirection == Direction.WEST) {
+                GLFW.glfwSetCursor(minecraft.getWindow().getWindow(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_ARROW_CURSOR));
+                minecraft.setScreen(null);
+                minecraft.player.displayClientMessage(Component.translatable("skyrimcraft.menu.option.unavailable"), false);
+            } else if (currentDirection == Direction.EAST) {
+                AtomicReference<List<Spell>> knownSpells;
+                if(minecraft.player != null)
+                    knownSpells = new AtomicReference<>(Services.PLATFORM.getCharacter(Minecraft.getInstance().player).getKnownSpells()); //Minecraft.getInstance().player.getData(PlayerAttachments.CHARACTER).getKnownSpells());
+                else
+                    knownSpells = new AtomicReference<>(new ArrayList<>());
+
+                if(knownSpells.get().isEmpty()) {
+                    GLFW.glfwSetCursor(minecraft.getWindow().getWindow(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_ARROW_CURSOR));
+                    minecraft.setScreen(null);
+                    minecraft.player.displayClientMessage(Component.translatable("skyrimcraft.menu.option.magic.none"), false);
+                } else {
+                    GLFW.glfwSetCursor(minecraft.getWindow().getWindow(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_ARROW_CURSOR));
+                    minecraft.setScreen(null);
+                    minecraft.setScreen(new MagicScreen(knownSpells.get()));
+                }
+            }
+        }
+        return super.mouseClicked(mouseX, mouseY, button);
+    }
+
     public void drawScaledString(GuiGraphics graphics, String str, int x, int y, int color, float scale) {
         graphics.pose().pushPose();
         graphics.pose().scale(scale, scale, scale);
@@ -142,6 +221,7 @@ public class MenuScreen extends Screen
         else if(KeysRegistry.SKYRIM_MENU_SOUTH.get().matches(keyCode, scanCode))
             currentDirection = Direction.SOUTH;
         else if(KeysRegistry.SKYRIM_MENU_ENTER.get().matches(keyCode, scanCode)) {
+            GLFW.glfwSetCursor(minecraft.getWindow().getWindow(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_ARROW_CURSOR));
             if(currentDirection == Direction.NORTH) {
                 minecraft.setScreen(null);
                 minecraft.setScreen(new SkillScreen());

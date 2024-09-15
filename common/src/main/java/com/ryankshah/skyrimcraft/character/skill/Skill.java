@@ -2,7 +2,11 @@ package com.ryankshah.skyrimcraft.character.skill;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.ryankshah.skyrimcraft.util.CodecUtils;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.AbstractMap;
@@ -144,41 +148,6 @@ public abstract class Skill
     public float getXpProgress() { return this.xpProgress; }
 
     public abstract List<Perk> getSkillPerks();
-
-    public class Perk
-    {
-        protected String name;
-        protected int levelRequirement;
-        protected Perk[] parents;
-        protected boolean unlocked;
-
-        public Perk(String name, int levelRequirement, Perk[] parents, boolean unlocked) {
-            this.name = name;
-            this.levelRequirement = levelRequirement;
-            this.parents = parents;
-            this.unlocked = unlocked;
-        }
-
-        public String getName() {
-            return this.name;
-        }
-
-        public int getLevelRequirement() {
-            return this.levelRequirement;
-        }
-
-        public Perk[] getParents() {
-            return this.parents;
-        }
-
-        public boolean isUnlocked() {
-            return unlocked;
-        }
-
-        public void unlock() {
-            this.unlocked = true;
-        }
-    }
 
     @Override
     public String toString() {

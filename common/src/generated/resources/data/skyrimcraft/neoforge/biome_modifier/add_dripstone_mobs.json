@@ -4,10 +4,24 @@
     "minecraft:dripstone_caves",
     "minecraft:lush_caves"
   ],
-  "spawners": {
-    "type": "skyrimcraft:torchbug",
-    "maxCount": 6,
-    "minCount": 4,
-    "weight": 40
-  }
+  "spawners": [
+    {
+      "type": "skyrimcraft:torchbug",
+      "maxCount": 6,
+      "minCount": 4,
+      "weight": 40
+    },
+    {
+      "type": "skyrimcraft:skeever",
+      "maxCount": 3,
+      "minCount": 2,
+      "weight": 40
+    },
+    {
+      "type": "skyrimcraft:venomfang_skeever",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 40
+    }
+  ]
 }

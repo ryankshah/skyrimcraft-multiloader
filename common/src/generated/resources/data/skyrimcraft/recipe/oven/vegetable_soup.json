@@ -1,0 +1,21 @@
+{
+  "type": "skyrimcraft:oven",
+  "category": "food",
+  "ingredients": [
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "skyrimcraft:leek"
+    },
+    {
+      "item": "skyrimcraft:tomato"
+    }
+  ],
+  "level": 1,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:vegetable_soup"
+  },
+  "xp": 5
+}

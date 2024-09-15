@@ -52,17 +52,17 @@ public class BirdsNestBlock extends Block
         return RenderShape.MODEL;
     }
 
-//    @Override
-//    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-//        BlockState blockstate = pLevel.getBlockState(pPos.below());
-//        if (blockstate.is(this)) {
-//            return true;
-//        } else if(blockstate.canSustainPlant(pLevel, pPos.below(), Direction.UP, pState).isTrue()) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
+    @Override
+    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        BlockState blockstate = pLevel.getBlockState(pPos.below());
+        if (blockstate.is(this)) {
+            return true;
+        } else if(blockstate.getBlock() == Blocks.GRASS_BLOCK) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 //    @Override
 //    public PlantType getPlantType(BlockGetter level, BlockPos pos) {

@@ -62,6 +62,8 @@ public abstract class Spell
         return "";
     }
 
+    public boolean isContinuous() { return false; }
+
     /**
      * Get the spell's description
      * @return description
@@ -150,7 +152,11 @@ public abstract class Spell
     }
 
     public float getChargeTime() {
-        return getCastReference() == CastReference.CHARGE ? getStageChargeTime() * getNumStages() : 0f;
+        return 2.2f; //getCastReference() == CastReference.CHARGE ? getStageChargeTime() * getNumStages() : 0f;
+    }
+
+    public String getShoutName() {
+        return "";
     }
 
     public int getNumStages() {

@@ -17,6 +17,7 @@ import com.ryankshah.skyrimcraft.network.character.UpdateCurrentTarget;
 import com.ryankshah.skyrimcraft.network.skill.AddXpToSkill;
 import com.ryankshah.skyrimcraft.registry.EntityRegistry;
 import com.ryankshah.skyrimcraft.world.CommonSpawning;
+import com.ryankshah.skyrimcraft.world.WorldGenConstants;
 import commonnetwork.api.Dispatcher;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentType;
@@ -30,8 +31,13 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.impl.attachment.AttachmentRegistryImpl;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -39,9 +45,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.levelgen.GenerationStep;
 
 import java.util.Iterator;
 import java.util.List;
@@ -105,6 +114,9 @@ public class SkyrimcraftFabric implements ModInitializer
         CommonSpawning.SNOW_MOB_SPAWNS.forEach(spawnerData ->
                 BiomeModifications.addSpawn(BiomeSelectors.includeByKey(Biomes.SNOWY_BEACH, Biomes.SNOWY_PLAINS, Biomes.SNOWY_SLOPES, Biomes.SNOWY_TAIGA), MobCategory.MONSTER, spawnerData.type, spawnerData.getWeight().asInt(), spawnerData.minCount, spawnerData.maxCount)
         );
+        CommonSpawning.END_MOB_SPAWNS.forEach(spawnerData ->
+                BiomeModifications.addSpawn(BiomeSelectors.includeByKey(Biomes.END_HIGHLANDS), MobCategory.MONSTER, spawnerData.type, spawnerData.getWeight().asInt(), spawnerData.minCount, spawnerData.maxCount)
+        );
         CommonSpawning.PLAINS_MOB_SPAWNS.forEach(spawnerData ->
                 BiomeModifications.addSpawn(BiomeSelectors.includeByKey(Biomes.PLAINS, Biomes.SAVANNA, Biomes.SAVANNA_PLATEAU), MobCategory.MONSTER, spawnerData.type, spawnerData.getWeight().asInt(), spawnerData.minCount, spawnerData.maxCount)
         );
@@ -149,6 +161,8 @@ public class SkyrimcraftFabric implements ModInitializer
         // TODO Below: refer to fieldtofork fabric
         //LootTableEvents.MODIFY.register((lootTableResourceKey, lootBuilder, lootTableSource) -> { });
         SkyrimcraftLootTables.addLootTables();
+
+        addFeatures();
     }
 
     public static void initAttachments() {
@@ -285,5 +299,77 @@ public class SkyrimcraftFabric implements ModInitializer
             }
         }
         return true;
+    }
+
+    protected void addFeatures() {
+//        Registry.register(Registries.FEATURE, EXAMPLE_FEATURE_ID, EXAMPLE_FEATURE);
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Decoration.UNDERGROUND_ORES,
+                WorldGenConstants.CORUNDUM_ORE_PLACED_KEY);
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Decoration.UNDERGROUND_ORES,
+                WorldGenConstants.EBONY_ORE_PLACED_KEY);
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Decoration.UNDERGROUND_ORES,
+                WorldGenConstants.MALACHITE_ORE_PLACED_KEY);
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Decoration.UNDERGROUND_ORES,
+                WorldGenConstants.MOONSTONE_ORE_PLACED_KEY);
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Decoration.UNDERGROUND_ORES,
+                WorldGenConstants.ORICHALCUM_ORE_PLACED_KEY);
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Decoration.UNDERGROUND_ORES,
+                WorldGenConstants.QUICKSILVER_ORE_PLACED_KEY);
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Decoration.UNDERGROUND_ORES,
+                WorldGenConstants.SILVER_ORE_PLACED_KEY);
+
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                WorldGenConstants.MOUNTAIN_FLOWER_PLACED_KEY);
+
+        BiomeModifications.addFeature(
+                BiomeSelectors.tag(BiomeTags.IS_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                WorldGenConstants.BUSHES_PLACED_KEY);
+
+        BiomeModifications.addFeature(
+                BiomeSelectors.foundInOverworld(),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                WorldGenConstants.MUSHROOMS_PLACED_KEY);
+
+        BiomeModifications.addFeature(
+                BiomeSelectors.includeByKey(Biomes.DESERT, Biomes.SAVANNA_PLATEAU, Biomes.BADLANDS, Biomes.WOODED_BADLANDS, Biomes.ERODED_BADLANDS),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                WorldGenConstants.DESERT_PLANTS_PLACED_KEY);
+
+        BiomeModifications.addFeature(
+                BiomeSelectors.tag(BiomeTags.IS_BEACH),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                WorldGenConstants.OYSTERS_PLACED_KEY);
+
+        BiomeModifications.addFeature(
+                BiomeSelectors.tag(BiomeTags.IS_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                WorldGenConstants.BIRDS_NEST_PLACED_KEY);
+
+        BiomeModifications.addFeature(
+                BiomeSelectors.tag(BiomeTags.IS_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                WorldGenConstants.LAVENDER_PLACED_KEY);
+
+        BiomeModifications.addFeature(
+                BiomeSelectors.tag(BiomeTags.IS_HILL),
+                GenerationStep.Decoration.VEGETAL_DECORATION,
+                WorldGenConstants.CREEP_CLUSTER_PLACED_KEY);
     }
 }

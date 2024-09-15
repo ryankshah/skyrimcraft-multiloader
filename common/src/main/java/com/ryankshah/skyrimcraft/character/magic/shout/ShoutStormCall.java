@@ -27,6 +27,11 @@ public class ShoutStormCall extends Spell { // implements IForgeRegistryEntry<IS
     }
 
     @Override
+    public String getShoutName() {
+        return "Strun Bah Qo";
+    }
+
+    @Override
     public List<String> getDescription() {
         List<String> desc = new ArrayList<>();
         desc.add("A shout to the skies, that");
@@ -75,7 +80,6 @@ public class ShoutStormCall extends Spell { // implements IForgeRegistryEntry<IS
     public SpellDifficulty getDifficulty() {
         return SpellDifficulty.NA;
     }
-
     @Override
     public void onCast() {
         // call lightning storm on target

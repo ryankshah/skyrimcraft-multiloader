@@ -22,6 +22,11 @@ public class ShoutClearSkies extends Spell //implements IForgeRegistryEntry<ISpe
     }
 
     @Override
+    public String getShoutName() {
+        return "Lok Vah Koor";
+    }
+
+    @Override
     public List<String> getDescription() {
         List<String> desc = new ArrayList<>();
         desc.add("Minecraft yields before your");

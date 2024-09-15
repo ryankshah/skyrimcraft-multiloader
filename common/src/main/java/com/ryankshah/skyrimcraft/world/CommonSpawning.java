@@ -1,9 +1,6 @@
 package com.ryankshah.skyrimcraft.world;
 
-import com.ryankshah.skyrimcraft.entity.creature.AbeceanLongfin;
-import com.ryankshah.skyrimcraft.entity.creature.CyrodilicSpadetail;
-import com.ryankshah.skyrimcraft.entity.creature.Draugr;
-import com.ryankshah.skyrimcraft.entity.creature.DwarvenSpider;
+import com.ryankshah.skyrimcraft.entity.creature.*;
 import com.ryankshah.skyrimcraft.registry.EntityRegistry;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -22,7 +19,9 @@ public class CommonSpawning
 
     public static List<MobSpawnSettings.SpawnerData> CAVE_MOB_SPAWNS = List.of(
             new MobSpawnSettings.SpawnerData(EntityRegistry.DRAUGR.get(), 40, 2, 3),
-            new MobSpawnSettings.SpawnerData(EntityRegistry.DWARVEN_SPIDER.get(), 40, 1, 2)
+            new MobSpawnSettings.SpawnerData(EntityRegistry.DWARVEN_SPIDER.get(), 40, 1, 2),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.SKEEVER.get(), 40, 2, 3),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.VENOMFANG_SKEEVER.get(), 40, 1, 2)
     );
 
     public static List<MobSpawnSettings.SpawnerData> PLAINS_MOB_SPAWNS = List.of(
@@ -31,13 +30,21 @@ public class CommonSpawning
 
     public static List<MobSpawnSettings.SpawnerData> SNOW_MOB_SPAWNS = List.of(
             new MobSpawnSettings.SpawnerData(EntityRegistry.SABRE_CAT.get(), 4, 1, 2),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.VALE_SABRE_CAT.get(), 4, 1, 2),
             new MobSpawnSettings.SpawnerData(EntityRegistry.GIANT.get(), 1, 2, 2),
             new MobSpawnSettings.SpawnerData(EntityRegistry.DRAUGR.get(), 40, 2, 2),
-            new MobSpawnSettings.SpawnerData(EntityRegistry.DWARVEN_SPIDER.get(), 40, 1, 2)
+            new MobSpawnSettings.SpawnerData(EntityRegistry.DWARVEN_SPIDER.get(), 40, 1, 2),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.SKEEVER.get(), 40, 2, 3),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.VENOMFANG_SKEEVER.get(), 40, 1, 2)
+    );
+    public static List<MobSpawnSettings.SpawnerData> END_MOB_SPAWNS = List.of(
+            new MobSpawnSettings.SpawnerData(EntityRegistry.VALE_SABRE_CAT.get(), 10, 1, 2)
     );
 
     public static List<MobSpawnSettings.SpawnerData> DRIPSTONE_MOB_SPAWNS = List.of(
-            new MobSpawnSettings.SpawnerData(EntityRegistry.TORCHBUG.get(), 40, 4, 6)
+            new MobSpawnSettings.SpawnerData(EntityRegistry.TORCHBUG.get(), 40, 4, 6),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.SKEEVER.get(), 40, 2, 3),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.VENOMFANG_SKEEVER.get(), 40, 1, 2)
     );
 
     public static List<MobSpawnSettings.SpawnerData> PLAINS_FLYING_MOB_SPAWNS = List.of(

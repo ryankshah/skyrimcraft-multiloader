@@ -1,0 +1,21 @@
+{
+  "type": "skyrimcraft:oven",
+  "category": "food",
+  "ingredients": [
+    {
+      "item": "minecraft:carrot"
+    },
+    {
+      "item": "skyrimcraft:salt_pile"
+    },
+    {
+      "item": "skyrimcraft:garlic"
+    }
+  ],
+  "level": 1,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:beef_stew"
+  },
+  "xp": 5
+}

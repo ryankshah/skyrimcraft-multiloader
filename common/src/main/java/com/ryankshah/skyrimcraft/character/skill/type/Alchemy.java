@@ -1,5 +1,7 @@
 package com.ryankshah.skyrimcraft.character.skill.type;
 
+import com.ryankshah.skyrimcraft.character.skill.Perk;
+import com.ryankshah.skyrimcraft.character.skill.Perks;
 import com.ryankshah.skyrimcraft.character.skill.Skill;
 
 import java.util.AbstractMap;
@@ -54,6 +56,6 @@ public class Alchemy extends Skill
 
     @Override
     public List<Perk> getSkillPerks() {
-        return new ArrayList<>();
+        return List.of(Perks.ALCHEMIST, Perks.PHYSICIAN, Perks.BENEFACTOR, Perks.EXPERIMENTER, Perks.POISONER, Perks.CONCENTRATED_POISON, Perks.GREEN_THUMB, Perks.SNAKEBLOOD, Perks.PURITY);
     }
 }

@@ -30,6 +30,11 @@ public class ShoutFrostBreath extends Spell //implements IForgeRegistryEntry<ISp
     }
 
     @Override
+    public String getShoutName() {
+        return "Fo Krah Diin";
+    }
+
+    @Override
     public List<String> getDescription() {
         List<String> desc = new ArrayList<>();
         desc.add("Your breath is winter, you");

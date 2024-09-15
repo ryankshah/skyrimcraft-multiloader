@@ -1,0 +1,21 @@
+{
+  "type": "skyrimcraft:oven",
+  "category": "food",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:leek"
+    },
+    {
+      "item": "skyrimcraft:tomato"
+    },
+    {
+      "item": "skyrimcraft:salt_pile"
+    }
+  ],
+  "level": 1,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:tomato_soup"
+  },
+  "xp": 5
+}

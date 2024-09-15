@@ -267,7 +267,7 @@
               "count": {
                 "type": "minecraft:uniform",
                 "max": 1.0,
-                "min": 0.25
+                "min": 0.5
               },
               "function": "minecraft:set_count"
             }
@@ -282,7 +282,7 @@
               "count": {
                 "type": "minecraft:uniform",
                 "max": 1.0,
-                "min": 0.25
+                "min": 0.5
               },
               "function": "minecraft:set_count"
             }
@@ -297,7 +297,22 @@
               "count": {
                 "type": "minecraft:uniform",
                 "max": 1.0,
-                "min": 0.25
+                "min": 0.5
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "skyrimcraft:ash_yam_slips"
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.5
               },
               "function": "minecraft:set_count"
             }

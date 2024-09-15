@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-06T17:31:33.9365019	Item Models: skyrimcraft
+// 1.21.1	2024-09-10T23:43:27.5457352	Item Models: skyrimcraft
 24679915ce5b2b3a4fcb00fd4f1c08bdec28e5fc assets/skyrimcraft/models/item/abecean_longfin.json
 0759cc0f9da10e5faf7d443061d7da3c39c6857a assets/skyrimcraft/models/item/ahzidals_ring_of_arcana.json
 b0d9e82a0ed81545f591222c24c9d7a84e313923 assets/skyrimcraft/models/item/alchemy_skillbook.json
@@ -42,7 +42,9 @@ b0d9e82a0ed81545f591222c24c9d7a84e313923 assets/skyrimcraft/models/item/block_sk
 d04c3c66462f0a277b7b9c7e63393ee56bd06114 assets/skyrimcraft/models/item/blue_butterfly_wing.json
 c1967fe4d8e9d6583fc83e64295ea0e36dd71374 assets/skyrimcraft/models/item/blue_dartwing.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/skyrimcraft/models/item/blue_dartwing_spawn_egg.json
+6b877bf9686a9f04ecb202d97aaeb49fbe1c2d99 assets/skyrimcraft/models/item/boiled_creme_treat.json
 94648792d922871fc3fcd49c5ce6a8b8e59eb9cc assets/skyrimcraft/models/item/bone_hawk_ring.json
+bc50ca5b33623a7fecd2c103efb1ed1ba30ff0ff assets/skyrimcraft/models/item/braided_bread.json
 adc9c0efab610bd5f1c5435afd587e276220cf64 assets/skyrimcraft/models/item/briar_heart.json
 45a479272ba0af01fc92e6bad7aad92af85d52cd assets/skyrimcraft/models/item/butter.json
 55bcd8f971bb1c0878e4407fc0a6a2380732da4a assets/skyrimcraft/models/item/butterfly_wing.json
@@ -57,6 +59,7 @@ b7dd8942a5d18614a1a14b20251185be27b31aa1 assets/skyrimcraft/models/item/charred_
 c290992385277f111dcbe777d7be9a3a801f87b5 assets/skyrimcraft/models/item/chaurus_eggs.json
 15aa45ea11ca83044846df761d0b678de8462b40 assets/skyrimcraft/models/item/chicken_dumpling.json
 7300639b17a2ebd2d34c720c63574205b59d0748 assets/skyrimcraft/models/item/chillrend.json
+a77401d14d0c533c24bae46b969a2d78aea672c6 assets/skyrimcraft/models/item/clam_chowder.json
 1db3be214a5280300ec14f2700b06e1d79d6ac93 assets/skyrimcraft/models/item/clam_meat.json
 b0d9e82a0ed81545f591222c24c9d7a84e313923 assets/skyrimcraft/models/item/conjuration_skillbook.json
 8f8902ead63023a629ae4ef0abd58a79fea132d5 assets/skyrimcraft/models/item/conjure_familiar_spellbook.json
@@ -146,6 +149,7 @@ c9e179add15c1ad0f7df39029bb2ebb0fde21e5b assets/skyrimcraft/models/item/ebony_wa
 6b82f06905d6d1f476c1c73e5c2a0e35519e1927 assets/skyrimcraft/models/item/ectoplasm.json
 bcdd90f5865133f3717a31e044f37d7747228499 assets/skyrimcraft/models/item/elixir_lasting_potency_potion.json
 31a0a6ee80dbd31178e43877b35c07610c3f4a45 assets/skyrimcraft/models/item/elixir_of_haggling.json
+c2ab51c683de9c5b39b38921fb6b7ce448fc4f2a assets/skyrimcraft/models/item/elsweyr_fondue.json
 d28d83ac88a944e022119cbb8f3bc70849853631 assets/skyrimcraft/models/item/elven_battleaxe.json
 8b3b11c2b8d71b4f4cb0330b0043a08546d75a52 assets/skyrimcraft/models/item/elven_boots.json
 1a90b9d155893a90304a0a899829110442fb7bfa assets/skyrimcraft/models/item/elven_bow.json
@@ -226,6 +230,7 @@ bf844eb733df2632a308fb7e4cda6ed0df448ec1 assets/skyrimcraft/models/item/gold_nec
 3fdf174e2ecab4aca70b2d63357a45cc94ff11a5 assets/skyrimcraft/models/item/gourd.json
 136a4b0b744eaaf372763147cb7d7be316954b1c assets/skyrimcraft/models/item/grass_pod.json
 0686e475112010e608963985ded0c9cd67ff2710 assets/skyrimcraft/models/item/green_apple.json
+625df6b84483fda8d3739225d9aa011fcf2714eb assets/skyrimcraft/models/item/grilled_leeks.json
 0feb210b0dca546ed2f70879fcb0e64f83901739 assets/skyrimcraft/models/item/hawk_egg.json
 8f8902ead63023a629ae4ef0abd58a79fea132d5 assets/skyrimcraft/models/item/healing_spellbook.json
 b0d9e82a0ed81545f591222c24c9d7a84e313923 assets/skyrimcraft/models/item/heavy_armor_skillbook.json
@@ -233,6 +238,7 @@ b0d9e82a0ed81545f591222c24c9d7a84e313923 assets/skyrimcraft/models/item/heavy_ar
 4a3d955c6d30fc4daddbc43eb60de1827f23bb6b assets/skyrimcraft/models/item/hide_chestplate.json
 e6472e9e96ee38233677c4bec91f8acdc6bdff25 assets/skyrimcraft/models/item/hide_helmet.json
 c2f91b7fa7b26f0289b50ec2ab8742e9e333151c assets/skyrimcraft/models/item/hide_leggings.json
+1ab325d5e4ad75d66f227b241ccd2309101a785c assets/skyrimcraft/models/item/honey_nut_treat.json
 b481d53664c0e47a5ad54e20fe065e99da49072b assets/skyrimcraft/models/item/honningbrew_mead.json
 7dcdc5c10889b1cf9a754b991c442156d4c88901 assets/skyrimcraft/models/item/horse_haunch.json
 8cc50f942e4cb2b4f185fa93c6f90a86ed3a0bde assets/skyrimcraft/models/item/horse_meat.json
@@ -269,6 +275,7 @@ d0860765e00285fab56f9eedbdbb8460d5337e79 assets/skyrimcraft/models/item/katarina
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/skyrimcraft/models/item/khajiit_spawn_egg.json
 ba5b55b6e9d73da1d5c9ecf12ed17669d9c15a52 assets/skyrimcraft/models/item/lasting_potency_potion.json
 fbdad72897c09a335aca16cb46dc18b7efffb4a3 assets/skyrimcraft/models/item/lavender.json
+2e6d14ff74190dda39f6c93b2f14023423582b6c assets/skyrimcraft/models/item/lavender_dumpling.json
 c0aa3d49ab063f662801cbd7510cd5093b93d4fe assets/skyrimcraft/models/item/leather_strips.json
 f0515b0f4e6c11620f3faa62d0ab127a2986aa8f assets/skyrimcraft/models/item/leek.json
 1b43e46b340666e735ed31806d822b7aa0b8b39c assets/skyrimcraft/models/item/leg_of_goat.json
@@ -284,6 +291,7 @@ ceec8eba99e020731b7de00e7f98e334478a4e49 assets/skyrimcraft/models/item/longbow_
 e1d5f1a8aa430039e7f5eea6e8f5caea40ab14a6 assets/skyrimcraft/models/item/madesis_silver_ring.json
 61cd42ee3c6ed7b4439413ef2597840ea49bf3cd assets/skyrimcraft/models/item/magicka_potion.json
 a486fde213d7c37c9ba78c1e7dbb9dfc88759f09 assets/skyrimcraft/models/item/malachite_ingot.json
+61361a65ca3c2eef0af8c9369a2d4b71fadeebb1 assets/skyrimcraft/models/item/mammoth_cheese_bowl.json
 a27896e0e48aaede71630412021684601aa6baef assets/skyrimcraft/models/item/mammoth_snout.json
 287e61863967deeae4a10cbc69534f21b2e86512 assets/skyrimcraft/models/item/mammoth_steak.json
 747a1771929aacfb757a699870b0d873293953c7 assets/skyrimcraft/models/item/mead_with_juniper_berry.json
@@ -324,6 +332,9 @@ b0d9e82a0ed81545f591222c24c9d7a84e313923 assets/skyrimcraft/models/item/pickpock
 2bb7992f7107053657d42da3509c34fe3e965f64 assets/skyrimcraft/models/item/pithis_ornamental_ring.json
 d1c0c8150bc86b15aadf38c8571d70d655583a21 assets/skyrimcraft/models/item/plentiful_magicka_potion.json
 7bb6154be73856bfdd25f84d8a2abb2e9ba265ec assets/skyrimcraft/models/item/potato_bread.json
+3e9d506c5492bc4f9f6559c5d530b1f4c631007b assets/skyrimcraft/models/item/potato_soup.json
+bcfebc7e3a47d288a205827c55ec315fb69ec7a9 assets/skyrimcraft/models/item/potion_of_cure_diseases.json
+107c5b83e2820d45a673315e52402a18c70f4e89 assets/skyrimcraft/models/item/potion_of_cure_poison.json
 a074daf38585320fa1fccd2e5c120ca4a4d75e6d assets/skyrimcraft/models/item/potion_of_haggling.json
 4372e67b8ebb68b608c2e9607d1b6fdfe6f5bad9 assets/skyrimcraft/models/item/potion_of_waterwalking.json
 dd161a9bd5e8884a9c1c6c16da3f95abae583b50 assets/skyrimcraft/models/item/quicksilver_ingot.json

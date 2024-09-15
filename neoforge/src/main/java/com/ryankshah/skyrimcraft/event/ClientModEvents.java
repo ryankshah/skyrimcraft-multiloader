@@ -22,5 +22,7 @@ public class ClientModEvents
         event.register(KeysRegistry.SKYRIM_MENU_SOUTH.get());
         event.register(KeysRegistry.SKYRIM_MENU_WEST.get());
         event.register(KeysRegistry.SKYRIM_MENU_EAST.get());
+
+        event.register(KeysRegistry.SKYRIM_MENU_MB1_CLICK.get());
     }
 }

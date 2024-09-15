@@ -23,6 +23,11 @@ public class ShoutDismay extends Spell
     }
 
     @Override
+    public String getShoutName() {
+        return "Faas Ru Maar";
+    }
+
+    @Override
     public List<String> getDescription() {
         List<String> desc = new ArrayList<>();
         desc.add("And the weak shall fear the");

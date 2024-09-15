@@ -41,9 +41,10 @@ public class AttributeRegistry
     public static final RegistryObject<Attribute, Attribute> CONJURATION_POWER = ATTRIBUTES.register("conjuration_power", () -> new RangedAttribute("skyrimcraft.character.attribute.conjuration_power", 1F, 0F, 100F).setSyncable(true));
 
     public static final ResourceLocation MODIFIER_ID_MAGICKA_REGEN = ResourceLocation.fromNamespaceAndPath(Constants.MODID, "26fcb349-bc96-4593-9b29-5ace7bdee19f");
-    private static final ResourceLocation MODIFIER_ID_PLAYER_HEALTH = ResourceLocation.fromNamespaceAndPath(Constants.MODID, "671fbcca-aac7-4de7-9399-d951d58adc12");
-    private static final ResourceLocation MODIFIER_ID_PLAYER_MAGICKA = ResourceLocation.fromNamespaceAndPath(Constants.MODID, "496fe98b-9c36-41b9-a04b-5e06e6a13bb5");
-    private static final ResourceLocation MODIFIER_ID_PLAYER_STAMINA = ResourceLocation.fromNamespaceAndPath(Constants.MODID, "8745453b-a3d7-47c6-a986-a01f043da892");
+    public static final ResourceLocation MODIFIER_ID_PLAYER_HEALTH = ResourceLocation.fromNamespaceAndPath(Constants.MODID, "671fbcca-aac7-4de7-9399-d951d58adc12");
+    public static final ResourceLocation MODIFIER_ID_PLAYER_MAGICKA = ResourceLocation.fromNamespaceAndPath(Constants.MODID, "496fe98b-9c36-41b9-a04b-5e06e6a13bb5");
+    public static final ResourceLocation MODIFIER_ID_PLAYER_STAMINA = ResourceLocation.fromNamespaceAndPath(Constants.MODID, "8745453b-a3d7-47c6-a986-a01f043da892");
+    public static final ResourceLocation MODIFIER_ID_ARMOR_RATING = ResourceLocation.fromNamespaceAndPath(Constants.MODID, "65df5e1c-fd02-45b7-80ae-40de04d9315d");
 
     private static final String MODIFIER_NAME_HEALTH = Constants.MODID + ".healthModifier";
     private static final String MODIFIER_NAME_MAGICKA = Constants.MODID + ".magickaModifier";

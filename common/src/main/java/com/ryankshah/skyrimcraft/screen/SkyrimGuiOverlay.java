@@ -12,11 +12,14 @@ import com.ryankshah.skyrimcraft.block.OvenBlock;
 import com.ryankshah.skyrimcraft.character.attachment.Character;
 import com.ryankshah.skyrimcraft.character.magic.EmptySpell;
 import com.ryankshah.skyrimcraft.character.magic.Spell;
+import com.ryankshah.skyrimcraft.network.skill.HandlePickpocket;
 import com.ryankshah.skyrimcraft.registry.EntityRegistry;
 import com.ryankshah.skyrimcraft.registry.KeysRegistry;
+import com.ryankshah.skyrimcraft.util.ClientUtil;
 import com.ryankshah.skyrimcraft.util.CompassFeature;
 import com.ryankshah.skyrimcraft.util.LevelUpdate;
 import com.ryankshah.skyrimcraft.util.RenderUtil;
+import commonnetwork.api.Dispatcher;
 import net.minecraft.client.AttackIndicatorStatus;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -55,6 +58,22 @@ public class SkyrimGuiOverlay
 {
     public static final int PLAYER_BAR_MAX_WIDTH = 78;
     public static List<LevelUpdate> LEVEL_UPDATES = new ArrayList<>();
+
+    private static float shoutChargeProgress = 0.0f;
+    private static boolean showShoutBar = false; // Flag to control visibility
+    private static int spellLocation = 0; // either 0 or 1
+
+    // Method to update the shout charge progress from InputEvents
+    public static void setShoutChargeProgress(float progress) {
+        shoutChargeProgress = progress;
+    }
+
+    public static void setShoutLocation(int loc) { spellLocation = loc; }
+
+    // Method to control when to show the shout charge bar
+    public static void setShowShoutBar(boolean show) {
+        showShoutBar = show;
+    }
 
     public static class SkyrimLevelUpdates implements LayeredDraw.Layer
     {
@@ -179,7 +198,7 @@ public class SkyrimGuiOverlay
                 LivingEntity target = (LivingEntity)currentTarget;
                 String entityName = target instanceof Villager villager ? villager.getVillagerData().getProfession() == VillagerProfession.NONE ? "Villager" : StringUtils.capitalize(villager.getVillagerData().getProfession().toString()) : target.getDisplayName().getString();
 
-                if(!mc.player.closerThan(target, 16.0D))
+                if(!mc.player.closerThan(target, 32.0D))
                     return;
 
                 float healthPercentage = target.getHealth() / target.getMaxHealth();
@@ -416,6 +435,69 @@ public class SkyrimGuiOverlay
                 poseStack.popPose();
             }
             poseStack.popPose();
+
+            if(showShoutBar) {
+                int barWidth = 144;
+                int barHeight = 10;
+                int barX = (scaledWidth / 2) - (barWidth / 2);
+                int barY = scaledHeight - 70;
+
+                poseStack.pushPose();
+                RenderUtil.bind(OVERLAY_ICONS);
+                RenderUtil.blitWithBlend(poseStack, barX, barY, 0, 179, barWidth, barHeight, 256, 256, 6, 1);
+                RenderUtil.blitWithBlend(poseStack, barX + 12, barY + 2, 12, 190, (int) (120 * shoutChargeProgress), 6, 256, 256, 6, 1);
+                poseStack.popPose();
+
+                // Optional: render text to show the percentage
+//                String progressText = String.format("Charging: %.0f%%", shoutChargeProgress * 100);
+//                guiGraphics.drawString(mc.font, progressText, barX - (mc.font.width(progressText) / 2), barY - 10, 0xFFFFFF);
+
+                // Render the shout words based on progress
+                String shoutName = spellLocation == 1 ? character.getSelectedSpell1().getShoutName() : character.getSelectedSpell2().getShoutName();
+                guiGraphics.drawCenteredString(mc.font, shoutName, (scaledWidth / 2) - (mc.font.width(shoutName) / 2), barY - 20, 0xFFFFFFFF);
+//                String[] shoutWords = shoutName.split(" ");
+//                // Calculate percentages for each word's appearance
+//                float[] wordThresholds = {0.25f, 0.50f, 0.75f}; // Progress for the first, second, and third word
+//                int wordSpacing = 10;  // Space between words
+//                int wordX = (scaledWidth / 2) - (shoutName.length() + (3 * wordSpacing));
+//                int wordY = barY - 20; // Adjust Y position as needed
+//
+//                // Iterate over each word in the shout name
+//                for (int i = 0; i < shoutWords.length; i++) {
+//                    if (i >= wordThresholds.length) break; // Make sure we don't access out of bounds if shoutWords has fewer than 3 elements
+//
+//                    String word = shoutWords[i];
+//                    float threshold = wordThresholds[i];
+//
+//                    // Only start rendering the word if the charge progress has reached its threshold
+//                    if (shoutChargeProgress >= threshold) {
+//                        // Calculate the alpha (opacity) based on how close the progress is to the word's threshold
+//                        float alpha = 1.0f; // Default to fully visible
+//
+//                        if (shoutChargeProgress < threshold + 0.25f) {
+//                            // Word is fading in; calculate alpha as before
+//                            alpha = (shoutChargeProgress - threshold) / 0.25f;
+//                            alpha = Math.min(1.0f, alpha); // Cap the alpha at 1
+//                            alpha = Math.max(0.0f, alpha); // Ensure alpha is between 0 and 1
+//                        }
+//                        // Once alpha is 1.0f, no need to recalculate; the word stays fully visible
+//
+//                        // Calculate the color with alpha (0xAARRGGBB format, where AA is the alpha)
+//                        int alphaHex = (int) (alpha * 255) << 24;
+//                        int color = 0xFFFFFF | alphaHex; // Apply alpha to the color
+//
+//                        // Render the word with the calculated alpha
+//                        guiGraphics.drawCenteredString(mc.font, word, wordX, wordY, color);
+//
+//                        // Move X position for the next word (adjust this to fit your layout)
+//                        wordX += mc.font.width(word) + wordSpacing;
+//                    }
+//                }
+
+                // Optional: render text to show the percentage
+//                String progressText = String.format("Charging: %.0f%%", shoutChargeProgress * 100);
+//                guiGraphics.drawString(mc.font, progressText, barX - (mc.font.width(progressText) / 2), barY - 10, 0xFFFFFF);
+            }
         }
     }
 

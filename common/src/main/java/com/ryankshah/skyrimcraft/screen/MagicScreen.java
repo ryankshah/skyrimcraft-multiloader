@@ -207,9 +207,24 @@ public class MagicScreen extends Screen
 
         matrixStack.pushPose();
         RenderUtil.bind(spell.getDisplayAnimation());
-        currentSpellFrame = (int)(lastTick + (currentTick - lastTick) * partialTicks) / 64;
-        int uOffset = 64 * (currentSpellFrame % 4), vOffset = 0;
-        RenderUtil.blitWithBlend(matrixStack, 78, (this.height / 2) - 94, uOffset, vOffset, 64, 64, 256, 64, 1, 1);
+        if(spell.getType() == Spell.SpellType.SHOUT || spell.getType() == Spell.SpellType.POWERS) {
+            currentSpellFrame = (int)(lastTick + (currentTick - lastTick) * partialTicks) / 16;
+            int uOffset = 0, vOffset = 16 * (currentSpellFrame % 7);
+            float scaleFactor = 4.0f;
+            float xPos = 110 - 16;
+            float yPos = (this.height / 2) - 94;
+
+            matrixStack.pushPose();
+            matrixStack.translate(xPos, yPos, 0); // Move to desired position divided by scale
+            matrixStack.scale(scaleFactor, scaleFactor, 1); // Apply scaling
+//            matrixStack.translate(-4, -4, 0);
+            RenderUtil.blitWithBlend(matrixStack, 0, 0, uOffset, vOffset, 16, 16, 16, 112, 1, 1);
+            matrixStack.popPose();
+        } else {
+            currentSpellFrame = (int)(lastTick + (currentTick - lastTick) * partialTicks) / 64;
+            int uOffset = 16 * (currentSpellFrame % 4), vOffset = 0;
+            RenderUtil.blitWithBlend(matrixStack, 78, (this.height / 2) - 94, uOffset, vOffset, 64, 64, 256, 64, 1, 1);
+        }
         matrixStack.popPose();
     }
 

@@ -26,56 +26,63 @@ public class KeysRegistry
             "key." + Constants.MODID + ".toggle_menu", // Will be localized using this translation key
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_M, // Default key is P
-            "key.categories.misc" // Mapping will be in the misc category
+            "key.categories.skyrimcraft" // Mapping will be in the misc category
     ));
     public static final Lazy<KeyMapping> SPELL_SLOT_1_KEY = Lazy.lazy(() -> new KeyMapping(
             "key." + Constants.MODID + ".toggle_spell_1", // Will be localized using this translation key
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_V, // Default key is P
-            "key.categories.misc" // Mapping will be in the misc category
+            "key.categories.skyrimcraft" // Mapping will be in the misc category
     ));
     public static final Lazy<KeyMapping> SPELL_SLOT_2_KEY = Lazy.lazy(() -> new KeyMapping(
             "key." + Constants.MODID + ".toggle_spell_2", // Will be localized using this translation key
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_B, // Default key is P
-            "key.categories.misc" // Mapping will be in the misc category
+            "key.categories.skyrimcraft" // Mapping will be in the misc category
     ));
     public static final Lazy<KeyMapping> PICKPOCKET_KEY = Lazy.lazy(() -> new KeyMapping(
             "key." + Constants.MODID + ".toggle_pickpocket", // Will be localized using this translation key
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_P, // Default key is P
-            "key.categories.misc" // Mapping will be in the misc category
+            "key.categories.skyrimcraft" // Mapping will be in the misc category
     ));
 
     public static final Lazy<KeyMapping> SKYRIM_MENU_ENTER = Lazy.lazy(() -> new KeyMapping(
             "key." + Constants.MODID + ".menu.enter", // Will be localized using this translation key
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_ENTER, // Default key is P
-            "key.categories.misc" // Mapping will be in the misc category
+            "key.categories.skyrimcraft" // Mapping will be in the misc category
     ));
     public static final Lazy<KeyMapping> SKYRIM_MENU_NORTH = Lazy.lazy(() -> new KeyMapping(
             "key." + Constants.MODID + ".menu.north", // Will be localized using this translation key
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_UP, // Default key is P
-            "key.categories.misc" // Mapping will be in the misc category
+            "key.categories.skyrimcraft" // Mapping will be in the misc category
     ));
     public static final Lazy<KeyMapping> SKYRIM_MENU_SOUTH = Lazy.lazy(() -> new KeyMapping(
             "key." + Constants.MODID + ".menu.south", // Will be localized using this translation key
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_DOWN, // Default key is P
-            "key.categories.misc" // Mapping will be in the misc category
+            "key.categories.skyrimcraft" // Mapping will be in the misc category
     ));
     public static final Lazy<KeyMapping> SKYRIM_MENU_EAST = Lazy.lazy(() -> new KeyMapping(
             "key." + Constants.MODID + ".menu.east", // Will be localized using this translation key
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_LEFT, // Default key is P
-            "key.categories.misc" // Mapping will be in the misc category
+            "key.categories.skyrimcraft" // Mapping will be in the misc category
     ));
     public static final Lazy<KeyMapping> SKYRIM_MENU_WEST = Lazy.lazy(() -> new KeyMapping(
             "key." + Constants.MODID + ".menu.west", // Will be localized using this translation key
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_RIGHT, // Default key is P
-            "key.categories.misc" // Mapping will be in the misc category
+            "key.categories.skyrimcraft" // Mapping will be in the misc category
+    ));
+
+    public static final Lazy<KeyMapping> SKYRIM_MENU_MB1_CLICK = Lazy.lazy(() -> new KeyMapping(
+            "key." + Constants.MODID + ".menu_button_1.click", // Will be localized using this translation key
+            InputConstants.Type.MOUSE,
+            GLFW.GLFW_MOUSE_BUTTON_1, // Default key is P
+            "key.categories.skyrimcraft" // Mapping will be in the misc category
     ));
 
     public static void onKeyInput(int key, int scanCode, int action, int modifiers) {

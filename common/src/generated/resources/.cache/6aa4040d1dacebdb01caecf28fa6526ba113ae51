@@ -1,7 +1,23 @@
-// 1.21.1	2024-08-30T15:07:27.9950295	skyrimcraft Oven Recipes
+// 1.21.1	2024-09-07T07:25:41.7010306	skyrimcraft Oven Recipes
+d339813d7449c39903c4ffbfe7152aa4e1a39624 data/skyrimcraft/recipe/oven/apple_cabbage_stew.json
+6273a1f4412cc41ea244e53857f8cdaf9fc0f062 data/skyrimcraft/recipe/oven/apple_dumpling.json
 2c2730837fb6894f010bc7af2d247a4706b49951 data/skyrimcraft/recipe/oven/apple_pie.json
+f1326c88cc6a2ed0836100a40b74385089d66545 data/skyrimcraft/recipe/oven/beef_stew.json
+a6dbe5b4d5f300f315131c3afb08a2f86abd049d data/skyrimcraft/recipe/oven/braided_bread.json
+cb489bc7f50a7e588da89c729960bcae8c51df7f data/skyrimcraft/recipe/oven/cabbage_potato_soup.json
+55b48528511945038895f6f1452a76a9ccd26786 data/skyrimcraft/recipe/oven/cabbage_soup.json
+6491016661459ebb156b785064a53b30d67fa89d data/skyrimcraft/recipe/oven/chicken_dumpling.json
+07aecf8a1175455cb3dc700853af3ba3fdc2f2f7 data/skyrimcraft/recipe/oven/clam_chowder.json
 e446cef466434b2e78889249510f549f1af37b3b data/skyrimcraft/recipe/oven/garlic_bread.json
 ceafe0809f5fc81e5bf4d71324ab2cfd00d3aca8 data/skyrimcraft/recipe/oven/horse_haunch.json
+076cdcacab21e4ba6a61c0039c496b65e1b89961 data/skyrimcraft/recipe/oven/jazbay_crostata.json
+5ab2b2584f15972ff3aa36190a85c41a8ef81fbd data/skyrimcraft/recipe/oven/juniper_berry_crostata.json
+27419de004043e5306189787afc23247d6694d5b data/skyrimcraft/recipe/oven/lavender_dumpling.json
 e0911e9f1a20ae22ff46628194155c1ab7cd24c3 data/skyrimcraft/recipe/oven/leg_of_goat_roast.json
+25fd056601c24e4b67897c7ea93deeeb221e19ea data/skyrimcraft/recipe/oven/mammoth_steak.json
 a951cb3d8e7d49c8147b4e9704b5a0bc85771aa0 data/skyrimcraft/recipe/oven/potato_bread.json
+d99eb303e3062b4f8d6a4b91446eb3c359395e95 data/skyrimcraft/recipe/oven/potato_soup.json
+2866f61d7e7efbe948c4135277368a7af29947fc data/skyrimcraft/recipe/oven/snowberry_crostata.json
 4fa1dbb53aa885adf9570b3ed58c85f0e50dc118 data/skyrimcraft/recipe/oven/sweet_roll.json
+61a4394016ebd4226c6b54deba6bf4153542e34a data/skyrimcraft/recipe/oven/tomato_soup.json
+5a297e1f98dc3caa49ac9056373bcea0d65be085 data/skyrimcraft/recipe/oven/vegetable_soup.json

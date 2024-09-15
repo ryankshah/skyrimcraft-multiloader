@@ -1,0 +1,15 @@
+{
+  "type": "skyrimcraft:oven",
+  "category": "food",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:salt_pile"
+    }
+  ],
+  "level": 1,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:mammoth_steak"
+  },
+  "xp": 5
+}

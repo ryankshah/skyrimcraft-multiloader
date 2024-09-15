@@ -1,0 +1,21 @@
+{
+  "type": "skyrimcraft:oven",
+  "category": "food",
+  "ingredients": [
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "skyrimcraft:leek"
+    },
+    {
+      "item": "skyrimcraft:salt_pile"
+    }
+  ],
+  "level": 1,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:cabbage_potato_soup"
+  },
+  "xp": 5
+}

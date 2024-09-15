@@ -22,6 +22,11 @@ public class ShoutDisarm extends Spell //implements IForgeRegistryEntry<ISpell>
     }
 
     @Override
+    public String getShoutName() {
+        return "Zun Haal Viik";
+    }
+
+    @Override
     public List<String> getDescription() {
         List<String> desc = new ArrayList<>();
         desc.add("Shout defies steel, as you");

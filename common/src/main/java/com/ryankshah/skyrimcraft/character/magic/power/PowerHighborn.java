@@ -26,15 +26,15 @@ public class PowerHighborn extends Spell
     @Override
     public List<String> getDescription() {
         List<String> desc = new ArrayList<>();
-        desc.add("Regenerate 25% of your magicka");
-        desc.add("each second for 60");
-        desc.add("seconds");
+        desc.add("Regenerate 25% of your");
+        desc.add("magicka each second for");
+        desc.add("60 seconds");
         return desc;
     }
 
     @Override
     public ResourceLocation getDisplayAnimation() {
-        return ResourceLocation.fromNamespaceAndPath(Constants.MODID, "spells/purple_spell.png");
+        return ResourceLocation.fromNamespaceAndPath(Constants.MODID, "spells/highborn.png");
     }
 
     @Override

@@ -40,13 +40,13 @@ public class SkillBook extends Item
         Character character = Character.get(playerIn);
         if (this.skill != null) {
             SkillWrapper skillWrapper = character.getSkill(skill.get().getID());
-            double xp = skillWrapper.getXpProgress() / skillWrapper.getXpNeededForNextLevel();
+            double xp = skillWrapper.getXpNeededForNextLevel();
             final AddXpToSkill addXpToSkill = new AddXpToSkill(SkillRegistry.SKILLS_REGISTRY.getResourceKey(skill.get()).get(), (int)xp);
             Dispatcher.sendToServer(addXpToSkill);
-//            PacketDistributor.SERVER.noArg().send(addXpToSkill);
             playerIn.displayClientMessage(Component.translatable("skillbook.learn", Component.translatable(skillWrapper.getName()).withStyle(ChatFormatting.RED)), false);
             playerIn.awardStat(Stats.ITEM_USED.get(this));
-            itemstack.shrink(1);
+            playerIn.getInventory().removeItem(playerIn.getInventory().findSlotMatchingItem(itemstack), 1);
+//            itemstack.shrink(1);
         } else {
             playerIn.displayClientMessage(Component.translatable("skillbook.fail"), false);
         }

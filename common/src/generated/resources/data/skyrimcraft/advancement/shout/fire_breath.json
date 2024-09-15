@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:shout/root",
+  "criteria": {
+    "spell_learned_fire_breath": {
+      "conditions": {
+        "skill": "skyrimcraft:fire_breath"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Fire Breath shout",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:shout_block"
+    },
+    "title": "Fire Breath"
+  },
+  "requirements": [
+    [
+      "spell_learned_fire_breath"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -34,7 +34,7 @@ public class PowerHistskin extends Spell
 
     @Override
     public ResourceLocation getDisplayAnimation() {
-        return ResourceLocation.fromNamespaceAndPath(Constants.MODID, "spells/gray_spell.png");
+        return ResourceLocation.fromNamespaceAndPath(Constants.MODID, "spells/histskin.png");
     }
 
     @Override

@@ -1,4 +1,4 @@
-// 1.21.1	2024-08-29T18:21:19.0980003	Advancements
+// 1.21.1	2024-09-14T16:06:10.2363097	Advancements
 9c2783cc714cc40d3ce69a7c3083883cd6cb6f46 data/minecraft/advancement/skyrimcraft/arrow_to_knee.json
 03ed1b60481eb41914ab6d7144ee01fbd2eb666c data/skyrimcraft/advancement/combat/reach_level_10.json
 592427a801c8fb7c957a818303f6f020a49798d1 data/skyrimcraft/advancement/combat/root.json
@@ -9,6 +9,7 @@ eb718d1fbc6d6f66c757137fc8bc9422bc125f34 data/skyrimcraft/advancement/shout/disa
 66a164c84c39db04c4e1a5ef1abd481d7dc5a925 data/skyrimcraft/advancement/shout/dragonrend.json
 452d2acb168173c7a0d03206c4fceb589637f404 data/skyrimcraft/advancement/shout/dragon_aspect.json
 848c74365f4c5ea733516cdfca3e1ebca09719aa data/skyrimcraft/advancement/shout/elemental_fury.json
+1804b5ea84b1c59f2b10bb6c5633180474da04cd data/skyrimcraft/advancement/shout/fire_breath.json
 2380e378bea4647ff6b49e2f006575cc6e39ac5a data/skyrimcraft/advancement/shout/frost_breath.json
 505f3747690d2ce72e17468707a1e99b0a564a7b data/skyrimcraft/advancement/shout/ice_form.json
 74279be4150b2ec615347b5d0cdedfdf06bde646 data/skyrimcraft/advancement/shout/root.json
@@ -31,6 +32,7 @@ efb52c26f3933d0ffd8106c18fb34276f1e0be95 data/skyrimcraft/advancement/spell/high
 9ea8e88d62bdeee331333f53310a0917e3616b3d data/skyrimcraft/advancement/spell/histskin.json
 e196c892686171c1668547dd56f4659b6a5e0661 data/skyrimcraft/advancement/spell/ice_spike.json
 7cf59aa8e43d2f4b6d791ac72d953087b3e39934 data/skyrimcraft/advancement/spell/night_eye.json
+a700031616e9e4c26667d46608d3ef42f695174e data/skyrimcraft/advancement/spell/oakflesh.json
 d68f06d195f8216ea5d8cb04c9b827db6f571088 data/skyrimcraft/advancement/spell/root.json
 3a2af8ddefb611619cc84b4bf54613a20e64bfb1 data/skyrimcraft/advancement/spell/turn_undead.json
 c34bf0a2a57191d8086bf72a5640340cf397609c data/skyrimcraft/advancement/spell/voice_of_the_emperor.json

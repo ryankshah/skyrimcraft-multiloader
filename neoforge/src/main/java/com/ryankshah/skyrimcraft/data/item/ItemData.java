@@ -38,7 +38,6 @@ public class ItemData
         provider.addItem(ItemRegistry.BEEF_STEW, "Beef Stew");
         provider.addItem(ItemRegistry.CABBAGE_SOUP, "Cabbage Soup");
         provider.addItem(ItemRegistry.CABBAGE_POTATO_SOUP, "Cabbage Potato Soup");
-        provider.addItem(ItemRegistry.CHICKEN_DUMPLING, "Chicken Dumpling");
         provider.addItem(ItemRegistry.CLAM_MEAT, "Clam Meat");
         provider.addItem(ItemRegistry.SLICED_GOAT_CHEESE, "Sliced Goat Cheese");
         provider.addItem(ItemRegistry.SLICED_EIDAR_CHEESE, "Sliced Eidar Cheese");
@@ -49,6 +48,13 @@ public class ItemData
         provider.addItem(ItemRegistry.HORSE_MEAT, "Horse Meat");
         provider.addItem(ItemRegistry.HORSE_HAUNCH, "Horse Haunch");
         provider.addItem(ItemRegistry.VEGETABLE_SOUP, "Vegetable Soup");
+        provider.addItem(ItemRegistry.MAMMOTH_CHEESE_BOWL, "Mammoth Cheese Bowl");
+        provider.addItem(ItemRegistry.HONEY_NUT_TREAT, "Honey Nut Treat");
+        provider.addItem(ItemRegistry.GRILLED_LEEKS, "Grilled Leeks");
+        provider.addItem(ItemRegistry.ELSWEYR_FONDUE, "Elsweyr Fondue");
+        provider.addItem(ItemRegistry.CLAM_CHOWDER, "Clam Chowder");
+        provider.addItem(ItemRegistry.BRAIDED_BREAD, "Braided Bread");
+        provider.addItem(ItemRegistry.BOILED_CREME_TREAT, "Boiled Creme Treat");
 
         provider.addItem(ItemRegistry.ALE, "Ale");
         provider.addItem(ItemRegistry.ALTO_WINE, "Alto Wine");
@@ -375,7 +381,14 @@ public class ItemData
         provider.addItem(ItemRegistry.PHILTER_OF_HAGGLING, "Philter of Haggling");
         provider.addItem(ItemRegistry.ELIXIR_OF_HAGGLING, "Elixir of Haggling");
 
+        provider.addItem(ItemRegistry.POTION_OF_TRUE_SHOT, "Potion of True Shot");
+        provider.addItem(ItemRegistry.DRAUGHT_OF_TRUE_SHOT, "Draught of True Shot");
+        provider.addItem(ItemRegistry.PHILTER_OF_TRUE_SHOT, "Philter of True Shot");
+        provider.addItem(ItemRegistry.ELIXIR_OF_TRUE_SHOT, "Elixir of True Shot");
+
         provider.addItem(ItemRegistry.PHILTER_OF_THE_PHANTOM_POTION, "Philter of the Phantom");
         provider.addItem(ItemRegistry.POTION_OF_WATERWALKING, "Potion of Waterwalking");
+        provider.addItem(ItemRegistry.POTION_OF_CURE_DISEASES, "Potion of Cure Diseases");
+        provider.addItem(ItemRegistry.POTION_OF_CURE_POISON, "Potion of Cure Poison");
     }
 }

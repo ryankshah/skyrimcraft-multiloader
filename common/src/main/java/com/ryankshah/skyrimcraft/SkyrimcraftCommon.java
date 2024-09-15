@@ -10,28 +10,67 @@ import net.minecraft.world.entity.EntityType;
 /**
  * TODO:
  * - Add accessories support to replace Curios and add the rings/necklaces/etc with powers/abilities/stats/etc.
- * - Fix item tiers (i.e., skyrim swords are not doing damage as they should....) - potentially check armor tiers too.
- * - Add the following foods, textures and oven recipes:
- *   - Boiled Creme Treat
- *   - Braided Bread
- *   - Clam Chowder
- *   - Elsweyr Fondue
- *   - Grilled Leeks
- *   - Honey Nut Treat
- *   - Jazbay grape bush (grape item texture done)
- *   - Juniper Berry bush (berry item texture done)
- *   - Lavender Dumpling
- *   - Mammoth Cheese Bowl (Found in giant camps?)
- *   - Potato Soup
- *   - Rabbit Haunch
- *   - Snowberries bush (berry item texture done)
- *   - Snowberry Crostata -- texture done, make a food item
+ * - Add daedric artefacts - https://elderscrolls.fandom.com/wiki/Daedric_Artifacts_(Skyrim)
+ * - Add black books (also artefacts?? - https://elderscrolls.fandom.com/wiki/Black_Books)
+ * - Add more spells!!
+ * - Add factions
+ * - Add Lycanthropy (werewolf)
+ * - Add Vampirism
+ * - Add racial abilities (see bottom of https://elderscrolls.fandom.com/wiki/Abilities_(Skyrim))
+ * - Add shrines and structures for the shrines - also add blessings for using shrines (1 only active at a time)
+ * - Add lore books (but minecraft them using ChatGPT or something)
+ * - Add traps - https://elderscrolls.fandom.com/wiki/Traps_(Skyrim)
+ *
+ * - Add more creatures:
+ *   - Ash Hopper
+ *   - Albino Spider
+ *   - Bear
+ *   - Cave Bear
+ *   - Chaurus
+ *   - Chaurus Hunter
+ *   - Chaurus Hunter Fledgling
+ *   - Death Hound (spawns with vampires)
+ *   - DAEDRA (and all varieties of it)
+ *   - DRAGON (more types of dragons)
+ *   - DRAUGR (and more types)
+ *   - DWARVEN AUTOMATONS (and all varieties)
+ *   - Snow Bear
+ *   - Wolf
+ *   - Ice Wolf
+ *   - Pit Wolf
+ *   - Mudcrab
+ *   - Slaughterfish
+ *   - Horker
+ *   - Ice Wraiths
+ *   - Werewolf (Lycanthropy addon)
+ *   - Spriggans (four different types)
+ *   - Troll
+ *   - Frost Troll
+ *   - Vampires (Vampirism addon)
+ *   - Werebear
+ *
+ *   - Clam
+ *   - Deer
+ *   - Vale Deer
+ *   - Elk
+ *   - Snow Fox
+ *   - Hawk
+ *   - Bone Hawk
+ *   - Bristleback
+ *   - Dusty
+ *   - Felsaad Tern
+ *   - Betty Netch
+ *   - Bull Netch
+ *   - Netch Calf
+ *
+ *   - Histcarp
+ *   - River Betty
+ *   - Silverside Perch
  */
 public class SkyrimcraftCommon
 {
     public static void init() {
         ModEffects.init();
-        AdvancementTriggersRegistry.init();
         AttributeRegistry.init();
         SkyrimcraftLootConditionTypes.init();
         DamageTypeRegistry.init();
@@ -53,6 +92,8 @@ public class SkyrimcraftCommon
 
         FeatureRegistry.init();
         StructureRegistry.init();
+
+        AdvancementTriggersRegistry.init();
 
         Networking.load();
     }

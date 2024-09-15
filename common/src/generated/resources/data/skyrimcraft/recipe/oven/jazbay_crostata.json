@@ -1,0 +1,18 @@
+{
+  "type": "skyrimcraft:oven",
+  "category": "food",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:jazbay_grapes"
+    },
+    {
+      "item": "skyrimcraft:butter"
+    }
+  ],
+  "level": 1,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:jazbay_crostata"
+  },
+  "xp": 5
+}

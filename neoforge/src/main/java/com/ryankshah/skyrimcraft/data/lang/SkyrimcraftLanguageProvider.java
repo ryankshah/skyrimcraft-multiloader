@@ -38,6 +38,7 @@ public class SkyrimcraftLanguageProvider extends LanguageProvider
         add("effect.skyrimcraft.adrenaline_rush", "Adrenaline Rush");
         add("effect.skyrimcraft.battle_cry", "Battle Cry");
         add("effect.skyrimcraft.calm", "Calm");
+        add("effect.skyrimcraft.armor_rating", "Increased Armor Rating");
 
 
         // Spellbook
@@ -65,6 +66,20 @@ public class SkyrimcraftLanguageProvider extends LanguageProvider
         add("skyrimcraft.menu.option.unavailable", "This option is currently unavailable!");
         add("skyrimcraft.menu.option.invalid", "Invalid Option!");
         add("skyrimcraft.menu.option.magic.none", "You have not yet learned any spells/shouts!");
+        add("skyrimcraft.shout.cooldown", "This shout is currently on cooldown!");
+
+        add("key.categories.skyrimcraft", "Skyrimcraft Keys");
+        add("key.skyrimcraft.toggle_menu", "Toggle Menu");
+        add("key.skyrimcraft.toggle_spell_1", "Cast Spell 1");
+        add("key.skyrimcraft.toggle_spell_2", "Cast Spell 2");
+        add("key.skyrimcraft.toggle_pickpocket", "Toggle Pickpocket");
+        add("key.skyrimcraft.menu.enter", "Menu Enter");
+        add("key.skyrimcraft.menu.north", "Menu North");
+        add("key.skyrimcraft.menu.south", "Menu South");
+        add("key.skyrimcraft.menu.east", "Menu East");
+        add("key.skyrimcraft.menu.west", "Menu West");
+        add("key.skyrimcraft.menu_button_1.click", "Menu Mouse Button 1");
+
 
         // Skills
         add("skill.pickpocket.fail", "You fail to pick the %s's pockets!");
@@ -75,7 +90,9 @@ public class SkyrimcraftLanguageProvider extends LanguageProvider
         add("entity.minecraft.villager.skyrimcraft.alchemist", "Alchemist");
         add("entity.minecraft.villager.skyrimcraft.cook", "Food Merchant");
         add("entity.skyrimcraft.sabre_cat", "Sabre Cat");
+        add("entity.skyrimcraft.vale_sabre_cat", "Vale Sabre Cat");
         add("entity.skyrimcraft.skeever", "Skeever");
+        add("entity.skyrimcraft.venomfang_skeever", "Venomfang Skeever");
         add("entity.skyrimcraft.snowy_sabre_cat", "Snowy Sabre Cat");
         add("entity.skyrimcraft.giant", "Giant");
         add("entity.skyrimcraft.mammoth", "Mammoth");

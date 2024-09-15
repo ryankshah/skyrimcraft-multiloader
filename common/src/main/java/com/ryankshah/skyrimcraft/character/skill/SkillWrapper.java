@@ -25,10 +25,11 @@ public class SkillWrapper
         Codec.FLOAT.fieldOf("skillUseMultiplier").forGetter(SkillWrapper::getSkillUseMultiplier),
         Codec.INT.fieldOf("skillUseOffset").forGetter(SkillWrapper::getSkillUseOffset),
         Codec.FLOAT.fieldOf("skillImproveMultiplier").forGetter(SkillWrapper::getSkillImproveMultiplier),
-        Codec.INT.fieldOf("skillImproveOffset").forGetter(SkillWrapper::getSkillImproveOffset)
+        Codec.INT.fieldOf("skillImproveOffset").forGetter(SkillWrapper::getSkillImproveOffset),
+            Perk.CODEC.listOf().fieldOf("perks").forGetter(SkillWrapper::getSkillPerks)
     ).apply(skill, SkillWrapper::new));
 
-    public static StreamCodec<RegistryFriendlyByteBuf, SkillWrapper> STREAM_CODEC = CodecUtils.composite9(
+    public static StreamCodec<RegistryFriendlyByteBuf, SkillWrapper> STREAM_CODEC = CodecUtils.composite10(
             ByteBufCodecs.fromCodec(SkillRegistry.SKILLS_REGISTRY.byNameCodec()),
             SkillWrapper::getSkill,
             ByteBufCodecs.INT,
@@ -47,16 +48,18 @@ public class SkillWrapper
             SkillWrapper::getSkillImproveMultiplier,
             ByteBufCodecs.INT,
             SkillWrapper::getSkillImproveOffset,
+            Perk.STREAM_CODEC.apply(ByteBufCodecs.list()),
+            SkillWrapper::getSkillPerks,
             SkillWrapper::new
     );
 
     protected Skill skill;
-    protected List<Skill.Perk> perks;
+    protected List<Perk> perks;
     private int identifier;
     protected int level, totalXp, skillUseOffset, skillImproveOffset;
     protected float xpProgress, skillUseMultiplier, skillImproveMultiplier;
 
-    public SkillWrapper(Skill skill, int ID, int level, int totalXp, float xpProgress, float useMultiplier, int useOffset, float improveMultiplier, int improveOffset) {
+    public SkillWrapper(Skill skill, int ID, int level, int totalXp, float xpProgress, float useMultiplier, int useOffset, float improveMultiplier, int improveOffset, List<Perk> perks) {
         this.skill = skill;
         this.identifier = ID;
         this.level = level;
@@ -66,7 +69,7 @@ public class SkillWrapper
         this.skillUseOffset = useOffset;
         this.skillImproveMultiplier = improveMultiplier;
         this.skillImproveOffset = improveOffset;
-        this.perks = skill.getSkillPerks();
+        this.perks = new ArrayList<>(perks);
     }
 
     public SkillWrapper(Skill skill) {
@@ -80,12 +83,14 @@ public class SkillWrapper
         return skill;
     }
 
-    public List<Skill.Perk> getPerks() {
-        return perks;
+    public boolean isPerkUnlocked(Perk perk) {
+        return perks.stream().filter( p -> p.equals(perk)).anyMatch(Perk::isUnlocked);
     }
 
-    public boolean isUnlocked(Skill.Perk perk) {
-        return perks.stream().filter( p -> p.equals(perk)).anyMatch(Skill.Perk::isUnlocked);
+    public void unlockPerk(Perk perk) {
+        if(!isPerkUnlocked(perk)) {
+            perks.stream().filter(p -> p.equals(perk)).findFirst().get().unlock();
+        }
     }
 
     public int getID() {
@@ -172,8 +177,8 @@ public class SkillWrapper
         return Math.max(min, Math.min(max, val));
     }
 
-    public List<Skill.Perk> getSkillPerks() {
-        return skill.getSkillPerks();
+    public List<Perk> getSkillPerks() {
+        return new ArrayList<>(skill.getSkillPerks());
     }
 
     @Override
@@ -187,7 +192,8 @@ public class SkillWrapper
         sb.append("skillUseMultiplier: ").append(skillUseMultiplier).append(", ");
         sb.append("skillUseOffset: ").append(skillUseOffset).append(", ");
         sb.append("skillImproveMultiplier: ").append(skillImproveMultiplier).append(", ");
-        sb.append("skillImproveOffset: ").append(skillImproveOffset);
+        sb.append("skillImproveOffset: ").append(skillImproveOffset).append(", ");
+        sb.append("perks: ").append(perks.toString());
         sb.append("]");
         return sb.toString();
     }

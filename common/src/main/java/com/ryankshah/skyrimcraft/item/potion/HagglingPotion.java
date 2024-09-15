@@ -44,49 +44,45 @@ public class HagglingPotion extends SkyrimPotion
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
+        // TODO: Add the Hagraven's Claw and Tundra Cotton ingredients
         NonNullList<Ingredient> ingredients = NonNullList.create();
-        if (this == ItemRegistry.LASTING_POTENCY_POTION.get()) {
-            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.SALMON_ROE.get(), 1)));
-            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.GARLIC.get(), 1)));
-        } else if(this == ItemRegistry.DRAUGHT_LASTING_POTENCY_POTION.get()) {
-            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.GARLIC.get(), 1)));
-            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.SALT_PILE.get(), 1)));
-        } else if (this == ItemRegistry.SOLUTION_LASTING_POTENCY_POTION.get()) {
-            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.DWARVEN_OIL.get(), 1)));
-            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.SALMON_ROE.get(), 1)));
-        } else if (this == ItemRegistry.PHILTER_LASTING_POTENCY_POTION.get()) {
-            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.SALT_PILE.get(), 1)));
-            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.DWARVEN_OIL.get(), 1)));
-        } else if (this == ItemRegistry.ELIXIR_LASTING_POTENCY_POTION.get()) {
-            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.DWARVEN_OIL.get(), 1)));
-            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.FIRE_SALTS.get(), 1)));
+        if (this == ItemRegistry.POTION_OF_HAGGLING.get()) {
+            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.BUTTERFLY_WING.get(), 1)));
+            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.DRAGONS_TONGUE.get(), 1)));
+        } else if(this == ItemRegistry.DRAUGHT_OF_HAGGLING.get()) {
+            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.BUTTERFLY_WING.get(), 1)));
+            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.DRAGONS_TONGUE.get(), 1)));
+        } else if (this == ItemRegistry.PHILTER_OF_HAGGLING.get()) {
+            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.BUTTERFLY_WING.get(), 1)));
+            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.DRAGONS_TONGUE.get(), 1)));
+        } else if (this == ItemRegistry.ELIXIR_OF_HAGGLING.get()) {
+            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.BUTTERFLY_WING.get(), 1)));
+            ingredients.add(Ingredient.of(new ItemStack(ItemRegistry.DRAGONS_TONGUE.get(), 1)));
         }
         return ingredients;
     }
 
     @Override
     public PotionCategory getCategory() {
-        return PotionCategory.REGENERATE_HEALTH;
+        return PotionCategory.FORTIFY_BARTER;
     }
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext pContext, List<Component> tooltip, TooltipFlag flagIn) {
-        String regenValue = "";
+        String value = "";
 
         Item item = stack.getItem();
-        if (ItemRegistry.LASTING_POTENCY_POTION.get().equals(item)) {
-            regenValue = "50%";
-        } else if (ItemRegistry.DRAUGHT_LASTING_POTENCY_POTION.get().equals(item)) {
-            regenValue = "60%";
-        } else if (ItemRegistry.SOLUTION_LASTING_POTENCY_POTION.get().equals(item)) {
-            regenValue = "70%";
-        } else if (ItemRegistry.PHILTER_LASTING_POTENCY_POTION.get().equals(item)) {
-            regenValue = "80%";
-        } else if (ItemRegistry.ELIXIR_LASTING_POTENCY_POTION.get().equals(item)) {
-            regenValue = "100%";
+        if (ItemRegistry.POTION_OF_HAGGLING.get().equals(item)) {
+            value = "10%";
+        } else if (ItemRegistry.DRAUGHT_OF_HAGGLING.get().equals(item)) {
+            value = "15%";
+        } else if (ItemRegistry.PHILTER_OF_HAGGLING.get().equals(item)) {
+            value = "20%";
+        } else if (ItemRegistry.ELIXIR_OF_HAGGLING.get().equals(item)) {
+            value = "25%";
         }
 
-        tooltip.add(Component.literal("Grants " + duration/20 + "s of " + regenValue + " magicka regen"));
+        tooltip.add(Component.literal("You haggle for " + value + " better prices for " + duration + " seconds"));
         super.appendHoverText(stack, pContext, tooltip, flagIn);
     }
 }

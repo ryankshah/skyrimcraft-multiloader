@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "cross": "skyrimcraft:block/jazbay_grape_bush_stage3",
+    "particle": "skyrimcraft:block/jazbay_grape_bush_stage3"
+  }
+}

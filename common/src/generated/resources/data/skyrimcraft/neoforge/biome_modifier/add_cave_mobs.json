@@ -13,6 +13,18 @@
       "maxCount": 2,
       "minCount": 1,
       "weight": 40
+    },
+    {
+      "type": "skyrimcraft:skeever",
+      "maxCount": 3,
+      "minCount": 2,
+      "weight": 40
+    },
+    {
+      "type": "skyrimcraft:venomfang_skeever",
+      "maxCount": 2,
+      "minCount": 1,
+      "weight": 40
     }
   ]
 }

@@ -3,9 +3,12 @@ package com.ryankshah.skyrimcraft.effect;
 import com.example.examplemod.registration.RegistrationProvider;
 import com.example.examplemod.registration.RegistryObject;
 import com.ryankshah.skyrimcraft.Constants;
+import com.ryankshah.skyrimcraft.registry.AttributeRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 
 public class ModEffects
 {
@@ -81,4 +84,9 @@ public class ModEffects
             MobEffectCategory.BENEFICIAL,
             0xAA222222
     ));
+
+    public static final RegistryObject<MobEffect, EffectIncreasedArmorRating> ARMOR_RATING = MOB_EFFECTS.register("armor_rating", () -> (EffectIncreasedArmorRating) (new EffectIncreasedArmorRating(
+            MobEffectCategory.BENEFICIAL,
+            0xAA222222
+    ).addAttributeModifier(Attributes.ARMOR, AttributeRegistry.MODIFIER_ID_ARMOR_RATING, 4.0D, AttributeModifier.Operation.ADD_VALUE)));
 }

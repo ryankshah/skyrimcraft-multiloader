@@ -27,6 +27,11 @@ public class ShoutDragonrend extends Spell //implements IForgeRegistryEntry<ISpe
     }
 
     @Override
+    public String getShoutName() {
+        return "Joor Zah Frul";
+    }
+
+    @Override
     public List<String> getDescription() {
         List<String> desc = new ArrayList<>();
         desc.add("Your voice lashes out at a");

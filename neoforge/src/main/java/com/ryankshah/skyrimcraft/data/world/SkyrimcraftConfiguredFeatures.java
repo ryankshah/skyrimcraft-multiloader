@@ -24,25 +24,10 @@ import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 import java.util.List;
 
+import static com.ryankshah.skyrimcraft.world.WorldGenConstants.*;
+
 public class SkyrimcraftConfiguredFeatures
 {
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CORUNDUM_ORE_KEY = registerKey("corundum_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> EBONY_ORE_KEY = registerKey("ebony_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MALACHITE_ORE_KEY = registerKey("malachite_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MOONSTONE_ORE_KEY = registerKey("moonstone_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORICHALCUM_ORE_KEY = registerKey("orichalcum_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> QUICKSILVER_ORE_KEY = registerKey("quicksilver_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SILVER_ORE_KEY = registerKey("silver_ore");
-
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MOUNTAIN_FLOWER_KEY = registerKey("mountain_flower");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> MUSHROOMS_KEY = registerKey("mushrooms");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> CREEP_CLUSTER_KEY = registerKey("creep_clusters");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DESERT_PLANTS_KEY = registerKey("desert_plants");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> OYSTERS_KEY = registerKey("oysters");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> BIRDS_NEST_KEY = registerKey("birds_nest");
-
-    public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_KEY = registerKey("trees");
-
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
@@ -84,6 +69,20 @@ public class SkyrimcraftConfiguredFeatures
                 OreConfiguration.target(deepslateReplaceables, BlockRegistry.DEEPSLATE_SILVER_ORE.get().defaultBlockState()));
         register(context, SILVER_ORE_KEY, Feature.ORE, new OreConfiguration(silverOres, 5));
 
+        register(context, LAVENDER_KEY, Feature.NO_BONEMEAL_FLOWER, new RandomPatchConfiguration(32, 3, 3,
+                PlacementUtils.onlyWhenEmpty(
+                        Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(
+                                new NoiseProvider(
+                                        2345L,
+                                        new NormalNoise.NoiseParameters(0, 1.0),
+                                        0.020833334F,
+                                        List.of(
+                                                BlockRegistry.LAVENDER.get().defaultBlockState()
+                                        )
+                                )
+                        ))));
+
         register(context, MOUNTAIN_FLOWER_KEY, Feature.FLOWER, new RandomPatchConfiguration(32, 7, 3,
                 PlacementUtils.onlyWhenEmpty(
                         Feature.SIMPLE_BLOCK,
@@ -96,7 +95,24 @@ public class SkyrimcraftConfiguredFeatures
                                                 BlockRegistry.PURPLE_MOUNTAIN_FLOWER.get().defaultBlockState(),
                                                 BlockRegistry.RED_MOUNTAIN_FLOWER.get().defaultBlockState(),
                                                 BlockRegistry.BLUE_MOUNTAIN_FLOWER.get().defaultBlockState(),
-                                                BlockRegistry.YELLOW_MOUNTAIN_FLOWER.get().defaultBlockState()
+                                                BlockRegistry.YELLOW_MOUNTAIN_FLOWER.get().defaultBlockState(),
+                                                BlockRegistry.LAVENDER.get().defaultBlockState()
+                                        )
+                                )
+                        ))));
+
+        register(context, BUSHES_KEY, Feature.FLOWER, new RandomPatchConfiguration(32, 7, 3,
+                PlacementUtils.onlyWhenEmpty(
+                        Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(
+                                new NoiseProvider(
+                                        2345L,
+                                        new NormalNoise.NoiseParameters(0, 1.0),
+                                        0.020833334F,
+                                        List.of(
+                                                BlockRegistry.JAZBAY_GRAPE_BUSH.get().defaultBlockState(),
+                                                BlockRegistry.JUNIPER_BERRY_BUSH.get().defaultBlockState(),
+                                                BlockRegistry.SNOWBERRY_BUSH.get().defaultBlockState()
                                         )
                                 )
                         ))));
@@ -167,11 +183,6 @@ public class SkyrimcraftConfiguredFeatures
                                 )
                         ))
                 )));
-    }
-
-
-    public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Constants.MODID, name));
     }
 
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> context,

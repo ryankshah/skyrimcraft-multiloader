@@ -68,6 +68,10 @@ public class EntityRegistry
             () -> EntityType.Builder.of(SabreCat::new, MobCategory.MONSTER)
                     .sized(1.25f, 1.25f) // Hitbox Size
                     .build(ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "sabre_cat").toString()));
+    public static final RegistryObject<EntityType<?>, EntityType<ValeSabreCat>> VALE_SABRE_CAT = ENTITY_TYPES.register("vale_sabre_cat",
+            () -> EntityType.Builder.of(ValeSabreCat::new, MobCategory.MONSTER)
+                    .sized(1.25f, 1.25f) // Hitbox Size
+                    .build(ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "vale_sabre_cat").toString()));
     public static final RegistryObject<EntityType<?>, EntityType<Giant>> GIANT = ENTITY_TYPES.register("giant",
             () -> EntityType.Builder.of(Giant::new, MobCategory.MONSTER)
                     .sized(1.0f, 4.0f) // Hitbox Size
@@ -124,6 +128,10 @@ public class EntityRegistry
             () -> EntityType.Builder.of(Skeever::new, MobCategory.MONSTER)
                     .sized(1.0f, 1.0f) // Hitbox Size
                     .build(ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "skeever").toString()));
+    public static final RegistryObject<EntityType<?>, EntityType<VenomfangSkeever>> VENOMFANG_SKEEVER = ENTITY_TYPES.register("venomfang_skeever",
+            () -> EntityType.Builder.of(VenomfangSkeever::new, MobCategory.MONSTER)
+                    .sized(1.0f, 1.0f) // Hitbox Size
+                    .build(ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "venomfang_skeever").toString()));
 
     public static final RegistryObject<EntityType<?>, EntityType<AbeceanLongfin>> ABECEAN_LONGFIN = ENTITY_TYPES.register("abecean_longfin",
             () -> EntityType.Builder.of(AbeceanLongfin::new, MobCategory.WATER_CREATURE)
@@ -152,6 +160,7 @@ public class EntityRegistry
                 .add(Attributes.ATTACK_KNOCKBACK, 0.1);
 
         registrar.accept(EntityRegistry.SABRE_CAT.get(), SabreCat.createAttributes().build());
+        registrar.accept(EntityRegistry.VALE_SABRE_CAT.get(), ValeSabreCat.createAttributes().build());
         registrar.accept(EntityRegistry.GIANT.get(), Giant.createAttributes().build());
         registrar.accept(EntityRegistry.MAMMOTH.get(), Mammoth.createAttributes().build());
         registrar.accept(EntityRegistry.DRAGON.get(), SkyrimDragon.createAttributes().build());
@@ -166,6 +175,7 @@ public class EntityRegistry
         registrar.accept(EntityRegistry.FALMER.get(), Falmer.createMobAttributes().build());
         registrar.accept(EntityRegistry.DRAUGR.get(), Draugr.createAttributes().build());
         registrar.accept(EntityRegistry.SKEEVER.get(), Skeever.createAttributes().build());
+        registrar.accept(EntityRegistry.VENOMFANG_SKEEVER.get(), VenomfangSkeever.createAttributes().build());
 
         registrar.accept(EntityRegistry.ABECEAN_LONGFIN.get(), AbeceanLongfin.createAttributes().build());
         registrar.accept(EntityRegistry.CYRODILIC_SPADETAIL.get(), AbeceanLongfin.createAttributes().build());
