@@ -2,6 +2,7 @@ package com.ryankshah.skyrimcraft.data.world;
 
 import com.ryankshah.skyrimcraft.Constants;
 import com.ryankshah.skyrimcraft.registry.BlockRegistry;
+import com.ryankshah.skyrimcraft.registry.FeatureRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -12,10 +13,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
@@ -68,6 +66,14 @@ public class SkyrimcraftConfiguredFeatures
                         BlockRegistry.SILVER_ORE.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceables, BlockRegistry.DEEPSLATE_SILVER_ORE.get().defaultBlockState()));
         register(context, SILVER_ORE_KEY, Feature.ORE, new OreConfiguration(silverOres, 5));
+
+        register(context, MINI_CRATER_KEY, FeatureRegistry.MINI_CRATER.get(), new NoneFeatureConfiguration());
+        register(context, VOLCANO_KEY, FeatureRegistry.VOLCANO.get(), new NoneFeatureConfiguration());
+        register(context, LAVA_POOL_KEY, FeatureRegistry.LAVA_POOL.get(), new NoneFeatureConfiguration());
+        register(context, LAVA_FOUNTAIN_KEY, FeatureRegistry.LAVA_FOUNTAIN.get(), new NoneFeatureConfiguration());
+        register(context, DEAD_TREE_KEY, FeatureRegistry.DEAD_TREE.get(), new NoneFeatureConfiguration());
+        register(context, PINE_TREE_KEY, FeatureRegistry.PINE_TREE.get(), new NoneFeatureConfiguration());
+
 
         register(context, LAVENDER_KEY, Feature.NO_BONEMEAL_FLOWER, new RandomPatchConfiguration(32, 3, 3,
                 PlacementUtils.onlyWhenEmpty(

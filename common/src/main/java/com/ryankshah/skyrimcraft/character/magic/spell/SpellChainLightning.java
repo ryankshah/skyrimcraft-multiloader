@@ -9,7 +9,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
@@ -18,6 +21,11 @@ import java.util.List;
 
 public class SpellChainLightning extends Spell
 {
+    private static final int MAX_CHAIN_DISTANCE = 5;
+    private static final int PARTICLE_FREQUENCY = 1; // Particles every tick for smoother effect
+    private static final int DAMAGE_INTERVAL = 20; // Damage every 20 ticks (1 second)
+    private int ticksSinceCast = 0;
+
     public SpellChainLightning(int identifier) {
         super(identifier, "chain_lightning");
     }
@@ -52,7 +60,7 @@ public class SpellChainLightning extends Spell
 
     @Override
     public float getCost() {
-        return 1.0f;
+        return 4.0f;
     }
 
     @Override
@@ -87,40 +95,53 @@ public class SpellChainLightning extends Spell
     public void onCast() {
         if (getCaster().level() instanceof ServerLevel level) {
             HitResult result = ProjectileHelper.getLookAtHit(getCaster(), 16D);
-            Vec3 target = result.getLocation().add(0, 0.5f, 0);
-            Vec3 playerPos = getCaster().position().add(0, 0.5f, 0);
+            if (result.getType() == HitResult.Type.ENTITY) {
+                Entity mainTarget = ((EntityHitResult) result).getEntity();
+                streamLightning(level, getCaster().getEyePosition(), mainTarget.position().add(0, mainTarget.getEyeHeight() / 2, 0));
 
-            Vec3 dist = playerPos.subtract(target);
-            double distance = dist.length();
-            double particleIntervalInBlocks = 1.25; // every X blocks spawn a particle
-            Vec3 unitVector = dist.normalize().multiply(-particleIntervalInBlocks , -particleIntervalInBlocks , -particleIntervalInBlocks );
+                // Chain to nearby entities
+                List<Entity> chainedEntities = level.getEntities(mainTarget, mainTarget.getBoundingBox().inflate(MAX_CHAIN_DISTANCE),
+                        entity -> entity instanceof LivingEntity && entity != getCaster() && entity != mainTarget);
 
-            Vec3 startPos = playerPos;
-
-            // keep stepping forward until we go the whole distance
-            for(double step = 0; step < distance; step += particleIntervalInBlocks) {
-                startPos = startPos.add(unitVector);
-                level.sendParticles(new LightningParticle.LightningParticleOptions(ParticleColors.WHITE_LIGHTNING, 0.5F, 1), startPos.x, startPos.y, startPos.z, 2, 0, 0, 0, 0);
-            }
-
-            if(result.getType() == HitResult.Type.ENTITY) {
-                level.playSound(null, target.x, target.y, target.z,
-                        SoundEvents.LIGHTNING_BOLT_IMPACT, SoundSource.MASTER, 1.0F, 0.5F + ProjectileHelper.RANDOM.nextFloat() * 0.2F);
-
-                for (int i = 0; i < 32; i++) {
-                    double offsetX = ProjectileHelper.RANDOM.nextGaussian() * 1.5D;
-                    double offsetY = ProjectileHelper.RANDOM.nextGaussian() * 1.5D;
-                    double offsetZ = ProjectileHelper.RANDOM.nextGaussian() * 1.5D;
-                    level.sendParticles(new LightningParticle.LightningParticleOptions(ParticleColors.WHITE_LIGHTNING, 0.25F, 1),
-                            target.x + offsetX, target.y + offsetY, target.z + offsetZ,
-                            0, 0.0D, 0.0D, 0.0D, 0.0D);
+                for (Entity chainedEntity : chainedEntities) {
+                    streamLightning(level, mainTarget.position(), chainedEntity.position().add(0, chainedEntity.getEyeHeight() / 2, 0));
                 }
-                super.onCast();
+
+                // Apply damage every DAMAGE_INTERVAL ticks
+                if (ticksSinceCast % DAMAGE_INTERVAL == 0) {
+                    applyDamage(mainTarget);
+                    for (Entity chainedEntity : chainedEntities) {
+                        applyDamage(chainedEntity);
+                    }
+                }
             }
+            ticksSinceCast++;
         }
     }
 
-//    public void vertex(VertexConsumer pConsumer, Matrix4f pPose, Matrix3f pNormal, float pX, float pY, float pZ, int pRed, int pGreen, int pBlue, float pU, float pV) {
-//        pConsumer.vertex(pPose, pX, pY, pZ).color(pRed, pGreen, pBlue, 255).uv(pU, pV).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(15728880).normal(pNormal, 0.0F, 1.0F, 0.0F).endVertex();
-//    }
+    private void streamLightning(ServerLevel level, Vec3 start, Vec3 end) {
+        if (level.getGameTime() % PARTICLE_FREQUENCY != 0) return;
+
+        Vec3 diff = end.subtract(start);
+        int steps = (int) (diff.length() * 4); // 4 particles per block for denser effect
+        Vec3 step = diff.normalize().scale(0.25); // 0.25 block step size
+
+        for (int i = 0; i < steps; i++) {
+            Vec3 pos = start.add(step.scale(i));
+            double offsetX = level.random.nextGaussian() * 0.05;
+            double offsetY = level.random.nextGaussian() * 0.05;
+            double offsetZ = level.random.nextGaussian() * 0.05;
+            level.sendParticles(new LightningParticle.LightningParticleOptions(ParticleColors.WHITE_LIGHTNING, 0.5F, 1),
+                    pos.x + offsetX, pos.y + offsetY, pos.z + offsetZ, 1, 0, 0, 0, 0);
+        }
+    }
+
+    private void applyDamage(Entity target) {
+        if (target instanceof LivingEntity livingEntity) {
+            // Apply your damage logic here
+            // For example:
+            livingEntity.hurt(livingEntity.damageSources().magic(), 5.0f);
+            // You can also add logic here to reduce the target's magicka if applicable
+        }
+    }
 }

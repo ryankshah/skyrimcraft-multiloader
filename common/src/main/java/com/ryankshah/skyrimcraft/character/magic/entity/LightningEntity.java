@@ -1,7 +1,5 @@
 package com.ryankshah.skyrimcraft.character.magic.entity;
 
-import com.ryankshah.skyrimcraft.character.magic.SpellRegistry;
-import com.ryankshah.skyrimcraft.registry.DamageTypeRegistry;
 import com.ryankshah.skyrimcraft.registry.EntityRegistry;
 import com.ryankshah.skyrimcraft.util.ProjectileHelper;
 import net.minecraft.core.BlockPos;
@@ -11,6 +9,8 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -102,8 +102,9 @@ public class LightningEntity extends SkyrimcraftProjectile {
                     for (Entity entity : entities) {
                         this.playSound(SoundEvents.LIGHTNING_BOLT_IMPACT, 2.0F, 0.5F + this.random.nextFloat() * 0.2F);
 
-                        entity.hurt(DamageTypeRegistry.indirectSpellAttack(this, owner, SpellRegistry.LIGHTNING.get()),
-                                this.getDamage() * this.getPower());
+                        entity.hurt(damageSources().magic(), this.getDamage() * this.getPower());
+//                        entity.hurt(DamageTypeRegistry.indirectSpellAttack(this, owner, SpellRegistry.LIGHTNING.get()),
+//                                this.getDamage() * this.getPower());
                     }
 
                     double radius = SCALE * 2.0F;

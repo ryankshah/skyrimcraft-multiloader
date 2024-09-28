@@ -1,0 +1,18 @@
+{
+  "type": "skyrimcraft:alchemy",
+  "category": "FORTIFY BARTER",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:butterfly_wing"
+    },
+    {
+      "item": "skyrimcraft:dragons_tongue"
+    }
+  ],
+  "level": 2,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:elixir_of_haggling"
+  },
+  "xp": 1
+}

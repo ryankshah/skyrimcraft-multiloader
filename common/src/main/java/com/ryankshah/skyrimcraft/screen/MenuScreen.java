@@ -163,6 +163,7 @@ public class MenuScreen extends Screen
             } else if (currentDirection == Direction.SOUTH) {
                 GLFW.glfwSetCursor(minecraft.getWindow().getWindow(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_ARROW_CURSOR));
                 minecraft.setScreen(null);
+                minecraft.setScreen(new MapScreen());
                 minecraft.player.displayClientMessage(Component.translatable("skyrimcraft.menu.option.unavailable"), false);
             } else if (currentDirection == Direction.WEST) {
                 GLFW.glfwSetCursor(minecraft.getWindow().getWindow(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_ARROW_CURSOR));
@@ -225,12 +226,10 @@ public class MenuScreen extends Screen
             if(currentDirection == Direction.NORTH) {
                 minecraft.setScreen(null);
                 minecraft.setScreen(new SkillScreen());
-                // minecraft.setScreen(null);
-//                 minecraft.player.displayClientMessage(Component.translatable("skyrimcraft.menu.option.unavailable"), false);
             } else if(currentDirection == Direction.SOUTH) {
                  minecraft.setScreen(null);
-//                 minecraft.setScreen(new MapScreen());
-                 minecraft.player.displayClientMessage(Component.translatable("skyrimcraft.menu.option.unavailable"), false);
+//                 minecraft.setScreen(new SkyrimLoadingScreen());
+                 minecraft.setScreen(new MapScreen());
             } else if(currentDirection == Direction.WEST) {
                 minecraft.setScreen(null);
                 minecraft.player.displayClientMessage(Component.translatable("skyrimcraft.menu.option.unavailable"), false);

@@ -1,0 +1,27 @@
+{
+  "parent": "skyrimcraft:spell/root",
+  "criteria": {
+    "spell_learned_telekinesis": {
+      "conditions": {
+        "skill": "skyrimcraft:telekinesis"
+      },
+      "trigger": "skyrimcraft:learn_spell"
+    }
+  },
+  "display": {
+    "description": "Learn the Telekinesis spell",
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "skyrimcraft:fireball_spellbook"
+    },
+    "title": "Telekinesis"
+  },
+  "requirements": [
+    [
+      "spell_learned_telekinesis"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

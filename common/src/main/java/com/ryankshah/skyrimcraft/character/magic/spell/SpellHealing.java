@@ -50,7 +50,7 @@ public class SpellHealing extends Spell
 
     @Override
     public float getCost() {
-        return 1.0f;
+        return 4.0f;
     }
 
     @Override

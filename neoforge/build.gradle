@@ -16,8 +16,8 @@ repositories {
         }
     }
     maven {
-        name = "SmartBrainLib (SBL) Maven Repo"
-        url = "https://dl.cloudsmith.io/public/tslat/sbl/maven/"
+        name = "Forge"
+        url = "https://maven.minecraftforge.net"
     }
 }
 
@@ -58,5 +58,5 @@ neoForge {
 dependencies {
     implementation 'mysticdrew:common-networking-neoforge:1.0.16-1.21'
     implementation "software.bernie.geckolib:geckolib-neoforge-${geckolib_version}"
-    implementation "net.tslat.smartbrainlib:SmartBrainLib-neoforge-1.21:${sbl_version}"
+    implementation "com.github.glitchfiend:TerraBlender-neoforge:${terrablender_version}"
 }

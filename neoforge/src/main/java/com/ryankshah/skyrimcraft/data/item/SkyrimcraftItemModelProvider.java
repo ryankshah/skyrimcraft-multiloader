@@ -361,6 +361,9 @@ public class SkyrimcraftItemModelProvider extends ItemModelProvider
         spellbook(ItemRegistry.CONJURE_ZOMBIE_SPELLBOOK.get());
         spellbook(ItemRegistry.DETECT_LIFE_SPELLBOOK.get());
         spellbook(ItemRegistry.CANDLELIGHT_SPELLBOOK.get());
+        spellbook(ItemRegistry.OAKFLESH_SPELLBOOK.get());
+        spellbook(ItemRegistry.TELEKINESIS_SPELLBOOK.get());
+        spellbook(ItemRegistry.WATERBREATHING_SPELLBOOK.get());
 
         skillbook(ItemRegistry.ALTERATION_SKILLBOOK.get());
         skillbook(ItemRegistry.CONJURATION_SKILLBOOK.get());

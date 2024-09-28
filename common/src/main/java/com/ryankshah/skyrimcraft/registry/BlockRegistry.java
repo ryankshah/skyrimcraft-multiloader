@@ -325,28 +325,127 @@ public class BlockRegistry
     /// DECORATIVE BLOCKS
     public static final RegistryObject<Block, Block> STONE_BRICK_1 = registerBlock("stone_brick_1",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_BRICK_1_ITEM = ItemRegistry.ITEMS.register("stone_brick_1",
+            () -> new BlockItem(STONE_BRICK_1.get(), new Item.Properties()));
     public static final RegistryObject<Block, Block> STONE_BRICK_2 = registerBlock("stone_brick_2",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_BRICK_2_ITEM = ItemRegistry.ITEMS.register("stone_brick_2",
+            () -> new BlockItem(STONE_BRICK_2.get(), new Item.Properties()));
     public static final RegistryObject<Block, Block> STONE_BRICK_3 = registerBlock("stone_brick_3",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_BRICK_3_ITEM = ItemRegistry.ITEMS.register("stone_brick_3",
+            () -> new BlockItem(STONE_BRICK_3.get(), new Item.Properties()));
     public static final RegistryObject<Block, Block> STONE_BRICK_4 = registerBlock("stone_brick_4",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_BRICK_4_ITEM = ItemRegistry.ITEMS.register("stone_brick_4",
+            () -> new BlockItem(STONE_BRICK_4.get(), new Item.Properties()));
     public static final RegistryObject<Block, Block> STONE_BRICK_5 = registerBlock("stone_brick_5",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_BRICK_5_ITEM = ItemRegistry.ITEMS.register("stone_brick_5",
+            () -> new BlockItem(STONE_BRICK_5.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> STONE_BRICK_6 = registerBlock("stone_brick_6",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_BRICK_6_ITEM = ItemRegistry.ITEMS.register("stone_brick_6",
+            () -> new BlockItem(STONE_BRICK_6.get(), new Item.Properties()));
     public static final RegistryObject<Block, Block> COBBLESTONE_1 = registerBlock("cobblestone_1",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> COBBLESTONE_1_ITEM = ItemRegistry.ITEMS.register("cobblestone_1",
+            () -> new BlockItem(COBBLESTONE_1.get(), new Item.Properties()));
     public static final RegistryObject<Block, Block> COBBLESTONE_2 = registerBlock("cobblestone_2",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> COBBLESTONE_2_ITEM = ItemRegistry.ITEMS.register("cobblestone_2",
+            () -> new BlockItem(COBBLESTONE_2.get(), new Item.Properties()));
     public static final RegistryObject<Block, Block> SNOWY_PLANKS_1 = registerBlock("snowy_planks_1",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+    public static final RegistryObject<Item, BlockItem> SNOWY_PLANKS_1_ITEM = ItemRegistry.ITEMS.register("snowy_planks_1",
+            () -> new BlockItem(SNOWY_PLANKS_1.get(), new Item.Properties()));
     public static final RegistryObject<Block, Block> PLANKS_1 = registerBlock("planks_1",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+    public static final RegistryObject<Item, BlockItem> PLANKS_1_ITEM = ItemRegistry.ITEMS.register("planks_1",
+            () -> new BlockItem(PLANKS_1.get(), new Item.Properties()));
     public static final RegistryObject<Block, Block> PLANKS_2 = registerBlock("planks_2",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+    public static final RegistryObject<Item, BlockItem> PLANKS_2_ITEM = ItemRegistry.ITEMS.register("planks_2",
+            () -> new BlockItem(PLANKS_2.get(), new Item.Properties()));
     public static final RegistryObject<Block, Block> PLANKS_3 = registerBlock("planks_3",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+    public static final RegistryObject<Item, BlockItem> PLANKS_3_ITEM = ItemRegistry.ITEMS.register("planks_3",
+            () -> new BlockItem(PLANKS_3.get(), new Item.Properties()));
     public static final RegistryObject<Block, Block> PLANKS_4 = registerBlock("planks_4",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+    public static final RegistryObject<Item, BlockItem> PLANKS_4_ITEM = ItemRegistry.ITEMS.register("planks_4",
+            () -> new BlockItem(PLANKS_4.get(), new Item.Properties()));
+
+    public static final RegistryObject<Block, Block> STONE_1 = registerBlock("stone_1",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_1_ITEM = ItemRegistry.ITEMS.register("stone_1",
+            () -> new BlockItem(STONE_1.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> STONE_2 = registerBlock("stone_2",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_2_ITEM = ItemRegistry.ITEMS.register("stone_2",
+            () -> new BlockItem(STONE_2.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> STONE_3 = registerBlock("stone_3",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_3_ITEM = ItemRegistry.ITEMS.register("stone_3",
+            () -> new BlockItem(STONE_3.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> STONE_4 = registerBlock("stone_4",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_4_ITEM = ItemRegistry.ITEMS.register("stone_4",
+            () -> new BlockItem(STONE_4.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> STONE_5 = registerBlock("stone_5",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_5_ITEM = ItemRegistry.ITEMS.register("stone_5",
+            () -> new BlockItem(STONE_5.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> STONE_6 = registerBlock("stone_6",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_6_ITEM = ItemRegistry.ITEMS.register("stone_6",
+            () -> new BlockItem(STONE_6.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> STONE_7 = registerBlock("stone_7",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_7_ITEM = ItemRegistry.ITEMS.register("stone_7",
+            () -> new BlockItem(STONE_7.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> STONE_8 = registerBlock("stone_8",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_8_ITEM = ItemRegistry.ITEMS.register("stone_8",
+            () -> new BlockItem(STONE_8.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> STONE_9 = registerBlock("stone_9",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_9_ITEM = ItemRegistry.ITEMS.register("stone_9",
+            () -> new BlockItem(STONE_9.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> STONE_10 = registerBlock("stone_10",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final RegistryObject<Item, BlockItem> STONE_10_ITEM = ItemRegistry.ITEMS.register("stone_10",
+            () -> new BlockItem(STONE_10.get(), new Item.Properties()));
+
+    public static final RegistryObject<Block, Block> DIRT_1 = registerBlock("dirt_1",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
+    public static final RegistryObject<Item, BlockItem> DIRT_1_ITEM = ItemRegistry.ITEMS.register("dirt_1",
+            () -> new BlockItem(DIRT_1.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> DIRT_2 = registerBlock("dirt_2",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
+    public static final RegistryObject<Item, BlockItem> DIRT_2_ITEM = ItemRegistry.ITEMS.register("dirt_2",
+            () -> new BlockItem(DIRT_2.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> DIRT_3 = registerBlock("dirt_3",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
+    public static final RegistryObject<Item, BlockItem> DIRT_3_ITEM = ItemRegistry.ITEMS.register("dirt_3",
+            () -> new BlockItem(DIRT_3.get(), new Item.Properties()));
+
+    public static final RegistryObject<Block, Block> GRASS_1 = registerBlock("grass_1",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK)));
+    public static final RegistryObject<Item, BlockItem> GRASS_1_ITEM = ItemRegistry.ITEMS.register("grass_1",
+            () -> new BlockItem(GRASS_1.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> GRASS_2 = registerBlock("grass_2",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK)));
+    public static final RegistryObject<Item, BlockItem> GRASS_2_ITEM = ItemRegistry.ITEMS.register("grass_2",
+            () -> new BlockItem(GRASS_2.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> GRASS_3 = registerBlock("grass_3",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK)));
+    public static final RegistryObject<Item, BlockItem> GRASS_3_ITEM = ItemRegistry.ITEMS.register("grass_3",
+            () -> new BlockItem(GRASS_3.get(), new Item.Properties()));
+    public static final RegistryObject<Block, Block> GRASS_4 = registerBlock("grass_4",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK)));
+    public static final RegistryObject<Item, BlockItem> GRASS_4_ITEM = ItemRegistry.ITEMS.register("grass_4",
+            () -> new BlockItem(GRASS_4.get(), new Item.Properties()));
 
     private static <T extends Block> RegistryObject<Block, T> registerBlock(String id, Supplier<T> block) {
         return BLOCKS.register(id, block);

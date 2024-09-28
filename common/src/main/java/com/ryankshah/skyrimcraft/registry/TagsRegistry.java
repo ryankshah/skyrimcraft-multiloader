@@ -97,6 +97,7 @@ public class TagsRegistry
     public static class StructureTagsInit {
         public static TagKey<Structure> NETHER_FORTRESS = TagKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "fortress"));
         public static TagKey<Structure> SHOUT_WALL = TagKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "shout_wall"));
+        public static TagKey<Structure> GIANT_CAMP = TagKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "giant_camp"));
     }
 
     public static class BiomeTagsInit {

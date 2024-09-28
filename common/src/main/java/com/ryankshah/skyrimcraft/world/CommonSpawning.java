@@ -35,7 +35,8 @@ public class CommonSpawning
             new MobSpawnSettings.SpawnerData(EntityRegistry.DRAUGR.get(), 40, 2, 2),
             new MobSpawnSettings.SpawnerData(EntityRegistry.DWARVEN_SPIDER.get(), 40, 1, 2),
             new MobSpawnSettings.SpawnerData(EntityRegistry.SKEEVER.get(), 40, 2, 3),
-            new MobSpawnSettings.SpawnerData(EntityRegistry.VENOMFANG_SKEEVER.get(), 40, 1, 2)
+            new MobSpawnSettings.SpawnerData(EntityRegistry.VENOMFANG_SKEEVER.get(), 40, 1, 2),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.DRAGON.get(), 1, 1, 1)
     );
     public static List<MobSpawnSettings.SpawnerData> END_MOB_SPAWNS = List.of(
             new MobSpawnSettings.SpawnerData(EntityRegistry.VALE_SABRE_CAT.get(), 10, 1, 2)
@@ -52,7 +53,8 @@ public class CommonSpawning
             new MobSpawnSettings.SpawnerData(EntityRegistry.MONARCH_BUTTERFLY.get(), 20, 3, 5),
             new MobSpawnSettings.SpawnerData(EntityRegistry.BLUE_DARTWING.get(), 20, 3, 5),
             new MobSpawnSettings.SpawnerData(EntityRegistry.ORANGE_DARTWING.get(), 20, 3, 5),
-            new MobSpawnSettings.SpawnerData(EntityRegistry.LUNAR_MOTH.get(), 20, 3, 5)
+            new MobSpawnSettings.SpawnerData(EntityRegistry.LUNAR_MOTH.get(), 20, 3, 5),
+            new MobSpawnSettings.SpawnerData(EntityRegistry.DRAGON.get(), 4, 1, 1)
     );
 
     public static void placements() {

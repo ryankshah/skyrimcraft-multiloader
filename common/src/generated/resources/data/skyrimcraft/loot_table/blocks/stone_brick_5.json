@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "skyrimcraft:stone_brick_5"
         }
       ],
       "rolls": 1.0

@@ -44,6 +44,43 @@ public class SkyrimcraftPlacedFeatures
                 OrePlacement.commonOrePlacement(24,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.absolute(64))));
 
+        register(context, MINI_CRATER_PLACED_KEY, configuredFeatures.getOrThrow(MINI_CRATER_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(5)
+                )
+        );
+        register(context, VOLCANO_PLACED_KEY, configuredFeatures.getOrThrow(WorldGenConstants.VOLCANO_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(20)
+                )
+        );
+        register(context, LAVA_POOL_PLACED_KEY, configuredFeatures.getOrThrow(LAVA_POOL_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(6)
+                )
+        );
+        register(context, LAVA_FOUNTAIN_PLACED_KEY, configuredFeatures.getOrThrow(LAVA_FOUNTAIN_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(10)
+                )
+        );
+        register(context, DEAD_TREE_PLACED_KEY, configuredFeatures.getOrThrow(DEAD_TREE_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(3),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                )
+        );
+        register(context, PINE_TREE_PLACED_KEY, configuredFeatures.getOrThrow(PINE_TREE_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(3),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                )
+        );
+
         register(context, LAVENDER_PLACED_KEY,
                 configuredFeatures.getOrThrow(WorldGenConstants.LAVENDER_KEY),
                 List.of(

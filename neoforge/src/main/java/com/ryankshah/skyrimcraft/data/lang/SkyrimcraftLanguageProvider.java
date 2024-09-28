@@ -93,6 +93,7 @@ public class SkyrimcraftLanguageProvider extends LanguageProvider
         add("entity.skyrimcraft.vale_sabre_cat", "Vale Sabre Cat");
         add("entity.skyrimcraft.skeever", "Skeever");
         add("entity.skyrimcraft.venomfang_skeever", "Venomfang Skeever");
+        add("entity.skyrimcraft.vampire", "Vampire");
         add("entity.skyrimcraft.snowy_sabre_cat", "Snowy Sabre Cat");
         add("entity.skyrimcraft.giant", "Giant");
         add("entity.skyrimcraft.mammoth", "Mammoth");
@@ -108,6 +109,8 @@ public class SkyrimcraftLanguageProvider extends LanguageProvider
 
         add("entity.skyrimcraft.abecean_longfin", "Abecean Longfin");
         add("entity.skyrimcraft.cyrodilic_spadetail", "Cyrodilic Spadetail");
+
+        add("skyrimcraft.spell.no_magicka", "You have no magicka!");
 
         add("entity.skyrimcraft.khajiit", "Khajiit");
         add("entity.skyrimcraft.khajiit.armorer", "Khajiit Armorer");

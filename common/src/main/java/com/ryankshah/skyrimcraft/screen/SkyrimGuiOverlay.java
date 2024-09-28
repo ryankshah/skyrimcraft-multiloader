@@ -12,14 +12,12 @@ import com.ryankshah.skyrimcraft.block.OvenBlock;
 import com.ryankshah.skyrimcraft.character.attachment.Character;
 import com.ryankshah.skyrimcraft.character.magic.EmptySpell;
 import com.ryankshah.skyrimcraft.character.magic.Spell;
-import com.ryankshah.skyrimcraft.network.skill.HandlePickpocket;
+import com.ryankshah.skyrimcraft.entity.boss.dragon.SkyrimDragon;
 import com.ryankshah.skyrimcraft.registry.EntityRegistry;
 import com.ryankshah.skyrimcraft.registry.KeysRegistry;
-import com.ryankshah.skyrimcraft.util.ClientUtil;
 import com.ryankshah.skyrimcraft.util.CompassFeature;
 import com.ryankshah.skyrimcraft.util.LevelUpdate;
 import com.ryankshah.skyrimcraft.util.RenderUtil;
-import commonnetwork.api.Dispatcher;
 import net.minecraft.client.AttackIndicatorStatus;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
@@ -197,6 +195,9 @@ public class SkyrimGuiOverlay
 //            if(targets.contains(mc.player.getLastHurtMob().getId()) && mc.player.getLastHurtMob() != null && mc.player.getLastHurtMob().isAlive()) {
                 LivingEntity target = (LivingEntity)currentTarget;
                 String entityName = target instanceof Villager villager ? villager.getVillagerData().getProfession() == VillagerProfession.NONE ? "Villager" : StringUtils.capitalize(villager.getVillagerData().getProfession().toString()) : target.getDisplayName().getString();
+
+                if(target instanceof SkyrimDragon && !mc.player.closerThan(target, 64.0D))
+                    return;
 
                 if(!mc.player.closerThan(target, 32.0D))
                     return;
@@ -454,7 +455,7 @@ public class SkyrimGuiOverlay
 
                 // Render the shout words based on progress
                 String shoutName = spellLocation == 1 ? character.getSelectedSpell1().getShoutName() : character.getSelectedSpell2().getShoutName();
-                guiGraphics.drawCenteredString(mc.font, shoutName, (scaledWidth / 2) - (mc.font.width(shoutName) / 2), barY - 20, 0xFFFFFFFF);
+                guiGraphics.drawCenteredString(mc.font, shoutName, scaledWidth / 2, barY - 20, 0xFFFFFFFF);
 //                String[] shoutWords = shoutName.split(" ");
 //                // Calculate percentages for each word's appearance
 //                float[] wordThresholds = {0.25f, 0.50f, 0.75f}; // Progress for the first, second, and third word

@@ -50,6 +50,7 @@ public class BlockData
         provider.addBlock(BlockRegistry.STONE_BRICK_3, "Stone Bricks");
         provider.addBlock(BlockRegistry.STONE_BRICK_4, "Stone Bricks");
         provider.addBlock(BlockRegistry.STONE_BRICK_5, "Stone Bricks");
+        provider.addBlock(BlockRegistry.STONE_BRICK_6, "Stone Bricks");
         provider.addBlock(BlockRegistry.COBBLESTONE_1, "Cobblestone");
         provider.addBlock(BlockRegistry.COBBLESTONE_2, "Cobblestone");
         provider.addBlock(BlockRegistry.SNOWY_PLANKS_1, "Snowy Planks");
@@ -57,6 +58,26 @@ public class BlockData
         provider.addBlock(BlockRegistry.PLANKS_2, "Planks");
         provider.addBlock(BlockRegistry.PLANKS_3, "Planks");
         provider.addBlock(BlockRegistry.PLANKS_4, "Planks");
+        
+        provider.addBlock(BlockRegistry.STONE_1, "Stone");
+        provider.addBlock(BlockRegistry.STONE_2, "Stone");
+        provider.addBlock(BlockRegistry.STONE_3, "Stone");
+        provider.addBlock(BlockRegistry.STONE_4, "Stone");
+        provider.addBlock(BlockRegistry.STONE_5, "Stone");
+        provider.addBlock(BlockRegistry.STONE_6, "Stone");
+        provider.addBlock(BlockRegistry.STONE_7, "Stone");
+        provider.addBlock(BlockRegistry.STONE_8, "Stone");
+        provider.addBlock(BlockRegistry.STONE_9, "Stone");
+        provider.addBlock(BlockRegistry.STONE_10, "Stone");
+
+        provider.addBlock(BlockRegistry.DIRT_1, "Dirt");
+        provider.addBlock(BlockRegistry.DIRT_2, "Dirt");
+        provider.addBlock(BlockRegistry.DIRT_3, "Dirt");
+        
+        provider.addBlock(BlockRegistry.GRASS_1, "Grass");
+        provider.addBlock(BlockRegistry.GRASS_2, "Grass");
+        provider.addBlock(BlockRegistry.GRASS_3, "Grass");
+        provider.addBlock(BlockRegistry.GRASS_4, "Grass");
 
         provider.addBlock(BlockRegistry.SHOUT_BLOCK, "Shout Block");
 
@@ -112,6 +133,7 @@ public class BlockData
         normalBlock(provider, BlockRegistry.STONE_BRICK_3.get());
         normalBlock(provider, BlockRegistry.STONE_BRICK_4.get());
         normalBlock(provider, BlockRegistry.STONE_BRICK_5.get());
+        normalBlock(provider, BlockRegistry.STONE_BRICK_6.get());
         normalBlock(provider, BlockRegistry.COBBLESTONE_1.get());
         normalBlock(provider, BlockRegistry.COBBLESTONE_2.get());
         normalBlock(provider, BlockRegistry.SNOWY_PLANKS_1.get());
@@ -119,6 +141,26 @@ public class BlockData
         normalBlock(provider, BlockRegistry.PLANKS_2.get());
         normalBlock(provider, BlockRegistry.PLANKS_3.get());
         normalBlock(provider, BlockRegistry.PLANKS_4.get());
+
+        normalBlock(provider, BlockRegistry.STONE_1.get());
+        normalBlock(provider, BlockRegistry.STONE_2.get());
+        normalBlock(provider, BlockRegistry.STONE_3.get());
+        normalBlock(provider, BlockRegistry.STONE_4.get());
+        normalBlock(provider, BlockRegistry.STONE_5.get());
+        normalBlock(provider, BlockRegistry.STONE_6.get());
+        normalBlock(provider, BlockRegistry.STONE_7.get());
+        normalBlock(provider, BlockRegistry.STONE_8.get());
+        normalBlock(provider, BlockRegistry.STONE_9.get());
+        normalBlock(provider, BlockRegistry.STONE_10.get());
+
+        normalBlock(provider, BlockRegistry.DIRT_1.get());
+        normalBlock(provider, BlockRegistry.DIRT_2.get());
+        normalBlock(provider, BlockRegistry.DIRT_3.get());
+
+        normalBlock(provider, BlockRegistry.GRASS_1.get());
+        normalBlock(provider, BlockRegistry.GRASS_2.get());
+        normalBlock(provider, BlockRegistry.GRASS_3.get());
+        normalBlock(provider, BlockRegistry.GRASS_4.get());
 
         normalBlock(provider, BlockRegistry.SHOUT_BLOCK.get());
 

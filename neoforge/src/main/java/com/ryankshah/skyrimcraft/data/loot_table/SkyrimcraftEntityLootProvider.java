@@ -43,6 +43,8 @@ public class SkyrimcraftEntityLootProvider extends EntityLootSubProvider
         this.add(EntityRegistry.SKEEVER.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(ItemRegistry.CHARRED_SKEEVER_HIDE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(1.0F, 2.0F))))));
         this.add(EntityRegistry.VENOMFANG_SKEEVER.get(), LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(ItemRegistry.CHARRED_SKEEVER_HIDE.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(1.0F, 2.0F))))));
 
+        this.add(EntityRegistry.VAMPIRE.get(), LootTable.lootTable());
+
         this.add(EntityRegistry.KHAJIIT.get(), LootTable.lootTable());
 
         LootPool.Builder falmerPool = LootPool.lootPool()

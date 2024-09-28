@@ -1,0 +1,9 @@
+{
+  "feature": "skyrimcraft:volcano",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 20
+    }
+  ]
+}

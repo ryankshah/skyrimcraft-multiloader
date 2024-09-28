@@ -15,6 +15,7 @@ import com.ryankshah.skyrimcraft.registry.TagsRegistry;
 import com.ryankshah.skyrimcraft.util.CompassFeature;
 import commonnetwork.api.Dispatcher;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -23,6 +24,7 @@ import net.minecraft.tags.StructureTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -120,6 +122,20 @@ public class PlayerEvents
             }
         }
 
+        // check ethereal
+        if (!playerEntity.hasEffect(ModEffects.ETHEREAL.asHolder())) {
+            if (playerEntity.isInvulnerable() && (!playerEntity.isCreative() || !playerEntity.isSpectator()))
+                playerEntity.setInvulnerable(false);
+        }
+
+        if (!playerEntity.level().isNight() || playerEntity.level().getBrightness(LightLayer.BLOCK, playerEntity.blockPosition()) < 10) {
+            // Increased damage from sunlight for infected players
+            playerEntity.hurt(playerEntity.damageSources().onFire(), 2);
+        }
+
+        if(Minecraft.getInstance().getConnection() == null)
+            return;
+
         if (playerEntity instanceof ServerPlayer && playerEntity.level().isLoaded(playerEntity.blockPosition())) { //&& event.side == LogicalSide.SERVER) {
             ServerPlayer player = (ServerPlayer) playerEntity;
             ServerLevel level = (ServerLevel) player.level();
@@ -143,13 +159,6 @@ public class PlayerEvents
                 }
             }
         }
-
-        // check ethereal
-        if (!playerEntity.hasEffect(ModEffects.ETHEREAL.asHolder())) {
-            if (playerEntity.isInvulnerable() && (!playerEntity.isCreative() || !playerEntity.isSpectator()))
-                playerEntity.setInvulnerable(false);
-        }
-//        }
     }
 
     private static BlockPos locateFeatureStartChunkFromPlayerBlockPos(ServerLevel world, BlockPos pos, TagKey<Structure> feature) {

@@ -51,11 +51,4 @@ public class Skeever extends PathfinderMob
     public float getWalkTargetValue(BlockPos pPos, LevelReader pLevel) {
         return pLevel.getBlockState(pPos.below()).is(Blocks.GRASS_BLOCK) ? 10.0F : pLevel.getBrightness(LightLayer.BLOCK, pPos) - 0.5F;
     }
-
-
-    @Override
-    public double getEyeY() {
-        return 0.65f;
-    }
-
 }

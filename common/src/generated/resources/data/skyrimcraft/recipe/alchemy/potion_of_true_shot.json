@@ -1,0 +1,18 @@
+{
+  "type": "skyrimcraft:alchemy",
+  "category": "FORTIFY MARKSMAN",
+  "ingredients": [
+    {
+      "item": "skyrimcraft:canis_root"
+    },
+    {
+      "item": "skyrimcraft:elves_ear"
+    }
+  ],
+  "level": 2,
+  "result": {
+    "count": 1,
+    "id": "skyrimcraft:potion_of_true_shot"
+  },
+  "xp": 1
+}

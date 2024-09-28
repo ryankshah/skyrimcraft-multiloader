@@ -16,8 +16,8 @@ repositories {
         }
     }
     maven {
-        name = "SmartBrainLib (SBL) Maven Repo"
-        url = "https://dl.cloudsmith.io/public/tslat/sbl/maven/"
+        name = "Forge"
+        url = "https://maven.minecraftforge.net"
     }
 }
 
@@ -33,7 +33,7 @@ dependencies {
 
     modImplementation 'mysticdrew:common-networking-fabric:1.0.16-1.21'
     modImplementation "software.bernie.geckolib:geckolib-fabric-${geckolib_version}"
-    modImplementation "net.tslat.smartbrainlib:SmartBrainLib-fabric-1.21:${sbl_version}"
+    modImplementation "com.github.glitchfiend:TerraBlender-fabric:${terrablender_version}"
 }
 
 loom {

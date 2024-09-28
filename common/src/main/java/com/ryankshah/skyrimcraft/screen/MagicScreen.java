@@ -192,18 +192,34 @@ public class MagicScreen extends Screen
 
 
     private void drawSpellInformation(GuiGraphics graphics, PoseStack matrixStack, Spell spell, int width, int height, float partialTicks) {
-        drawGradientRect(graphics, matrixStack, 30, (height) / 2 - 20, 190, (height) / 2 + 60, 0xAA000000, 0xAA000000, 0xFF6E6B64);
-        graphics.fillGradient(40, (this.height) / 2, 180, (this.height) / 2 + 1, 0xFF6E6B64, 0xFF6E6B64); // Line under spell name
+        int leftBorder = 0;
+        int rightBorder = this.width - 190;
+        int centerX = (leftBorder + rightBorder) / 2;
+        int infoWidth = 160; // Adjust this value as needed for the width of your spell info box
+        int infoLeft = centerX - (infoWidth / 2);
+        int infoRight = centerX + (infoWidth / 2);
 
-        graphics.drawCenteredString(font, spell.getName(), 110, (this.height) / 2 - 10, 0x00FFFFFF); // Spell name
-        for(int i = 1; i < spell.getDescription().size()+1; i++)
-            graphics.drawCenteredString(font, spell.getDescription().get(i-1), 110, (this.height) / 2 + (8 * i), 0x00FFFFFF); // Spell description
+        // Background
+        drawGradientRect(graphics, matrixStack, infoLeft, (height) / 2 - 20, infoRight, (height) / 2 + 60, 0xAA000000, 0xAA000000, 0xFF6E6B64);
 
+        // Line under spell name
+        graphics.fillGradient(infoLeft + 10, (this.height) / 2, infoRight - 10, (this.height) / 2 + 1, 0xFF6E6B64, 0xFF6E6B64);
+
+        // Spell name
+        graphics.drawCenteredString(font, spell.getName(), centerX, (this.height) / 2 - 10, 0x00FFFFFF);
+
+        // Spell description
+        for(int i = 1; i < spell.getDescription().size()+1; i++) {
+            graphics.drawCenteredString(font, spell.getDescription().get(i-1), centerX, (this.height) / 2 + (8 * i), 0x00FFFFFF);
+        }
+
+        // Spell details
         if(spell.getType() != Spell.SpellType.SHOUT) {
-            graphics.drawString(font, "Cost: " + (int) spell.getCost(), 40, (this.height) / 2 + 34, 0x00FFFFFF);
-            graphics.drawString(font, "Difficulty: " + StringUtils.capitalize(StringUtils.lowerCase(spell.getDifficulty().toString())), 40, (this.height) / 2 + 44, 0x00FFFFFF);
-        } else
-            graphics.drawString(font, "Cooldown: " + (int)spell.getCooldown(), 40, (this.height) / 2 + 40, 0x00FFFFFF);
+            graphics.drawString(font, "Cost: " + (int) spell.getCost(), infoLeft + 10, (this.height) / 2 + 34, 0x00FFFFFF);
+            graphics.drawString(font, "Difficulty: " + StringUtils.capitalize(StringUtils.lowerCase(spell.getDifficulty().toString())), infoLeft + 10, (this.height) / 2 + 44, 0x00FFFFFF);
+        } else {
+            graphics.drawString(font, "Cooldown: " + (int)spell.getCooldown(), infoLeft + 10, (this.height) / 2 + 40, 0x00FFFFFF);
+        }
 
         matrixStack.pushPose();
         RenderUtil.bind(spell.getDisplayAnimation());
@@ -211,19 +227,19 @@ public class MagicScreen extends Screen
             currentSpellFrame = (int)(lastTick + (currentTick - lastTick) * partialTicks) / 16;
             int uOffset = 0, vOffset = 16 * (currentSpellFrame % 7);
             float scaleFactor = 4.0f;
-            float xPos = 110 - 16;
+            float xPos = centerX - 32;
             float yPos = (this.height / 2) - 94;
 
             matrixStack.pushPose();
-            matrixStack.translate(xPos, yPos, 0); // Move to desired position divided by scale
-            matrixStack.scale(scaleFactor, scaleFactor, 1); // Apply scaling
-//            matrixStack.translate(-4, -4, 0);
+            matrixStack.translate(xPos, yPos, 0);
+            matrixStack.scale(scaleFactor, scaleFactor, 1);
             RenderUtil.blitWithBlend(matrixStack, 0, 0, uOffset, vOffset, 16, 16, 16, 112, 1, 1);
             matrixStack.popPose();
         } else {
             currentSpellFrame = (int)(lastTick + (currentTick - lastTick) * partialTicks) / 64;
-            int uOffset = 16 * (currentSpellFrame % 4), vOffset = 0;
-            RenderUtil.blitWithBlend(matrixStack, 78, (this.height / 2) - 94, uOffset, vOffset, 64, 64, 256, 64, 1, 1);
+            int uOffset = 64 * (currentSpellFrame % 4), vOffset = 0;
+            float xPos = centerX - 32; // Center the 64x64 image
+            RenderUtil.blitWithBlend(matrixStack, xPos, (this.height / 2) - 94, uOffset, vOffset, 64, 64, 256, 64, 1, 1);
         }
         matrixStack.popPose();
     }

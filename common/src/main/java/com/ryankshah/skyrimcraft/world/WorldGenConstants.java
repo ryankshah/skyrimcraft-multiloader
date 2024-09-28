@@ -9,6 +9,8 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class WorldGenConstants
 {
+    public static void init() {}
+
     public static final ResourceKey<PlacedFeature> CORUNDUM_ORE_PLACED_KEY = registerPlacedFeature("corundum_ore_placed");
     public static final ResourceKey<PlacedFeature> EBONY_ORE_PLACED_KEY = registerPlacedFeature("ebony_ore_placed");
     public static final ResourceKey<PlacedFeature> MALACHITE_ORE_PLACED_KEY = registerPlacedFeature("malachite_ore_placed");
@@ -25,9 +27,14 @@ public class WorldGenConstants
     public static final ResourceKey<PlacedFeature> OYSTERS_PLACED_KEY = registerPlacedFeature("oysters_placed");
     public static final ResourceKey<PlacedFeature> BIRDS_NEST_PLACED_KEY = registerPlacedFeature("birds_nest_placed");
     public static final ResourceKey<PlacedFeature> BUSHES_PLACED_KEY = registerPlacedFeature("bushes_placed");
-
-
     public static final ResourceKey<PlacedFeature> TREES_PLACED_KEY = registerPlacedFeature("trees_placed");
+
+    public static final ResourceKey<PlacedFeature> VOLCANO_PLACED_KEY = registerPlacedFeature("volcano_placed");
+    public static final ResourceKey<PlacedFeature> LAVA_POOL_PLACED_KEY = registerPlacedFeature("lava_pool_placed");
+    public static final ResourceKey<PlacedFeature> MINI_CRATER_PLACED_KEY = registerPlacedFeature("mini_crater_placed");
+    public static final ResourceKey<PlacedFeature> LAVA_FOUNTAIN_PLACED_KEY = registerPlacedFeature("lava_fountain_placed");
+    public static final ResourceKey<PlacedFeature> DEAD_TREE_PLACED_KEY = registerPlacedFeature("dead_tree_placed");
+    public static final ResourceKey<PlacedFeature> PINE_TREE_PLACED_KEY = registerPlacedFeature("pine_tree_placed");
     
     public static final ResourceKey<ConfiguredFeature<?, ?>> CORUNDUM_ORE_KEY = registerConfiguredFeature("corundum_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> EBONY_ORE_KEY = registerConfiguredFeature("ebony_ore");
@@ -47,6 +54,13 @@ public class WorldGenConstants
     public static final ResourceKey<ConfiguredFeature<?, ?>> BUSHES_KEY = registerConfiguredFeature("bushes");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> TREES_KEY = registerConfiguredFeature("trees");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> VOLCANO_KEY = registerConfiguredFeature("volcano");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LAVA_POOL_KEY = registerConfiguredFeature("lava_pool");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> MINI_CRATER_KEY = registerConfiguredFeature("mini_crater");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LAVA_FOUNTAIN_KEY = registerConfiguredFeature("lava_fountain");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DEAD_TREE_KEY = registerConfiguredFeature("dead_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PINE_TREE_KEY = registerConfiguredFeature("pine_tree");
 
     private static ResourceKey<PlacedFeature> registerPlacedFeature(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Constants.MODID, name));

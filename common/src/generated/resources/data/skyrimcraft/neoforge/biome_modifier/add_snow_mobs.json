@@ -48,6 +48,12 @@
       "maxCount": 2,
       "minCount": 1,
       "weight": 40
+    },
+    {
+      "type": "skyrimcraft:dragon",
+      "maxCount": 1,
+      "minCount": 1,
+      "weight": 4
     }
   ]
 }

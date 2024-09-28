@@ -5,7 +5,6 @@ import com.ryankshah.skyrimcraft.character.attachment.Character;
 import commonnetwork.api.Dispatcher;
 import commonnetwork.networking.data.PacketContext;
 import commonnetwork.networking.data.Side;
-import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -40,11 +39,13 @@ public record ConsumeMagicka(float amount)
         ServerPlayer player = context.sender();
         Character character = Character.get(player);
         ConsumeMagicka data = context.message();
-        character.setMagicka(data.amount);
 
-        final ConsumeMagicka sendToClient = new ConsumeMagicka(data.amount);
+        float currentMagicka = character.getMagicka();
+        float newMagicka = Math.max(0, currentMagicka - data.amount);
+        character.setMagicka(newMagicka);
+
+        final ConsumeMagicka sendToClient = new ConsumeMagicka(newMagicka);
         Dispatcher.sendToClient(sendToClient, player);
-//        PacketDistributor.PLAYER.with(player).send(sendToClient);
     }
 
     public static void handleClient(PacketContext<ConsumeMagicka> context) {

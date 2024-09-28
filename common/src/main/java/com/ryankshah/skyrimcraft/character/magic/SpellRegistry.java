@@ -51,7 +51,8 @@ public class SpellRegistry
     public static Supplier<Spell> CANDLELIGHT = SPELLS.register("candlelight", () -> new SpellCandlelight(29));
     public static Supplier<Spell> WATERBREATHING = SPELLS.register("waterbreathing", () -> new SpellWaterbreathing(30));
     public static Supplier<Spell> OAKFLESH = SPELLS.register("oakflesh", () -> new SpellOakflesh(31));
-    // public static Supplier<Spell> WATERBREATHING = SPELLS.register("waterbreathing", () -> new SpellWaterbreathing(32));
+     public static Supplier<Spell> TELEKINESIS = SPELLS.register("telekinesis", () -> new SpellTelekinesis(32));
+    // public static Supplier<Spell> WATERBREATHING = SPELLS.register("waterbreathing", () -> new SpellWaterbreathing(33));
 
     // Powers
     public static Supplier<Spell> HIGHBORN = SPELLS.register("highborn", () -> new PowerHighborn(80));

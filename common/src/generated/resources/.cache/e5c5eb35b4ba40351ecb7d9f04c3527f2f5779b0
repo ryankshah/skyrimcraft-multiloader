@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-14T16:06:10.2363097	Advancements
+// 1.21.1	2024-09-19T00:14:23.6590677	Advancements
 9c2783cc714cc40d3ce69a7c3083883cd6cb6f46 data/minecraft/advancement/skyrimcraft/arrow_to_knee.json
 03ed1b60481eb41914ab6d7144ee01fbd2eb666c data/skyrimcraft/advancement/combat/reach_level_10.json
 592427a801c8fb7c957a818303f6f020a49798d1 data/skyrimcraft/advancement/combat/root.json
@@ -34,6 +34,7 @@ e196c892686171c1668547dd56f4659b6a5e0661 data/skyrimcraft/advancement/spell/ice_
 7cf59aa8e43d2f4b6d791ac72d953087b3e39934 data/skyrimcraft/advancement/spell/night_eye.json
 a700031616e9e4c26667d46608d3ef42f695174e data/skyrimcraft/advancement/spell/oakflesh.json
 d68f06d195f8216ea5d8cb04c9b827db6f571088 data/skyrimcraft/advancement/spell/root.json
+a9d207ecfd77b38cf0689ad9f147ce75625e7b37 data/skyrimcraft/advancement/spell/telekinesis.json
 3a2af8ddefb611619cc84b4bf54613a20e64bfb1 data/skyrimcraft/advancement/spell/turn_undead.json
 c34bf0a2a57191d8086bf72a5640340cf397609c data/skyrimcraft/advancement/spell/voice_of_the_emperor.json
 145afd6909103fc14bfc33323317927115623b44 data/skyrimcraft/advancement/spell/waterbreathing.json

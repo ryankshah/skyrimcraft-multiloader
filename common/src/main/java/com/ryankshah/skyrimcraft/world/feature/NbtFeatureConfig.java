@@ -1,4 +1,4 @@
-package com.ryankshah.skyrimcraft.world;
+package com.ryankshah.skyrimcraft.world.feature;
 
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;

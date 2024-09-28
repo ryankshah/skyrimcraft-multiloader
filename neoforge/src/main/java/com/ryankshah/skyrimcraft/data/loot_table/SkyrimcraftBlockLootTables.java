@@ -73,6 +73,7 @@ public class SkyrimcraftBlockLootTables extends BlockLootSubProvider
         dropSelf(BlockRegistry.STONE_BRICK_3.get());
         dropSelf(BlockRegistry.STONE_BRICK_4.get());
         dropSelf(BlockRegistry.STONE_BRICK_5.get());
+        dropSelf(BlockRegistry.STONE_BRICK_6.get());
         dropSelf(BlockRegistry.COBBLESTONE_1.get());
         dropSelf(BlockRegistry.COBBLESTONE_2.get());
         dropSelf(BlockRegistry.SNOWY_PLANKS_1.get());
@@ -80,6 +81,23 @@ public class SkyrimcraftBlockLootTables extends BlockLootSubProvider
         dropSelf(BlockRegistry.PLANKS_2.get());
         dropSelf(BlockRegistry.PLANKS_3.get());
         dropSelf(BlockRegistry.PLANKS_4.get());
+        dropSelf(BlockRegistry.STONE_1.get());
+        dropSelf(BlockRegistry.STONE_2.get());
+        dropSelf(BlockRegistry.STONE_3.get());
+        dropSelf(BlockRegistry.STONE_4.get());
+        dropSelf(BlockRegistry.STONE_5.get());
+        dropSelf(BlockRegistry.STONE_6.get());
+        dropSelf(BlockRegistry.STONE_7.get());
+        dropSelf(BlockRegistry.STONE_8.get());
+        dropSelf(BlockRegistry.STONE_9.get());
+        dropSelf(BlockRegistry.STONE_10.get());
+        dropSelf(BlockRegistry.DIRT_1.get());
+        dropSelf(BlockRegistry.DIRT_2.get());
+        dropSelf(BlockRegistry.DIRT_3.get());
+        dropSelf(BlockRegistry.GRASS_1.get());
+        dropSelf(BlockRegistry.GRASS_2.get());
+        dropSelf(BlockRegistry.GRASS_3.get());
+        dropSelf(BlockRegistry.GRASS_4.get());
 
         dropSelf(BlockRegistry.RED_MOUNTAIN_FLOWER.get());
         dropSelf(BlockRegistry.BLUE_MOUNTAIN_FLOWER.get());

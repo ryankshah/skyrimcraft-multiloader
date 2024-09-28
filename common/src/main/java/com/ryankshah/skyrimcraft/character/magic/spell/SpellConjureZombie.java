@@ -110,7 +110,7 @@ public class SpellConjureZombie extends Spell
                 zombieEntity.setHealth(40f);
                 zombieEntity.addEffect(new MobEffectInstance(ModEffects.SPECTRAL.asHolder(), 60 * 20, 0, false, true, true));
 //                zombieEntity.setOwnerUUID(getCaster().getUUID());
-                Services.PLATFORM.setEntityPersistentData(zombie, Constants.MODID + "_" + getCaster().getUUID() + "_conjuredzombie_timeToKill", getCaster().level().getGameTime() + (60L * 20L));
+                Services.PLATFORM.setEntityPersistentData(zombieEntity, Constants.MODID + "_" + getCaster().getUUID() + "_conjuredzombie_timeToKill", getCaster().level().getGameTime() + (60L * 20L));
                 getCaster().level().addFreshEntity(zombieEntity);
 
                 super.onCast();

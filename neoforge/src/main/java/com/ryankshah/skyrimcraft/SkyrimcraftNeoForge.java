@@ -17,6 +17,7 @@ import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
@@ -53,13 +54,18 @@ public class SkyrimcraftNeoForge
 
         ATTACHMENT_TYPES.register(eventBus);
 
+        eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::registerEntityAttributes);
 //        eventBus.addListener(this::modifyEntityAttributes);
     }
 
-    public void registerEntityAttributes(EntityAttributeCreationEvent event) {
+    private void registerEntityAttributes(EntityAttributeCreationEvent event) {
         EntityRegistry.registerEntityAttributes(event::put);
         CommonSpawning.placements();
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(SkyrimcraftCommon::setupTerraBlender);
     }
 
     // TODO: verify the common mixin already adds these attributes to entities

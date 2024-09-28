@@ -85,6 +85,11 @@ public class ModEffects
             0xAA222222
     ));
 
+    public static final RegistryObject<MobEffect, EffectVampirism> SANGUINARE_VAMPIRIS = MOB_EFFECTS.register("vampirism", () -> new EffectVampirism(
+            MobEffectCategory.HARMFUL,
+            0xFFFF0000
+    ));
+
     public static final RegistryObject<MobEffect, EffectIncreasedArmorRating> ARMOR_RATING = MOB_EFFECTS.register("armor_rating", () -> (EffectIncreasedArmorRating) (new EffectIncreasedArmorRating(
             MobEffectCategory.BENEFICIAL,
             0xAA222222

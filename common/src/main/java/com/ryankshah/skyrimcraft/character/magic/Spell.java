@@ -185,7 +185,7 @@ public abstract class Spell
      * Determines whether the spell can be cast
      * @return {@link CastResult}
      */
-    private CastResult canCast() {
+    protected CastResult canCast() {
         if(getCaster().isUnderWater())
             return CastResult.UNDERWATER;
 
@@ -193,7 +193,7 @@ public abstract class Spell
 
 //        if(getCastReference() == CastReference.CHARGE) // TODO: Implement check for charging reference etc.
 
-        if(getType() == SpellType.SHOUT) {
+        if(getType() == SpellType.SHOUT || getType() == SpellType.POWERS) {
             return character.getSpellCooldown(this) <= 0f ? CastResult.SUCCESS : CastResult.COOLDOWN;
         } else {
             return (character.getMagicka() >= getCost() || getCooldown() == 0f) ? CastResult.SUCCESS : CastResult.MAGICKA;
@@ -267,6 +267,9 @@ public abstract class Spell
             caster.getCommandSenderWorld().playSound(null, caster.getX(), caster.getY(), caster.getZ(), getSound(), SoundSource.PLAYERS, 1f, 1f);
     }
 
+    public void onSpellCancel() {
+    }
+
     public enum CastReference {
         INSTANT(0),
         HOLD(1),
@@ -334,7 +337,7 @@ public abstract class Spell
         }
     }
 
-    private enum CastResult {
+    public enum CastResult {
         SUCCESS(0),
         COOLDOWN(1),
         MAGICKA(2),

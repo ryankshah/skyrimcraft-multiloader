@@ -69,8 +69,25 @@ public class CompassFeature
             return new AbstractMap.SimpleEntry<>(44, 125);
         } else if(feature.equals(StructureTags.SHIPWRECK)) {
             return new AbstractMap.SimpleEntry<>(57, 124);
-        }
-        return null;
+        } else if(feature.equals(StructureTags.RUINED_PORTAL)) {
+            return new AbstractMap.SimpleEntry<>(0, 143);
+        } else return null;
+    }
+
+    public String getFeatureName() {
+        if(feature.equals(StructureTags.VILLAGE)) {
+            return "Village";
+        } else if(feature.equals(TagsRegistry.StructureTagsInit.NETHER_FORTRESS)) {
+            return "Nether Fortress";
+        } else if(feature.equals(TagsRegistry.StructureTagsInit.SHOUT_WALL)) {
+            return "Word Wall";
+        } else if(feature.equals(StructureTags.MINESHAFT)) {
+            return "Abandoned Mineshaft";
+        } else if(feature.equals(StructureTags.SHIPWRECK)) {
+            return "Shipwreck";
+        } else if(feature.equals(StructureTags.RUINED_PORTAL)) {
+            return "Ruined Portal";
+        } else return "";
     }
 
     public CompoundTag serialise() {

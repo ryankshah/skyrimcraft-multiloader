@@ -310,6 +310,9 @@ public class ItemData
         provider.addItem(ItemRegistry.CONJURE_ZOMBIE_SPELLBOOK, "Spellbook");
         provider.addItem(ItemRegistry.DETECT_LIFE_SPELLBOOK, "Spellbook");
         provider.addItem(ItemRegistry.CANDLELIGHT_SPELLBOOK, "Spellbook");
+        provider.addItem(ItemRegistry.OAKFLESH_SPELLBOOK, "Spellbook");
+        provider.addItem(ItemRegistry.TELEKINESIS_SPELLBOOK, "Spellbook");
+        provider.addItem(ItemRegistry.WATERBREATHING_SPELLBOOK, "Spellbook");
 
         provider.addItem(ItemRegistry.ALTERATION_SKILLBOOK, "Skill Book");
         provider.addItem(ItemRegistry.CONJURATION_SKILLBOOK, "Skill Book");

@@ -82,7 +82,7 @@ public class EntityRegistry
                     .build(ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "mammoth").toString()));
     public static final RegistryObject<EntityType<?>, EntityType<SkyrimDragon>> DRAGON = ENTITY_TYPES.register("dragon",
             () -> EntityType.Builder.of(SkyrimDragon::new, MobCategory.MONSTER)
-                    .fireImmune().sized(4.0F, 4.0F).clientTrackingRange(64)
+                    .fireImmune().sized(4.0F, 4.0F).clientTrackingRange(128)
                     .build(ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "dragon").toString()));
     public static final RegistryObject<EntityType<?>, EntityType<DwarvenSpider>> DWARVEN_SPIDER = ENTITY_TYPES.register("dwarven_spider",
             () -> EntityType.Builder.of(DwarvenSpider::new, MobCategory.MONSTER)
@@ -132,6 +132,10 @@ public class EntityRegistry
             () -> EntityType.Builder.of(VenomfangSkeever::new, MobCategory.MONSTER)
                     .sized(1.0f, 1.0f) // Hitbox Size
                     .build(ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "venomfang_skeever").toString()));
+    public static final RegistryObject<EntityType<?>, EntityType<Vampire>> VAMPIRE = ENTITY_TYPES.register("vampire",
+            () -> EntityType.Builder.of(Vampire::new, MobCategory.MONSTER)
+                    .sized(1.0f, 1.0f) // Hitbox Size
+                    .build(ResourceLocation.fromNamespaceAndPath(Constants.MODID,  "vampire").toString()));
 
     public static final RegistryObject<EntityType<?>, EntityType<AbeceanLongfin>> ABECEAN_LONGFIN = ENTITY_TYPES.register("abecean_longfin",
             () -> EntityType.Builder.of(AbeceanLongfin::new, MobCategory.WATER_CREATURE)
@@ -176,6 +180,7 @@ public class EntityRegistry
         registrar.accept(EntityRegistry.DRAUGR.get(), Draugr.createAttributes().build());
         registrar.accept(EntityRegistry.SKEEVER.get(), Skeever.createAttributes().build());
         registrar.accept(EntityRegistry.VENOMFANG_SKEEVER.get(), VenomfangSkeever.createAttributes().build());
+        registrar.accept(EntityRegistry.VAMPIRE.get(), Vampire.createAttributes().build());
 
         registrar.accept(EntityRegistry.ABECEAN_LONGFIN.get(), AbeceanLongfin.createAttributes().build());
         registrar.accept(EntityRegistry.CYRODILIC_SPADETAIL.get(), AbeceanLongfin.createAttributes().build());

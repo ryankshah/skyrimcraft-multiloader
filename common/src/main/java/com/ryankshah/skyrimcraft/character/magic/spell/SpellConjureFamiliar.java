@@ -80,7 +80,7 @@ public class SpellConjureFamiliar extends Spell
 
     @Override
     public void onCast() {
-        if(getCaster() instanceof ServerPlayer && !getCaster().level().isClientSide) {
+        if(getCaster() instanceof ServerPlayer && !getCaster().level().isClientSide && canCast() == CastResult.SUCCESS) {
             // TODO: check if there are any other conjured entities
             Wolf wolf = getCaster().level().getNearestEntity(Wolf.class, TargetingConditions.DEFAULT, getCaster(), getCaster().getX(), getCaster().getY(), getCaster().getZ(),
                     new AABB(getCaster().getX() - 10f, getCaster().getY() - 10f, getCaster().getZ() - 10f, getCaster().getX() + 10f, getCaster().getY() + 10f, getCaster().getZ() + 10f));

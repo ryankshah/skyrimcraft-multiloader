@@ -1,4 +1,4 @@
-package com.ryankshah.skyrimcraft.world;
+package com.ryankshah.skyrimcraft.world.feature;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;

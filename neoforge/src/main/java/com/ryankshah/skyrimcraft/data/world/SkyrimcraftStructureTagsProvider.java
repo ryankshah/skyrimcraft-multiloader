@@ -1,5 +1,6 @@
 package com.ryankshah.skyrimcraft.data.world;
 
+import com.ryankshah.skyrimcraft.registry.StructureRegistry;
 import com.ryankshah.skyrimcraft.registry.TagsRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -18,7 +19,7 @@ public class SkyrimcraftStructureTagsProvider extends StructureTagsProvider
     protected void addTags(HolderLookup.Provider provider) {
         this.tag(TagsRegistry.StructureTagsInit.NETHER_FORTRESS)
                 .add(BuiltinStructures.FORTRESS);
-//        this.tag(TagsInit.StructureTagsInit.SHOUT_WALL)
-//                .add(StructureInit.SHOUT_WALL.getKey());
+//        this.tag(TagsRegistry.StructureTagsInit.SHOUT_WALL)
+//                .add(StructureRegistry.SHOUT_WALL.getResourceKey());
     }
 }

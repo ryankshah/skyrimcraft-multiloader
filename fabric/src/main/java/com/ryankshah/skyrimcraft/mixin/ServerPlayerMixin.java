@@ -18,6 +18,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.levelgen.structure.BuiltinStructures;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import org.spongepowered.asm.mixin.Mixin;
@@ -55,6 +56,11 @@ public abstract class ServerPlayerMixin extends Player
 
         if (!hasEffect(ModEffects.MAGICKA_REGEN.asHolder()))
             getAttribute(AttributeRegistry.MAGICKA_REGEN.asHolder()).removeModifiers();
+
+        if (!level().isNight() || level().getBrightness(LightLayer.BLOCK, blockPosition()) < 10) {
+            // Increased damage from sunlight for infected players
+            hurt(damageSources().onFire(), 2);
+        }
 
         if (character.getMagicka() < character.getMaxMagicka()) {
             if (tickCount % 20 == 0) {

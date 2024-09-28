@@ -26,8 +26,10 @@ public class Networking
         Network.registerPacket(UpdateSelectedSpell.type(), UpdateSelectedSpell.class,  UpdateSelectedSpell.CODEC, UpdateSelectedSpell::handle);
         Network.registerPacket(UpdateShoutCooldown.type(), UpdateShoutCooldown.class,  UpdateShoutCooldown.CODEC, UpdateShoutCooldown::handle);
         Network.registerPacket(CastSpell.type(), CastSpell.class, CastSpell.CODEC, CastSpell::handle);
+        Network.registerPacket(FastTravel.type(), FastTravel.class, FastTravel.CODEC, FastTravel::handle);
 
         Network.registerPacket(DetectLife.type(), DetectLife.class, DetectLife.CODEC, DetectLife::handle);
+        Network.registerPacket(UpdateTelekinesisItem.type(), UpdateTelekinesisItem.class, UpdateTelekinesisItem.CODEC, UpdateTelekinesisItem::handle);
 
         Network.registerPacket(ReplenishMagicka.type(), ReplenishMagicka.class, ReplenishMagicka.CODEC, ReplenishMagicka::handle);
         Network.registerPacket(ConsumeMagicka.type(), ConsumeMagicka.class, ConsumeMagicka.CODEC, ConsumeMagicka::handle);

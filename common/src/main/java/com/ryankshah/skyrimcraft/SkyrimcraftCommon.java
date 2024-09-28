@@ -5,7 +5,12 @@ import com.ryankshah.skyrimcraft.data.loot_table.condition.type.SkyrimcraftLootC
 import com.ryankshah.skyrimcraft.effect.ModEffects;
 import com.ryankshah.skyrimcraft.network.Networking;
 import com.ryankshah.skyrimcraft.registry.*;
+import com.ryankshah.skyrimcraft.world.WorldGenConstants;
+import com.ryankshah.skyrimcraft.world.region.SkyrimcraftOverworldRegion;
+import com.ryankshah.skyrimcraft.world.surface_rule.AshWastesSurfaceRule;
 import net.minecraft.world.entity.EntityType;
+import terrablender.api.Regions;
+import terrablender.api.SurfaceRuleManager;
 
 /**
  * TODO:
@@ -31,7 +36,7 @@ import net.minecraft.world.entity.EntityType;
  *   - Chaurus Hunter Fledgling
  *   - Death Hound (spawns with vampires)
  *   - DAEDRA (and all varieties of it)
- *   - DRAGON (more types of dragons)
+ *   - DRAGON (more types of dragons not just normal)
  *   - DRAUGR (and more types)
  *   - DWARVEN AUTOMATONS (and all varieties)
  *   - Snow Bear
@@ -73,7 +78,6 @@ public class SkyrimcraftCommon
         ModEffects.init();
         AttributeRegistry.init();
         SkyrimcraftLootConditionTypes.init();
-        DamageTypeRegistry.init();
         KeysRegistry.init();
         EntityRegistry.init();
 
@@ -90,12 +94,18 @@ public class SkyrimcraftCommon
 
         VillagerRegistry.init();
 
+        WorldGenConstants.init();
         FeatureRegistry.init();
         StructureRegistry.init();
 
         AdvancementTriggersRegistry.init();
 
         Networking.load();
+    }
+
+    public static void setupTerraBlender() {
+        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, Constants.MODID, AshWastesSurfaceRule.makeRules());
+        Regions.register(new SkyrimcraftOverworldRegion(5));
     }
 
     public static Iterable<EntityType<?>> getPickpocketableEntities() {
