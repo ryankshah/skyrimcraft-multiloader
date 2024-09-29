@@ -462,6 +462,8 @@ public class SkyrimDragon extends PathfinderMob implements GeoEntity {
 
 
     private void handleLanding() {
+        if(landingTarget == null)
+            return;
         double groundHeight = landingTarget.getY();
         double currentHeight = this.getY();
 

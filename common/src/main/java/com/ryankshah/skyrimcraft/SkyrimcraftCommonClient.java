@@ -1,6 +1,8 @@
 package com.ryankshah.skyrimcraft;
 
 import com.google.common.collect.ImmutableMap;
+import com.ryankshah.skyrimcraft.block.entity.model.TurnStoneModel;
+import com.ryankshah.skyrimcraft.block.entity.renderer.TurnStoneBlockEntityRenderer;
 import com.ryankshah.skyrimcraft.character.feature.model.DunmerEarModel;
 import com.ryankshah.skyrimcraft.character.feature.model.HighElfEarModel;
 import com.ryankshah.skyrimcraft.character.feature.model.KhajiitHeadModel;
@@ -19,30 +21,26 @@ import com.ryankshah.skyrimcraft.entity.npc.model.KhajiitModel;
 import com.ryankshah.skyrimcraft.entity.npc.render.FalmerRenderer;
 import com.ryankshah.skyrimcraft.entity.npc.render.KhajiitRenderer;
 import com.ryankshah.skyrimcraft.entity.passive.flying.render.*;
+import com.ryankshah.skyrimcraft.registry.BlockEntityRegistry;
 import com.ryankshah.skyrimcraft.registry.EntityRegistry;
 import net.minecraft.client.model.HumanoidArmorModel;
-import net.minecraft.client.model.geom.LayerDefinitions;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.BiConsumer;
 
 public class SkyrimcraftCommonClient
 {
     public static void registerRenderers(BiConsumer<EntityType<? extends Entity>, EntityRendererProvider> entityRenderers,
                                          BiConsumer<BlockEntityType<? extends BlockEntity>, BlockEntityRendererProvider> blockEntityRenderers) {
-//        blockEntityRenderers.accept(BlockEntityRegistry.PALM_SIGN.get(), SignRenderer::new);
+        blockEntityRenderers.accept(BlockEntityRegistry.TURN_STONE.get(), TurnStoneBlockEntityRenderer::new);
 
         entityRenderers.accept(EntityRegistry.SHOUT_UNRELENTING_FORCE_ENTITY.get(), UnrelentingForceRenderer::new);
         entityRenderers.accept(EntityRegistry.SPELL_FIREBALL_ENTITY.get(), FireballRenderer::new);
@@ -97,6 +95,7 @@ public class SkyrimcraftCommonClient
             builder.put(DraugrModel.LAYER_LOCATION, DraugrModel.createBodyLayer());
             builder.put(DraugrModel.OUTER_ARMOR_LAYER_LOCATION, outerArmor);
             builder.put(DraugrModel.INNER_ARMOR_LAYER_LOCATION, innerArmor);
+            builder.put(TurnStoneModel.LAYER_LOCATION, TurnStoneModel.createBodyLayer());
         return builder.build();
     }
 }

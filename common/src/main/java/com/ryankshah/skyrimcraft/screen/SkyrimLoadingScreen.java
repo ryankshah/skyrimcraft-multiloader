@@ -1,5 +1,6 @@
 package com.ryankshah.skyrimcraft.screen;
 
+import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -8,14 +9,23 @@ import com.ryankshah.skyrimcraft.character.attachment.Character;
 import com.ryankshah.skyrimcraft.platform.Services;
 import com.ryankshah.skyrimcraft.registry.ItemRegistry;
 import com.ryankshah.skyrimcraft.util.RenderUtil;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.Items;
+import org.joml.Quaternionf;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +35,7 @@ public class SkyrimLoadingScreen extends Screen
 {
     protected static final ResourceLocation SKILL_ICONS = ResourceLocation.fromNamespaceAndPath(Constants.MODID, "textures/gui/skill_icons.png");
     protected static final ResourceLocation SMOKE_EFFECT_PARTICLE = ResourceLocation.withDefaultNamespace("textures/particle/generic_6.png");
-    private static final Item[] ROTATING_ITEMS = {Items.DIAMOND_SWORD, Items.ELYTRA, Items.ENCHANTED_BOOK, Items.DRAGON_EGG, ItemRegistry.SWEET_ROLL.get(), ItemRegistry.DAEDRA_HEART.get(), ItemRegistry.CANDLELIGHT_SPELLBOOK.get(), ItemRegistry.AHZIDALS_RING_OF_ARCANA.get(), ItemRegistry.DAEDRIC_WAR_AXE.get(), ItemRegistry.DAEDRIC_GREATSWORD.get(), ItemRegistry.DAEDRIC_CHESTPLATE.get(), ItemRegistry.ORCISH_CHESTPLATE.get(), ItemRegistry.GLASS_BATTLEAXE.get(), ItemRegistry.GLASS_CHESTPLATE.get()};
+    private static final Item[] ROTATING_ITEMS = {Items.DIAMOND_SWORD, Items.ELYTRA, Items.ENCHANTED_BOOK, ItemRegistry.SWEET_ROLL.get(), ItemRegistry.DAEDRA_HEART.get(), ItemRegistry.CANDLELIGHT_SPELLBOOK.get(), ItemRegistry.AHZIDALS_RING_OF_ARCANA.get(), ItemRegistry.DAEDRIC_WAR_AXE.get(), ItemRegistry.DAEDRIC_GREATSWORD.get(), ItemRegistry.DAEDRIC_CHESTPLATE.get(), ItemRegistry.ORCISH_CHESTPLATE.get(), ItemRegistry.GLASS_BATTLEAXE.get(), ItemRegistry.GLASS_CHESTPLATE.get()};
     private static final String[] MINECRAFT_FACTS = {
             "Creepers were originally failed pig models.",
             "The Enderman's sound is a reversed, pitch-shifted 'here' sound.",
@@ -40,6 +50,13 @@ public class SkyrimLoadingScreen extends Screen
             "Notch confirmed that the Ender Dragon is the only female mob, who was named Jen.",
             "An Evoker will change the color of a Blue sheep into a red!"
     };
+    private static final EntityType<?>[] ROTATING_MOBS = {
+            EntityType.ZOMBIE, EntityType.SKELETON, EntityType.CREEPER,
+            EntityType.VILLAGER, EntityType.IRON_GOLEM, EntityType.BLAZE, EntityType.GHAST,
+            EntityType.ENDER_DRAGON
+    };
+    private boolean renderItem;
+    private EntityType<?> selectedMobType;
 
     private final Random random = new Random();
     private Item rotatingItem;
@@ -68,10 +85,23 @@ public class SkyrimLoadingScreen extends Screen
         return 12.5*Math.pow(level+1, 2) + 62.5*level - 75;
     }
 
+//    private void selectRandomItemAndFact() {
+//        rotatingItem = ROTATING_ITEMS[random.nextInt(ROTATING_ITEMS.length)];
+//        String currentFact = MINECRAFT_FACTS[random.nextInt(MINECRAFT_FACTS.length)];
+//        wrappedFact = wrapText(currentFact, 100); // Adjust the width as needed
+//    }
+
     private void selectRandomItemAndFact() {
-        rotatingItem = ROTATING_ITEMS[random.nextInt(ROTATING_ITEMS.length)];
+        renderItem = random.nextBoolean();
+        if (renderItem) {
+            rotatingItem = ROTATING_ITEMS[random.nextInt(ROTATING_ITEMS.length)];
+            System.out.println("Selected item: " + rotatingItem);
+        } else {
+            selectedMobType = ROTATING_MOBS[random.nextInt(ROTATING_MOBS.length)];
+            System.out.println("Selected mob: " + selectedMobType.getDescriptionId());
+        }
         String currentFact = MINECRAFT_FACTS[random.nextInt(MINECRAFT_FACTS.length)];
-        wrappedFact = wrapText(currentFact, 100); // Adjust the width as needed
+        wrappedFact = wrapText(currentFact, 100);
     }
 
     @Override
@@ -110,7 +140,10 @@ public class SkyrimLoadingScreen extends Screen
         RenderSystem.enableBlend();
 
         // Render the rotating item
-        renderRotatingItem(graphics);
+//        renderRotatingItem(graphics);
+
+        // Render the rotating item or mob
+        renderEntityOrItem(graphics);
 
         // Continue with other render methods
         renderFact(graphics);
@@ -145,7 +178,139 @@ public class SkyrimLoadingScreen extends Screen
     }
 
     private void renderBackground(GuiGraphics graphics) {
-        graphics.fill(0, 0, this.width, this.height, 0xFF000000);
+        graphics.fill(0, 0, this.width, this.height, 0xFF111111);
+    }
+
+    private void renderEntityOrItem(GuiGraphics graphics) {
+        PoseStack poseStack = graphics.pose();
+        poseStack.pushPose();
+
+        // Translate to the desired position on the screen
+        poseStack.translate(this.width / 4f, this.height / 2f, 100);
+
+        // Reduce the scale by half for both items and entities
+        float scale = renderItem ? 64f : 128f; // Changed from 128f to 64f
+        poseStack.scale(scale, scale, scale);
+
+        // Apply rotation for both items and entities
+        poseStack.mulPose(Axis.XP.rotationDegrees(180));
+        poseStack.mulPose(Axis.YP.rotationDegrees(rotation));
+
+        if (renderItem) {
+            System.out.println("Rendering item: " + rotatingItem);
+            try {
+                // Rotate the item/entity
+//                poseStack.mulPose(Axis.XP.rotationDegrees(180));
+//                poseStack.mulPose(Axis.YP.rotationDegrees(rotation));
+
+                minecraft.getItemRenderer().renderStatic(
+                        rotatingItem.getDefaultInstance(),
+                        ItemDisplayContext.GUI,
+                        15728880,
+                        OverlayTexture.NO_OVERLAY,
+                        poseStack,
+                        graphics.bufferSource(),
+                        minecraft.level,
+                        0
+                );
+            } catch (Exception e) {
+                System.err.println("Error rendering item: " + e.getMessage());
+                e.printStackTrace();
+            }
+        } else {
+            // Rotate the entity 180 degrees around the Y-axis to face forward
+//            poseStack.mulPose(Axis.YP.rotationDegrees(180));
+//            // Apply the spin rotation in the opposite direction
+//            poseStack.mulPose(Axis.YP.rotationDegrees(-rotation));
+
+            System.out.println("Rendering entity: " + selectedMobType.getDescriptionId());
+            try {
+                Entity entity = selectedMobType.create(minecraft.level);
+                if (entity instanceof LivingEntity livingEntity) {
+                    EntityRenderDispatcher entityRenderer = minecraft.getEntityRenderDispatcher();
+                    entityRenderer.setRenderShadow(false);
+
+                    // Calculate the entity's height and adjust its position
+                    float entityHeight = livingEntity.getBbHeight();
+                    float yOffset = entityHeight / 2;
+
+                    poseStack.translate(0, -0.5f, 0);
+
+                    // Scale down larger entities more
+                    float entityScale = 1f / Math.max(1f, entityHeight);
+                    poseStack.scale(entityScale, entityScale, entityScale);
+
+                    livingEntity.setYRot(180F);
+                    livingEntity.yRotO = 180F;
+                    livingEntity.yBodyRot = 180F;
+                    livingEntity.yHeadRot = 180F;
+                    livingEntity.yHeadRotO = 180F;
+
+                    entityRenderer.render(livingEntity, 0, 0, 0, 0, 1, poseStack, graphics.bufferSource(), 15728880);
+                } else {
+                    System.err.println("Created entity is not a LivingEntity");
+                }
+            } catch (Exception e) {
+                System.err.println("Error rendering entity: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+        poseStack.popPose();
+    }
+
+    public static void renderEntityOrItem(GuiGraphics graphics, int x, int y, int size, float yaw, float pitch, Object toRender) {
+        graphics.pose().pushPose();
+        graphics.pose().translate((float)x, (float)y, 300F);
+        graphics.pose().scale(1.0F, 1.0F, -1.0F);
+        graphics.pose().translate(0.0D, 0.0D, 1000.0D);
+        graphics.pose().scale((float)size, (float)size, (float)size);
+
+        Quaternionf rotation = Axis.ZP.rotationDegrees(180.0F)
+                .mul(Axis.XP.rotationDegrees(pitch))
+                .mul(Axis.YP.rotationDegrees(yaw));
+        graphics.pose().mulPose(rotation);
+
+        if (toRender instanceof LivingEntity) {
+            LivingEntity entity = (LivingEntity) toRender;
+            float originalBodyYaw = entity.yBodyRot;
+            float originalYaw = entity.getYRot();
+            float originalPitch = entity.getXRot();
+            float originalHeadYawO = entity.yHeadRotO;
+            float originalHeadYaw = entity.yHeadRot;
+
+            entity.yBodyRot = 180.0F + yaw * 20.0F;
+            entity.setYRot(180.0F + yaw * 20.0F);
+            entity.setXRot(-pitch * 20.0F);
+            entity.yHeadRot = entity.getYRot();
+            entity.yHeadRotO = entity.getYRot();
+
+            Lighting.setupForFlatItems();
+            EntityRenderDispatcher entityRenderer = Minecraft.getInstance().getEntityRenderDispatcher();
+            entityRenderer.setRenderShadow(false);
+            MultiBufferSource.BufferSource bufferSource = Minecraft.getInstance().renderBuffers().bufferSource();
+
+            RenderSystem.runAsFancy(() -> {
+                entityRenderer.render(entity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, graphics.pose(), bufferSource, 15728880);
+            });
+
+            bufferSource.endBatch();
+
+            // Restore original entity state
+            entity.yBodyRot = originalBodyYaw;
+            entity.setYRot(originalYaw);
+            entity.setXRot(originalPitch);
+            entity.yHeadRotO = originalHeadYawO;
+            entity.yHeadRot = originalHeadYaw;
+        } else if (toRender instanceof Item) {
+            Item item = (Item) toRender;
+            BakedModel itemModel = Minecraft.getInstance().getItemRenderer().getModel(item.getDefaultInstance(), null, null, 0);
+            graphics.pose().translate(-0.5F, -0.5F, -0.5F);
+            Minecraft.getInstance().getItemRenderer().render(item.getDefaultInstance(), ItemDisplayContext.FIXED, false, graphics.pose(), Minecraft.getInstance().renderBuffers().bufferSource(), 15728880, OverlayTexture.NO_OVERLAY, itemModel);
+        }
+
+        graphics.pose().popPose();
+        Lighting.setupFor3DItems();
     }
 
     private void renderRotatingItem(GuiGraphics graphics) {
@@ -291,9 +456,9 @@ public class SkyrimLoadingScreen extends Screen
             RenderSystem.setShaderColor(particle.grayValue, particle.grayValue, particle.grayValue, particle.opacity);
 
             // Render the particle as a rotated square
-            RenderUtil.bind(SMOKE_EFFECT_PARTICLE);
-            RenderUtil.blitWithBlend(poseStack, -halfSize, -halfSize, 0, 0, 8, 8,8,8,0, 1);
-//            graphics.fill(-halfSize, -halfSize, halfSize, halfSize, 0xFFFFFFFF);
+//            RenderUtil.bind(SMOKE_EFFECT_PARTICLE);
+//            RenderUtil.blitWithBlend(poseStack, -halfSize, -halfSize, 0, 0, 8, 8,8,8,0, 1);
+            graphics.fill(-halfSize, -halfSize, halfSize, halfSize, 0xFFFFFFFF);
 
             poseStack.popPose();  // Restore the state after rendering the particle
         }
@@ -314,7 +479,7 @@ public class SkyrimLoadingScreen extends Screen
         public SmokeParticle(float x, float y) {
             this.x = x;
             this.y = y;
-            this.size = 8; //random.nextFloat() * 4 + 2;
+            this.size = random.nextFloat() * 4 + 2; //8
             this.velocityX = random.nextFloat() * 0.2f - 0.1f;  // Horizontal drift
             this.velocityY = random.nextFloat() * 0.3f + 0.2f;  // Rising speed
             this.opacity = 1.0f;

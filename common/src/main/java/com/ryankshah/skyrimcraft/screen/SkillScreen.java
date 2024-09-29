@@ -1,6 +1,5 @@
 package com.ryankshah.skyrimcraft.screen;
 
-import com.mojang.blaze3d.platform.InputConstants;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
@@ -23,6 +22,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.CubeMap;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -61,6 +61,11 @@ public class SkillScreen extends Screen
     private int levelHeight = 40; // Vertical space between levels
     private boolean shouldFocusLevelUpdates = false;
     private String[] levelUpdateOptions = {"Magicka", "Health", "Stamina"};
+    private static final int UNLOCKED_COLOR = 0xFF00FF00; // Green color for unlocked perks
+
+    private static final int PERK_ICON_SIZE = 32;
+    private static final int LEVEL_HEIGHT = 80;
+    private static final int PERK_SPACING = 120;
 
     private int greenColor = 0xFF4B8C32;
 
@@ -312,37 +317,29 @@ public class SkillScreen extends Screen
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (KeysRegistry.SKYRIM_MENU_MB1_CLICK.get().matchesMouse(button)) {
-            if (skillSelected) {
-                List<Perk> perks = selectedSkillObject.getSkillPerks();
-                // Organize perks by level
-                Map<Integer, List<Perk>> perksByLevel = organizePerksByLevel(perks);
-                for (Map.Entry<Integer, List<Perk>> entry : perksByLevel.entrySet()) {
-                    int level = entry.getKey();
-                    List<Perk> perksAtLevel = entry.getValue();
+        if (KeysRegistry.SKYRIM_MENU_MB1_CLICK.get().matchesMouse(button) && skillSelected) {
+            SkillWrapper skill = selectedSkillObject;
+            Map<Integer, List<Perk>> perksByLevel = organizePerksByLevel(skill.getSkillPerks());
 
-                    for (int i = 0; i < perksAtLevel.size(); i++) {
-                        Perk perk = perksAtLevel.get(i);
+            int baseY = this.height * 3 / 4 - 10;
+            int maxPerksInLevel = perksByLevel.values().stream().mapToInt(List::size).max().orElse(1);
+            int perkSpacing = Math.min(width / (maxPerksInLevel + 1), 100);
 
-                        // Calculate perk position based on GUI
-                        int perkSpacing = width / (perksAtLevel.size() + 1); // Horizontal spacing for perks
-                        int perkX = i * (perkSpacing + width); //(i + 1) * perkSpacing;
-                        int perkY = height - 50 - (level * levelHeight);
+            for (Map.Entry<Integer, List<Perk>> entry : perksByLevel.entrySet()) {
+                int level = entry.getKey();
+                List<Perk> perksAtLevel = entry.getValue();
 
-                        // Check if the player clicked on this perk
-                        if (isWithinBounds(mouseX, mouseY, perkX, perkY, 16, 16)) { // Assuming perk size is 16x16
-                            handlePerkClick(perk, perksByLevel);
-                            return true; // Stop after the first valid click
-                        }
-                    }
-                }
-            } else {
-                for (SkillWrapper skillEntry : skillsList) {
-                    int x = this.width / 2 + 128 * (skillEntry.getID() + 1) - (this.currentSkill + 1) * 128; //(width / 2) - ((SKILL_BAR_CONTAINER_WIDTH / 2) + (24 * currentSkill+1))
-                    int y = height / 2 - 20;
-                    if(isWithinBounds(mouseX, mouseY, x, y, x+32, y+70)) {
-                        selectedSkillObject = skillEntry;
-                        skillSelected = true;
+                int levelWidth = (perksAtLevel.size() - 1) * perkSpacing;
+                int startX = (width - levelWidth) / 2;
+
+                for (int i = 0; i < perksAtLevel.size(); i++) {
+                    Perk perk = perksAtLevel.get(i);
+                    int x = startX + i * perkSpacing;
+                    int y = baseY - (level * levelHeight);
+
+                    if (isWithinBounds(mouseX, mouseY, x - 16, y - 16, 32, 32)) {
+                        handlePerkClick(perk, perksByLevel);
+                        System.out.println("Perk clicked: " + perk.getName()); // Debug print
                         return true;
                     }
                 }
@@ -428,51 +425,48 @@ public class SkillScreen extends Screen
 
     private void drawSkillPerksTree(SkillWrapper skill, GuiGraphics graphics, PoseStack poseStack, int width, int height, int mouseX, int mouseY) {
         List<Perk> perks = skill.getSkillPerks();
-        // Organize perks by level
         Map<Integer, List<Perk>> perksByLevel = organizePerksByLevel(perks);
 
-//        int baseY = height - 50; // Start rendering from the bottom
-        int baseY = this.height * 3 / 4 - 10;
+        int baseY = height - 100;
+        int maxLevel = perksByLevel.keySet().stream().mapToInt(Integer::intValue).max().orElse(0);
 
-        // Render each level of perks
+        // First, draw the connections
+        poseStack.pushPose();
+        poseStack.translate(0, 0, 100);
         for (Map.Entry<Integer, List<Perk>> entry : perksByLevel.entrySet()) {
             int level = entry.getKey();
             List<Perk> perksAtLevel = entry.getValue();
 
-            // Calculate horizontal spacing between perks at this level
-            int perkSpacing = width / (perksAtLevel.size() + 1);
+            int levelWidth = (perksAtLevel.size() - 1) * PERK_SPACING;
+            int startX = (width - levelWidth) / 2;
 
             for (int i = 0; i < perksAtLevel.size(); i++) {
                 Perk perk = perksAtLevel.get(i);
-                int x = (i + 1) * perkSpacing;
-                int y = baseY - (level * levelHeight);
+                int x = startX + i * PERK_SPACING;
+                int y = baseY - (level * LEVEL_HEIGHT);
 
-                // Render the perk (name, unlocked status, etc.)
+                renderConnectionsToParents(graphics, poseStack, perk, x, y, perksByLevel, baseY);
+            }
+        }
+        poseStack.popPose();
+
+        // Then, draw the perks
+        for (Map.Entry<Integer, List<Perk>> entry : perksByLevel.entrySet()) {
+            int level = entry.getKey();
+            List<Perk> perksAtLevel = entry.getValue();
+
+            int levelWidth = (perksAtLevel.size() - 1) * PERK_SPACING;
+            int startX = (width - levelWidth) / 2;
+
+            for (int i = 0; i < perksAtLevel.size(); i++) {
+                Perk perk = perksAtLevel.get(i);
+                int x = startX + i * PERK_SPACING;
+                int y = baseY - (level * LEVEL_HEIGHT);
+
                 renderPerk(graphics, poseStack, perk, x, y);
 
-                // Draw lines connecting this perk to its parents
-                renderConnectionsToParents(graphics, poseStack, perk, x, y, perksByLevel, levelHeight);
-
-                // Check if mouse is hovering over the perk name
-                if (isWithinBounds(mouseX, mouseY, x - (font.width(perk.getName()) / 2), y, this.font.width(perk.getName()), 10)) {
-                    // Combine into one tooltip message
-                    List<String> tooltipInfo = new ArrayList<>();
-                    String description = perk.getDescription();
-                    String levelReq = "Level Requirement: " + perk.getLevelRequirement();
-                    String parentsInfo = "Requires: " + String.join(", ", perk.getParents());
-
-                    // Wrap description if too long
-                    List<String> wrappedDescription = wrapText(description, 150); // 150 is the max line width
-
-                    // Combine into one tooltip message
-                    tooltipInfo = new ArrayList<>(wrappedDescription);
-                    tooltipInfo.add(levelReq);
-                    if (!perk.getParents().isEmpty()) {
-                        tooltipInfo.add(parentsInfo);
-                    }
-                    if(!perk.isUnlocked())
-                        tooltipInfo.add("Click to Unlock");
-                    renderTooltip(graphics, poseStack, tooltipInfo, mouseX, mouseY);
+                if (isWithinBounds(mouseX, mouseY, x - PERK_ICON_SIZE/2, y - PERK_ICON_SIZE/2, PERK_ICON_SIZE, PERK_ICON_SIZE)) {
+                    renderPerkTooltip(graphics, poseStack, perk, mouseX, mouseY);
                 }
             }
         }
@@ -519,20 +513,43 @@ public class SkillScreen extends Screen
         RenderSystem.enableDepthTest();
     }
 
-    private void renderPerk(GuiGraphics graphics, PoseStack matrixStack, Perk perk, int x, int y) {
-        // Draw the perk's name, level requirement, and unlocked status
-        graphics.drawCenteredString(font, perk.getName(), x, y, 0xFFFFFFFF);
-//        graphics.drawCenteredString(font, "Level: " + perk.getLevelRequirement(), x, y + 10, 0xFFAAAAAA);
-
-        if (perk.isUnlocked()) {
-            // Draw unlocked indicator (e.g., checkmark or icon)
-            graphics.drawCenteredString(font, "Unlocked", x, y + 10, 0xFF00FF00);
-        } else {
-            graphics.drawCenteredString(font, "Locked", x, y + 10, 0xFFFF0000);
+    private void renderPerkTooltip(GuiGraphics graphics, PoseStack poseStack, Perk perk, int mouseX, int mouseY) {
+        List<String> tooltipInfo = new ArrayList<>();
+        tooltipInfo.add(perk.getName());
+        tooltipInfo.addAll(wrapText(perk.getDescription(), 150));
+        tooltipInfo.add("Level Requirement: " + perk.getLevelRequirement());
+        if (!perk.getParents().isEmpty()) {
+            tooltipInfo.add("Requires: " + String.join(", ", perk.getParents()));
         }
+        if (perk.isUnlocked()) {
+            tooltipInfo.add("Unlocked");
+        } else {
+            tooltipInfo.add("Click to Unlock");
+        }
+
+        poseStack.pushPose();
+        poseStack.translate(0, 0, 300); // Move tooltip to front
+        renderTooltip(graphics, poseStack, tooltipInfo, mouseX, mouseY);
+        poseStack.popPose();
     }
 
-    private void renderConnectionsToParents(GuiGraphics graphics, PoseStack matrixStack, Perk perk, int x, int y, Map<Integer, List<Perk>> perksByLevel, int levelHeight) {
+    private void renderPerk(GuiGraphics graphics, PoseStack poseStack, Perk perk, int x, int y) {
+        int color = perk.isUnlocked() ? UNLOCKED_COLOR : 0xFFFFFFFF;
+
+        // Draw perk icon
+//        poseStack.pushPose();
+//        poseStack.translate(0, 0, 200);
+//        RenderSystem.setShaderTexture(0, SKILL_ICONS);
+//        graphics.blit(SKILL_ICONS, x - PERK_ICON_SIZE/2, y - PERK_ICON_SIZE/2, 0, 0, PERK_ICON_SIZE, PERK_ICON_SIZE, 512, 512);
+//        poseStack.popPose();
+
+        // Draw perk name below the icon
+//        graphics.drawCenteredString(font, perk.getName(), x, y + PERK_ICON_SIZE/2 + 5, color);
+        graphics.drawCenteredString(font, perk.getName(), x, y, color);
+    }
+
+
+    private void renderConnectionsToParents(GuiGraphics graphics, PoseStack poseStack, Perk perk, int x, int y, Map<Integer, List<Perk>> perksByLevel, int baseY) {
         for (String parentName : perk.getParents()) {
             for (Map.Entry<Integer, List<Perk>> entry : perksByLevel.entrySet()) {
                 int parentLevel = entry.getKey();
@@ -541,34 +558,41 @@ public class SkillScreen extends Screen
                 for (int i = 0; i < parentPerks.size(); i++) {
                     Perk parentPerk = parentPerks.get(i);
                     if (parentPerk.getName().equals(parentName)) {
-                        // Calculate the parentX and parentY based on its rendering position
-                        int parentSpacing = width / (parentPerks.size() + 1); // Same spacing logic as before
-                        int parentX = (i + 1) * parentSpacing; // X position of the parent perk
-                        int parentY = height - 50 - (parentLevel * levelHeight); // Y position of the parent perk
+                        int parentY = baseY - (parentLevel * LEVEL_HEIGHT);
+                        int parentX = (perksByLevel.get(parentLevel).size() - 1) * PERK_SPACING;
+                        parentX = (width - parentX) / 2 + i * PERK_SPACING;
 
-                        // Now draw the line from the current perk to the parent perk
-//                        graphics.fill(x, y, parentX, parentY, 0xFFFFFFFF); // Example color: white
-                        drawLine(matrixStack, x, y, parentX, parentY, 0xFFFFFFFF);
+                        int color = parentPerk.isUnlocked() && perk.isUnlocked() ? UNLOCKED_COLOR : 0xFFFFFFFF;
+//                        drawLine(poseStack, x, y + PERK_ICON_SIZE/2, parentX, parentY - PERK_ICON_SIZE/2, color);
+                        drawLine(poseStack, x, y, parentX, parentY, color);
+                        break;
                     }
                 }
             }
         }
     }
 
-    private void drawLine(PoseStack matrixStack, int x1, int y1, int x2, int y2, int color) {
-        RenderSystem.lineWidth(2.0F); // Set line width
-        // Convert color from int to RGBA
+    private void drawLine(PoseStack poseStack, int x1, int y1, int x2, int y2, int color) {
+        poseStack.pushPose();
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+
+        BufferBuilder bufferBuilder = Tesselator.getInstance().begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
+
         float red = (float)(color >> 16 & 255) / 255.0F;
         float green = (float)(color >> 8 & 255) / 255.0F;
         float blue = (float)(color & 255) / 255.0F;
-        float alpha = 1.0F; // Full opacity
+        float alpha = 1.0F;
 
-        Tesselator tesselator = Tesselator.getInstance();
-        BufferBuilder bufferBuilder = tesselator.begin(VertexFormat.Mode.LINES, DefaultVertexFormat.POSITION_COLOR);
-        bufferBuilder.addVertex(matrixStack.last().pose(), x1, y1, 0).setColor(red, green, blue, alpha);
-        bufferBuilder.addVertex(matrixStack.last().pose(), x2, y2, 0).setColor(red, green, blue, alpha);//.endVertex();
+        bufferBuilder.addVertex(poseStack.last().pose(), x1, y1, 0).setColor(red, green, blue, alpha);
+        bufferBuilder.addVertex(poseStack.last().pose(), x2, y2, 0).setColor(red, green, blue, alpha);
+
         BufferUploader.drawWithShader(bufferBuilder.buildOrThrow());
+        RenderSystem.disableBlend();
+        poseStack.popPose();
     }
+
 
     private void renderHealth(GuiGraphics graphics, PoseStack poseStack, int width, int height, boolean selected) {
         poseStack.pushPose();

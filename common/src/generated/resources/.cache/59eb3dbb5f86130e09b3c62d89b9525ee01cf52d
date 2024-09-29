@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-28T15:45:13.9265887	Loot Tables
+// 1.21.1	2024-09-29T20:56:01.6500575	Loot Tables
 6e0c1cc37b5d7a07f796aa6e417d78c8ce62c807 data/skyrimcraft/loot_table/bee.json
 d444230535091142a75782b5629a5554a5b3c1d5 data/skyrimcraft/loot_table/beehive.json
 5a57dfc5cbb79ed7fba149781f2d0dbd9c0bf271 data/skyrimcraft/loot_table/blocks/alchemy_table.json
@@ -68,6 +68,7 @@ ee9901832ee161d646fb0d7bcba28895e51e109f data/skyrimcraft/loot_table/blocks/ston
 bfec4f95c7f2c60caf506c9e929d3ed142e57812 data/skyrimcraft/loot_table/blocks/stone_brick_5.json
 a21fba487410ced2f5dbd46355fbf275520bc36c data/skyrimcraft/loot_table/blocks/stone_brick_6.json
 f06b06b39cfd7d25aa2fb05b307ddd2bc766fc6c data/skyrimcraft/loot_table/blocks/tomatoes.json
+5138ff48edcaee5fd9dee72e114a20739a8a9c95 data/skyrimcraft/loot_table/blocks/turn_stone.json
 8e0a9c87d941abbd11140d60a721620db717013c data/skyrimcraft/loot_table/blocks/weapon_rack.json
 6b82677b681f103f63114c5d80abe4562ab7662a data/skyrimcraft/loot_table/blocks/white_cap.json
 ac909c3956115424b9f0cc7316540f334d036a04 data/skyrimcraft/loot_table/blocks/yellow_mountain_flower.json

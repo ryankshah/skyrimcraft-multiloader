@@ -122,6 +122,10 @@ public class BlockRegistry
     public static final RegistryObject<Block, Block> ALCHEMY_TABLE = registerBlock("alchemy_table",
             AlchemyTableBlock::new);
     public static final RegistryObject<Item, BlockItem> ALCHEMY_TABLE_ITEM = ItemRegistry.ITEMS.register("alchemy_table", () -> new BlockItem(ALCHEMY_TABLE.get(), new Item.Properties()));
+    public static final RegistryObject<Block, TurnStoneBlock> TURN_STONE = registerBlock("turn_stone",
+            TurnStoneBlock::new);
+    public static final RegistryObject<Item, BlockItem> TURN_STONE_ITEM = ItemRegistry.ITEMS.register("turn_stone", () -> new BlockItem(TURN_STONE.get(), new Item.Properties()));
+
     public static final RegistryObject<Block, Block> OVEN = registerBlock("oven",
             OvenBlock::new);
     public static final RegistryObject<Item, BlockItem> OVEN_ITEM = ItemRegistry.ITEMS.register("oven", () -> new BlockItem(OVEN.get(), new Item.Properties()));

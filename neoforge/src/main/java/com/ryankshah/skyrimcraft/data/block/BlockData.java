@@ -79,6 +79,8 @@ public class BlockData
         provider.addBlock(BlockRegistry.GRASS_3, "Grass");
         provider.addBlock(BlockRegistry.GRASS_4, "Grass");
 
+        provider.addBlock(BlockRegistry.TURN_STONE, "Turn Stone");
+
         provider.addBlock(BlockRegistry.SHOUT_BLOCK, "Shout Block");
 
         provider.addBlock(BlockRegistry.BIRDS_NEST, "Bird's Nest");
@@ -198,6 +200,8 @@ public class BlockData
                 });
 
         provider.simpleBlockItem(BlockRegistry.PEARL_OYSTER_BLOCK.get(), provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/pearl_oyster")));
+
+//        provider.simpleBlockItem(BlockRegistry.TURN_STONE.get(), provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/turn_stone")));
 
         provider.horizontalBlock(BlockRegistry.ALCHEMY_TABLE.get(), state -> provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/alchemy_table")));
         provider.simpleBlockItem(BlockRegistry.ALCHEMY_TABLE.get(), provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/alchemy_table")));
