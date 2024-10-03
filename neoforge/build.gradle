@@ -19,6 +19,10 @@ repositories {
         name = "Forge"
         url = "https://maven.minecraftforge.net"
     }
+    maven { url 'https://maven.wispforest.io/releases' }
+    maven { url 'https://maven.su5ed.dev/releases' }
+    maven { url 'https://maven.fabricmc.net' }
+    maven { url 'https://maven.shedaniel.me/' }
 }
 
 neoForge {
@@ -59,4 +63,5 @@ dependencies {
     implementation 'mysticdrew:common-networking-neoforge:1.0.16-1.21'
     implementation "software.bernie.geckolib:geckolib-neoforge-${geckolib_version}"
     implementation "com.github.glitchfiend:TerraBlender-neoforge:${terrablender_version}"
+    implementation("io.wispforest:accessories-neoforge:${accessories_version}")
 }

@@ -60,7 +60,7 @@ public class SkyrimcraftBiomes
         BiomeDefaultFeatures.farmAnimals(pineForestBuilder);
         BiomeDefaultFeatures.commonSpawns(pineForestBuilder);
         pineForestBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 5, 2, 3));
-        pineForestBuilder.addSpawn(MobCategory.AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 5, 2, 4));
+        pineForestBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 5, 2, 4));
 
         BiomeGenerationSettings.PlainBuilder generationSettings = baseSettings(context);
         // Add custom features

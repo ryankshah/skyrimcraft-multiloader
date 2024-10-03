@@ -45,13 +45,12 @@ public class TurnStoneModel<T extends Entity> extends EntityModel<T> implements 
     }
 
     @Override
-    public void setupAnimation(Level level, float partialTicks, TurnStoneBlockEntityRenderer.AnimContext ctx)
-    {
-        root.getAllParts().forEach(ModelPart::resetPose);
-
+    public void setupAnimation(Level level, float partialTicks, TurnStoneBlockEntityRenderer.AnimContext ctx) {
+//        root.getAllParts().forEach(ModelPart::resetPose);
         AnimationState state = ctx.state();
         float time = (float)level.getGameTime() + partialTicks;
-        AnimationHelper.animate(this, state, TurnStoneBlockEntity.SPIN, time, 1F);
+//        AnimationHelper.animate(this, state, TurnStoneBlockEntity.SPIN, time, 0.5F);
+        AnimationHelper.applyStatic(this, TurnStoneBlockEntity.SPIN);
     }
 
     @Override
@@ -59,10 +58,8 @@ public class TurnStoneModel<T extends Entity> extends EntityModel<T> implements 
         return root;
     }
 
-
     @Override
     public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
     }
 
     @Override

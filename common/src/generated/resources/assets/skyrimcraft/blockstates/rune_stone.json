@@ -1,0 +1,124 @@
+{
+  "variants": {
+    "active_symbol=empty,facing=east,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=empty,facing=east,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=empty,facing=north,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=empty,facing=north,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=empty,facing=south,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=empty,facing=south,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=empty,facing=west,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=empty,facing=west,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol1,facing=east,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol1,facing=east,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol1,facing=north,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol1,facing=north,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol1,facing=south,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol1,facing=south,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol1,facing=west,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol1,facing=west,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol2,facing=east,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol2,facing=east,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol2,facing=north,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol2,facing=north,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol2,facing=south,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol2,facing=south,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol2,facing=west,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol2,facing=west,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol3,facing=east,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol3,facing=east,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol3,facing=north,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol3,facing=north,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol3,facing=south,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol3,facing=south,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol3,facing=west,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol3,facing=west,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol4,facing=east,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol4,facing=east,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol4,facing=north,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol4,facing=north,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol4,facing=south,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol4,facing=south,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    },
+    "active_symbol=symbol4,facing=west,powered=false": {
+      "model": "skyrimcraft:block/rune_stone"
+    },
+    "active_symbol=symbol4,facing=west,powered=true": {
+      "model": "skyrimcraft:block/rune_stone_powered"
+    }
+  }
+}

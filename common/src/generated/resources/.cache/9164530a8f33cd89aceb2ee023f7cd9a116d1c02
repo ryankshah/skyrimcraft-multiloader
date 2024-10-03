@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-29T21:01:32.742858	Block States: skyrimcraft
+// 1.21.1	2024-10-02T13:15:48.3766076	Block States: skyrimcraft
 62bac4ac647c5ba49a82730ff85a912bc1b23973 assets/skyrimcraft/blockstates/alchemy_table.json
 ff402d699e49cc3a1c5c7b1e7452aee76f9c9ad5 assets/skyrimcraft/blockstates/arcane_enchanter.json
 8de634c0b0f1da5acfb204e9793980f7a1f69265 assets/skyrimcraft/blockstates/ash_yam.json
@@ -43,6 +43,7 @@ b4f0b841b0747df5a9d32d96be0ab7da392c2144 assets/skyrimcraft/blockstates/planks_3
 3daf9ab6870f4aa6b1f05ff8782d9ac21d3337cc assets/skyrimcraft/blockstates/purple_mountain_flower.json
 58dc956c3ff647992b75a3a992526bde8fd05f7a assets/skyrimcraft/blockstates/quicksilver_ore.json
 0f52c66b5b5bc6b6b09fd625395019fe5e2e473f assets/skyrimcraft/blockstates/red_mountain_flower.json
+c60b38d4f927b7543ea90800ecc82d09ca4c6fcb assets/skyrimcraft/blockstates/rune_stone.json
 ff816a8f3d9c5e2ef4d62e67c026fe6845b89091 assets/skyrimcraft/blockstates/shout_block.json
 7fa04e0e0b2bc0c42566c288c4d468ad3fdbf5f6 assets/skyrimcraft/blockstates/silver_ore.json
 c69a9b9cf0f7ab37a1fbc3e6ba7951e216e403ab assets/skyrimcraft/blockstates/snowberry_bush.json
@@ -63,6 +64,7 @@ f44f8401a80020f9ddd1d96178ddcf17415ce4e6 assets/skyrimcraft/blockstates/stone_br
 b5d4c7ef3452e8b9859230369ba5eec03e76b924 assets/skyrimcraft/blockstates/stone_brick_4.json
 c8784988cd6db57d9b1c2622ac140d732bd462bf assets/skyrimcraft/blockstates/stone_brick_5.json
 c03762fea90e6c019fbcd44d3c56c10936dfe275 assets/skyrimcraft/blockstates/stone_brick_6.json
+38c476d7dfd543fbafb343ed309010d2b22561c7 assets/skyrimcraft/blockstates/turn_stone.json
 9a75c80aef40aab1e609d1c8823c4a82c3935a26 assets/skyrimcraft/blockstates/weapon_rack.json
 f113a706a439f2fbd33244d7f15552f93fb2bae7 assets/skyrimcraft/blockstates/white_cap.json
 91969d078aa20ea6eeb78e1d1175b1ae582fc8be assets/skyrimcraft/blockstates/yellow_mountain_flower.json
@@ -136,6 +138,7 @@ b9de564b767f70a38efb25dda41fbbd700c7f520 assets/skyrimcraft/models/block/stone_b
 35c4731bad1f154a52b9e728680a33e237f4cdb4 assets/skyrimcraft/models/block/stone_brick_4.json
 cd406c9c7324ed5aa1120a2cecb9b761c4f7ac2c assets/skyrimcraft/models/block/stone_brick_5.json
 35a3425913b98d875bb019b9ecbead483c45e992 assets/skyrimcraft/models/block/stone_brick_6.json
+3a7f03e3c8111fb10d0292dcbe891a7c7e6993b3 assets/skyrimcraft/models/block/turn_stone.json
 7421ee4dbec2f6ca33b65c598095e611ce6c62e6 assets/skyrimcraft/models/block/white_cap.json
 440dfa6ce3bdfe02f52086e967e0c197be4996bf assets/skyrimcraft/models/block/yellow_mountain_flower.json
 a05776035989a803b88299d04d534830b35d9e7f assets/skyrimcraft/models/item/alchemy_table.json
@@ -174,6 +177,7 @@ dd179f328bda73133e9f56f0b02805ad3ec26c76 assets/skyrimcraft/models/item/pearl_oy
 0262700299f4f3d538da9af28bacb9fc37a578c9 assets/skyrimcraft/models/item/purple_mountain_flower.json
 e7f995de2042b5b6e95b697c88f6f92b09405db1 assets/skyrimcraft/models/item/quicksilver_ore.json
 a5fa17b2fbd8c60dcc5ad48486f143e079159559 assets/skyrimcraft/models/item/red_mountain_flower.json
+b3888924a0cbda322465a5aa291a681ec36f04d6 assets/skyrimcraft/models/item/rune_stone.json
 4f283e3c5d992329f28df5095ab8bc6312a3e976 assets/skyrimcraft/models/item/shout_block.json
 db06156e776a7f73f562ea60049b1b44be24452f assets/skyrimcraft/models/item/silver_ore.json
 e53541ed90403d39ba398ea6aeba9831eb734958 assets/skyrimcraft/models/item/snowy_planks_1.json

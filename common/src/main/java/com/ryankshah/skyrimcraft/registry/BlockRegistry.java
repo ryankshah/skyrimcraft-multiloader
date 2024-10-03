@@ -126,6 +126,11 @@ public class BlockRegistry
             TurnStoneBlock::new);
     public static final RegistryObject<Item, BlockItem> TURN_STONE_ITEM = ItemRegistry.ITEMS.register("turn_stone", () -> new BlockItem(TURN_STONE.get(), new Item.Properties()));
 
+    public static final RegistryObject<Block, RuneStoneBlock> RUNE_STONE = registerBlock("rune_stone",
+            RuneStoneBlock::new);
+    public static final RegistryObject<Item, BlockItem> RUNE_STONE_ITEM = ItemRegistry.ITEMS.register("rune_stone", () -> new BlockItem(RUNE_STONE.get(), new Item.Properties()));
+
+
     public static final RegistryObject<Block, Block> OVEN = registerBlock("oven",
             OvenBlock::new);
     public static final RegistryObject<Item, BlockItem> OVEN_ITEM = ItemRegistry.ITEMS.register("oven", () -> new BlockItem(OVEN.get(), new Item.Properties()));

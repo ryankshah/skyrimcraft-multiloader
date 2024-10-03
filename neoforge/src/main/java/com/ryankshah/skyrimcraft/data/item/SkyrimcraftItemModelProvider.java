@@ -412,6 +412,8 @@ public class SkyrimcraftItemModelProvider extends ItemModelProvider
         item(ItemRegistry.PHILTER_OF_TRUE_SHOT.get());
         item(ItemRegistry.ELIXIR_OF_TRUE_SHOT.get());
 
+
+
         BlockData.addBlockItemModels(this);
     }
 

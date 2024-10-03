@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "skyrimcraft:block/turn_stone",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "skyrimcraft:block/turn_stone"
+    },
+    "facing=south": {
+      "model": "skyrimcraft:block/turn_stone",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "skyrimcraft:block/turn_stone",
+      "y": 270
+    }
+  }
+}

@@ -19,6 +19,10 @@ repositories {
             includeGroup("software.bernie.geckolib")
         }
     }
+    maven { url 'https://maven.wispforest.io/releases' }
+    maven { url 'https://maven.su5ed.dev/releases' }
+    maven { url 'https://maven.fabricmc.net' }
+    maven { url 'https://maven.shedaniel.me/' }
 }
 
 neoForge {
@@ -45,6 +49,7 @@ dependencies {
     implementation 'mysticdrew:common-networking-common:1.0.16-1.21'
     implementation "software.bernie.geckolib:geckolib-common-${geckolib_version}"
     implementation "com.github.glitchfiend:TerraBlender-common:${terrablender_version}"
+    compileOnly("io.wispforest:accessories-common:${accessories_version}-mojmap")
 }
 
 configurations.all {

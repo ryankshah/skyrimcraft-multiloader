@@ -3,6 +3,8 @@ package com.ryankshah.skyrimcraft.data.block;
 import com.ryankshah.skyrimcraft.Constants;
 import com.ryankshah.skyrimcraft.block.JazbayGrapeBushBlock;
 import com.ryankshah.skyrimcraft.block.PearlOysterBlock;
+import com.ryankshah.skyrimcraft.block.RuneStoneBlock;
+import com.ryankshah.skyrimcraft.block.TurnStoneBlock;
 import com.ryankshah.skyrimcraft.registry.BlockRegistry;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -80,6 +82,7 @@ public class BlockData
         provider.addBlock(BlockRegistry.GRASS_4, "Grass");
 
         provider.addBlock(BlockRegistry.TURN_STONE, "Turn Stone");
+        provider.addBlock(BlockRegistry.RUNE_STONE, "Rune Stone");
 
         provider.addBlock(BlockRegistry.SHOUT_BLOCK, "Shout Block");
 
@@ -227,8 +230,10 @@ public class BlockData
         threeStageBush(provider, BlockRegistry.JUNIPER_BERRY_BUSH.get());
         threeStageBush(provider, BlockRegistry.SNOWBERRY_BUSH.get());
 
-//        provider.horizontalBlock(SOVNGARDE_PORTAL.get(), state -> provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/sovngarde_portal")));
-//        provider.simpleBlockItem(SOVNGARDE_PORTAL.get(), provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/sovngarde_portal")));
+//        provider.horizontalBlock(BlockRegistry.TURN_STONE.get(), null);
+        turnStoneBlock(provider, BlockRegistry.TURN_STONE.get());
+        runeStoneBlock(provider, BlockRegistry.RUNE_STONE.get());
+        provider.simpleBlockItem(BlockRegistry.RUNE_STONE.get(), provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/rune_stone")));
     }
 
     public static void addBlockItemModels(ItemModelProvider provider) {
@@ -245,6 +250,31 @@ public class BlockData
         String path = blockKey.getPath();
         provider.simpleBlock(block, provider.models().cubeAll(path, provider.modLoc("block/" + path)));
         provider.simpleBlockItem(block, provider.models().getExistingFile(provider.modLoc("block/" + path)));
+    }
+
+    public static void turnStoneBlock(BlockStateProvider provider, TurnStoneBlock block) {
+        ResourceLocation blockKey = key(block);
+        String path = blockKey.getPath();
+
+        ModelFile model = provider.models().getBuilder(provider.modLoc("block/" + path).getPath())
+                .texture("particle", provider.modLoc("block/"+path));
+        provider.horizontalBlock(block, model);
+    }
+
+    public static void runeStoneBlock(BlockStateProvider provider, RuneStoneBlock block) {
+        ResourceLocation blockKey = key(block);
+        String path = blockKey.getPath();
+
+        ModelFile powered = provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/rune_stone_powered"));
+        ModelFile not_powered = provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/rune_stone"));
+
+        provider.getVariantBuilder(block).forAllStatesExcept(state ->
+        {
+            ModelFile mf = state.getValue(RuneStoneBlock.POWERED) ? powered : not_powered;
+            return ConfiguredModel.builder()
+                    .modelFile(mf)
+                    .build();
+        });
     }
 
     public static void mushroomBlock(BlockStateProvider provider, Block block) {

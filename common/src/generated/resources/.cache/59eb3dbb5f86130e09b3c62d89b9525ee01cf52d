@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-29T20:56:01.6500575	Loot Tables
+// 1.21.1	2024-10-02T07:36:49.2348827	Loot Tables
 6e0c1cc37b5d7a07f796aa6e417d78c8ce62c807 data/skyrimcraft/loot_table/bee.json
 d444230535091142a75782b5629a5554a5b3c1d5 data/skyrimcraft/loot_table/beehive.json
 5a57dfc5cbb79ed7fba149781f2d0dbd9c0bf271 data/skyrimcraft/loot_table/blocks/alchemy_table.json
@@ -47,6 +47,7 @@ f21cc58b7784c63795b7b05969326ded60d9f1f0 data/skyrimcraft/loot_table/blocks/plan
 0d1f841a22a7ac995196841a41351f159ebd4a68 data/skyrimcraft/loot_table/blocks/purple_mountain_flower.json
 3cb2cd50bc9cd49b826a9ff501ed6d7036eee613 data/skyrimcraft/loot_table/blocks/quicksilver_ore.json
 b8c68de9ba8a79145152978ab5b8b48efd2da14a data/skyrimcraft/loot_table/blocks/red_mountain_flower.json
+ebc7cf1c9c2c02610c0f769828fa14f1431f654f data/skyrimcraft/loot_table/blocks/rune_stone.json
 945bce55757b280e12a964ef8f07bf3a3e876a07 data/skyrimcraft/loot_table/blocks/shout_block.json
 5801d83905f860058b20594fed1ccdb36617f0d1 data/skyrimcraft/loot_table/blocks/silver_ore.json
 f59de5d1c7a356bec1c1b5cddba0e5e4841628f6 data/skyrimcraft/loot_table/blocks/snowberry_bush.json

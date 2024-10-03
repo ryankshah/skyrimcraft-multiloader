@@ -1,0 +1,22 @@
+{
+  "parent": "block/block",
+  "texture_size": [64, 64],
+  "textures": {
+    "7": "skyrimcraft:block/rune_stone",
+    "particle": "skyrimcraft:block/rune_stone"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "north": {"uv": [0, 0, 4, 4], "texture": "#7"},
+        "east": {"uv": [0, 4, 4, 8], "texture": "#7"},
+        "south": {"uv": [4, 0, 8, 4], "texture": "#7"},
+        "west": {"uv": [4, 4, 8, 8], "texture": "#7"},
+        "up": {"uv": [4, 12, 0, 8], "texture": "#7"},
+        "down": {"uv": [12, 0, 8, 4], "texture": "#7"}
+      }
+    }
+  ]
+}

@@ -3,6 +3,7 @@ package com.ryankshah.skyrimcraft.registry;
 import com.example.examplemod.registration.RegistrationProvider;
 import com.example.examplemod.registration.RegistryObject;
 import com.ryankshah.skyrimcraft.Constants;
+import com.ryankshah.skyrimcraft.block.entity.RuneStoneBlockEntity;
 import com.ryankshah.skyrimcraft.block.entity.TurnStoneBlockEntity;
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;
@@ -19,8 +20,6 @@ public class BlockEntityRegistry
 
     public static final RegistryObject<BlockEntityType<?>, BlockEntityType<TurnStoneBlockEntity>> TURN_STONE = BLOCK_ENTITY_TYPES.register("turn_stone",
             () -> BlockEntityType.Builder.of(TurnStoneBlockEntity::new, BlockRegistry.TURN_STONE.get()).build(null));
-
-//    public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-//        event.registerBlockEntityRenderer(ALCHEMY_TABLE.get(), AlchemyTableBlockEntityRenderer:new);
-//    }
+    public static final RegistryObject<BlockEntityType<?>, BlockEntityType<RuneStoneBlockEntity>> RUNE_STONE = BLOCK_ENTITY_TYPES.register("rune_stone",
+            () -> BlockEntityType.Builder.of(RuneStoneBlockEntity::new, BlockRegistry.RUNE_STONE.get()).build(null));
 }

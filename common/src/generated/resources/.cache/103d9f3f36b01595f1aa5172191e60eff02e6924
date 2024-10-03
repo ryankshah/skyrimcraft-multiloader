@@ -1,4 +1,4 @@
-// 1.21.1	2024-09-28T15:45:13.9411207	Registries
+// 1.21.1	2024-10-02T12:50:38.2241222	Registries
 42e483ecab2a1f80bee43b424169237a04b9831d data/skyrimcraft/neoforge/biome_modifier/add_bushes.json
 ef5c954824d2daad0177eb0c190a3f2efb84c08c data/skyrimcraft/neoforge/biome_modifier/add_cave_mobs.json
 da30631e656b0ab1a55aa0681abd35d5c316fe11 data/skyrimcraft/neoforge/biome_modifier/add_corundum_ore.json
@@ -22,7 +22,7 @@ edec0651e3b62ef5d883c637fff86742ba20e889 data/skyrimcraft/neoforge/biome_modifie
 63375c7c6ed0f2ad8ad861cbefa98ab52e0a4b0e data/skyrimcraft/neoforge/biome_modifier/add_snow_mobs.json
 bec0e51660a9496169cbed14b31b8d01e60501b2 data/skyrimcraft/neoforge/biome_modifier/add_water_mobs.json
 e7a3916bdd711f1eab3748e6eb25051afdd8e03c data/skyrimcraft/worldgen/biome/ash_wastes.json
-acec502621b83fe748728f27fc1a24be11f5e73f data/skyrimcraft/worldgen/biome/pine_forest.json
+cf3616d98b083d5ecedccbd4b0390d4c4cce2ef0 data/skyrimcraft/worldgen/biome/pine_forest.json
 19481cf95e047ee5056e6d96833c1e734e366f58 data/skyrimcraft/worldgen/configured_feature/birds_nest.json
 e8e1271cee4ca5a82ab8698e78801687c1b5e132 data/skyrimcraft/worldgen/configured_feature/bushes.json
 e0a2cb8771269710757039d6ae997ec2dec803c1 data/skyrimcraft/worldgen/configured_feature/corundum_ore.json

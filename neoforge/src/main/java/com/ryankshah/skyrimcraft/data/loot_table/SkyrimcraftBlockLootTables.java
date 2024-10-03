@@ -68,6 +68,7 @@ public class SkyrimcraftBlockLootTables extends BlockLootSubProvider
         dropSelf(BlockRegistry.WEAPON_RACK.get());
         dropSelf(BlockRegistry.ARCANE_ENCHANTER.get());
         dropSelf(BlockRegistry.TURN_STONE.get());
+        dropSelf(BlockRegistry.RUNE_STONE.get());
 
         dropSelf(BlockRegistry.STONE_BRICK_1.get());
         dropSelf(BlockRegistry.STONE_BRICK_2.get());
