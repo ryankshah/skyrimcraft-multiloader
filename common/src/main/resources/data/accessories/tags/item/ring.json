@@ -1,0 +1,42 @@
+{
+  "replace": false,
+  "values": [
+    "skyrimcraft:gold_ring",
+    "skyrimcraft:silver_ring",
+    "skyrimcraft:gold_ring",
+    "skyrimcraft:gold_diamond_ring",
+    "skyrimcraft:gold_emerald_ring",
+    "skyrimcraft:gold_sapphire_ring",
+    "skyrimcraft:silver_ring",
+    "skyrimcraft:silver_amethyst_ring",
+    "skyrimcraft:silver_garnet_ring",
+    "skyrimcraft:silver_ruby_ring",
+    "skyrimcraft:asgeirs_wedding_band",
+    "skyrimcraft:ahzidals_ring_of_arcana",
+    "skyrimcraft:balwens_ornamental_ring",
+    "skyrimcraft:bone_hawk_ring",
+    "skyrimcraft:calcelmos_ring",
+    "skyrimcraft:enchanted_ring",
+    "skyrimcraft:fjolas_wedding_band",
+    "skyrimcraft:ilas_teis_ring",
+    "skyrimcraft:katarinas_ornamental_ring",
+    "skyrimcraft:madesis_silver_ring",
+    "skyrimcraft:muiris_ring",
+    "skyrimcraft:nightweavers_band",
+    "skyrimcraft:pithis_ornamental_ring",
+    "skyrimcraft:ring_of_namira",
+    "skyrimcraft:treoys_ornamental_ring"
+  ],
+  "fabric:load_conditions": {
+    "condition": "fabric:all_mods_loaded",
+    "values": [
+      "accessories"
+    ]
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "accessories"
+    }
+  ]
+}

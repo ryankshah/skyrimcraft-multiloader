@@ -2,6 +2,7 @@ package com.ryankshah.skyrimcraft.event;
 
 import com.ryankshah.skyrimcraft.Constants;
 import com.ryankshah.skyrimcraft.character.attachment.Character;
+import com.ryankshah.skyrimcraft.character.attachment.ExtraCharacter;
 import com.ryankshah.skyrimcraft.character.magic.Spell;
 import com.ryankshah.skyrimcraft.character.magic.SpellRegistry;
 import com.ryankshah.skyrimcraft.character.skill.SkillRegistry;
@@ -83,6 +84,7 @@ public class PlayerEvents
 //                    registry -> System.out.println(registry.stream().toList())
 //            );
         Character character = Character.get(playerEntity);
+        ExtraCharacter extraCharacter = ExtraCharacter.get(playerEntity);
         if(playerEntity.level().isClientSide) {
             if (!character.getSpellsOnCooldown().isEmpty()) {
                 for (Map.Entry<Spell, Float> entry : character.getSpellsOnCooldown().entrySet()) {
@@ -128,7 +130,7 @@ public class PlayerEvents
                 playerEntity.setInvulnerable(false);
         }
 
-        if (!playerEntity.level().isNight() || playerEntity.level().getBrightness(LightLayer.BLOCK, playerEntity.blockPosition()) < 10) {
+        if (extraCharacter.isVampire() && (!playerEntity.level().isNight() || playerEntity.level().getBrightness(LightLayer.BLOCK, playerEntity.blockPosition()) < 10)) {
             // Increased damage from sunlight for infected players
             playerEntity.hurt(playerEntity.damageSources().onFire(), 2);
         }

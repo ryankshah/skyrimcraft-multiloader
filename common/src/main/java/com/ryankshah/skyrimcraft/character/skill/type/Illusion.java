@@ -1,6 +1,7 @@
 package com.ryankshah.skyrimcraft.character.skill.type;
 
 import com.ryankshah.skyrimcraft.character.skill.Perk;
+import com.ryankshah.skyrimcraft.character.skill.Perks;
 import com.ryankshah.skyrimcraft.character.skill.Skill;
 
 import java.util.AbstractMap;
@@ -55,6 +56,6 @@ public class Illusion extends Skill
 
     @Override
     public List<Perk> getSkillPerks() {
-        return new ArrayList<>();
+        return List.of(Perks.NOVICE_ILLUSION, Perks.APPRENTICE_ILLUSION, Perks.ADEPT_ILLUSION, Perks.QUIET_CASTING, Perks.EXPERT_ILLUSION, Perks.MASTER_OF_THE_MIND, Perks.MASTER_ILLUSION);
     }
 }

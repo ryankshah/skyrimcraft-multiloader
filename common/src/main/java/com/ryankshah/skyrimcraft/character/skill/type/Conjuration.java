@@ -1,6 +1,7 @@
 package com.ryankshah.skyrimcraft.character.skill.type;
 
 import com.ryankshah.skyrimcraft.character.skill.Perk;
+import com.ryankshah.skyrimcraft.character.skill.Perks;
 import com.ryankshah.skyrimcraft.character.skill.Skill;
 
 import java.util.AbstractMap;
@@ -55,6 +56,7 @@ public class Conjuration extends Skill
 
     @Override
     public List<Perk> getSkillPerks() {
-        return new ArrayList<>();
+        return List.of(Perks.NOVICE_CONJURATION, Perks.APPRENTICE_CONJURATION, Perks.SUMMONER, Perks.NECROMANCY, Perks.ATROMANCY,
+                Perks.ADEPT_CONJURATION, Perks.DARK_SOULS, Perks.EXPERT_CONJURATION, Perks.ELEMENTAL_POTENCY, Perks.TWIN_SOULS, Perks.MASTER_CONJURATION);
     }
 }

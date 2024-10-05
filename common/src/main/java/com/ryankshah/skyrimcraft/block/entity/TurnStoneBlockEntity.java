@@ -16,6 +16,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.Map;
 import java.util.Random;
 
 public class TurnStoneBlockEntity extends BlockEntity
@@ -29,19 +30,12 @@ public class TurnStoneBlockEntity extends BlockEntity
             ))
             .build();
 
-    private static boolean isSpinning = false;
+    private boolean isSpinning = false;
     private long lastSpinTime;
-    private static int spinTicks = 0;
-    private RuneStoneBlock.RuneSymbol currentSymbol;
+    private int spinTicks = 0;
 
     public TurnStoneBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntityRegistry.TURN_STONE.get(), pos, state);
-        this.currentSymbol = getRandomSymbol();
-    }
-
-    private RuneStoneBlock.RuneSymbol getRandomSymbol() {
-        RuneStoneBlock.RuneSymbol[] symbols = RuneStoneBlock.RuneSymbol.values();
-        return symbols[new Random().nextInt(symbols.length - 1) + 1]; // Exclude EMPTY
     }
 
     public static void tick() {
@@ -51,18 +45,28 @@ public class TurnStoneBlockEntity extends BlockEntity
         if (entity.isSpinning) {
             entity.spinTicks++;
             if (entity.spinTicks >= 20 * SPIN.lengthInSeconds()) {
+                // Animation is complete
                 entity.isSpinning = false;
                 entity.spinTicks = 0;
-                Direction newFacing = blockState.getValue(TurnStoneBlock.FACING).getClockWise();
-                level.setBlock(blockPos, blockState.setValue(TurnStoneBlock.FACING, newFacing), 3);
-                entity.rotateSymbol();
-                entity.setChanged();
-                level.sendBlockUpdated(blockPos, blockState, blockState, 3);
+
+                // Get current facing and calculate new facing
+                Direction currentFacing = blockState.getValue(TurnStoneBlock.FACING);
+                Direction newFacing = currentFacing.getClockWise();
+
+                // Update block state with new facing
+                BlockState newState = blockState.setValue(TurnStoneBlock.FACING, newFacing);
+                level.setBlock(blockPos, newState, 3);
+
+                // Debug output
+                System.out.println("Rotation complete");
+                System.out.println("Previous Facing: " + currentFacing);
+                System.out.println("New Facing: " + newFacing);
+                System.out.println("New Symbol: " + entity.getCurrentSymbol());
 
                 // Update the RuneStone below
                 BlockPos belowPos = blockPos.below();
                 if (level.getBlockState(belowPos).getBlock() instanceof RuneStoneBlock) {
-                    level.neighborChanged(belowPos, blockState.getBlock(), blockPos);
+                    level.neighborChanged(belowPos, newState.getBlock(), blockPos);
                 }
             }
         }
@@ -72,22 +76,33 @@ public class TurnStoneBlockEntity extends BlockEntity
         if (t instanceof TurnStoneBlockEntity entity && entity.isSpinning) {
             entity.spinTicks++;
             if (entity.spinTicks >= 20 * SPIN.lengthInSeconds()) {
+                // Animation is complete
                 entity.isSpinning = false;
                 entity.spinTicks = 0;
-                Direction newFacing = blockState.getValue(TurnStoneBlock.FACING).getClockWise();
-                level.setBlock(blockPos, blockState.setValue(TurnStoneBlock.FACING, newFacing), 3);
-                entity.rotateSymbol();
-                entity.setChanged();
-                level.sendBlockUpdated(blockPos, blockState, blockState, 3);
+
+                // Get current facing and calculate new facing
+                Direction currentFacing = blockState.getValue(TurnStoneBlock.FACING);
+                Direction newFacing = currentFacing.getClockWise();
+
+                // Update block state with new facing
+                BlockState newState = blockState.setValue(TurnStoneBlock.FACING, newFacing);
+                level.setBlock(blockPos, newState, 3);
+
+                // Debug output
+                System.out.println("Rotation complete");
+                System.out.println("Previous Facing: " + currentFacing);
+                System.out.println("New Facing: " + newFacing);
+                System.out.println("New Symbol: " + entity.getCurrentSymbol());
 
                 // Update the RuneStone below
                 BlockPos belowPos = blockPos.below();
                 if (level.getBlockState(belowPos).getBlock() instanceof RuneStoneBlock) {
-                    level.neighborChanged(belowPos, blockState.getBlock(), blockPos);
+                    level.neighborChanged(belowPos, newState.getBlock(), blockPos);
                 }
             }
         }
     }
+
 
     public void startAnimation() {
         isSpinning = true;
@@ -107,26 +122,20 @@ public class TurnStoneBlockEntity extends BlockEntity
         return spinTicks / (20f * SPIN.lengthInSeconds());
     }
 
-    public void rotateSymbol() {
-        RuneStoneBlock.RuneSymbol[] symbols = RuneStoneBlock.RuneSymbol.values();
-        int nextIndex = (currentSymbol.ordinal() % (symbols.length - 1)) + 1; // Exclude EMPTY
-        currentSymbol = symbols[nextIndex];
-        setChanged();
-
-        Level level = this.getLevel();
-        if (level != null && !level.isClientSide) {
-            BlockState state = level.getBlockState(this.getBlockPos());
-            level.sendBlockUpdated(this.getBlockPos(), state, state, 3);
-            ((TurnStoneBlock)state.getBlock()).updateRuneStoneBelow(level, this.getBlockPos(), state);
-        }
-
-        System.out.println("Starting rotation");
-        System.out.println("Current Facing: " + this.getBlockState().getValue(TurnStoneBlock.FACING));
-        System.out.println("Current Symbol: " + currentSymbol);
+    private RuneStoneBlock.RuneSymbol getSymbolForDirection(Direction direction) {
+        // When FACING=NORTH, the texture is on the north face (visible when looking south)
+        return switch(direction) {
+            case NORTH -> RuneStoneBlock.RuneSymbol.SYMBOL3; // Visible when looking south
+            case EAST -> RuneStoneBlock.RuneSymbol.SYMBOL4;  // Visible when looking west
+            case SOUTH -> RuneStoneBlock.RuneSymbol.SYMBOL1; // Visible when looking north
+            case WEST -> RuneStoneBlock.RuneSymbol.SYMBOL2;  // Visible when looking east
+            default -> RuneStoneBlock.RuneSymbol.SYMBOL1;
+        };
     }
 
     public RuneStoneBlock.RuneSymbol getCurrentSymbol() {
-        return currentSymbol;
+        Direction facing = this.getBlockState().getValue(TurnStoneBlock.FACING);
+        return getSymbolForDirection(facing);
     }
 
     @Override
@@ -134,14 +143,12 @@ public class TurnStoneBlockEntity extends BlockEntity
         super.loadAdditional(tag, registries);
         isSpinning = tag.getBoolean("IsSpinning");
         spinTicks = tag.getInt("SpinTicks");
-        currentSymbol = RuneStoneBlock.RuneSymbol.valueOf(tag.getString("CurrentSymbol"));
     }
 
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
         tag.putBoolean("IsSpinning", isSpinning);
         tag.putInt("SpinTicks", spinTicks);
-        tag.putString("CurrentSymbol", currentSymbol.name());
     }
 
     @Override

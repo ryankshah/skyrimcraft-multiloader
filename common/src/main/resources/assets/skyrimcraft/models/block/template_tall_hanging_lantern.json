@@ -1,0 +1,62 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"particle": "#lantern"
+	},
+	"elements": [
+		{
+			"name": "body",
+			"from": [5, 0, 5],
+			"to": [11, 12, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 0, 5]},
+			"color": 5,
+			"faces": {
+				"north": {"uv": [0, 3, 6, 15], "texture": "#lantern"},
+				"east": {"uv": [0, 3, 6, 15], "texture": "#lantern"},
+				"south": {"uv": [0, 3, 6, 15], "texture": "#lantern"},
+				"west": {"uv": [0, 3, 6, 15], "texture": "#lantern"},
+				"up": {"uv": [16, 6, 10, 0], "texture": "#lantern"},
+				"down": {"uv": [16, 0, 10, 6], "texture": "#lantern"}
+			}
+		},
+		{
+			"name": "chain1",
+			"from": [6, 12, 8],
+			"to": [10, 15, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 12, 5]},
+			"color": 7,
+			"faces": {
+				"north": {"uv": [1, 0, 5, 3], "texture": "#lantern"},
+				"east": {"uv": [0, 0, 0, 1.5], "texture": "#lantern"},
+				"south": {"uv": [1, 0, 5, 3], "texture": "#lantern"},
+				"west": {"uv": [0, 0, 0, 1.5], "texture": "#lantern"},
+				"up": {"uv": [2, 0, 0, 0], "texture": "#lantern"},
+				"down": {"uv": [2, 0, 0, 0], "texture": "#lantern"}
+			}
+		},
+		{
+			"name": "chain2",
+			"from": [8, 13, 6.5],
+			"to": [8, 16, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 13, 4.5]},
+			"color": 5,
+			"faces": {
+				"north": {"uv": [0, 0, 0, 1.5], "texture": "#lantern"},
+				"east": {"uv": [6, 0, 9, 3], "texture": "#lantern"},
+				"south": {"uv": [0, 0, 0, 1.5], "texture": "#lantern"},
+				"west": {"uv": [6, 0, 9, 3], "texture": "#lantern"},
+				"up": {"uv": [0, 1.5, 0, 0], "texture": "#lantern"},
+				"down": {"uv": [0, 0, 0, 1.5], "texture": "#lantern"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "dwemer_lantern",
+			"origin": [6, 13, 4.5],
+			"color": 0,
+			"children": [0, 1, 2]
+		}
+	]
+}

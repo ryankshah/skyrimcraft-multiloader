@@ -5,6 +5,7 @@ import com.ryankshah.skyrimcraft.data.loot_table.condition.type.SkyrimcraftLootC
 import com.ryankshah.skyrimcraft.effect.ModEffects;
 import com.ryankshah.skyrimcraft.network.Networking;
 import com.ryankshah.skyrimcraft.registry.*;
+import com.ryankshah.skyrimcraft.util.DialogueManager;
 import com.ryankshah.skyrimcraft.world.WorldGenConstants;
 import com.ryankshah.skyrimcraft.world.region.SkyrimcraftOverworldRegion;
 import com.ryankshah.skyrimcraft.world.surface_rule.AshWastesSurfaceRule;
@@ -75,6 +76,8 @@ import terrablender.api.SurfaceRuleManager;
 public class SkyrimcraftCommon
 {
     public static void init() {
+        DialogueManager dialogueManager = new DialogueManager();
+
         ModEffects.init();
         AttributeRegistry.init();
         SkyrimcraftLootConditionTypes.init();

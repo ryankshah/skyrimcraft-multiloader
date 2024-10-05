@@ -1,0 +1,6 @@
+{
+  "parent": "skyrimcraft:block/dwemer_observer",
+  "textures": {
+    "bottom": "skyrimcraft:block/dwemer_observer_back_on"
+  }
+}

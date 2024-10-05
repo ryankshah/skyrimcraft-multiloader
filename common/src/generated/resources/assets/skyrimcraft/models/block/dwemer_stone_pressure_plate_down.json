@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/pressure_plate_down",
+  "textures": {
+    "texture": "skyrimcraft:block/dwemer_stone_pressure_plate"
+  }
+}

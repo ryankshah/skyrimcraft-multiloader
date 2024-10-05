@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/template_daylight_detector",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "skyrimcraft:block/dwemer_daylight_detector_inverted_top",
+    "side": "skyrimcraft:block/dwemer_daylight_detector_side",
+    "top": "skyrimcraft:block/dwemer_daylight_detector_inverted_top"
+  }
+}

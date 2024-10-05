@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "entities": [
+    "#accessories:defaulted_targets"
+  ],
+  "slots": [
+    "hat",
+    "necklace",
+    "ring"
+  ]
+}

@@ -1,6 +1,7 @@
 package com.ryankshah.skyrimcraft.character.skill.type;
 
 import com.ryankshah.skyrimcraft.character.skill.Perk;
+import com.ryankshah.skyrimcraft.character.skill.Perks;
 import com.ryankshah.skyrimcraft.character.skill.Skill;
 
 import java.util.AbstractMap;
@@ -44,19 +45,17 @@ public class Alteration extends Skill
     }
 
     @Override
-    public List<Perk> getSkillPerks() {
-        return new ArrayList<>();
-    }
-
-    @Override
     public float getSkillImproveMultiplier() {
         return 2f;
     }
 
-
-
     @Override
     public int getSkillImproveOffset() {
         return 0;
+    }
+
+    @Override
+    public List<Perk> getSkillPerks() {
+        return List.of(Perks.NOVICE_ALTERATION, Perks.APPRENTICE_ALTERATION, Perks.MAGE_ARMOR, Perks.MAGIC_RESISTANCE, Perks.ADEPT_ALTERATION, Perks.STABILITY, Perks.EXPERT_ALTERATION, Perks.ATRONACH, Perks.MASTER_ALTERATION);
     }
 }

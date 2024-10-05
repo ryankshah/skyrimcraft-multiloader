@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/template_piston_head",
+  "textures": {
+    "platform": "skyrimcraft:block/dwemer_piston_top",
+    "side": "skyrimcraft:block/dwemer_piston_side",
+    "unsticky": "skyrimcraft:block/dwemer_piston_top"
+  }
+}

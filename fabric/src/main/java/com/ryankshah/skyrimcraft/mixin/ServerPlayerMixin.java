@@ -2,6 +2,7 @@ package com.ryankshah.skyrimcraft.mixin;
 
 import com.mojang.authlib.GameProfile;
 import com.ryankshah.skyrimcraft.character.attachment.Character;
+import com.ryankshah.skyrimcraft.character.attachment.ExtraCharacter;
 import com.ryankshah.skyrimcraft.effect.ModEffects;
 import com.ryankshah.skyrimcraft.network.character.AddToCompassFeatures;
 import com.ryankshah.skyrimcraft.platform.Services;
@@ -46,6 +47,7 @@ public abstract class ServerPlayerMixin extends Player
     @Inject(method = "tick", at = @At(value = "TAIL"))
     public void tick(CallbackInfo callbackInfo) {
         Character character = Services.PLATFORM.getCharacter(this);
+        ExtraCharacter extraCharacter = Services.PLATFORM.getExtraCharacter(this);
         if ((hasEffect(ModEffects.SPECTRAL.asHolder()) || hasEffect(ModEffects.ETHEREAL.asHolder())) && !flag) {
             flag = true;
             setInvisible(true);
@@ -57,7 +59,7 @@ public abstract class ServerPlayerMixin extends Player
         if (!hasEffect(ModEffects.MAGICKA_REGEN.asHolder()))
             getAttribute(AttributeRegistry.MAGICKA_REGEN.asHolder()).removeModifiers();
 
-        if (!level().isNight() || level().getBrightness(LightLayer.BLOCK, blockPosition()) < 10) {
+        if (extraCharacter.isVampire() && (!level().isNight() || level().getBrightness(LightLayer.BLOCK, blockPosition()) < 10)) {
             // Increased damage from sunlight for infected players
             hurt(damageSources().onFire(), 2);
         }

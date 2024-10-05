@@ -24,7 +24,7 @@ public class DeadTreeFeature extends Feature<NoneFeatureConfiguration> {
 
         // Generate trunk
         for (int y = 0; y < height; y++) {
-            world.setBlock(pos.above(y), Blocks.OAK_LOG.defaultBlockState(), 2);
+            world.setBlock(pos.above(y), Blocks.ACACIA_LOG.defaultBlockState(), 2);
 
             // Add random branches
             if (y > height / 2 && rand.nextFloat() < 0.4f) {

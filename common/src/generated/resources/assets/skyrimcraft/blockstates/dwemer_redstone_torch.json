@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "skyrimcraft:block/dwemer_redstone_torch_off"
+    },
+    "lit=true": {
+      "model": "skyrimcraft:block/dwemer_redstone_torch"
+    }
+  }
+}

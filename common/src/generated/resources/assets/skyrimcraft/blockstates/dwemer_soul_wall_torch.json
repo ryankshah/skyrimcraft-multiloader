@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "skyrimcraft:block/dwemer_soul_wall_torch",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "skyrimcraft:block/dwemer_soul_wall_torch"
+    },
+    "facing=south": {
+      "model": "skyrimcraft:block/dwemer_soul_wall_torch",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "skyrimcraft:block/dwemer_soul_wall_torch",
+      "y": 270
+    }
+  }
+}

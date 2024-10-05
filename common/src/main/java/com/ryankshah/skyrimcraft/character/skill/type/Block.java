@@ -1,6 +1,7 @@
 package com.ryankshah.skyrimcraft.character.skill.type;
 
 import com.ryankshah.skyrimcraft.character.skill.Perk;
+import com.ryankshah.skyrimcraft.character.skill.Perks;
 import com.ryankshah.skyrimcraft.character.skill.Skill;
 
 import java.util.AbstractMap;
@@ -55,6 +56,6 @@ public class Block extends Skill
 
     @Override
     public List<Perk> getSkillPerks() {
-        return new ArrayList<>();
+        return List.of(Perks.SHIELD_WALL, Perks.DEFLECT_ARROWS, Perks.POWER_BASH, Perks.ELEMENTAL_PROTECTION, Perks.DEADLY_BASH, Perks.BLOCK_RUNNER, Perks.DISARMING_BASH, Perks.SHIELD_CHARGE);
     }
 }

@@ -84,12 +84,12 @@ public class SkillWrapper
     }
 
     public boolean isPerkUnlocked(Perk perk) {
-        return perks.stream().filter( p -> p.equals(perk)).anyMatch(Perk::isUnlocked);
+        return perks.stream().filter( p -> p.getName().equals(perk.getName())).anyMatch(Perk::isUnlocked);
     }
 
     public void unlockPerk(Perk perk) {
         if(!isPerkUnlocked(perk)) {
-            perks.stream().filter(p -> p.equals(perk)).findFirst().get().unlock();
+            perks.stream().filter(p -> p.getName().equals(perk.getName())).findFirst().get().unlock();
         }
     }
 

@@ -1,6 +1,7 @@
 package com.ryankshah.skyrimcraft.character.skill.type;
 
 import com.ryankshah.skyrimcraft.character.skill.Perk;
+import com.ryankshah.skyrimcraft.character.skill.Perks;
 import com.ryankshah.skyrimcraft.character.skill.Skill;
 
 import java.util.AbstractMap;
@@ -55,6 +56,6 @@ public class Enchanting extends Skill
 
     @Override
     public List<Perk> getSkillPerks() {
-        return new ArrayList<>();
+        return List.of(Perks.ENCHANTER, Perks.FIRE_ENCHANTER, Perks.FROST_ENCHANTER, Perks.INSIGHTFUL_ENCHANTER, Perks.STORM_ENCHANTER, Perks.EXTRA_EFFECT);
     }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "skyrimcraft:block/template_tall_hanging_lantern",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "lantern": "skyrimcraft:block/dwemer_soul_lantern"
+  }
+}

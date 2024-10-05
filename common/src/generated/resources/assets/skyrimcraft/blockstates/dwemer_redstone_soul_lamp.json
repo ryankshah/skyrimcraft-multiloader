@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "skyrimcraft:block/dwemer_redstone_soul_lamp"
+    },
+    "lit=true": {
+      "model": "skyrimcraft:block/dwemer_redstone_soul_lamp_on"
+    }
+  }
+}

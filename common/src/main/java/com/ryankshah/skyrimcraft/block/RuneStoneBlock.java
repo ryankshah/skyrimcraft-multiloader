@@ -20,6 +20,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
+import java.util.Map;
 
 public class RuneStoneBlock extends BaseEntityBlock
 {
@@ -27,6 +28,13 @@ public class RuneStoneBlock extends BaseEntityBlock
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final EnumProperty<RuneSymbol> ACTIVE_SYMBOL = EnumProperty.create("active_symbol", RuneSymbol.class);
+
+    private static final Map<Direction, RuneSymbol> DIRECTION_TO_SYMBOL = Map.of(
+            Direction.NORTH, RuneSymbol.SYMBOL1,
+            Direction.EAST, RuneSymbol.SYMBOL2,
+            Direction.SOUTH, RuneSymbol.SYMBOL3,
+            Direction.WEST, RuneSymbol.SYMBOL4
+    );
 
 
     public RuneStoneBlock() {
@@ -50,10 +58,19 @@ public class RuneStoneBlock extends BaseEntityBlock
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
+        Direction facing = context.getHorizontalDirection();
+        RuneSymbol symbol = switch(facing) {
+            case NORTH -> RuneSymbol.SYMBOL3; // Visible when looking south
+            case EAST -> RuneSymbol.SYMBOL4;  // Visible when looking west
+            case SOUTH -> RuneSymbol.SYMBOL1; // Visible when looking north
+            case WEST -> RuneSymbol.SYMBOL2;  // Visible when looking east
+            default -> RuneSymbol.SYMBOL1;
+        };
+
         return this.defaultBlockState()
-                .setValue(FACING, context.getHorizontalDirection().getOpposite())
+                .setValue(FACING, facing)
                 .setValue(POWERED, false)
-                .setValue(ACTIVE_SYMBOL, RuneSymbol.values()[context.getLevel().getRandom().nextInt(RuneSymbol.values().length - 1) + 1]);
+                .setValue(ACTIVE_SYMBOL, symbol);
     }
 
     @Override
@@ -76,6 +93,8 @@ public class RuneStoneBlock extends BaseEntityBlock
         if (!level.isClientSide) {
             BlockPos abovePos = pos.above();
             BlockState aboveState = level.getBlockState(abovePos);
+
+            System.out.println(aboveState);
 
             if (aboveState.getBlock() instanceof TurnStoneBlock) {
                 RuneSymbol turnStoneSymbol = ((TurnStoneBlock) aboveState.getBlock()).getCurrentSymbol(level, abovePos);
@@ -103,6 +122,10 @@ public class RuneStoneBlock extends BaseEntityBlock
     @Override
     public int getSignal(BlockState blockState, BlockGetter blockAccess, BlockPos pos, Direction side) {
         return blockState.getValue(POWERED) ? 15 : 0;
+    }
+
+    private RuneSymbol getSymbolForDirection(Direction direction) {
+        return DIRECTION_TO_SYMBOL.getOrDefault(direction, RuneSymbol.SYMBOL1);
     }
 
     @Override

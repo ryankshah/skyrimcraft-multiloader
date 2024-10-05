@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "skyrimcraft:block/dwemer_metal_pillar_end",
+    "side": "skyrimcraft:block/dwemer_metal_pillar_side"
+  }
+}

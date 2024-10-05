@@ -73,7 +73,7 @@ public class SkyrimLoadingScreen extends Screen
     private float characterProgress;
     private float characterProgressBarWidth;
     private List<SmokeParticle> smokeParticles = new ArrayList<>();
-    private static final float SCREEN_LIFETIME = 5.0f; // 5 seconds lifetime
+    private static final float SCREEN_LIFETIME = 8.0f; // 8 seconds lifetime
     private float screenTimer = 0;
     private boolean isClosing = false;
 

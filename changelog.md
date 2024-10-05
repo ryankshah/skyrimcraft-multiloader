@@ -11,6 +11,10 @@ New shouts/spells:
 - Oakflesh
 - Candlelight (TO FIX)
 
+New cosmetic items (wearables - found in dungeon and certain mob loot tables):
+- A bunch of rings and some with effects
+- A bunch of necklaces and some with effects
+
 New cosmetic environment blocks: (TODO - add more if needed)
 - Stones
 - Dirts
@@ -19,6 +23,7 @@ New cosmetic environment blocks: (TODO - add more if needed)
 New functional blocks:
 - Atronach Forge (Summon Atronachs using ingredients) (TODO)
 - Tanning Rack (Turns animal hides into leather) (TODO)
+- Turn Stone & Rune Stone (turn the turn stone to activate runestones for redstone output)
 
 Entity functionality:
 - Dragon fight mechanics (TODO)

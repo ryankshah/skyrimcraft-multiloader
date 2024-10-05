@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "skyrimcraft:block/dwemer_metal_tiles"
+    }
+  }
+}

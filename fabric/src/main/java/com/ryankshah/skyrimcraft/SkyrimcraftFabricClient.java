@@ -200,6 +200,27 @@ public class SkyrimcraftFabricClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.JAZBAY_GRAPE_BUSH.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.JUNIPER_BERRY_BUSH.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.SNOWBERRY_BUSH.get(), RenderType.cutout());
+
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_GLASS.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_WINDOWED_GLASS.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_FRAMED_GLASS.get(), RenderType.translucent());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.STEEL_GATE_DOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.STEEL_CELL_DOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_METAL_DOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_METAL_GATE.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.STEEL_TRAPDOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_METAL_TRAPDOOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_REPEATER.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_COMPARATOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_METAL_TORCH.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_METAL_WALL_TORCH.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_REDSTONE_TORCH.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_REDSTONE_WALL_TORCH.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_SOUL_TORCH.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_SOUL_WALL_TORCH.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_DAYLIGHT_DETECTOR.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_METAL_LANTERN.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockRegistry.DWEMER_SOUL_LANTERN.get(), RenderType.cutout());
     }
 
     private static void handleSpellCasting(Character character, KeyMapping key, int spellSlot) {

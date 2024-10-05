@@ -1,5 +1,6 @@
 package com.ryankshah.skyrimcraft.data.item;
 
+import com.ryankshah.skyrimcraft.registry.BlockRegistry;
 import com.ryankshah.skyrimcraft.registry.ItemRegistry;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 

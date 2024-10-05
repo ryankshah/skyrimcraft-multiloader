@@ -1,6 +1,7 @@
 package com.ryankshah.skyrimcraft.character.skill.type;
 
 import com.ryankshah.skyrimcraft.character.skill.Perk;
+import com.ryankshah.skyrimcraft.character.skill.Perks;
 import com.ryankshah.skyrimcraft.character.skill.Skill;
 
 import java.util.AbstractMap;
@@ -55,6 +56,6 @@ public class LightArmor extends Skill
 
     @Override
     public List<Perk> getSkillPerks() {
-        return new ArrayList<>();
+        return List.of(Perks.AGILE_DEFENDER, Perks.CUSTOM_FIT, Perks.UNHINDERED, Perks.MATCHING_SET_LIGHT, Perks.DEFT_MOVEMENT);
     }
 }

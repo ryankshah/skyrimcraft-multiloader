@@ -1,7 +1,10 @@
 package com.ryankshah.skyrimcraft.entity.npc;
 
 import com.ryankshah.skyrimcraft.registry.EntityRegistry;
+import com.ryankshah.skyrimcraft.util.DialogueManager;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -13,6 +16,7 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.pathfinder.PathType;
@@ -50,5 +54,13 @@ public class Falmer extends Villager
         Falmer falmer = new Falmer(EntityRegistry.FALMER.get(), pLevel);
         falmer.finalizeSpawn(pLevel, pLevel.getCurrentDifficultyAt(falmer.blockPosition()), MobSpawnType.BREEDING, null);
         return falmer;
+    }
+
+    @Override
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        if (player.level().isClientSide && (this.getVillagerData().getProfession() == VillagerProfession.NONE || this.getVillagerData().getProfession() == VillagerProfession.NITWIT)) {
+            DialogueManager.VillageElderDialogues.showInitialDialogue();
+        }
+        return super.mobInteract(player, hand);
     }
 }

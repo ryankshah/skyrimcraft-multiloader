@@ -2,6 +2,7 @@ package com.ryankshah.skyrimcraft.data.item;
 
 import com.ryankshah.skyrimcraft.Constants;
 import com.ryankshah.skyrimcraft.data.block.BlockData;
+import com.ryankshah.skyrimcraft.registry.BlockRegistry;
 import com.ryankshah.skyrimcraft.registry.ItemRegistry;
 import com.ryankshah.skyrimcraft.util.NameUtils;
 import net.minecraft.data.PackOutput;
@@ -411,8 +412,6 @@ public class SkyrimcraftItemModelProvider extends ItemModelProvider
         item(ItemRegistry.DRAUGHT_OF_TRUE_SHOT.get());
         item(ItemRegistry.PHILTER_OF_TRUE_SHOT.get());
         item(ItemRegistry.ELIXIR_OF_TRUE_SHOT.get());
-
-
 
         BlockData.addBlockItemModels(this);
     }

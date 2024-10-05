@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "skyrimcraft:dwemer_metal_door",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ],
+          "name": "skyrimcraft:dwemer_metal_door"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "skyrimcraft:blocks/dwemer_metal_door"
+}

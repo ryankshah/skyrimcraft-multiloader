@@ -389,9 +389,8 @@ public class MapScreen extends Screen
 
     private void handleFastTravelChoice(boolean choice) {
         if (choice) {
-            if(character.getCurrentTarget() != -1) // Does player current have a target
-                return;
-
+//            if(character.getCurrentTarget() != -1) // Does player current have a target
+//                return;
             mc.setScreen(new SkyrimLoadingScreen());
             FastTravel fastTravelPacket = new FastTravel(selectedFeature.getBlockPos());
             Dispatcher.sendToServer(fastTravelPacket);

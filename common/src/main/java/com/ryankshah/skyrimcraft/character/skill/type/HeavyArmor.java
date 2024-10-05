@@ -1,6 +1,7 @@
 package com.ryankshah.skyrimcraft.character.skill.type;
 
 import com.ryankshah.skyrimcraft.character.skill.Perk;
+import com.ryankshah.skyrimcraft.character.skill.Perks;
 import com.ryankshah.skyrimcraft.character.skill.Skill;
 
 import java.util.AbstractMap;
@@ -55,6 +56,6 @@ public class HeavyArmor extends Skill
 
     @Override
     public List<Perk> getSkillPerks() {
-        return new ArrayList<>();
+        return List.of(Perks.JUGGERNAUT, Perks.FISTS_OF_STEEL, Perks.WELL_FITTED, Perks.CUSHIONED, Perks.TOWER_OF_STRENGTH, Perks.CONDITIONING, Perks.MATCHING_SET, Perks.REFLECT_BLOWS);
     }
 }

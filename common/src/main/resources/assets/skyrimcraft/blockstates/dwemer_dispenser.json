@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "skyrimcraft:block/dwemer_dispenser_vertical",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "skyrimcraft:block/dwemer_dispenser",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "skyrimcraft:block/dwemer_dispenser"
+    },
+    "facing=south": {
+      "model": "skyrimcraft:block/dwemer_dispenser",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "skyrimcraft:block/dwemer_dispenser_vertical"
+    },
+    "facing=west": {
+      "model": "skyrimcraft:block/dwemer_dispenser",
+      "y": 270
+    }
+  }
+}

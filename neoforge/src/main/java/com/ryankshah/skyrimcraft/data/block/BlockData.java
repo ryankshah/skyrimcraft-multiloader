@@ -1,33 +1,22 @@
 package com.ryankshah.skyrimcraft.data.block;
 
 import com.ryankshah.skyrimcraft.Constants;
-import com.ryankshah.skyrimcraft.block.JazbayGrapeBushBlock;
 import com.ryankshah.skyrimcraft.block.PearlOysterBlock;
 import com.ryankshah.skyrimcraft.block.RuneStoneBlock;
+import com.ryankshah.skyrimcraft.block.SkyrimcraftPressurePlateBlock;
 import com.ryankshah.skyrimcraft.block.TurnStoneBlock;
 import com.ryankshah.skyrimcraft.registry.BlockRegistry;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.data.models.blockstates.MultiVariantGenerator;
-import net.minecraft.data.models.blockstates.PropertyDispatch;
-import net.minecraft.data.models.blockstates.Variant;
-import net.minecraft.data.models.blockstates.VariantProperties;
-import net.minecraft.data.models.model.ModelTemplate;
-import net.minecraft.data.models.model.ModelTemplates;
-import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.LanguageProvider;
-
-import java.util.function.Function;
 
 public class BlockData
 {
@@ -115,6 +104,46 @@ public class BlockData
 
         provider.addBlock(BlockRegistry.TOMATO_CROP, "Tomatoes");
         provider.addBlock(BlockRegistry.GARLIC_CROP, "Garlic");
+
+
+        provider.addBlock(BlockRegistry.STEEL_TRAPDOOR, "Steel Trapdoor");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_TRAPDOOR, "Dwemer Metal Trapdoor");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_TORCH, "Dwemer Metal Torch");
+        provider.addBlock(BlockRegistry.DWEMER_REDSTONE_TORCH, "Dwemer Redstone Torch");
+        provider.addBlock(BlockRegistry.DWEMER_SOUL_TORCH, "Dwemer Soul Torch");
+
+        provider.addBlock(BlockRegistry.DWEMER_METAL_PILLAR, "Dwemer Metal Pillar");
+        provider.addBlock(BlockRegistry.DWEMER_STONE_PILLAR, "Dwemer Stone Pillar");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_TILES, "Dwemer Metal Tiles");
+        provider.addBlock(BlockRegistry.ORNATE_DWEMER_METAL_TILES, "Ornate Dwemer Metal Tiles");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_BLOCK, "Dwemer Metal Block");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_BRICKS, "Dwemer Metal Bricks");
+        provider.addBlock(BlockRegistry.DWEMER_COMPARATOR, "Dwemer Comparator");
+        provider.addBlock(BlockRegistry.DWEMER_DROPPER, "Dwemer Dropper");
+        provider.addBlock(BlockRegistry.DWEMER_DISPENSER, "Dwemer Dispenser");
+        provider.addBlock(BlockRegistry.DWEMER_STONE_BLOCK, "Dwemer Stone Block");
+        provider.addBlock(BlockRegistry.DWEMER_STONE_BRICKS, "Dwemer Stone Bricks");
+
+        provider.addBlock(BlockRegistry.STEEL_CELL_DOOR, "Steel Cell Door");
+        provider.addBlock(BlockRegistry.STEEL_GATE_DOOR, "Steel Gate Door");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_GATE, "Dwemer Metal Door");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_DOOR, "Dwemer Metal Gate");
+        provider.addBlock(BlockRegistry.DWEMER_STONE_PRESSURE_PLATE, "Dwemer Stone Pressure Plate");
+
+        provider.addBlock(BlockRegistry.DWEMER_GLASS, "Dwemer Glass");
+        provider.addBlock(BlockRegistry.DWEMER_WINDOWED_GLASS, "Dwemer Windowed Glass");
+        provider.addBlock(BlockRegistry.DWEMER_FRAMED_GLASS, "Dwemer Framed Glass");
+        provider.addBlock(BlockRegistry.DWEMER_OBSERVER, "Dwemer Observer");
+        provider.addBlock(BlockRegistry.DWEMER_REPEATER, "Dwemer Repeater");
+
+        provider.addBlock(BlockRegistry.DWEMER_REDSTONE_LAMP, "Dwemer Redstone Lamp");
+        provider.addBlock(BlockRegistry.DWEMER_REDSTONE_SOUL_LAMP, "Dwemer Redstone Soul Lamp");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_LANTERN, "Dwemer Metal Lantern");
+        provider.addBlock(BlockRegistry.DWEMER_SOUL_LANTERN, "Dwemer Metal Soul Lantern");
+
+        provider.addBlock(BlockRegistry.DWEMER_DAYLIGHT_DETECTOR, "Dwemer Daylight Detector");
+        provider.addBlock(BlockRegistry.DWEMER_PISTON, "Dwemer Piston");
+        provider.addBlock(BlockRegistry.DWEMER_STICKY_PISTON, "Dwemer Sticky Piston");
     }
 
     public static void addBlockStateModels(BlockStateProvider provider) {
@@ -234,6 +263,71 @@ public class BlockData
         turnStoneBlock(provider, BlockRegistry.TURN_STONE.get());
         runeStoneBlock(provider, BlockRegistry.RUNE_STONE.get());
         provider.simpleBlockItem(BlockRegistry.RUNE_STONE.get(), provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/rune_stone")));
+
+
+        provider.trapdoorBlockWithRenderType(BlockRegistry.STEEL_TRAPDOOR.get(), ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/steel_trapdoor"), true, ResourceLocation.tryParse("cutout"));
+        provider.simpleBlockItem(BlockRegistry.STEEL_TRAPDOOR.get(), provider.models().getExistingFile(provider.modLoc("steel_trapdoor_bottom")));
+        provider.doorBlockWithRenderType(BlockRegistry.STEEL_CELL_DOOR.get(),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/steel_cell_door_bottom"),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/steel_cell_door_top"), ResourceLocation.tryParse("cutout"));
+        provider.itemModels().basicItem(BlockRegistry.STEEL_CELL_DOOR.get().asItem());
+        provider.doorBlockWithRenderType(BlockRegistry.STEEL_GATE_DOOR.get(),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/steel_gate_door_bottom"),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/steel_gate_door_top"), ResourceLocation.tryParse("cutout"));
+        provider.itemModels().basicItem(BlockRegistry.STEEL_GATE_DOOR.get().asItem());
+
+
+        provider.trapdoorBlockWithRenderType(BlockRegistry.DWEMER_METAL_TRAPDOOR.get(), ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_trapdoor"), true, ResourceLocation.tryParse("cutout"));
+        provider.simpleBlockItem(BlockRegistry.DWEMER_METAL_TRAPDOOR.get(), provider.models().getExistingFile(provider.modLoc("dwemer_metal_trapdoor_bottom")));
+
+        torchBlock(provider, BlockRegistry.DWEMER_METAL_TORCH.get());
+        wallTorchBlock(provider, BlockRegistry.DWEMER_METAL_TORCH.get(), BlockRegistry.DWEMER_METAL_WALL_TORCH.get());
+        torchBlock(provider, BlockRegistry.DWEMER_SOUL_TORCH.get());
+        wallTorchBlock(provider, BlockRegistry.DWEMER_SOUL_TORCH.get(), BlockRegistry.DWEMER_SOUL_WALL_TORCH.get());
+        poweredTorchBlock(provider, BlockRegistry.DWEMER_REDSTONE_TORCH.get());
+        poweredWallTorchBlock(provider, BlockRegistry.DWEMER_REDSTONE_TORCH.get(), BlockRegistry.DWEMER_REDSTONE_WALL_TORCH.get());
+
+        provider.doorBlockWithRenderType(BlockRegistry.DWEMER_METAL_DOOR.get(),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_door_bottom"),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_door_top"), ResourceLocation.tryParse("cutout"));
+        provider.itemModels().basicItem(BlockRegistry.DWEMER_METAL_DOOR.get().asItem());
+        provider.doorBlockWithRenderType(BlockRegistry.DWEMER_METAL_GATE.get(),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_gate_bottom"),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_gate_top"), ResourceLocation.tryParse("cutout"));
+        provider.itemModels().basicItem(BlockRegistry.DWEMER_METAL_GATE.get().asItem());
+        provider.axisBlock(BlockRegistry.DWEMER_METAL_PILLAR.get());
+        provider.simpleBlockItem(BlockRegistry.DWEMER_METAL_PILLAR.get(), provider.models().getExistingFile(provider.modLoc("dwemer_metal_pillar")));
+        provider.axisBlock(BlockRegistry.DWEMER_STONE_PILLAR.get());
+        provider.simpleBlockItem(BlockRegistry.DWEMER_STONE_PILLAR.get(), provider.models().getExistingFile(provider.modLoc("dwemer_stone_pillar")));
+
+        pressurePlateBlock(provider, BlockRegistry.DWEMER_STONE_PRESSURE_PLATE.get(), ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_stone_pressure_plate"));
+        provider.simpleBlockItem(BlockRegistry.DWEMER_STONE_PRESSURE_PLATE.get(), provider.models().getExistingFile(provider.modLoc("dwemer_stone_pressure_plate")));
+
+        normalBlock(provider, BlockRegistry.DWEMER_METAL_TILES.get());
+        normalBlock(provider, BlockRegistry.ORNATE_DWEMER_METAL_TILES.get());
+        normalBlock(provider, BlockRegistry.DWEMER_METAL_BLOCK.get());
+        normalBlock(provider, BlockRegistry.DWEMER_METAL_BRICKS.get());
+        normalBlock(provider, BlockRegistry.DWEMER_STONE_BLOCK.get());
+        normalBlock(provider, BlockRegistry.DWEMER_STONE_BRICKS.get());
+
+        glassBlock(provider, BlockRegistry.DWEMER_GLASS.get());
+        glassBlock(provider, BlockRegistry.DWEMER_FRAMED_GLASS.get());
+        glassBlock(provider, BlockRegistry.DWEMER_WINDOWED_GLASS.get());
+
+        provider.simpleBlockItem(BlockRegistry.DWEMER_OBSERVER.get(), provider.models().getExistingFile(provider.modLoc("dwemer_observer")));
+        provider.simpleBlockItem(BlockRegistry.DWEMER_COMPARATOR.get(), provider.models().getExistingFile(provider.modLoc("dwemer_comparator")));
+        provider.simpleBlockItem(BlockRegistry.DWEMER_DROPPER.get(), provider.models().getExistingFile(provider.modLoc("dwemer_dropper")));
+        provider.simpleBlockItem(BlockRegistry.DWEMER_DISPENSER.get(), provider.models().getExistingFile(provider.modLoc("dwemer_dispenser")));
+        provider.simpleBlockItem(BlockRegistry.DWEMER_PISTON.get(), provider.models().getExistingFile(provider.modLoc("dwemer_piston")));
+        provider.simpleBlockItem(BlockRegistry.DWEMER_STICKY_PISTON.get(), provider.models().getExistingFile(provider.modLoc("dwemer_sticky_piston")));
+
+
+        lampBlock(provider, BlockRegistry.DWEMER_REDSTONE_LAMP.get());
+        lampBlock(provider, BlockRegistry.DWEMER_REDSTONE_SOUL_LAMP.get());
+        lantern(provider, BlockRegistry.DWEMER_METAL_LANTERN.get());
+        lantern(provider, BlockRegistry.DWEMER_SOUL_LANTERN.get());
+
+        daylightDetector(provider, BlockRegistry.DWEMER_DAYLIGHT_DETECTOR.get());
     }
 
     public static void addBlockItemModels(ItemModelProvider provider) {
@@ -245,10 +339,179 @@ public class BlockData
         provider.basicItem(BlockRegistry.CREEP_CLUSTER.get().asItem());
     }
 
+    public static void lampBlock(BlockStateProvider provider, Block block) {
+        ResourceLocation blockKey = key(block);
+        String path = blockKey.getPath();
+
+        ModelFile unlit = provider.models().getBuilder(key(block) + "")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/cube_all")))
+                .texture("all", provider.modLoc("block/" + name(block)))
+                .texture("particle", provider.modLoc("block/" + name(block)));
+        ModelFile lit = provider.models().getBuilder(key(block).toString() + "_on")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/cube_all")))
+                .texture("all", provider.modLoc("block/" + name(block) + "_on"))
+                .texture("particle", provider.modLoc("block/" + name(block) + "_on"));
+
+        provider.getVariantBuilder(block).forAllStatesExcept(state ->
+        {
+            ModelFile mf = state.getValue(BlockStateProperties.LIT) ? lit : unlit;
+            return ConfiguredModel.builder()
+                    .modelFile(mf)
+                    .build();
+        });
+
+        provider.simpleBlockItem(block, provider.models().getExistingFile(provider.modLoc("block/" + path)));
+    }
+
+    public static void daylightDetector(BlockStateProvider provider, Block block) {
+        ResourceLocation blockKey = key(block);
+        String path = blockKey.getPath();
+
+        ModelFile normal = provider.models().getBuilder(key(block) + "")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/template_daylight_detector")))
+                .texture("side", provider.modLoc("block/" + name(block) + "_side"))
+                .texture("top", provider.modLoc("block/" + name(block) + "_top"))
+                .texture("particle", provider.modLoc("block/" + name(block)) + "_top")
+                .renderType("cutout");
+        ModelFile inverted = provider.models().getBuilder(key(block).toString() + "_inverted")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/template_daylight_detector")))
+                .texture("side", provider.modLoc("block/" + name(block) + "_side"))
+                .texture("top", provider.modLoc("block/" + name(block) + "_inverted_top"))
+                .texture("particle", provider.modLoc("block/" + name(block) + "_inverted_top"))
+                .renderType("cutout");
+
+        provider.getVariantBuilder(block).forAllStatesExcept(state ->
+        {
+            ModelFile mf = state.getValue(BlockStateProperties.INVERTED) ? inverted : normal;
+            return ConfiguredModel.builder()
+                    .modelFile(mf)
+                    .build();
+        });
+
+        provider.simpleBlockItem(block, provider.models().getExistingFile(provider.modLoc("block/" + path)));
+    }
+
+    public static void lantern(BlockStateProvider provider, Block block) {
+        ResourceLocation blockKey = key(block);
+        String path = blockKey.getPath();
+
+        ModelFile normal = provider.models().getBuilder(key(block) + "")
+                .parent(provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/template_tall_lantern")))
+                .texture("lantern", provider.modLoc("block/" + name(block)))
+                .renderType("cutout");
+        ModelFile hanging = provider.models().getBuilder(key(block).toString() + "_hanging")
+                .parent(provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/template_tall_hanging_lantern")))
+                .texture("lantern", provider.modLoc("block/" + name(block)))
+                .renderType("cutout");
+
+        provider.getVariantBuilder(block).forAllStatesExcept(state ->
+        {
+            ModelFile mf = state.getValue(BlockStateProperties.HANGING) ? hanging : normal;
+            return ConfiguredModel.builder()
+                    .modelFile(mf)
+                    .build();
+        });
+
+        provider.simpleBlockItem(block, provider.models().getExistingFile(provider.modLoc("block/" + path)));
+    }
+
     public static void normalBlock(BlockStateProvider provider, Block block) {
         ResourceLocation blockKey = BuiltInRegistries.BLOCK.getKey(block);
         String path = blockKey.getPath();
         provider.simpleBlock(block, provider.models().cubeAll(path, provider.modLoc("block/" + path)));
+        provider.simpleBlockItem(block, provider.models().getExistingFile(provider.modLoc("block/" + path)));
+    }
+
+    public static void glassBlock(BlockStateProvider provider, Block block) {
+        ResourceLocation blockKey = BuiltInRegistries.BLOCK.getKey(block);
+        String path = blockKey.getPath();
+        provider.simpleBlock(block, provider.models().cubeAll(path, provider.modLoc("block/" + path)).renderType("translucent"));
+        provider.simpleBlockItem(block, provider.models().getExistingFile(provider.modLoc("block/" + path)));
+    }
+
+    public static void pressurePlateBlock(BlockStateProvider provider, SkyrimcraftPressurePlateBlock block, ResourceLocation texture) {
+        ModelFile pressurePlate = provider.models().pressurePlate(name(block), texture);
+        ModelFile pressurePlateDown = provider.models().pressurePlateDown(name(block) + "_down", texture);
+        pressurePlateBlock(provider, block, pressurePlate, pressurePlateDown);
+    }
+    public static void pressurePlateBlock(BlockStateProvider provider, SkyrimcraftPressurePlateBlock block, ModelFile pressurePlate, ModelFile pressurePlateDown) {
+        provider.getVariantBuilder(block).partialState().with(PressurePlateBlock.POWERED, true).addModels(new ConfiguredModel[]{new ConfiguredModel(pressurePlateDown)}).partialState().with(PressurePlateBlock.POWERED, false).addModels(new ConfiguredModel[]{new ConfiguredModel(pressurePlate)});
+    }
+
+    public static void torchBlock(BlockStateProvider provider, Block block) {
+        ResourceLocation blockKey = key(block);
+        String path = blockKey.getPath();
+        provider.simpleBlock(block, provider.models().getBuilder(blockKey.toString()).parent(provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(ResourceLocation.DEFAULT_NAMESPACE, "block/template_torch")))
+                .texture("torch", provider.modLoc("block/"+path))
+                .renderType("cutout"));
+        provider.simpleBlockItem(block, provider.models().getExistingFile(provider.modLoc("block/" + path)));
+    }
+
+    protected static ModelFile wallTorchModel(BlockStateProvider provider, Block tblock, Block block) {
+        ResourceLocation blockKey = key(block);
+        ResourceLocation tblockKey = key(tblock);
+        String tpath = tblockKey.getPath();
+        String path = blockKey.getPath();
+        return provider.models().getBuilder(blockKey.toString()).parent(provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(ResourceLocation.DEFAULT_NAMESPACE, "block/template_torch_wall")))
+                .texture("torch", provider.modLoc("block/"+tpath))
+                .renderType("cutout");
+    }
+
+    public static void wallTorchBlock(BlockStateProvider provider, TorchBlock tblock, WallTorchBlock block) {
+        ResourceLocation blockKey = key(block);
+        String path = blockKey.getPath();
+
+        provider.horizontalBlock(block, wallTorchModel(provider, tblock, block));
+        provider.simpleBlockItem(block, provider.models().getExistingFile(provider.modLoc("block/" + path)));
+    }
+
+    public static void poweredWallTorchBlock(BlockStateProvider provider, RedstoneTorchBlock tblock, RedstoneWallTorchBlock block) {
+        ResourceLocation blockKey = key(block);
+        ResourceLocation tblockKey = key(tblock);
+        String tpath = tblockKey.getPath();
+        String path = blockKey.getPath();
+
+        ModelFile unlit = provider.models().getBuilder(key(block) + "_off")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/template_torch_wall")))
+                .texture("torch", provider.modLoc("block/" + name(tblock) + "_off"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(tblock) + "_off"));
+        ModelFile lit = provider.models().getBuilder(key(block).toString())
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/template_torch_wall")))
+                .texture("torch", provider.modLoc("block/" + name(tblock)))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(tblock)));
+
+        provider.horizontalBlock(block, (state) -> {
+            return state.getValue(BlockStateProperties.LIT) ? lit : unlit;
+        }, 180);
+
+        provider.simpleBlockItem(block, provider.models().getExistingFile(provider.modLoc("block/" + path)));
+    }
+
+    public static void poweredTorchBlock(BlockStateProvider provider, Block block) {
+        ResourceLocation blockKey = key(block);
+        String path = blockKey.getPath();
+
+        ModelFile unlit = provider.models().getBuilder(key(block) + "_off")
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/template_torch")))
+                .texture("torch", provider.modLoc("block/" + name(block) + "_off"))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block) + "_off"));
+        ModelFile lit = provider.models().getBuilder(key(block).toString())
+                .parent(provider.models().getExistingFile(ResourceLocation.withDefaultNamespace("block/template_torch")))
+                .texture("torch", provider.modLoc("block/" + name(block)))
+                .renderType("cutout")
+                .texture("particle", provider.modLoc("block/" + name(block)));
+
+        provider.getVariantBuilder(block).forAllStatesExcept(state ->
+        {
+            ModelFile mf = state.getValue(BlockStateProperties.LIT) ? lit : unlit;
+            return ConfiguredModel.builder()
+                    .modelFile(mf)
+                    .build();
+        });
+
         provider.simpleBlockItem(block, provider.models().getExistingFile(provider.modLoc("block/" + path)));
     }
 
@@ -268,13 +531,9 @@ public class BlockData
         ModelFile powered = provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/rune_stone_powered"));
         ModelFile not_powered = provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/rune_stone"));
 
-        provider.getVariantBuilder(block).forAllStatesExcept(state ->
-        {
-            ModelFile mf = state.getValue(RuneStoneBlock.POWERED) ? powered : not_powered;
-            return ConfiguredModel.builder()
-                    .modelFile(mf)
-                    .build();
-        });
+        provider.horizontalBlock(block, (state) -> {
+            return state.getValue(RuneStoneBlock.POWERED) ? powered : not_powered;
+        }, 180);
     }
 
     public static void mushroomBlock(BlockStateProvider provider, Block block) {
@@ -315,7 +574,6 @@ public class BlockData
 
         provider.simpleBlock(block, provider.models().getBuilder(blockKey.toString()).parent(provider.models().getExistingFile(ResourceLocation.fromNamespaceAndPath(ResourceLocation.DEFAULT_NAMESPACE, "block/cross"))).texture("cross", provider.modLoc("block/"+path)).renderType("cutout"));
         provider.simpleBlockItem(block, provider.models().getExistingFile(provider.modLoc("block/" + path)));
-
     }
 
     public static void crop(BlockStateProvider provider, Block block) {

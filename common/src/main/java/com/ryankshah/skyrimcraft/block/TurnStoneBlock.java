@@ -118,14 +118,14 @@ public class TurnStoneBlock extends BaseEntityBlock
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
         if (!level.isClientSide) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof TurnStoneBlockEntity turnStone && !turnStone.isSpinning()) {
+                // Only start the animation - don't change the block state yet
                 turnStone.startAnimation();
                 System.out.println("Starting rotation");
                 System.out.println("Current Facing: " + state.getValue(FACING));
-                System.out.println("Current Symbol: " + turnStone.getCurrentSymbol());
                 return InteractionResult.SUCCESS;
             }
         }

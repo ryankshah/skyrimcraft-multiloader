@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "skyrimcraft:block/dwemer_dispenser_front",
+    "side": "skyrimcraft:block/dwemer_metal_block",
+    "top": "skyrimcraft:block/dwemer_metal_block"
+  }
+}

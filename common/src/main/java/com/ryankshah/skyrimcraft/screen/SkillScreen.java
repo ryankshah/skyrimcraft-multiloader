@@ -18,6 +18,7 @@ import com.ryankshah.skyrimcraft.util.ClientUtil;
 import com.ryankshah.skyrimcraft.util.RenderUtil;
 import commonnetwork.api.Dispatcher;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.player.LocalPlayer;
@@ -32,8 +33,7 @@ import net.minecraft.world.Difficulty;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class SkillScreen extends Screen
-{
+public class SkillScreen extends Screen {
     // Skill Nebula Cube Map
     public static final CubeMap SKILL_NEBULA_CUBE_MAP = new CubeMap(ResourceLocation.fromNamespaceAndPath(Constants.MODID, "textures/gui/panorama/magic_end"));
     protected static final ResourceLocation SKILL_ICONS = ResourceLocation.fromNamespaceAndPath(Constants.MODID, "textures/gui/skill_icons.png");
@@ -62,10 +62,20 @@ public class SkillScreen extends Screen
     private boolean shouldFocusLevelUpdates = false;
     private String[] levelUpdateOptions = {"Magicka", "Health", "Stamina"};
     private static final int UNLOCKED_COLOR = 0xFF00FF00; // Green color for unlocked perks
+    // Add a field to track current perk selection
+    private int currentPerkIndex = 0;
+    private static final float DETAILS_SCALE = 0.75f; // Reduced from 0.9f
+    private static final float PERK_LIST_SCALE = 0.85f; // New constant for perk list scaling
+    private static final int MAX_PERK_NAME_WIDTH = 150; // New constant for max perk name width
 
     private static final int PERK_ICON_SIZE = 32;
     private static final int LEVEL_HEIGHT = 80;
-    private static final int PERK_SPACING = 120;
+    private static final int PERK_SPACING = 80; // Increased from 60
+    private static final int LEVEL_SPACING = 200; // Increased from 150
+
+    // Add new fields for description scrolling
+    private int descriptionScroll = 0;
+    private int maxDescriptionScroll = 0;
 
     private int greenColor = 0xFF4B8C32;
 
@@ -81,18 +91,18 @@ public class SkillScreen extends Screen
         this.skillsList = character.getSkills();
         this.perkPoints = character.getLevelPerkPoints();
         this.selectedSkillObject = null;
-        this.characterProgress = character.getCharacterTotalXp() / (float)getXpNeededForNextCharacterLevel(character.getCharacterLevel()+1);
+        this.characterProgress = character.getCharacterTotalXp() / (float) getXpNeededForNextCharacterLevel(character.getCharacterLevel() + 1);
         this.characterProgressBarWidth = 60 * characterProgress;
 
         this.levelPoints = Services.PLATFORM.getLevelUpdates(player).getLevelUpdates(); //player.getData(PlayerAttachments.LEVEL_UPDATES);
-        if(levelPoints > 0) {
+        if (levelPoints > 0) {
             currentUpdateSelection = 1;
             shouldFocusLevelUpdates = true;
         }
     }
 
     private double getXpNeededForNextCharacterLevel(int level) {
-        return 12.5*Math.pow(level+1, 2) + 62.5*level - 75;
+        return 12.5 * Math.pow(level + 1, 2) + 62.5 * level - 75;
     }
 
     @Override
@@ -113,22 +123,23 @@ public class SkillScreen extends Screen
         RenderUtil.bind(SKILL_ICONS);
 
         RenderUtil.blitWithBlend(poseStack, width / 2 - 151, 10, 0, 209, 302, 14, 512, 512, 0, 1);
-        if(character.getLevelPerkPoints() > 0)
+        if (character.getLevelPerkPoints() > 0)
             RenderUtil.blitWithBlend(poseStack, width / 2 - 56, 32, 0, 264, 112, 11, 512, 512, 0, 1);
 
         RenderUtil.blitWithBlend(poseStack, width / 2 - 20, 13, 109, 228, 80, 8, 512, 512, 1, 1);
-        RenderUtil.blitWithBlend(poseStack, width / 2 - 10, 15, 119 + ((60 - characterProgressBarWidth) / 2.0f), 236, (int)(60 * characterProgress), 6, 512, 512, 1, 1);
+        RenderUtil.blitWithBlend(poseStack, width / 2 - 10, 15, 119 + ((60 - characterProgressBarWidth) / 2.0f), 236, (int) (60 * characterProgress), 6, 512, 512, 1, 1);
         poseStack.popPose();
 
         drawScaledString(graphics, "NAME", width / 2 - 151 + 22, 15, 0xFF949494, 0.75f);
         drawScaledString(graphics, player.getDisplayName().getString(), width / 2 - 151 + 20 + font.width("NAME"), 13, 0xFFFFFFFF, 1f);
         String level = "LEVEL"; //character.getCharacterLevel();
         drawScaledString(graphics, level, width / 2 - 55, 15, 0xFF949494, 0.75f);
-        drawScaledString(graphics, ""+character.getCharacterLevel(), width / 2 - 30, 13, 0xFFFFFFFF, 1f);
+        drawScaledString(graphics, "" + character.getCharacterLevel(), width / 2 - 30, 13, 0xFFFFFFFF, 1f);
         String raceName = character.getRace().getName();
-        drawScaledString(graphics, "RACE", width / 2 + 151 - 52, 15, 0xFF949494, 0.75f);
-        drawScaledString(graphics, raceName, width / 2 + 151 - 42, 13, 0xFFFFFFFF, 1f);
-        if(character.getLevelPerkPoints() > 0)
+        drawScaledString(graphics, "RACE", width / 2 + 151 - font.width("RACE") - font.width(raceName) - 10, 15, 0xFF949494, 0.75f);
+        drawScaledString(graphics, raceName, width / 2 + 151 - font.width(raceName), 13, 0xFFFFFFFF, 1f);
+
+        if (character.getLevelPerkPoints() > 0)
             drawScaledCenteredString(graphics, "Perks to increase: " + perkPoints, width / 2, 35, 0x00FFFFFF, 0.75f);
 
 
@@ -146,7 +157,7 @@ public class SkillScreen extends Screen
 
 //        RenderSystem.setShaderTexture(0, GuiComponent.GUI_ICONS_LOCATION);
         // If no skill is selected, show skill icons etc.
-        if(!skillSelected) {
+        if (!skillSelected) {
             for (SkillWrapper skillEntry : skillsList) {
                 int x = this.width / 2 + 128 * (skillEntry.getID() + 1) - (this.currentSkill + 1) * 128; //(width / 2) - ((SKILL_BAR_CONTAINER_WIDTH / 2) + (24 * currentSkill+1))
                 drawSkill(skillEntry, graphics, poseStack, x, height / 2 - 20);
@@ -157,7 +168,7 @@ public class SkillScreen extends Screen
         }
 
         // If there is a level update, draw this shit on top
-        if(shouldFocusLevelUpdates) {
+        if (shouldFocusLevelUpdates) {
             drawGradientRect(graphics, poseStack, width / 2 - 140, height / 2 - 30, width / 2 + 140, height / 2 + 6, 0xDD000000, 0xDD000000, 0xFF6E6B64);
             graphics.drawCenteredString(font, "You leveled up! Choose an attribute to advance:", width / 2, height / 2 - 24, 0xFFFFFFFF);
 
@@ -179,16 +190,16 @@ public class SkillScreen extends Screen
     public void drawScaledString(GuiGraphics graphics, String str, int x, int y, int color, float scale) {
         graphics.pose().pushPose();
         graphics.pose().scale(scale, scale, scale);
-        graphics.drawString(font, str, (int)(x/scale), (int)(y/scale), color);
+        graphics.drawString(font, str, (int) (x / scale), (int) (y / scale), color);
         graphics.pose().popPose();
     }
-    
+
     public void drawScaledCenteredString(GuiGraphics graphics, String str, int x, int y, int color, float scale) {
         graphics.pose().pushPose();
         graphics.pose().scale(scale, scale, scale);
         float w = this.font.width(str) * scale;
-        x = (int)((x - w / 2) / scale);
-        graphics.drawString(font, str, x, (int)(y/scale), color);
+        x = (int) ((x - w / 2) / scale);
+        graphics.drawString(font, str, x, (int) (y / scale), color);
         graphics.pose().popPose();
     }
 
@@ -197,7 +208,7 @@ public class SkillScreen extends Screen
             String parts = ClientUtil.wrap(str, split, "\n", true, "-", null);
             String[] lines = parts.split("\n");
 
-            for(int i = 0; i < lines.length; i++)
+            for (int i = 0; i < lines.length; i++)
                 drawScaledCenteredString(graphics, lines[i], x, (y + (i * 6)), color, scale);
         } else {
             drawScaledCenteredString(graphics, str, x, y, color, scale);
@@ -220,63 +231,80 @@ public class SkillScreen extends Screen
 
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        if(KeysRegistry.SKYRIM_MENU_EAST.get().matches(keyCode, scanCode)) {
+        if (KeysRegistry.SKYRIM_MENU_EAST.get().matches(keyCode, scanCode)) {
             if (shouldFocusLevelUpdates) {
-                if(currentUpdateSelection > 0)
+                if (currentUpdateSelection > 0)
                     currentUpdateSelection--;
-            } else if(!skillSelected) {
+            } else if (!skillSelected) {
                 if (currentSkill > 0) {
                     currentSkill--;
                 } else {
                     currentSkill = skillsList.size() - 1;
                 }
             }
-        } else if(KeysRegistry.SKYRIM_MENU_WEST.get().matches(keyCode, scanCode)) {
-            if(shouldFocusLevelUpdates) {
-                if(currentUpdateSelection < 2)
+        } else if (KeysRegistry.SKYRIM_MENU_WEST.get().matches(keyCode, scanCode)) {
+            if (shouldFocusLevelUpdates) {
+                if (currentUpdateSelection < 2)
                     currentUpdateSelection++;
-            } else if(!skillSelected) {
+            } else if (!skillSelected) {
                 if (currentSkill < skillsList.size() - 1) {
                     currentSkill++;
                 } else {
                     currentSkill = 0;
                 }
             }
-        } else if(KeysRegistry.SKYRIM_MENU_ENTER.get().matches(keyCode, scanCode)) {
-            if(shouldFocusLevelUpdates) {
-                // Send packet based on the update selected
-                StatIncreases statIncreases = Services.PLATFORM.getStatIncreases(player); //player.getData(PlayerAttachments.STAT_INCREASES);
-                System.out.println(statIncreases.getHealthIncrease());
-                if(currentUpdateSelection == 1) {
+        } else if (KeysRegistry.SKYRIM_MENU_NORTH.get().matches(keyCode, scanCode)) {
+            if (skillSelected && selectedSkillObject != null) {
+                List<Perk> perks = selectedSkillObject.getSkillPerks();
+                if (currentPerkIndex > 0) {
+                    currentPerkIndex--;
+                }
+            }
+        } else if (KeysRegistry.SKYRIM_MENU_SOUTH.get().matches(keyCode, scanCode)) {
+            if (skillSelected && selectedSkillObject != null) {
+                List<Perk> perks = selectedSkillObject.getSkillPerks();
+                if (currentPerkIndex < perks.size() - 1) {
+                    currentPerkIndex++;
+                }
+            }
+        } else if (KeysRegistry.SKYRIM_MENU_ENTER.get().matches(keyCode, scanCode)) {
+            if (shouldFocusLevelUpdates) {
+                // Level updates logic remains the same
+                StatIncreases statIncreases = Services.PLATFORM.getStatIncreases(player);
+                if (currentUpdateSelection == 1) {
                     statIncreases.increaseHealth();
-                } else if(currentUpdateSelection == 0) {
+                } else if (currentUpdateSelection == 0) {
                     statIncreases.increaseMagicka();
-                } else if(currentUpdateSelection == 2) {
+                } else if (currentUpdateSelection == 2) {
                     statIncreases.increaseStamina();
                 }
-                System.out.println(statIncreases.getHealthIncrease());
                 final UpdateStatIncreases updateStatIncreases = new UpdateStatIncreases(statIncreases);
                 Dispatcher.sendToServer(updateStatIncreases);
-//                PacketDistributor.SERVER.noArg().send(updateStatIncreases);
                 levelPoints--;
-                if(levelPoints == 0) {
+                if (levelPoints == 0) {
                     shouldFocusLevelUpdates = false;
                     currentUpdateSelection = -1;
                 }
-            } else if(!skillSelected) {
+            } else if (!skillSelected) {
                 skillSelected = true;
                 selectedSkillObject = skillsList.get(currentSkill);
-            } else {
-                // Skill panel is open, interact with it.
+                currentPerkIndex = 0; // Reset perk selection when entering skill view
+            } else if (skillSelected && selectedSkillObject != null) {
+                // Try to unlock the currently selected perk
+                List<Perk> perks = selectedSkillObject.getSkillPerks();
+                if (currentPerkIndex >= 0 && currentPerkIndex < perks.size()) {
+                    Perk selectedPerk = perks.get(currentPerkIndex);
+                    handlePerkClick(selectedPerk, perks);
+                }
             }
         } else if (keyCode == 256) {
             if (!skillSelected) {
                 this.onClose();
                 return true;
             } else {
-                // If skill is selected, close the skill's panel and go back to the main skills screen
                 selectedSkillObject = null;
                 skillSelected = false;
+                currentPerkIndex = 0;
             }
         }
 
@@ -289,57 +317,95 @@ public class SkillScreen extends Screen
 
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
-        if(scrollY < 0) {
-            if (!this.skillSelected) {
+        if (!skillSelected) {
+            if (scrollY < 0) {
                 if (this.currentSkill < this.skillsList.size() - 1)
                     ++this.currentSkill;
-
-//                this.itemList.clear();
-//                this.itemList.addAll(this.items.get((String)this.categories[this.currentCategory]));
-            } else {
-                if (this.currentSkill < this.skillsList.size() - 1)
-                    ++this.currentSkill;
-            }
-        } else if(scrollY > 0) {
-            if (!this.skillSelected) {
-                if(this.currentSkill > 0)
-                    --this.currentSkill;
-
-//                this.itemList.clear();
-//                this.itemList.addAll(this.items.get((String)this.categories[this.currentCategory]));
-            } else {
+            } else if (scrollY > 0) {
                 if (this.currentSkill > 0)
                     --this.currentSkill;
             }
+            return true;
         }
+
+        // Calculate areas for scroll handling
+        int startX = width / 8;
+        int PANEL_PADDING = 25;
+        int LIST_WIDTH = (width * 3/4) - (2 * PANEL_PADDING);
+        int DIVIDER_X = startX + LIST_WIDTH/3;
+
+        // Handle scrolling in perk list
+        if (mouseX >= startX && mouseX <= DIVIDER_X) {
+            List<Perk> perks = selectedSkillObject.getSkillPerks();
+            int VISIBLE_ITEMS = ((height * 2/3) - (2 * PANEL_PADDING)) / 35;
+            int maxScroll = Math.max(0, perks.size() - VISIBLE_ITEMS);
+
+            if (scrollY < 0) {
+                if (currentPerkIndex < maxScroll)
+                    currentPerkIndex++;
+            } else if (scrollY > 0) {
+                if (currentPerkIndex > 0)
+                    currentPerkIndex--;
+            }
+            return true;
+        }
+
+        // Handle scrolling in description area
+        if (mouseX >= DIVIDER_X && mouseX <= startX + LIST_WIDTH && maxDescriptionScroll > 0) {
+            if (scrollY < 0) {
+                descriptionScroll = Math.min(descriptionScroll + 15, maxDescriptionScroll);
+            } else if (scrollY > 0) {
+                descriptionScroll = Math.max(0, descriptionScroll - 15);
+            }
+            return true;
+        }
+
         return true;
     }
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (KeysRegistry.SKYRIM_MENU_MB1_CLICK.get().matchesMouse(button) && skillSelected) {
-            SkillWrapper skill = selectedSkillObject;
-            Map<Integer, List<Perk>> perksByLevel = organizePerksByLevel(skill.getSkillPerks());
+        if (skillSelected && selectedSkillObject != null) {
+            List<Perk> perks = selectedSkillObject.getSkillPerks();
 
-            int baseY = this.height * 3 / 4 - 10;
-            int maxPerksInLevel = perksByLevel.values().stream().mapToInt(List::size).max().orElse(1);
-            int perkSpacing = Math.min(width / (maxPerksInLevel + 1), 100);
+            // Calculate areas with new padding
+            int startX = width / 8;
+            int PANEL_PADDING = 4;
+            int LIST_WIDTH = (width * 3/4) - (2 * PANEL_PADDING);
+            int DIVIDER_X = startX + LIST_WIDTH/3;
+            int PANEL_HEIGHT = height * 2/3 - 40;
+            int ITEM_HEIGHT = 30;
 
-            for (Map.Entry<Integer, List<Perk>> entry : perksByLevel.entrySet()) {
-                int level = entry.getKey();
-                List<Perk> perksAtLevel = entry.getValue();
+            // Check if click is in the perk list area
+            if (mouseX >= startX + PANEL_PADDING && mouseX <= DIVIDER_X - PANEL_PADDING) {
+                int clickedIndex = currentPerkIndex +
+                        (int)((mouseY - (height/6 + PANEL_PADDING)) / ITEM_HEIGHT);
 
-                int levelWidth = (perksAtLevel.size() - 1) * perkSpacing;
-                int startX = (width - levelWidth) / 2;
+                if (clickedIndex >= 0 && clickedIndex < perks.size()) {
+                    Perk clickedPerk = perks.get(clickedIndex);
+                    currentPerkIndex = clickedIndex;
 
-                for (int i = 0; i < perksAtLevel.size(); i++) {
-                    Perk perk = perksAtLevel.get(i);
-                    int x = startX + i * perkSpacing;
-                    int y = baseY - (level * levelHeight);
+                    // Handle perk unlocking
+                    if (canUnlockPerk(clickedPerk, perks) && perkPoints > 0 && !clickedPerk.isUnlocked()) {
+                        handlePerkClick(clickedPerk, perks);
+                        return true;
+                    }
+                }
+            }
 
-                    if (isWithinBounds(mouseX, mouseY, x - 16, y - 16, 32, 32)) {
-                        handlePerkClick(perk, perksByLevel);
-                        System.out.println("Perk clicked: " + perk.getName()); // Debug print
+            // Unlock button logic
+            if (currentPerkIndex >= 0 && currentPerkIndex < perks.size()) {
+                Perk selectedPerk = perks.get(currentPerkIndex);
+                int buttonWidth = 100;
+                int buttonHeight = 20;
+                int buttonX = DIVIDER_X + PANEL_PADDING +
+                        ((startX + LIST_WIDTH - (DIVIDER_X + PANEL_PADDING) - buttonWidth) / 2);
+                int buttonY = height/6 + PANEL_HEIGHT - buttonHeight - 10;
+
+                if (mouseX >= buttonX && mouseX <= buttonX + buttonWidth &&
+                        mouseY >= buttonY && mouseY <= buttonY + buttonHeight) {
+                    if (canUnlockPerk(selectedPerk, perks) && perkPoints > 0 && !selectedPerk.isUnlocked()) {
+                        handlePerkClick(selectedPerk, perks);
                         return true;
                     }
                 }
@@ -348,29 +414,48 @@ public class SkillScreen extends Screen
         return super.mouseClicked(mouseX, mouseY, button);
     }
 
+    private int getHoveredPerkIndex(double mouseX, double mouseY) {
+        if (!skillSelected || selectedSkillObject == null) return -1;
+
+        int startX = width / 4;
+        int PANEL_PADDING = 20;
+        int LIST_WIDTH = (width / 2) - (2 * PANEL_PADDING);
+        int ITEM_HEIGHT = 30;
+
+        if (mouseX >= startX + PANEL_PADDING &&
+                mouseX <= startX + LIST_WIDTH/2 - PANEL_PADDING &&
+                mouseY >= height/6 + PANEL_PADDING &&
+                mouseY <= height/6 + height * 2/3 - PANEL_PADDING) {
+
+            return currentPerkIndex + (int)((mouseY - (height/6 + PANEL_PADDING)) / ITEM_HEIGHT);
+        }
+        return -1;
+    }
+
     // Helper method to check if click is within the bounds of the perk
     private boolean isWithinBounds(double mouseX, double mouseY, int x, int y, int width, int height) {
         return mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
     }
 
-    // Handle unlocking the perk if the player has enough points and parent conditions are met
-    private void handlePerkClick(Perk perk, Map<Integer, List<Perk>> perksByLevel) {
-        if (perk.isUnlocked()) {
-            return; // Perk is already unlocked, do nothing
+    // Modified handlePerkClick to work with List instead of Map
+    private void handlePerkClick(Perk perk, List<Perk> perks) {
+        if (perk.isUnlocked() || perkPoints <= 0) {
+            return;
         }
 
-        // Check if the perk is unlockable (all parent perks are unlocked)
+        // Check if all parent perks are unlocked
         boolean canUnlock = true;
         for (String parentName : perk.getParents()) {
             boolean parentUnlocked = false;
-            for (List<Perk> perkList : perksByLevel.values()) {
-                for (Perk parentPerk : perkList) {
-                    if (parentPerk.getName().equals(parentName) && parentPerk.isUnlocked()) {
-                        parentUnlocked = true;
+            for (Perk parentPerk : perks) {
+                if (parentPerk.getName().equals(parentName)) {
+                    if (!parentPerk.isUnlocked()) {
+                        canUnlock = false;
                         break;
                     }
+                    parentUnlocked = true;
+                    break;
                 }
-                if (parentUnlocked) break;
             }
             if (!parentUnlocked) {
                 canUnlock = false;
@@ -378,24 +463,15 @@ public class SkillScreen extends Screen
             }
         }
 
-        if (canUnlock && perkPoints >= 1) {
-            // Unlock the perk and reduce perk points
+        if (canUnlock && character != null) {
             perk.unlock();
             perkPoints--;
             character.removeLevelPerkPoint();
             character.getSkill(selectedSkillObject.getID()).unlockPerk(perk);
 
+            // Send update to server
             UpdateCharacter updateCharacter = new UpdateCharacter(character);
             Dispatcher.sendToServer(updateCharacter);
-
-            // Optionally: Notify the player that the perk was unlocked (e.g., play a sound, display message)
-            System.out.println("Perk unlocked: " + perk.getName());
-
-            // Refresh GUI or trigger necessary updates
-            // e.g., this.init() to re-render the GUI
-        } else {
-            // Optionally: Notify player why the perk can't be unlocked (e.g., missing points or prerequisites)
-            System.out.println("Cannot unlock perk: " + perk.getName());
         }
     }
 
@@ -425,174 +501,280 @@ public class SkillScreen extends Screen
 
     private void drawSkillPerksTree(SkillWrapper skill, GuiGraphics graphics, PoseStack poseStack, int width, int height, int mouseX, int mouseY) {
         List<Perk> perks = skill.getSkillPerks();
-        Map<Integer, List<Perk>> perksByLevel = organizePerksByLevel(perks);
 
-        int baseY = height - 100;
-        int maxLevel = perksByLevel.keySet().stream().mapToInt(Integer::intValue).max().orElse(0);
+        // Constants for layout - adjusted for wider left panel and increased height
+        final int PANEL_PADDING = 4;
+        final int LIST_WIDTH = (width * 3/4) - (2 * PANEL_PADDING);
+        final int startX = width / 8;
+        final int TOTAL_WIDTH = width * 3/4;
+        final int PANEL_HEIGHT = height * 2/3 - 20; // Increased height by 20 pixels (changed from -40)
+        final int ITEM_HEIGHT = 30;
+        final int VISIBLE_ITEMS = (PANEL_HEIGHT - (2 * PANEL_PADDING)) / ITEM_HEIGHT;
+        final int DIVIDER_X = startX + (LIST_WIDTH * 2/5);
 
-        // First, draw the connections
+        // Calculate scroll position
+        int maxScroll = Math.max(0, perks.size() - VISIBLE_ITEMS);
+        int currentScroll = Math.min(maxScroll, currentPerkIndex);
+
+        // Draw main container with some transparency
+        drawBorderedGradientRect(graphics, poseStack, startX, height/6, startX + TOTAL_WIDTH, height/6 + PANEL_HEIGHT,
+                0xDD000000, 0xDD000000, 0xFF6E6B64);
+
+        // Draw divider
+        graphics.fill(DIVIDER_X, height/6 + PANEL_PADDING,
+                DIVIDER_X + 2, height/6 + PANEL_HEIGHT - PANEL_PADDING, 0xFF6E6B64);
+
+        // Draw scrollbar if needed
+        if (maxScroll > 0) {
+            int scrollBarHeight = PANEL_HEIGHT - (2 * PANEL_PADDING);
+            int scrollThumbHeight = Math.max(20, scrollBarHeight * VISIBLE_ITEMS / perks.size());
+            int scrollThumbY = height/6 + PANEL_PADDING +
+                    (scrollBarHeight - scrollThumbHeight) * currentScroll / maxScroll;
+
+            graphics.fill(DIVIDER_X - 12, height/6 + PANEL_PADDING,
+                    DIVIDER_X - 8, height/6 + PANEL_HEIGHT - PANEL_PADDING, 0x44FFFFFF);
+            graphics.fill(DIVIDER_X - 12, scrollThumbY,
+                    DIVIDER_X - 8, scrollThumbY + scrollThumbHeight, 0xFFFFFFFF);
+        }
+
+        // Draw visible perks with truncation - adjusted to use full height
+        int listStartX = startX + PANEL_PADDING;
+        int currentY = height/6 + PANEL_PADDING;
+        int listWidth = DIVIDER_X - listStartX - PANEL_PADDING - 10;
+        int maxY = height/6 + PANEL_HEIGHT - PANEL_PADDING; // Define maximum Y for list items
+
+        Perk hoveredPerk = null;
+        if (mouseX >= listStartX && mouseX <= DIVIDER_X - PANEL_PADDING) {
+            int hoveredIndex = (mouseY - (height/6 + PANEL_PADDING)) / ITEM_HEIGHT + currentScroll;
+            if (hoveredIndex >= currentScroll && hoveredIndex < Math.min(perks.size(), currentScroll + VISIBLE_ITEMS)) {
+                hoveredPerk = perks.get(hoveredIndex);
+            }
+        }
+
+        // Draw the list of perks with truncation - ensure it fills the available space
+        for (int i = currentScroll; i < Math.min(perks.size(), currentScroll + VISIBLE_ITEMS); i++) {
+            if (currentY + ITEM_HEIGHT > maxY) break; // Prevent overflow
+
+            Perk perk = perks.get(i);
+            boolean isHovered = perk == hoveredPerk;
+            boolean isSelected = i == currentPerkIndex;
+
+            if (isHovered || isSelected) {
+                graphics.fill(listStartX, currentY, DIVIDER_X - PANEL_PADDING,
+                        currentY + ITEM_HEIGHT, 0x33FFFFFF);
+            }
+
+            int textColor = perk.isUnlocked() ? UNLOCKED_COLOR : 0xFFFFFFFF;
+            if (isHovered || isSelected) textColor = 0xFFFFFFFF;
+
+            String perkName = truncateText(perk.getName(), font, listWidth / PERK_LIST_SCALE);
+
+            poseStack.pushPose();
+            poseStack.scale(PERK_LIST_SCALE, PERK_LIST_SCALE, PERK_LIST_SCALE);
+            graphics.drawString(font, perkName,
+                    (int)((listStartX + 5) / PERK_LIST_SCALE),
+                    (int)((currentY + (ITEM_HEIGHT - font.lineHeight) / 2) / PERK_LIST_SCALE),
+                    textColor);
+            poseStack.popPose();
+
+            currentY += ITEM_HEIGHT;
+        }
+
+        // Draw perk details for currently selected perk - adjusted to use full height
+        if (selectedSkillObject != null && currentPerkIndex >= 0 && currentPerkIndex < perks.size()) {
+            Perk selectedPerk = perks.get(currentPerkIndex);
+            int detailsX = DIVIDER_X + PANEL_PADDING + 4;
+            int detailsY = height/6 + PANEL_PADDING;
+            // Use the same height calculation as the list
+            drawPerkDetails(graphics, selectedPerk, mouseX, mouseY, detailsX, detailsY,
+                    PANEL_HEIGHT - (2 * PANEL_PADDING),
+                    startX + TOTAL_WIDTH - PANEL_PADDING - 4);
+        }
+    }
+
+    private String truncateText(String text, Font font, float maxWidth) {
+        if (font.width(text) <= maxWidth) {
+            return text;
+        }
+
+        String ellipsis = "..";
+        int ellipsisWidth = font.width(ellipsis);
+
+        StringBuilder truncated = new StringBuilder();
+        float currentWidth = 0;
+
+        for (char c : text.toCharArray()) {
+            float charWidth = font.width(String.valueOf(c));
+            if (currentWidth + charWidth + ellipsisWidth > maxWidth) {
+                return truncated.toString() + ellipsis;
+            }
+            truncated.append(c);
+            currentWidth += charWidth;
+        }
+
+        return truncated.toString();
+    }
+
+    private void drawPerkDetails(GuiGraphics graphics, Perk perk, int mouseX, int mouseY, int x, int y, int maxHeight, int maxWidth) {
+        int currentY = y - descriptionScroll;
+        final float DETAILS_SCALE = 0.75f; // Matched with perk list scale
+
+        // Create a scissor box for scrolling
+        double scale = minecraft.getWindow().getGuiScale();
+        RenderSystem.enableScissor(
+                (int)(x * scale),
+                (int)(y * scale),
+                (int)((maxWidth - x) * scale),
+                (int)(maxHeight * scale)
+        );
+
+        PoseStack poseStack = graphics.pose();
+
+        // Draw title with consistent styling
         poseStack.pushPose();
-        poseStack.translate(0, 0, 100);
-        for (Map.Entry<Integer, List<Perk>> entry : perksByLevel.entrySet()) {
-            int level = entry.getKey();
-            List<Perk> perksAtLevel = entry.getValue();
+        poseStack.scale(DETAILS_SCALE, DETAILS_SCALE, DETAILS_SCALE);
+        graphics.drawString(font, perk.getName(), (int)(x/DETAILS_SCALE), (int)(currentY/DETAILS_SCALE), 0xFFFFFFFF);
+        currentY += 20;
 
-            int levelWidth = (perksAtLevel.size() - 1) * PERK_SPACING;
-            int startX = (width - levelWidth) / 2;
+        // Draw other details with same scaling
+        graphics.drawString(font, "Level Required: " + perk.getLevelRequirement(),
+                (int)(x/DETAILS_SCALE), (int)(currentY/DETAILS_SCALE), 0xFF949494);
+        currentY += 15;
 
-            for (int i = 0; i < perksAtLevel.size(); i++) {
-                Perk perk = perksAtLevel.get(i);
-                int x = startX + i * PERK_SPACING;
-                int y = baseY - (level * LEVEL_HEIGHT);
+        // Unlock status
+        String status = perk.isUnlocked() ? "Status: Unlocked" : "Status: Locked";
+        graphics.drawString(font, status, (int)(x/DETAILS_SCALE), (int)(currentY/DETAILS_SCALE),
+                perk.isUnlocked() ? UNLOCKED_COLOR : 0xFF949494);
+        currentY += 15;
 
-                renderConnectionsToParents(graphics, poseStack, perk, x, y, perksByLevel, baseY);
-            }
-        }
-        poseStack.popPose();
-
-        // Then, draw the perks
-        for (Map.Entry<Integer, List<Perk>> entry : perksByLevel.entrySet()) {
-            int level = entry.getKey();
-            List<Perk> perksAtLevel = entry.getValue();
-
-            int levelWidth = (perksAtLevel.size() - 1) * PERK_SPACING;
-            int startX = (width - levelWidth) / 2;
-
-            for (int i = 0; i < perksAtLevel.size(); i++) {
-                Perk perk = perksAtLevel.get(i);
-                int x = startX + i * PERK_SPACING;
-                int y = baseY - (level * LEVEL_HEIGHT);
-
-                renderPerk(graphics, poseStack, perk, x, y);
-
-                if (isWithinBounds(mouseX, mouseY, x - PERK_ICON_SIZE/2, y - PERK_ICON_SIZE/2, PERK_ICON_SIZE, PERK_ICON_SIZE)) {
-                    renderPerkTooltip(graphics, poseStack, perk, mouseX, mouseY);
-                }
-            }
-        }
-    }
-
-    private void renderTooltip(GuiGraphics graphics, PoseStack matrixStack, List<String> tooltipInfo, int mouseX, int mouseY) {
-        // Set up Z layer to ensure tooltip renders on top
-        RenderSystem.disableDepthTest(); // Disable depth test to ensure the tooltip is on top
-
-        // Determine the width and height of the tooltip based on the longest line of text
-        int tooltipWidth = 0;
-        for (String line : tooltipInfo) {
-            int lineWidth = this.font.width(line);
-            if (lineWidth > tooltipWidth) {
-                tooltipWidth = lineWidth;
-            }
-        }
-        tooltipWidth += 6; // Add padding
-
-        int tooltipHeight = tooltipInfo.size() * 12 + 6; // Height for tooltip box (12 per line, plus padding)
-
-        // Adjust the tooltip position so it doesn't go off the screen
-        int tooltipX = mouseX + 12;
-        int tooltipY = mouseY - 12;
-        if (tooltipX + tooltipWidth > this.width) {
-            tooltipX = this.width - tooltipWidth - 12;
-        }
-        if (tooltipY + tooltipHeight > this.height) {
-            tooltipY = this.height - tooltipHeight - 12;
-        }
-
-
-        // Render the background box
-        drawBorderedGradientRect(graphics, matrixStack, tooltipX, tooltipY, tooltipX + tooltipWidth, tooltipY + tooltipHeight, 0xCC000000, 0xCC000000, 0xFF6E6B64);
-
-        // Render each line of the tooltip
-        int lineOffsetY = tooltipY + 6;
-        for (String line : tooltipInfo) {
-            graphics.drawString(font, line, tooltipX + 3, lineOffsetY, 0xFFFFFF);
-            lineOffsetY += 12; // Move to the next line
-        }
-
-        // Re-enable depth test after rendering the tooltip
-        RenderSystem.enableDepthTest();
-    }
-
-    private void renderPerkTooltip(GuiGraphics graphics, PoseStack poseStack, Perk perk, int mouseX, int mouseY) {
-        List<String> tooltipInfo = new ArrayList<>();
-        tooltipInfo.add(perk.getName());
-        tooltipInfo.addAll(wrapText(perk.getDescription(), 150));
-        tooltipInfo.add("Level Requirement: " + perk.getLevelRequirement());
+        // Requirements
         if (!perk.getParents().isEmpty()) {
-            tooltipInfo.add("Requires: " + String.join(", ", perk.getParents()));
-        }
-        if (perk.isUnlocked()) {
-            tooltipInfo.add("Unlocked");
-        } else {
-            tooltipInfo.add("Click to Unlock");
+            graphics.drawString(font, "Requirements:", (int)(x/DETAILS_SCALE), (int)(currentY/DETAILS_SCALE), 0xFF949494);
+            currentY += 15;
+            for (String parent : perk.getParents()) {
+                graphics.drawString(font, "- " + parent, (int)((x + 10)/DETAILS_SCALE), (int)(currentY/DETAILS_SCALE), 0xFF949494);
+                currentY += 15;
+            }
+            currentY += 5;
         }
 
-        poseStack.pushPose();
-        poseStack.translate(0, 0, 300); // Move tooltip to front
-        renderTooltip(graphics, poseStack, tooltipInfo, mouseX, mouseY);
+        // Description with word wrap and scaling
+        List<String> wrappedDesc = wrapText(perk.getDescription(), (int)((maxWidth - x) / DETAILS_SCALE));
+        for (String line : wrappedDesc) {
+            graphics.drawString(font, line, (int)(x/DETAILS_SCALE), (int)(currentY/DETAILS_SCALE), 0xFFFFFFFF);
+            currentY += 15;
+        }
+
         poseStack.popPose();
+
+        // Calculate max scroll
+        int totalHeight = currentY - y + descriptionScroll;
+        maxDescriptionScroll = Math.max(0, totalHeight - maxHeight);
+
+        // Draw scrollbar if needed
+        if (maxDescriptionScroll > 0) {
+            int scrollBarHeight = maxHeight;
+            int thumbHeight = Math.max(20, scrollBarHeight * maxHeight / totalHeight);
+            int thumbY = y + (scrollBarHeight - thumbHeight) * descriptionScroll / maxDescriptionScroll;
+
+            // Draw scrollbar background
+            graphics.fill(maxWidth - 4, y, maxWidth - 2, y + maxHeight, 0x44FFFFFF);
+            // Draw scrollbar thumb
+            graphics.fill(maxWidth - 4, thumbY, maxWidth - 2, thumbY + thumbHeight, 0xFFFFFFFF);
+        }
+
+        RenderSystem.disableScissor();
+
+        // Draw unlock button if available
+        if (!perk.isUnlocked() && perkPoints > 0 && canUnlockPerk(perk, selectedSkillObject.getSkillPerks())) {
+            int buttonWidth = 100;
+            int buttonHeight = 20;
+            int buttonX = x + (maxWidth - x - buttonWidth) / 2;
+            int buttonY = y + maxHeight - buttonHeight - 10;
+
+            boolean buttonHovered = mouseX >= buttonX && mouseX <= buttonX + buttonWidth &&
+                    mouseY >= buttonY && mouseY <= buttonY + buttonHeight;
+
+            drawBorderedGradientRect(graphics, poseStack, buttonX, buttonY,
+                    buttonX + buttonWidth, buttonY + buttonHeight,
+                    buttonHovered ? 0x66000000 : 0x44000000,
+                    buttonHovered ? 0x66000000 : 0x44000000,
+                    0xFF6E6B64);
+
+            String unlockText = "Unlock";
+            int textWidth = font.width(unlockText);
+            graphics.drawString(font, unlockText,
+                    buttonX + (buttonWidth - textWidth) / 2,
+                    buttonY + (buttonHeight - font.lineHeight) / 2,
+                    buttonHovered ? 0xFFFFFFFF : 0xFF949494);
+        }
     }
 
-    private void renderPerk(GuiGraphics graphics, PoseStack poseStack, Perk perk, int x, int y) {
-        int color = perk.isUnlocked() ? UNLOCKED_COLOR : 0xFFFFFFFF;
+    // Updated text wrapping method to handle scaling
+    private List<String> wrapText(String text, int maxWidth) {
+        List<String> wrappedLines = new ArrayList<>();
+        String[] words = text.split(" ");
+        StringBuilder currentLine = new StringBuilder();
 
-        // Draw perk icon
-//        poseStack.pushPose();
-//        poseStack.translate(0, 0, 200);
-//        RenderSystem.setShaderTexture(0, SKILL_ICONS);
-//        graphics.blit(SKILL_ICONS, x - PERK_ICON_SIZE/2, y - PERK_ICON_SIZE/2, 0, 0, PERK_ICON_SIZE, PERK_ICON_SIZE, 512, 512);
-//        poseStack.popPose();
+        for (String word : words) {
+            String testLine = currentLine.toString();
+            if (!testLine.isEmpty()) testLine += " ";
+            testLine += word;
 
-        // Draw perk name below the icon
-//        graphics.drawCenteredString(font, perk.getName(), x, y + PERK_ICON_SIZE/2 + 5, color);
-        graphics.drawCenteredString(font, perk.getName(), x, y, color);
-    }
-
-
-    private void renderConnectionsToParents(GuiGraphics graphics, PoseStack poseStack, Perk perk, int x, int y, Map<Integer, List<Perk>> perksByLevel, int baseY) {
-        for (String parentName : perk.getParents()) {
-            for (Map.Entry<Integer, List<Perk>> entry : perksByLevel.entrySet()) {
-                int parentLevel = entry.getKey();
-                List<Perk> parentPerks = entry.getValue();
-
-                for (int i = 0; i < parentPerks.size(); i++) {
-                    Perk parentPerk = parentPerks.get(i);
-                    if (parentPerk.getName().equals(parentName)) {
-                        int parentY = baseY - (parentLevel * LEVEL_HEIGHT);
-                        int parentX = (perksByLevel.get(parentLevel).size() - 1) * PERK_SPACING;
-                        parentX = (width - parentX) / 2 + i * PERK_SPACING;
-
-                        int color = parentPerk.isUnlocked() && perk.isUnlocked() ? UNLOCKED_COLOR : 0xFFFFFFFF;
-//                        drawLine(poseStack, x, y + PERK_ICON_SIZE/2, parentX, parentY - PERK_ICON_SIZE/2, color);
-                        drawLine(poseStack, x, y, parentX, parentY, color);
-                        break;
-                    }
+            if (font.width(testLine) > maxWidth) {
+                if (!currentLine.isEmpty()) {
+                    wrappedLines.add(currentLine.toString());
+                    currentLine = new StringBuilder();
                 }
+                // If a single word is too long, force break it
+                if (font.width(word) > maxWidth) {
+                    int breakPoint = 0;
+                    StringBuilder partial = new StringBuilder();
+                    for (char c : word.toCharArray()) {
+                        partial.append(c);
+                        if (font.width(partial.toString()) > maxWidth) {
+                            wrappedLines.add(word.substring(breakPoint, partial.length() - 1) + "-");
+                            breakPoint = partial.length() - 1;
+                            partial = new StringBuilder(String.valueOf(c));
+                        }
+                    }
+                    if (breakPoint < word.length()) {
+                        currentLine.append(word.substring(breakPoint));
+                    }
+                } else {
+                    currentLine.append(word);
+                }
+            } else {
+                if (!currentLine.isEmpty()) currentLine.append(" ");
+                currentLine.append(word);
             }
         }
+
+        if (currentLine.length() > 0) {
+            wrappedLines.add(currentLine.toString());
+        }
+
+        return wrappedLines;
     }
 
-    private void drawLine(PoseStack poseStack, int x1, int y1, int x2, int y2, int color) {
-        poseStack.pushPose();
-        RenderSystem.enableBlend();
-        RenderSystem.defaultBlendFunc();
-        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+    private boolean canUnlockPerk(Perk perk, List<Perk> allPerks) {
+        if (perk.isUnlocked()) return false;
 
-        BufferBuilder bufferBuilder = Tesselator.getInstance().begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
+        // Check if all parent perks are unlocked
+        for (String parentName : perk.getParents()) {
+            boolean parentFound = false;
+            for (Perk potential : allPerks) {
+                if (potential.getName().equals(parentName)) {
+                    if (!potential.isUnlocked()) return false;
+                    parentFound = true;
+                    break;
+                }
+            }
+            if (!parentFound) return false;
+        }
 
-        float red = (float)(color >> 16 & 255) / 255.0F;
-        float green = (float)(color >> 8 & 255) / 255.0F;
-        float blue = (float)(color & 255) / 255.0F;
-        float alpha = 1.0F;
-
-        bufferBuilder.addVertex(poseStack.last().pose(), x1, y1, 0).setColor(red, green, blue, alpha);
-        bufferBuilder.addVertex(poseStack.last().pose(), x2, y2, 0).setColor(red, green, blue, alpha);
-
-        BufferUploader.drawWithShader(bufferBuilder.buildOrThrow());
-        RenderSystem.disableBlend();
-        poseStack.popPose();
+        return true;
     }
-
 
     private void renderHealth(GuiGraphics graphics, PoseStack poseStack, int width, int height, boolean selected) {
         poseStack.pushPose();
@@ -673,61 +855,5 @@ public class SkillScreen extends Screen
         graphics.fill(startX, startY+1, startX+1, endY-1, borderColor); // left
         graphics.fill(endX-1, startY+1, endX, endY-1, borderColor); // right
         matrixStack.popPose();
-    }
-
-    public Map<Integer, List<Perk>> organizePerksByLevel(List<Perk> perks) {
-        Map<String, Perk> perkMap = perks.stream()
-                .collect(Collectors.toMap(Perk::getName, perk -> perk));
-
-        // Perks organized by level, with the root at level 0.
-        Map<Integer, List<Perk>> perksByLevel = new HashMap<>();
-
-        for (Perk perk : perks) {
-            int level = getPerkLevel(perk, perkMap);
-            perksByLevel.computeIfAbsent(level, k -> new ArrayList<>()).add(perk);
-        }
-
-        return perksByLevel;
-    }
-
-    private int getPerkLevel(Perk perk, Map<String, Perk> perkMap) {
-        if (perk.getParents().isEmpty()) {
-            return 0; // Root perk
-        }
-
-        // Get the maximum level of all parents
-        int maxParentLevel = 0;
-        for (String parentName : perk.getParents()) {
-            Perk parentPerk = perkMap.get(parentName);
-            if (parentPerk != null) {
-                maxParentLevel = Math.max(maxParentLevel, getPerkLevel(parentPerk, perkMap) + 1);
-            }
-        }
-
-        return maxParentLevel;
-    }
-
-    // Helper method to wrap text based on a maximum width
-    private List<String> wrapText(String text, int maxWidth) {
-        List<String> wrappedLines = new ArrayList<>();
-        String[] words = text.split(" ");
-        StringBuilder currentLine = new StringBuilder();
-
-        for (String word : words) {
-            if (this.font.width(currentLine.toString() + word) > maxWidth) {
-                wrappedLines.add(currentLine.toString());
-                currentLine = new StringBuilder();
-            }
-            if (currentLine.length() > 0) {
-                currentLine.append(" ");
-            }
-            currentLine.append(word);
-        }
-
-        if (currentLine.length() > 0) {
-            wrappedLines.add(currentLine.toString());
-        }
-
-        return wrappedLines;
     }
 }

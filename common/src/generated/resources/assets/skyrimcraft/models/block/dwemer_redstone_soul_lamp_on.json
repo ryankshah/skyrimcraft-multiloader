@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "skyrimcraft:block/dwemer_redstone_soul_lamp_on",
+    "particle": "skyrimcraft:block/dwemer_redstone_soul_lamp_on"
+  }
+}

@@ -3,6 +3,7 @@ package com.ryankshah.skyrimcraft;
 import com.google.common.collect.ImmutableMap;
 import com.ryankshah.skyrimcraft.block.entity.model.TurnStoneModel;
 import com.ryankshah.skyrimcraft.block.entity.renderer.TurnStoneBlockEntityRenderer;
+import com.ryankshah.skyrimcraft.block.piston.DwemerPistonHeadRenderer;
 import com.ryankshah.skyrimcraft.character.feature.model.DunmerEarModel;
 import com.ryankshah.skyrimcraft.character.feature.model.HighElfEarModel;
 import com.ryankshah.skyrimcraft.character.feature.model.KhajiitHeadModel;
@@ -41,6 +42,7 @@ public class SkyrimcraftCommonClient
     public static void registerRenderers(BiConsumer<EntityType<? extends Entity>, EntityRendererProvider> entityRenderers,
                                          BiConsumer<BlockEntityType<? extends BlockEntity>, BlockEntityRendererProvider> blockEntityRenderers) {
         blockEntityRenderers.accept(BlockEntityRegistry.TURN_STONE.get(), TurnStoneBlockEntityRenderer::new);
+        blockEntityRenderers.accept(BlockEntityRegistry.DWEMER_PISTON.get(), DwemerPistonHeadRenderer::new);
 
         entityRenderers.accept(EntityRegistry.SHOUT_UNRELENTING_FORCE_ENTITY.get(), UnrelentingForceRenderer::new);
         entityRenderers.accept(EntityRegistry.SPELL_FIREBALL_ENTITY.get(), FireballRenderer::new);

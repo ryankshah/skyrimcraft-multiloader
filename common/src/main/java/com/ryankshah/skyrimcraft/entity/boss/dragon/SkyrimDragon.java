@@ -2,6 +2,7 @@ package com.ryankshah.skyrimcraft.entity.boss.dragon;
 
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -27,6 +28,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.pathfinder.PathType;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -38,6 +40,7 @@ import software.bernie.geckolib.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.EnumSet;
+import java.util.List;
 
 public class SkyrimDragon extends PathfinderMob implements GeoEntity {
 
@@ -72,6 +75,17 @@ public class SkyrimDragon extends PathfinderMob implements GeoEntity {
     private static final double MAX_SPEED = 0.3; // New constant to limit speed
 //    private static final double LANDING_THRESHOLD = 2.0; // Reduced from 5.0
     private static final int LANDING_DURATION = 80; // Increased from 40
+    private static final int ATTACK_COOLDOWN = 60; // 3 seconds
+    private static final double BREATH_ATTACK_RANGE = 10.0;
+    private static final double BITE_ATTACK_RANGE = 3.0;
+    private static final double FIRE_BREATH_DAMAGE = 1.0;
+    private static final double BITE_DAMAGE = 6.0;
+    private static final int BREATH_DURATION = 60; // 3 seconds
+    private static final double IDEAL_ATTACK_DISTANCE = 10.0;
+    private int attackCooldown = 0;
+    private int breathAttackTicks = 0;
+    private boolean isBreathAttacking = false;
+    private LivingEntity attackTarget;
     private int takeoffTicks = 0;
     private int groundPhaseTicks = 0;
     private BlockPos landingTarget;
@@ -87,7 +101,7 @@ public class SkyrimDragon extends PathfinderMob implements GeoEntity {
     private double ellipseAngle;
     private boolean isLanding = false;
 
-    private static final boolean DEBUG = false;  // Set this to true for detailed logging/testing
+    private static final boolean DEBUG = true;  // Set this to true for detailed logging/testing
 
     private void debugLog(String message) {
         if (DEBUG) {
@@ -233,6 +247,17 @@ public class SkyrimDragon extends PathfinderMob implements GeoEntity {
         this.setFlying(compound.getBoolean("IsFlying"));
     }
 
+    private void updateAttackTarget() {
+        if (attackTarget == null || !attackTarget.isAlive()) {
+            // Find nearest player within range
+            Player nearestPlayer = level().getNearestPlayer(this, 32.0);
+            if (nearestPlayer != null && nearestPlayer.isAlive() && !nearestPlayer.isCreative()) {
+                attackTarget = nearestPlayer;
+            }
+        }
+    }
+
+
     private void ensureWithinLoadedChunks() {
         Level world = this.level();
         BlockPos currentPos = this.blockPosition();
@@ -265,6 +290,29 @@ public class SkyrimDragon extends PathfinderMob implements GeoEntity {
         super.tick();
 
         if (!this.level().isClientSide) {
+            if (attackCooldown > 0) {
+                attackCooldown--;
+            }
+
+            updateAttackTarget();
+
+            if (attackTarget != null && attackCooldown <= 0 && !isBreathAttacking) {
+                if (isFlying()) {
+                    handleFlyingAttack();
+                } else {
+                    handleGroundAttack();
+                }
+            }
+
+            if (isBreathAttacking) {
+                performBreathAttack();
+            }
+
+            // Reset breath attack if duration is over
+            if (breathAttackTicks <= 0) {
+                isBreathAttacking = false;
+            }
+
             // Safety check to prevent falling through the world
             if (this.getY() < this.level().getMinBuildHeight()) {
                 BlockPos safePos = this.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, this.blockPosition());
@@ -309,6 +357,161 @@ public class SkyrimDragon extends PathfinderMob implements GeoEntity {
                 this.handlePhaseTransitions();
             }
             this.checkEntityRemoval();
+        }
+    }
+
+    private void handleFlyingAttack() {
+        double distanceToTarget = this.distanceTo(attackTarget);
+
+        if (distanceToTarget <= BREATH_ATTACK_RANGE && !isBreathAttacking && attackCooldown <= 0) {
+            // Calculate ideal position for breath attack
+            Vec3 targetPos = attackTarget.position();
+            Vec3 directionFromTarget = this.position().subtract(targetPos).normalize();
+            Vec3 idealPos = targetPos.add(directionFromTarget.scale(IDEAL_ATTACK_DISTANCE));
+
+            // Move to ideal position and look at target
+            this.moveTarget = idealPos;
+            this.lookAt(EntityAnchorArgument.Anchor.EYES, targetPos);
+
+            // If we're close enough to the ideal position, start breath attack
+            if (this.position().distanceTo(idealPos) < 3.0) {
+                startBreathAttack();
+            }
+        }
+    }
+
+    private void handleGroundAttack() {
+        if (attackCooldown > 0 || isBreathAttacking) return;
+
+        double distanceToTarget = this.distanceTo(attackTarget);
+
+        if (distanceToTarget <= BITE_ATTACK_RANGE) {
+            // Perform bite attack
+            performBiteAttack();
+        } else if (distanceToTarget <= BREATH_ATTACK_RANGE) {
+            // Look at target before breathing fire
+            this.lookAt(EntityAnchorArgument.Anchor.EYES, attackTarget.position());
+            startBreathAttack();
+        }
+    }
+
+    private void startBreathAttack() {
+        if (!isBreathAttacking && attackCooldown <= 0) {
+            isBreathAttacking = true;
+            breathAttackTicks = BREATH_DURATION;
+            attackCooldown = ATTACK_COOLDOWN + BREATH_DURATION; // Add breath duration to prevent immediate reuse
+
+            if (isFlying()) {
+                setPhase(Phase.FLY_SHOUT_BREATH);
+            } else {
+                setPhase(Phase.STAND_SHOUT_BREATH);
+            }
+
+            this.playSound(SoundEvents.ENDER_DRAGON_GROWL, 1.0F, 1.0F);
+        }
+    }
+
+    private void performBreathAttack() {
+        if (!isBreathAttacking || breathAttackTicks <= 0) {
+            isBreathAttacking = false;
+            if (isFlying()) {
+                setPhase(Phase.FLY_IDLE);
+            } else {
+                setPhase(Phase.STAND);
+            }
+            return;
+        }
+
+        // Keep looking at target during breath attack
+        if (attackTarget != null && attackTarget.isAlive()) {
+            this.lookAt(EntityAnchorArgument.Anchor.EYES, attackTarget.position());
+        }
+
+        // Only proceed if we're actually breathing fire
+        if (breathAttackTicks > 0) {
+            Vec3 lookVec = this.getLookAngle();
+            Vec3 dragonMouth = this.position().add(0, 2.0, 0); // Adjusted mouth position
+            Vec3 breathStart = dragonMouth.add(lookVec.scale(2.0));
+
+            // Particle effects with increased density and better spread
+            double length = 8.0;
+            double spread = Math.PI / 6.0; // Wider spread (30 degrees)
+
+            for (int i = 0; i < 5; i++) { // Increased particle density
+                for (int j = 0; j < 10; j++) {
+                    double distance = (random.nextDouble() * 0.8 + 0.2) * length; // Min 20% of length
+                    double angle = random.nextDouble() * 2 * Math.PI;
+                    double radius = Math.tan(spread) * distance * random.nextDouble();
+
+                    Vec3 particlePos = breathStart.add(
+                            lookVec.scale(distance)
+                                    .add(new Vec3(
+                                            Math.cos(angle) * radius,
+                                            Math.sin(angle) * radius,
+                                            Math.cos(angle) * radius
+                                    ))
+                    );
+
+                    // Add flame particles with more velocity in look direction
+                    level().addParticle(
+                            ParticleTypes.FLAME,
+                            particlePos.x, particlePos.y, particlePos.z,
+                            lookVec.x * 0.2 + random.nextGaussian() * 0.02,
+                            lookVec.y * 0.2 + random.nextGaussian() * 0.02,
+                            lookVec.z * 0.2 + random.nextGaussian() * 0.02
+                    );
+
+                    // Add smoke particles with less frequency
+                    if (random.nextFloat() < 0.3f) {
+                        level().addParticle(
+                                ParticleTypes.LARGE_SMOKE,
+                                particlePos.x, particlePos.y, particlePos.z,
+                                lookVec.x * 0.1 + random.nextGaussian() * 0.02,
+                                lookVec.y * 0.1 + random.nextGaussian() * 0.02,
+                                lookVec.z * 0.1 + random.nextGaussian() * 0.02
+                        );
+                    }
+                }
+            }
+
+            // Damage calculation
+            if (breathAttackTicks % 5 == 0) { // Apply damage every 5 ticks
+                double damageLength = 6.0;
+                List<Entity> possibleTargets = level().getEntities(this,
+                        new AABB(breathStart.x - damageLength, breathStart.y - damageLength, breathStart.z - damageLength,
+                                breathStart.x + damageLength, breathStart.y + damageLength, breathStart.z + damageLength));
+
+                for (Entity entity : possibleTargets) {
+                    if (entity instanceof LivingEntity && entity != this) {
+                        Vec3 toEntity = entity.position().subtract(breathStart);
+                        double distance = toEntity.length();
+
+                        if (distance <= damageLength) {
+                            double angle = Math.acos(toEntity.normalize().dot(lookVec));
+
+                            if (angle <= spread) {
+                                double damageMultiplier = 1.0 - (distance / damageLength);
+                                entity.hurt(this.damageSources().mobAttack(this),
+                                        (float)(FIRE_BREATH_DAMAGE * damageMultiplier));
+                                entity.setRemainingFireTicks(40); // Set target on fire for 2 seconds
+                            }
+                        }
+                    }
+                }
+            }
+
+            breathAttackTicks--;
+        }
+    }
+
+    private void performBiteAttack() {
+        if (attackTarget != null) {
+            attackTarget.hurt(this.damageSources().mobAttack(this), (float)BITE_DAMAGE);
+            setPhase(Phase.BITE);
+            attackCooldown = ATTACK_COOLDOWN;
+
+            // Play bite attack sound
+            this.playSound(SoundEvents.PHANTOM_BITE, 1.0F, 1.0F);
         }
     }
 
@@ -699,6 +902,16 @@ public class SkyrimDragon extends PathfinderMob implements GeoEntity {
 
     private <E extends GeoEntity> PlayState predicate(software.bernie.geckolib.animation.AnimationState<SkyrimDragon> event) {
         AnimationController<SkyrimDragon> controller = event.getController();
+
+        if (isBreathAttacking) {
+            if (isFlying()) {
+                controller.setAnimation(FLY_SHOUT_BREATHE);
+            } else {
+                controller.setAnimation(STAND_SHOUT_BREATHE);
+            }
+            return PlayState.CONTINUE;
+        }
+
         switch (getPhase()) {
             case FLY_IDLE:
                 controller.setAnimation(FLY_IDLE);

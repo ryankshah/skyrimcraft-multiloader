@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "skyrimcraft:block/dwemer_metal_tiles"
+  }
+}

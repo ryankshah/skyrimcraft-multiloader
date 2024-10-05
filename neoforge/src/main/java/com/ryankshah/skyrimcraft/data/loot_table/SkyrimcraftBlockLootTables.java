@@ -232,6 +232,47 @@ public class SkyrimcraftBlockLootTables extends BlockLootSubProvider
                                 .apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(1.0F, 2.0F)))
                         );
         add(BlockRegistry.BIRDS_NEST.get(), birdsNestDrops);
+
+        dropSelf(BlockRegistry.STEEL_TRAPDOOR.get());
+        dropSelf(BlockRegistry.DWEMER_METAL_TRAPDOOR.get());
+        add(BlockRegistry.STEEL_CELL_DOOR.get(), this::createDoorTable);
+        add(BlockRegistry.STEEL_GATE_DOOR.get(), this::createDoorTable);
+        dropSelf(BlockRegistry.DWEMER_SOUL_TORCH.get());
+        dropOther(BlockRegistry.DWEMER_SOUL_WALL_TORCH.get(), BlockRegistry.DWEMER_SOUL_TORCH.get());
+        dropSelf(BlockRegistry.DWEMER_METAL_TORCH.get());
+        dropOther(BlockRegistry.DWEMER_METAL_WALL_TORCH.get(), BlockRegistry.DWEMER_METAL_TORCH.get());
+        dropSelf(BlockRegistry.DWEMER_REDSTONE_TORCH.get());
+        dropOther(BlockRegistry.DWEMER_REDSTONE_WALL_TORCH.get(), BlockRegistry.DWEMER_REDSTONE_TORCH.get());
+        dropSelf(BlockRegistry.DWEMER_REPEATER.get());
+        dropSelf(BlockRegistry.DWEMER_COMPARATOR.get());
+        add(BlockRegistry.DWEMER_METAL_DOOR.get(), this::createDoorTable);
+        add(BlockRegistry.DWEMER_METAL_GATE.get(), this::createDoorTable);
+        dropSelf(BlockRegistry.DWEMER_METAL_PILLAR.get());
+        dropSelf(BlockRegistry.DWEMER_STONE_PILLAR.get());
+        dropSelf(BlockRegistry.DWEMER_METAL_TILES.get());
+        dropSelf(BlockRegistry.ORNATE_DWEMER_METAL_TILES.get());
+        dropSelf(BlockRegistry.DWEMER_METAL_BLOCK.get());
+        dropSelf(BlockRegistry.DWEMER_METAL_BRICKS.get());
+        dropSelf(BlockRegistry.DWEMER_STONE_BLOCK.get());
+        dropSelf(BlockRegistry.DWEMER_STONE_BRICKS.get());
+        dropSelf(BlockRegistry.DWEMER_STONE_PRESSURE_PLATE.get());
+        dropSelf(BlockRegistry.DWEMER_OBSERVER.get());
+        dropSelf(BlockRegistry.DWEMER_DISPENSER.get());
+        dropSelf(BlockRegistry.DWEMER_DROPPER.get());
+        dropSelf(BlockRegistry.DWEMER_DAYLIGHT_DETECTOR.get());
+
+        dropSelf(BlockRegistry.DWEMER_METAL_LANTERN.get());
+        dropSelf(BlockRegistry.DWEMER_SOUL_LANTERN.get());
+
+        dropSelf(BlockRegistry.DWEMER_GLASS.get());
+        dropSelf(BlockRegistry.DWEMER_FRAMED_GLASS.get());
+        dropSelf(BlockRegistry.DWEMER_WINDOWED_GLASS.get());
+
+        dropSelf(BlockRegistry.DWEMER_REDSTONE_LAMP.get());
+        dropSelf(BlockRegistry.DWEMER_REDSTONE_SOUL_LAMP.get());
+
+        dropSelf(BlockRegistry.DWEMER_PISTON.get());
+        dropSelf(BlockRegistry.DWEMER_STICKY_PISTON.get());
     }
 
     @Override
