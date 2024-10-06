@@ -5,10 +5,6 @@ import com.example.examplemod.registration.RegistryObject;
 import com.ryankshah.skyrimcraft.Constants;
 import com.ryankshah.skyrimcraft.block.entity.*;
 import com.ryankshah.skyrimcraft.block.piston.DwemerPistonMovingBlockEntity;
-import net.minecraft.client.animation.AnimationChannel;
-import net.minecraft.client.animation.AnimationDefinition;
-import net.minecraft.client.animation.Keyframe;
-import net.minecraft.client.animation.KeyframeAnimations;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
@@ -31,6 +27,6 @@ public class BlockEntityRegistry
     public static final RegistryObject<BlockEntityType<?>, BlockEntityType<DwemerDaylightDetectorBlockEntity>> DWEMER_DAYLIGHT_DETECTOR = BLOCK_ENTITY_TYPES.register("dwemer_daylight_detector",
             () -> BlockEntityType.Builder.of(DwemerDaylightDetectorBlockEntity::new, BlockRegistry.DWEMER_DAYLIGHT_DETECTOR.get()).build(null));
 
-    public static final RegistryObject<BlockEntityType<?>, BlockEntityType<DwemerPistonMovingBlockEntity>> DWEMER_PISTON = BLOCK_ENTITY_TYPES.register("dwemer_piston",
+    public static final RegistryObject<BlockEntityType<?>, BlockEntityType<DwemerPistonMovingBlockEntity>> DWEMER_PISTON = BLOCK_ENTITY_TYPES.register("dwemer_moving_piston_entity",
             () -> BlockEntityType.Builder.of(DwemerPistonMovingBlockEntity::new, BlockRegistry.DWEMER_MOVING_PISTON.get()).build(null));
 }

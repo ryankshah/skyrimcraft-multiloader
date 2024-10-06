@@ -24,6 +24,7 @@ public class DwemerPistonHeadRenderer implements BlockEntityRenderer<DwemerPisto
         this.blockRenderer = context.getBlockRenderDispatcher();
     }
 
+    @Override
     public void render(DwemerPistonMovingBlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         Level level = blockEntity.getLevel();
         if (level != null) {
@@ -63,6 +64,7 @@ public class DwemerPistonHeadRenderer implements BlockEntityRenderer<DwemerPisto
         this.blockRenderer.getModelRenderer().tesselateBlock(level, this.blockRenderer.getBlockModel(state), state, pos, poseStack, vertexconsumer, extended, RandomSource.create(), state.getSeed(pos), packedOverlay);
     }
 
+    @Override
     public int getViewDistance() {
         return 68;
     }

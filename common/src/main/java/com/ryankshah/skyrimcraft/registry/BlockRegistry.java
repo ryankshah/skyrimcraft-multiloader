@@ -674,9 +674,9 @@ public class BlockRegistry
 
     private static Block pistonBase(boolean isSticky) {
         BlockBehaviour.StatePredicate blockbehaviour$statepredicate = (p_152641_, p_152642_, p_152643_) -> {
-            return !(Boolean)p_152641_.getValue(PistonBaseBlock.EXTENDED);
+            return !(Boolean)p_152641_.getValue(DwemerPistonBase.EXTENDED);
         };
-        return new PistonBaseBlock(isSticky, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.5F).isRedstoneConductor(BlockRegistry::never).isSuffocating(blockbehaviour$statepredicate).isViewBlocking(blockbehaviour$statepredicate).pushReaction(PushReaction.BLOCK));
+        return new DwemerPistonBase(isSticky, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.5F).isRedstoneConductor(BlockRegistry::never).isSuffocating(blockbehaviour$statepredicate).isViewBlocking(blockbehaviour$statepredicate).pushReaction(PushReaction.BLOCK));
     }
 
     private static boolean never(BlockState state, BlockGetter blockGetter, BlockPos pos) {

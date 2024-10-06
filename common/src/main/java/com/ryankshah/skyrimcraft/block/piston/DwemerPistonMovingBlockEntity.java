@@ -1,5 +1,6 @@
 package com.ryankshah.skyrimcraft.block.piston;
 
+import com.ryankshah.skyrimcraft.registry.BlockEntityRegistry;
 import com.ryankshah.skyrimcraft.registry.BlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -49,7 +50,7 @@ public class DwemerPistonMovingBlockEntity extends BlockEntity {
     private int deathTicks;
 
     public DwemerPistonMovingBlockEntity(BlockPos pos, BlockState blockState) {
-        super(BlockEntityType.PISTON, pos, blockState);
+        super(BlockEntityRegistry.DWEMER_PISTON.get(), pos, blockState);
         this.movedState = Blocks.AIR.defaultBlockState();
     }
 
@@ -262,6 +263,7 @@ public class DwemerPistonMovingBlockEntity extends BlockEntity {
             this.progressO = this.progress;
             this.level.removeBlockEntity(this.worldPosition);
             this.setRemoved();
+
             if (this.level.getBlockState(this.worldPosition).is(BlockRegistry.DWEMER_MOVING_PISTON.get())) {
                 BlockState blockstate;
                 if (this.isSourcePiston) {
