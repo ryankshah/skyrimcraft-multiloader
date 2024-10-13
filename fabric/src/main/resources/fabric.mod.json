@@ -14,6 +14,7 @@
     "license": "${license}",
     "icon": "${mod_id}.png",
     "environment": "*",
+    "accessWidener" : "skyrimcraft.accesswidener",
     "entrypoints": {
         "main": [
             "com.ryankshah.skyrimcraft.SkyrimcraftFabric"
@@ -30,7 +31,11 @@
         "fabricloader": ">=${fabric_loader_version}",
         "fabric-api": "*",
         "minecraft": "${minecraft_version}",
-        "java": ">=${java_version}"
+        "java": ">=${java_version}",
+        "terrablender": "4.0.0.1",
+        "geckolib": "4.5.8",
+        "accessories": "1.0.0-beta.35",
+        "commonnetworking": "1.0.16-1.21"
     },
     "suggests": {
         "another-mod": "*"

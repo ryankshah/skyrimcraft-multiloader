@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "skyrimcraft:block/ornate_dwemer_metal_tiles",
+    "side": "skyrimcraft:block/ornate_dwemer_metal_tiles",
+    "top": "skyrimcraft:block/ornate_dwemer_metal_tiles"
+  }
+}

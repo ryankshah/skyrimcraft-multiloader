@@ -2,6 +2,8 @@ package com.ryankshah.skyrimcraft.data.loot_table;
 
 import com.ryankshah.skyrimcraft.Constants;
 import com.ryankshah.skyrimcraft.block.PearlOysterBlock;
+import com.ryankshah.skyrimcraft.block.TallDoorBlock;
+import com.ryankshah.skyrimcraft.block.util.TripleBlockPart;
 import com.ryankshah.skyrimcraft.registry.BlockRegistry;
 import com.ryankshah.skyrimcraft.registry.ItemRegistry;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -12,10 +14,8 @@ import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CropBlock;
-import net.minecraft.world.level.block.SweetBerryBushBlock;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -70,36 +70,8 @@ public class SkyrimcraftBlockLootTables extends BlockLootSubProvider
         dropSelf(BlockRegistry.TURN_STONE.get());
         dropSelf(BlockRegistry.RUNE_STONE.get());
 
-        dropSelf(BlockRegistry.STONE_BRICK_1.get());
-        dropSelf(BlockRegistry.STONE_BRICK_2.get());
-        dropSelf(BlockRegistry.STONE_BRICK_3.get());
-        dropSelf(BlockRegistry.STONE_BRICK_4.get());
-        dropSelf(BlockRegistry.STONE_BRICK_5.get());
-        dropSelf(BlockRegistry.STONE_BRICK_6.get());
-        dropSelf(BlockRegistry.COBBLESTONE_1.get());
-        dropSelf(BlockRegistry.COBBLESTONE_2.get());
-        dropSelf(BlockRegistry.SNOWY_PLANKS_1.get());
-        dropSelf(BlockRegistry.PLANKS_1.get());
-        dropSelf(BlockRegistry.PLANKS_2.get());
-        dropSelf(BlockRegistry.PLANKS_3.get());
-        dropSelf(BlockRegistry.PLANKS_4.get());
-        dropSelf(BlockRegistry.STONE_1.get());
-        dropSelf(BlockRegistry.STONE_2.get());
-        dropSelf(BlockRegistry.STONE_3.get());
         dropSelf(BlockRegistry.STONE_4.get());
         dropSelf(BlockRegistry.STONE_5.get());
-        dropSelf(BlockRegistry.STONE_6.get());
-        dropSelf(BlockRegistry.STONE_7.get());
-        dropSelf(BlockRegistry.STONE_8.get());
-        dropSelf(BlockRegistry.STONE_9.get());
-        dropSelf(BlockRegistry.STONE_10.get());
-        dropSelf(BlockRegistry.DIRT_1.get());
-        dropSelf(BlockRegistry.DIRT_2.get());
-        dropSelf(BlockRegistry.DIRT_3.get());
-        dropSelf(BlockRegistry.GRASS_1.get());
-        dropSelf(BlockRegistry.GRASS_2.get());
-        dropSelf(BlockRegistry.GRASS_3.get());
-        dropSelf(BlockRegistry.GRASS_4.get());
 
         dropSelf(BlockRegistry.RED_MOUNTAIN_FLOWER.get());
         dropSelf(BlockRegistry.BLUE_MOUNTAIN_FLOWER.get());
@@ -237,6 +209,7 @@ public class SkyrimcraftBlockLootTables extends BlockLootSubProvider
         dropSelf(BlockRegistry.DWEMER_METAL_TRAPDOOR.get());
         add(BlockRegistry.STEEL_CELL_DOOR.get(), this::createDoorTable);
         add(BlockRegistry.STEEL_GATE_DOOR.get(), this::createDoorTable);
+        add(BlockRegistry.STEEL_TALL_GATE.get(), this::createTallDoorTable);
         dropSelf(BlockRegistry.DWEMER_SOUL_TORCH.get());
         dropOther(BlockRegistry.DWEMER_SOUL_WALL_TORCH.get(), BlockRegistry.DWEMER_SOUL_TORCH.get());
         dropSelf(BlockRegistry.DWEMER_METAL_TORCH.get());
@@ -246,15 +219,30 @@ public class SkyrimcraftBlockLootTables extends BlockLootSubProvider
         dropSelf(BlockRegistry.DWEMER_REPEATER.get());
         dropSelf(BlockRegistry.DWEMER_COMPARATOR.get());
         add(BlockRegistry.DWEMER_METAL_DOOR.get(), this::createDoorTable);
+        add(BlockRegistry.DWEMER_METAL_TALL_DOOR.get(), this::createTallDoorTable);
+        add(BlockRegistry.DWEMER_METAL_TALL_GATE.get(), this::createTallDoorTable);
         add(BlockRegistry.DWEMER_METAL_GATE.get(), this::createDoorTable);
+        dropSelf(BlockRegistry.DWEMER_METAL_BARS.get());
+        dropSelf(BlockRegistry.STEEL_BARS.get());
         dropSelf(BlockRegistry.DWEMER_METAL_PILLAR.get());
         dropSelf(BlockRegistry.DWEMER_STONE_PILLAR.get());
         dropSelf(BlockRegistry.DWEMER_METAL_TILES.get());
+        dropSelf(BlockRegistry.DWEMER_METAL_TILE_STAIRS.get());
+        add(BlockRegistry.DWEMER_METAL_TILE_SLAB.get(), this::createSlabItemTable);
         dropSelf(BlockRegistry.ORNATE_DWEMER_METAL_TILES.get());
+        dropSelf(BlockRegistry.ORNATE_DWEMER_METAL_TILE_STAIRS.get());
+        add(BlockRegistry.ORNATE_DWEMER_METAL_TILE_SLAB.get(), this::createSlabItemTable);
         dropSelf(BlockRegistry.DWEMER_METAL_BLOCK.get());
         dropSelf(BlockRegistry.DWEMER_METAL_BRICKS.get());
+        dropSelf(BlockRegistry.DWEMER_METAL_BRICK_STAIRS.get());
+        dropSelf(BlockRegistry.DWEMER_METAL_BRICK_WALL.get());
+        dropSelf(BlockRegistry.DWEMER_STONE_BRICK_SLAB.get());
+        add(BlockRegistry.DWEMER_METAL_BRICK_SLAB.get(), this::createSlabItemTable);
         dropSelf(BlockRegistry.DWEMER_STONE_BLOCK.get());
         dropSelf(BlockRegistry.DWEMER_STONE_BRICKS.get());
+        dropSelf(BlockRegistry.DWEMER_STONE_BRICK_WALL.get());
+        dropSelf(BlockRegistry.DWEMER_STONE_BRICK_STAIRS.get());
+        add(BlockRegistry.DWEMER_STONE_BRICK_SLAB.get(), this::createSlabItemTable);
         dropSelf(BlockRegistry.DWEMER_STONE_PRESSURE_PLATE.get());
         dropSelf(BlockRegistry.DWEMER_OBSERVER.get());
         dropSelf(BlockRegistry.DWEMER_DISPENSER.get());
@@ -273,6 +261,10 @@ public class SkyrimcraftBlockLootTables extends BlockLootSubProvider
 
         dropSelf(BlockRegistry.DWEMER_PISTON.get());
         dropSelf(BlockRegistry.DWEMER_STICKY_PISTON.get());
+    }
+
+    protected LootTable.Builder createTallDoorTable(Block doorBlock) {
+        return this.createSinglePropConditionTable(doorBlock, TallDoorBlock.THIRD, TripleBlockPart.LOWER);
     }
 
     @Override

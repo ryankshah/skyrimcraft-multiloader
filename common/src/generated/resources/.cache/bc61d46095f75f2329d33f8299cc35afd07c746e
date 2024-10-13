@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-05T16:45:40.8676988	Item Models: skyrimcraft
+// 1.21.1	2024-10-06T09:21:01.5882502	Item Models: skyrimcraft
 24679915ce5b2b3a4fcb00fd4f1c08bdec28e5fc assets/skyrimcraft/models/item/abecean_longfin.json
 0759cc0f9da10e5faf7d443061d7da3c39c6857a assets/skyrimcraft/models/item/ahzidals_ring_of_arcana.json
 b0d9e82a0ed81545f591222c24c9d7a84e313923 assets/skyrimcraft/models/item/alchemy_skillbook.json
@@ -129,6 +129,10 @@ d1377ce18f4d31822a2a5934aaa6057c9b22188c assets/skyrimcraft/models/item/dwarven_
 38d7362b45807b2c7585b10ffed5a71666e19a63 assets/skyrimcraft/models/item/dwarven_sword.json
 8b4c963f0816d1d633bb4e66ed4884c87fdb971b assets/skyrimcraft/models/item/dwarven_warhammer.json
 cb5571b798cb14c963fe1b8505cfc12b748f98a5 assets/skyrimcraft/models/item/dwarven_war_axe.json
+c7130303fec07d325024c953eb3dfae5e41e58f6 assets/skyrimcraft/models/item/dwemer_metal_brick_wall.json
+8bf62746f1979f18ed1f0c2bc68c4b45166b70d8 assets/skyrimcraft/models/item/dwemer_metal_tall_door.json
+f10ed0e49ac92eaaf08f8d09207c8c1baa29a22b assets/skyrimcraft/models/item/dwemer_metal_tall_gate.json
+0667119f2b9cf753bb3a9f11a775fead52ef9884 assets/skyrimcraft/models/item/dwemer_stone_brick_wall.json
 a09e36e71d07a220a9c2b0bc2acf14472fb28d88 assets/skyrimcraft/models/item/ebony_battleaxe.json
 d182a0078e7f5d5d2cd8ce49ca90485659ca1890 assets/skyrimcraft/models/item/ebony_boots.json
 6ec0d67c7e0368f53d73188f9f2c2de5893b790c assets/skyrimcraft/models/item/ebony_bow.json
@@ -386,6 +390,7 @@ bf6d1985bb8128b55bdd3ec6fce4033e31f97b42 assets/skyrimcraft/models/item/steel_da
 7da7d189a4b6ae99ffbc439b0360fcebab954160 assets/skyrimcraft/models/item/steel_ingot.json
 3df141d16783c5b436765809e1d6b7af7c12f166 assets/skyrimcraft/models/item/steel_mace.json
 6bb91b25ac67b22b7d52ff0b6db2cbf36188e9cf assets/skyrimcraft/models/item/steel_sword.json
+b8fccc9b1243f68dea7172a71364ef4c7be5a35c assets/skyrimcraft/models/item/steel_tall_gate.json
 638a26013ff3ec97099d3f8a92cf22434eb1ec3d assets/skyrimcraft/models/item/steel_warhammer.json
 18b320fe9db78d2efb6bded5f2960f22b839c327 assets/skyrimcraft/models/item/steel_war_axe.json
 75dcd4cfdbd9df536424b2d6728dbba393585ae1 assets/skyrimcraft/models/item/stormcloak_officer_boots.json

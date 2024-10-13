@@ -1,0 +1,8 @@
+{
+  "parent": "block/piston_extended",
+  "textures": {
+    "bottom": "skyrimcraft:block/dwemer_piston_bottom_on",
+    "side": "skyrimcraft:block/dwemer_sticky_piston_side_on",
+    "inside": "skyrimcraft:block/dwemer_sticky_piston_inner"
+  }
+}

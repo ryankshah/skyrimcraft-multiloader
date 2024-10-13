@@ -25,7 +25,7 @@ public class KeysRegistry
     public static final Lazy<KeyMapping> MENU_KEY = Lazy.lazy(() -> new KeyMapping(
             "key." + Constants.MODID + ".toggle_menu", // Will be localized using this translation key
             InputConstants.Type.KEYSYM,
-            GLFW.GLFW_KEY_M, // Default key is P
+            GLFW.GLFW_KEY_TAB, // Default key is TAB (previously M key)
             "key.categories.skyrimcraft" // Mapping will be in the misc category
     ));
     public static final Lazy<KeyMapping> SPELL_SLOT_1_KEY = Lazy.lazy(() -> new KeyMapping(

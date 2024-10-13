@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "skyrimcraft:block/dwemer_metal_tile_slab"
+    },
+    "type=double": {
+      "model": "skyrimcraft:block/dwemer_metal_tiles"
+    },
+    "type=top": {
+      "model": "skyrimcraft:block/dwemer_metal_tile_slab_top"
+    }
+  }
+}

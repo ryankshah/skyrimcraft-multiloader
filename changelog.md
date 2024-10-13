@@ -1,29 +1,17 @@
 1.21-0.4.0
 ==========
 
-Player Map - Accessible from Menu (M)
-- Map of the world (within a radius of the player - TODO: all visited chunks)
-- Fast Travel to Structures (Map Features)
-- Waypoints - TODO: /waypoint set <name>
+Player Map - Accessible From Menu (TAB)
+- Waypoints - TODO: /waypoint set <name> <type>
 
 New shouts/spells:
 - Telekinesis (TO FIX)
 - Oakflesh
 - Candlelight (TO FIX)
 
-New cosmetic items (wearables - found in dungeon and certain mob loot tables):
-- A bunch of rings and some with effects
-- A bunch of necklaces and some with effects
-
-New cosmetic environment blocks: (TODO - add more if needed)
-- Stones
-- Dirts
-- Grass Blocks
-
 New functional blocks:
 - Atronach Forge (Summon Atronachs using ingredients) (TODO)
 - Tanning Rack (Turns animal hides into leather) (TODO)
-- Turn Stone & Rune Stone (turn the turn stone to activate runestones for redstone output)
 
 Entity functionality:
 - Dragon fight mechanics (TODO)
@@ -39,8 +27,8 @@ New entities:
 - Burnt Spriggan (drops Burnt Spriggan Wood) (TODO)
 
 New biomes:
-- Ash wastes (TODO: Add Burnt Spriggan, Ash Guardian, Ash Hopper, Ash Spawn, TODO: Add burnt plants,
-              Ash Farm Structure (https://hewhogames.wordpress.com/wp-content/uploads/2013/02/2013-02-15_00008.jpg))
+- Ash wastes (done but add todo) (TODO: Add Burnt Spriggan, Ash Guardian, Ash Hopper, Ash Spawn, TODO: Add burnt plants,
+  Ash Farm Structure (https://hewhogames.wordpress.com/wp-content/uploads/2013/02/2013-02-15_00008.jpg))
 - Volcanic Tundra (TODO)
 - Tundra Marsh (TODO)
 - Pine Forest
@@ -54,9 +42,34 @@ New structures:
 - Abandoned Farm (TODO)
 - Two new types of dungeon! (TODO)
 
-Bug Fixes:
+1.21-0.3.1
+==========
+
+Player Map - Accessible from Menu (TAB)
+- Map of the world (within a radius of the player - TODO: all visited chunks)
+- Fast Travel to Structures (Map Features)
+
+New cosmetic items (wearables - found in dungeon and certain mob loot tables):
+- A bunch of rings
+- A bunch of necklaces
+
+New cosmetic environment blocks:
+- Dwemer Metal Cosmetic Blocks
+- Dwemer Metal Redstone Components (Pistons, Repeaters, Droppers, etc.)
+
+New functional blocks:
+- Turn Stone & Rune Stone (turn the turn stone to activate runestones for redstone output)
+
+
+New biomes:
+- Ash wastes
+
+Bug Fixes and Improvements:
 - Fixed bug where powers could be casted whenever and not set any cooldown.
 - Fixed bug where the game would crash if the client was not in focus on world creation
+- Fixed bug where Fabric crashes on load trying to add goals to vanilla mobs
+- Tab key is now used to open the Skyrim menu (previously the M key)
+- Skyrim Menu can now be interacted with the mouse as well as arrow keys.
 
 
 1.21-0.3.0

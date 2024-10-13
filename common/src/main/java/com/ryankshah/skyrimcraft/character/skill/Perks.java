@@ -123,7 +123,14 @@ public class Perks
     public static Perk MASTER_LOCKS = new Perk("Master Locks", "Master locks are much easier to pick", 100, List.of(EXPERT_LOCKS.getName()), false);
 
     // One Handed
-
+//    public static Perk NOVICE_LOCKS = new Perk("Novice Locks", "Novice locks are much easier to pick", 20, List.of(), false);
+//    public static Perk APPRENTICE_LOCKS = new Perk("Apprentice Locks", "Apprentice locks are much easier to pick", 25, List.of(NOVICE_LOCKS.getName()), false);
+//    public static Perk ADEPT_LOCKS = new Perk("Adept Locks", "Adept locks are much easier to pick", 50, List.of(APPRENTICE_LOCKS.getName()), false);
+//    public static Perk EMERALD_TOUCH = new Perk("Emerald Touch", "Find more emeralds in chests", 60, List.of(ADEPT_LOCKS.getName()), false);
+//    public static Perk TREASURE_HUNTER = new Perk("Treasure Hunter", "50% greater chance of finding special treasure", 70, List.of(EMERALD_TOUCH.getName()), false);
+//    public static Perk EXPERT_LOCKS = new Perk("Expert Locks", "Expert locks are much easier to pick", 75, List.of(ADEPT_LOCKS.getName()), false);
+//    public static Perk UNBREAKABLE = new Perk("Unbreakable", "Lockpicks never break", 100, List.of(EXPERT_LOCKS.getName()), false);
+//    public static Perk MASTER_LOCKS = new Perk("Master Locks", "Master locks are much easier to pick", 100, List.of(EXPERT_LOCKS.getName()), false);
 
     // Pickpocket
 

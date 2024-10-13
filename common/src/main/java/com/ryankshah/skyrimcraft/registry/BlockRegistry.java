@@ -345,72 +345,6 @@ public class BlockRegistry
     ));
 
 
-    /// DECORATIVE BLOCKS
-    public static final RegistryObject<Block, Block> STONE_BRICK_1 = registerBlock("stone_brick_1",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_BRICK_1_ITEM = ItemRegistry.ITEMS.register("stone_brick_1",
-            () -> new BlockItem(STONE_BRICK_1.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> STONE_BRICK_2 = registerBlock("stone_brick_2",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_BRICK_2_ITEM = ItemRegistry.ITEMS.register("stone_brick_2",
-            () -> new BlockItem(STONE_BRICK_2.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> STONE_BRICK_3 = registerBlock("stone_brick_3",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_BRICK_3_ITEM = ItemRegistry.ITEMS.register("stone_brick_3",
-            () -> new BlockItem(STONE_BRICK_3.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> STONE_BRICK_4 = registerBlock("stone_brick_4",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_BRICK_4_ITEM = ItemRegistry.ITEMS.register("stone_brick_4",
-            () -> new BlockItem(STONE_BRICK_4.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> STONE_BRICK_5 = registerBlock("stone_brick_5",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_BRICK_5_ITEM = ItemRegistry.ITEMS.register("stone_brick_5",
-            () -> new BlockItem(STONE_BRICK_5.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> STONE_BRICK_6 = registerBlock("stone_brick_6",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_BRICK_6_ITEM = ItemRegistry.ITEMS.register("stone_brick_6",
-            () -> new BlockItem(STONE_BRICK_6.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> COBBLESTONE_1 = registerBlock("cobblestone_1",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> COBBLESTONE_1_ITEM = ItemRegistry.ITEMS.register("cobblestone_1",
-            () -> new BlockItem(COBBLESTONE_1.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> COBBLESTONE_2 = registerBlock("cobblestone_2",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> COBBLESTONE_2_ITEM = ItemRegistry.ITEMS.register("cobblestone_2",
-            () -> new BlockItem(COBBLESTONE_2.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> SNOWY_PLANKS_1 = registerBlock("snowy_planks_1",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
-    public static final RegistryObject<Item, BlockItem> SNOWY_PLANKS_1_ITEM = ItemRegistry.ITEMS.register("snowy_planks_1",
-            () -> new BlockItem(SNOWY_PLANKS_1.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> PLANKS_1 = registerBlock("planks_1",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
-    public static final RegistryObject<Item, BlockItem> PLANKS_1_ITEM = ItemRegistry.ITEMS.register("planks_1",
-            () -> new BlockItem(PLANKS_1.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> PLANKS_2 = registerBlock("planks_2",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
-    public static final RegistryObject<Item, BlockItem> PLANKS_2_ITEM = ItemRegistry.ITEMS.register("planks_2",
-            () -> new BlockItem(PLANKS_2.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> PLANKS_3 = registerBlock("planks_3",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
-    public static final RegistryObject<Item, BlockItem> PLANKS_3_ITEM = ItemRegistry.ITEMS.register("planks_3",
-            () -> new BlockItem(PLANKS_3.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> PLANKS_4 = registerBlock("planks_4",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
-    public static final RegistryObject<Item, BlockItem> PLANKS_4_ITEM = ItemRegistry.ITEMS.register("planks_4",
-            () -> new BlockItem(PLANKS_4.get(), new Item.Properties()));
-
-    public static final RegistryObject<Block, Block> STONE_1 = registerBlock("stone_1",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_1_ITEM = ItemRegistry.ITEMS.register("stone_1",
-            () -> new BlockItem(STONE_1.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> STONE_2 = registerBlock("stone_2",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_2_ITEM = ItemRegistry.ITEMS.register("stone_2",
-            () -> new BlockItem(STONE_2.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> STONE_3 = registerBlock("stone_3",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_3_ITEM = ItemRegistry.ITEMS.register("stone_3",
-            () -> new BlockItem(STONE_3.get(), new Item.Properties()));
     public static final RegistryObject<Block, Block> STONE_4 = registerBlock("stone_4",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
     public static final RegistryObject<Item, BlockItem> STONE_4_ITEM = ItemRegistry.ITEMS.register("stone_4",
@@ -419,56 +353,6 @@ public class BlockRegistry
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
     public static final RegistryObject<Item, BlockItem> STONE_5_ITEM = ItemRegistry.ITEMS.register("stone_5",
             () -> new BlockItem(STONE_5.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> STONE_6 = registerBlock("stone_6",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_6_ITEM = ItemRegistry.ITEMS.register("stone_6",
-            () -> new BlockItem(STONE_6.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> STONE_7 = registerBlock("stone_7",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_7_ITEM = ItemRegistry.ITEMS.register("stone_7",
-            () -> new BlockItem(STONE_7.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> STONE_8 = registerBlock("stone_8",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_8_ITEM = ItemRegistry.ITEMS.register("stone_8",
-            () -> new BlockItem(STONE_8.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> STONE_9 = registerBlock("stone_9",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_9_ITEM = ItemRegistry.ITEMS.register("stone_9",
-            () -> new BlockItem(STONE_9.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> STONE_10 = registerBlock("stone_10",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
-    public static final RegistryObject<Item, BlockItem> STONE_10_ITEM = ItemRegistry.ITEMS.register("stone_10",
-            () -> new BlockItem(STONE_10.get(), new Item.Properties()));
-
-    public static final RegistryObject<Block, Block> DIRT_1 = registerBlock("dirt_1",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
-    public static final RegistryObject<Item, BlockItem> DIRT_1_ITEM = ItemRegistry.ITEMS.register("dirt_1",
-            () -> new BlockItem(DIRT_1.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> DIRT_2 = registerBlock("dirt_2",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
-    public static final RegistryObject<Item, BlockItem> DIRT_2_ITEM = ItemRegistry.ITEMS.register("dirt_2",
-            () -> new BlockItem(DIRT_2.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> DIRT_3 = registerBlock("dirt_3",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
-    public static final RegistryObject<Item, BlockItem> DIRT_3_ITEM = ItemRegistry.ITEMS.register("dirt_3",
-            () -> new BlockItem(DIRT_3.get(), new Item.Properties()));
-
-    public static final RegistryObject<Block, Block> GRASS_1 = registerBlock("grass_1",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK)));
-    public static final RegistryObject<Item, BlockItem> GRASS_1_ITEM = ItemRegistry.ITEMS.register("grass_1",
-            () -> new BlockItem(GRASS_1.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> GRASS_2 = registerBlock("grass_2",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK)));
-    public static final RegistryObject<Item, BlockItem> GRASS_2_ITEM = ItemRegistry.ITEMS.register("grass_2",
-            () -> new BlockItem(GRASS_2.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> GRASS_3 = registerBlock("grass_3",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK)));
-    public static final RegistryObject<Item, BlockItem> GRASS_3_ITEM = ItemRegistry.ITEMS.register("grass_3",
-            () -> new BlockItem(GRASS_3.get(), new Item.Properties()));
-    public static final RegistryObject<Block, Block> GRASS_4 = registerBlock("grass_4",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK)));
-    public static final RegistryObject<Item, BlockItem> GRASS_4_ITEM = ItemRegistry.ITEMS.register("grass_4",
-            () -> new BlockItem(GRASS_4.get(), new Item.Properties()));
 
     public static final BlockSetType STEEL = BlockSetType.register(new BlockSetType(Constants.MODID + ":steel"));
     public static final BlockSetType DWEMER_METAL = BlockSetType.register(new BlockSetType(Constants.MODID + ":dwemer"));
@@ -485,6 +369,10 @@ public class BlockRegistry
             () -> new SkyrimcraftDoorBlock(STEEL, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR)));
     public static final RegistryObject<Item, BlockItem> STEEL_GATE_DOOR_ITEM = ItemRegistry.ITEMS.register("steel_gate_door",
             () -> new BlockItem(STEEL_GATE_DOOR.get(), new Item.Properties()));
+    public static final RegistryObject<Block, TallDoorBlock> STEEL_TALL_GATE = registerBlock("steel_tall_gate",
+            () -> new TallDoorBlock(STEEL, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR)));
+    public static final RegistryObject<Item, BlockItem> STEEL_TALL_GATE_ITEM = ItemRegistry.ITEMS.register("steel_tall_gate",
+            () -> new BlockItem(STEEL_TALL_GATE.get(), new Item.Properties()));
 
     public static final RegistryObject<Block, TrapDoorBlock> DWEMER_METAL_TRAPDOOR = registerBlock("dwemer_metal_trapdoor",
             () -> new TrapDoorBlock(DWEMER_METAL, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_TRAPDOOR)));
@@ -495,6 +383,17 @@ public class BlockRegistry
             () -> new SkyrimcraftDoorBlock(DWEMER_METAL, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR)));
     public static final RegistryObject<Item, BlockItem> DWEMER_METAL_DOOR_ITEM = ItemRegistry.ITEMS.register("dwemer_metal_door",
             () -> new BlockItem(DWEMER_METAL_DOOR.get(), new Item.Properties()));
+
+    public static final RegistryObject<Block, TallDoorBlock> DWEMER_METAL_TALL_DOOR = registerBlock("dwemer_metal_tall_door",
+            () -> new TallDoorBlock(DWEMER_METAL, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR)));
+    public static final RegistryObject<Item, BlockItem> DWEMER_METAL_TALL_DOOR_ITEM = ItemRegistry.ITEMS.register("dwemer_metal_tall_door",
+            () -> new BlockItem(DWEMER_METAL_TALL_DOOR.get(), new Item.Properties()));
+
+    public static final RegistryObject<Block, TallDoorBlock> DWEMER_METAL_TALL_GATE = registerBlock("dwemer_metal_tall_gate",
+            () -> new TallDoorBlock(DWEMER_METAL, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR)));
+    public static final RegistryObject<Item, BlockItem> DWEMER_METAL_TALL_GATE_ITEM = ItemRegistry.ITEMS.register("dwemer_metal_tall_gate",
+            () -> new BlockItem(DWEMER_METAL_TALL_GATE.get(), new Item.Properties()));
+
     public static final RegistryObject<Block, SkyrimcraftDoorBlock> DWEMER_METAL_GATE = registerBlock("dwemer_metal_gate",
             () -> new SkyrimcraftDoorBlock(DWEMER_METAL, BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR)));
     public static final RegistryObject<Item, BlockItem> DWEMER_METAL_GATE_ITEM = ItemRegistry.ITEMS.register("dwemer_metal_gate",
@@ -509,13 +408,13 @@ public class BlockRegistry
             () -> new TorchBlock(ParticleTypes.SOUL_FIRE_FLAME, BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_TORCH)));
     public static final RegistryObject<Block, WallTorchBlock> DWEMER_SOUL_WALL_TORCH = registerBlock("dwemer_soul_wall_torch",
             () -> new WallTorchBlock(ParticleTypes.SMALL_FLAME, BlockBehaviour.Properties.ofFullCopy(Blocks.TORCH)));
-    public static final RegistryObject<Item, BlockItem> DDWEMER_SOUL_TORCH_ITEM = ItemRegistry.ITEMS.register("dwemer_soul_torch",
+    public static final RegistryObject<Item, BlockItem> DWEMER_SOUL_TORCH_ITEM = ItemRegistry.ITEMS.register("dwemer_soul_torch",
             () -> new BlockItem(DWEMER_SOUL_TORCH.get(), new Item.Properties()));
     public static final RegistryObject<Block, RedstoneTorchBlock> DWEMER_REDSTONE_TORCH = registerBlock("dwemer_redstone_torch", //RedstoneTorchBlock
             () -> new RedstoneTorchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_TORCH)));
     public static final RegistryObject<Block, RedstoneWallTorchBlock> DWEMER_REDSTONE_WALL_TORCH = registerBlock("dwemer_redstone_wall_torch", //RedstoneTorchBlock
             () -> new RedstoneWallTorchBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.REDSTONE_TORCH)));
-    public static final RegistryObject<Item, BlockItem> DDWEMER_REDSTONE_TORCH_ITEM = ItemRegistry.ITEMS.register("dwemer_redstone_torch",
+    public static final RegistryObject<Item, BlockItem> DWEMER_REDSTONE_TORCH_ITEM = ItemRegistry.ITEMS.register("dwemer_redstone_torch",
             () -> new BlockItem(DWEMER_REDSTONE_TORCH.get(), new Item.Properties()));
 
     public static final RegistryObject<Block, RepeaterBlock> DWEMER_REPEATER = registerBlock("dwemer_repeater",
@@ -556,18 +455,49 @@ public class BlockRegistry
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Item, BlockItem> DWEMER_METAL_TILES_ITEM = ItemRegistry.ITEMS.register("dwemer_metal_tiles",
             () -> new BlockItem(DWEMER_METAL_TILES.get(), new Item.Properties()));
+    public static final RegistryObject<Block, SkyrimStairBlock> DWEMER_METAL_TILE_STAIRS = registerBlock("dwemer_metal_tile_stairs",
+            () -> new SkyrimStairBlock(DWEMER_METAL_TILES.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(DWEMER_METAL_TILES.get())));
+    public static final RegistryObject<Item, BlockItem> DWEMER_METAL_TILE_STAIRS_ITEM = ItemRegistry.ITEMS.register("dwemer_metal_tile_stairs",
+            () -> new BlockItem(DWEMER_METAL_TILE_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Block, SlabBlock> DWEMER_METAL_TILE_SLAB = registerBlock("dwemer_metal_tile_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(DWEMER_METAL_TILES.get())));
+    public static final RegistryObject<Item, BlockItem> DWEMER_METAL_TILE_SLAB_ITEM = ItemRegistry.ITEMS.register("dwemer_metal_tile_slab",
+            () -> new BlockItem(DWEMER_METAL_TILE_SLAB.get(), new Item.Properties()));
+
     public static final RegistryObject<Block, Block> ORNATE_DWEMER_METAL_TILES = registerBlock("ornate_dwemer_metal_tiles",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Item, BlockItem> ORNATE_DWEMER_METAL_TILES_ITEM = ItemRegistry.ITEMS.register("ornate_dwemer_metal_tiles",
             () -> new BlockItem(ORNATE_DWEMER_METAL_TILES.get(), new Item.Properties()));
+    public static final RegistryObject<Block, SkyrimStairBlock> ORNATE_DWEMER_METAL_TILE_STAIRS = registerBlock("ornate_dwemer_metal_tile_stairs",
+            () -> new SkyrimStairBlock(ORNATE_DWEMER_METAL_TILES.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(ORNATE_DWEMER_METAL_TILES.get())));
+    public static final RegistryObject<Item, BlockItem> ORNATE_DWEMER_METAL_TILE_STAIRS_ITEM = ItemRegistry.ITEMS.register("ornate_dwemer_metal_tile_stairs",
+            () -> new BlockItem(ORNATE_DWEMER_METAL_TILE_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Block, SlabBlock> ORNATE_DWEMER_METAL_TILE_SLAB = registerBlock("ornate_dwemer_metal_tile_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(ORNATE_DWEMER_METAL_TILES.get())));
+    public static final RegistryObject<Item, BlockItem> ORNATE_DWEMER_METAL_TILE_SLAB_ITEM = ItemRegistry.ITEMS.register("ornate_dwemer_metal_tile_slab",
+            () -> new BlockItem(ORNATE_DWEMER_METAL_TILE_SLAB.get(), new Item.Properties()));
+
     public static final RegistryObject<Block, Block> DWEMER_METAL_BLOCK = registerBlock("dwemer_metal_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Item, BlockItem> DWEMER_METAL_BLOCK_ITEM = ItemRegistry.ITEMS.register("dwemer_metal_block",
             () -> new BlockItem(DWEMER_METAL_BLOCK.get(), new Item.Properties()));
+
     public static final RegistryObject<Block, Block> DWEMER_METAL_BRICKS = registerBlock("dwemer_metal_bricks",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Item, BlockItem> DWEMER_METAL_BRICKS_ITEM = ItemRegistry.ITEMS.register("dwemer_metal_bricks",
             () -> new BlockItem(DWEMER_METAL_BRICKS.get(), new Item.Properties()));
+    public static final RegistryObject<Block, SkyrimStairBlock> DWEMER_METAL_BRICK_STAIRS = registerBlock("dwemer_metal_brick_stairs",
+            () -> new SkyrimStairBlock(DWEMER_METAL_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(DWEMER_METAL_BRICKS.get())));
+    public static final RegistryObject<Item, BlockItem> DWEMER_METAL_BRICK_STAIRS_ITEM = ItemRegistry.ITEMS.register("dwemer_metal_brick_stairs",
+            () -> new BlockItem(DWEMER_METAL_BRICK_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Block, SlabBlock> DWEMER_METAL_BRICK_SLAB = registerBlock("dwemer_metal_brick_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(DWEMER_METAL_BRICKS.get())));
+    public static final RegistryObject<Item, BlockItem> DWEMER_METAL_BRICK_SLAB_ITEM = ItemRegistry.ITEMS.register("dwemer_metal_brick_slab",
+            () -> new BlockItem(DWEMER_METAL_BRICK_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Block, WallBlock> DWEMER_METAL_BRICK_WALL = registerBlock("dwemer_metal_brick_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(DWEMER_METAL_BRICKS.get())));
+    public static final RegistryObject<Item, BlockItem> DWEMER_METAL_BRICK_WALL_ITEM = ItemRegistry.ITEMS.register("dwemer_metal_brick_wall",
+            () -> new BlockItem(DWEMER_METAL_BRICK_WALL.get(), new Item.Properties()));
 
     public static final RegistryObject<Block, Block> DWEMER_STONE_BLOCK = registerBlock("dwemer_stone_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
@@ -577,6 +507,18 @@ public class BlockRegistry
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
     public static final RegistryObject<Item, BlockItem> DWEMER_STONE_BRICKS_ITEM = ItemRegistry.ITEMS.register("dwemer_stone_bricks",
             () -> new BlockItem(DWEMER_STONE_BRICKS.get(), new Item.Properties()));
+    public static final RegistryObject<Block, SkyrimStairBlock> DWEMER_STONE_BRICK_STAIRS = registerBlock("dwemer_stone_brick_stairs",
+            () -> new SkyrimStairBlock(DWEMER_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(DWEMER_STONE_BRICKS.get())));
+    public static final RegistryObject<Item, BlockItem> DWEMER_STONE_BRICK_STAIRS_ITEM = ItemRegistry.ITEMS.register("dwemer_stone_brick_stairs",
+            () -> new BlockItem(DWEMER_STONE_BRICK_STAIRS.get(), new Item.Properties()));
+    public static final RegistryObject<Block, SlabBlock> DWEMER_STONE_BRICK_SLAB = registerBlock("dwemer_stone_brick_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(DWEMER_STONE_BRICKS.get())));
+    public static final RegistryObject<Item, BlockItem> DWEMER_STONE_BRICK_SLAB_ITEM = ItemRegistry.ITEMS.register("dwemer_stone_brick_slab",
+            () -> new BlockItem(DWEMER_STONE_BRICK_SLAB.get(), new Item.Properties()));
+    public static final RegistryObject<Block, WallBlock> DWEMER_STONE_BRICK_WALL = registerBlock("dwemer_stone_brick_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(DWEMER_STONE_BRICKS.get())));
+    public static final RegistryObject<Item, BlockItem> DWEMER_STONE_BRICK_WALL_ITEM = ItemRegistry.ITEMS.register("dwemer_stone_brick_wall",
+            () -> new BlockItem(DWEMER_STONE_BRICK_WALL.get(), new Item.Properties()));
 
     public static final RegistryObject<Block, SkyrimcraftPressurePlateBlock> DWEMER_STONE_PRESSURE_PLATE = registerBlock("dwemer_stone_pressure_plate",
             () -> new SkyrimcraftPressurePlateBlock(BlockSetType.STONE, BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
@@ -622,7 +564,15 @@ public class BlockRegistry
     public static final RegistryObject<Item, BlockItem> DWEMER_SOUL_LANTERN_ITEM = ItemRegistry.ITEMS.register("dwemer_soul_lantern",
             () -> new BlockItem(DWEMER_SOUL_LANTERN.get(), new Item.Properties()));
 
-
+    // Dwemer metal bars and steel bars
+    public static final RegistryObject<Block, SkyrimBarsBlock> DWEMER_METAL_BARS = registerBlock("dwemer_metal_bars",
+            () -> new SkyrimBarsBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BARS)));
+    public static final RegistryObject<Item, BlockItem> DWEMER_METAL_BARS_ITEM = ItemRegistry.ITEMS.register("dwemer_metal_bars",
+            () -> new BlockItem(DWEMER_METAL_BARS.get(), new Item.Properties()));
+    public static final RegistryObject<Block, SkyrimBarsBlock> STEEL_BARS = registerBlock("steel_bars",
+            () -> new SkyrimBarsBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BARS)));
+    public static final RegistryObject<Item, BlockItem> STEEL_BARS_ITEM = ItemRegistry.ITEMS.register("steel_bars",
+            () -> new BlockItem(STEEL_BARS.get(), new Item.Properties()));
 
     public static final RegistryObject<Block, DwemerMovingPistonBlock> DWEMER_MOVING_PISTON = registerBlock("dwemer_moving_piston",
             () -> new DwemerMovingPistonBlock(

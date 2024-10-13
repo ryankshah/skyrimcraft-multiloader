@@ -1,21 +1,15 @@
 package com.ryankshah.skyrimcraft.data.block;
 
 import com.ryankshah.skyrimcraft.Constants;
-import com.ryankshah.skyrimcraft.block.PearlOysterBlock;
-import com.ryankshah.skyrimcraft.block.RuneStoneBlock;
-import com.ryankshah.skyrimcraft.block.SkyrimcraftPressurePlateBlock;
-import com.ryankshah.skyrimcraft.block.TurnStoneBlock;
+import com.ryankshah.skyrimcraft.block.*;
+import com.ryankshah.skyrimcraft.block.util.TripleBlockPart;
 import com.ryankshah.skyrimcraft.registry.BlockRegistry;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
-import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
-import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.minecraft.world.level.block.state.properties.*;
+import net.neoforged.neoforge.client.model.generators.*;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class BlockData
@@ -36,39 +30,8 @@ public class BlockData
         provider.addBlock(BlockRegistry.SILVER_ORE, "Silver Ore");
         provider.addBlock(BlockRegistry.DEEPSLATE_SILVER_ORE, "Silver Ore");
 
-        provider.addBlock(BlockRegistry.STONE_BRICK_1, "Stone Bricks");
-        provider.addBlock(BlockRegistry.STONE_BRICK_2, "Stone Bricks");
-        provider.addBlock(BlockRegistry.STONE_BRICK_3, "Stone Bricks");
-        provider.addBlock(BlockRegistry.STONE_BRICK_4, "Stone Bricks");
-        provider.addBlock(BlockRegistry.STONE_BRICK_5, "Stone Bricks");
-        provider.addBlock(BlockRegistry.STONE_BRICK_6, "Stone Bricks");
-        provider.addBlock(BlockRegistry.COBBLESTONE_1, "Cobblestone");
-        provider.addBlock(BlockRegistry.COBBLESTONE_2, "Cobblestone");
-        provider.addBlock(BlockRegistry.SNOWY_PLANKS_1, "Snowy Planks");
-        provider.addBlock(BlockRegistry.PLANKS_1, "Planks");
-        provider.addBlock(BlockRegistry.PLANKS_2, "Planks");
-        provider.addBlock(BlockRegistry.PLANKS_3, "Planks");
-        provider.addBlock(BlockRegistry.PLANKS_4, "Planks");
-        
-        provider.addBlock(BlockRegistry.STONE_1, "Stone");
-        provider.addBlock(BlockRegistry.STONE_2, "Stone");
-        provider.addBlock(BlockRegistry.STONE_3, "Stone");
         provider.addBlock(BlockRegistry.STONE_4, "Stone");
         provider.addBlock(BlockRegistry.STONE_5, "Stone");
-        provider.addBlock(BlockRegistry.STONE_6, "Stone");
-        provider.addBlock(BlockRegistry.STONE_7, "Stone");
-        provider.addBlock(BlockRegistry.STONE_8, "Stone");
-        provider.addBlock(BlockRegistry.STONE_9, "Stone");
-        provider.addBlock(BlockRegistry.STONE_10, "Stone");
-
-        provider.addBlock(BlockRegistry.DIRT_1, "Dirt");
-        provider.addBlock(BlockRegistry.DIRT_2, "Dirt");
-        provider.addBlock(BlockRegistry.DIRT_3, "Dirt");
-        
-        provider.addBlock(BlockRegistry.GRASS_1, "Grass");
-        provider.addBlock(BlockRegistry.GRASS_2, "Grass");
-        provider.addBlock(BlockRegistry.GRASS_3, "Grass");
-        provider.addBlock(BlockRegistry.GRASS_4, "Grass");
 
         provider.addBlock(BlockRegistry.TURN_STONE, "Turn Stone");
         provider.addBlock(BlockRegistry.RUNE_STONE, "Rune Stone");
@@ -115,14 +78,24 @@ public class BlockData
         provider.addBlock(BlockRegistry.DWEMER_METAL_PILLAR, "Dwemer Metal Pillar");
         provider.addBlock(BlockRegistry.DWEMER_STONE_PILLAR, "Dwemer Stone Pillar");
         provider.addBlock(BlockRegistry.DWEMER_METAL_TILES, "Dwemer Metal Tiles");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_TILE_SLAB, "Dwemer Metal Tile Slab");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_TILE_STAIRS, "Dwemer Metal Tile Stairs");
         provider.addBlock(BlockRegistry.ORNATE_DWEMER_METAL_TILES, "Ornate Dwemer Metal Tiles");
+        provider.addBlock(BlockRegistry.ORNATE_DWEMER_METAL_TILE_SLAB, "Ornate Dwemer Metal Tile Slab");
+        provider.addBlock(BlockRegistry.ORNATE_DWEMER_METAL_TILE_STAIRS, "Ornate Dwemer Metal Tile Stairs");
         provider.addBlock(BlockRegistry.DWEMER_METAL_BLOCK, "Dwemer Metal Block");
         provider.addBlock(BlockRegistry.DWEMER_METAL_BRICKS, "Dwemer Metal Bricks");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_BRICK_WALL, "Dwemer Metal Brick Wall");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_BRICK_SLAB, "Dwemer Metal Brick Slab");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_BRICK_STAIRS, "Dwemer Metal Brick Stairs");
         provider.addBlock(BlockRegistry.DWEMER_COMPARATOR, "Dwemer Comparator");
         provider.addBlock(BlockRegistry.DWEMER_DROPPER, "Dwemer Dropper");
         provider.addBlock(BlockRegistry.DWEMER_DISPENSER, "Dwemer Dispenser");
         provider.addBlock(BlockRegistry.DWEMER_STONE_BLOCK, "Dwemer Stone Block");
         provider.addBlock(BlockRegistry.DWEMER_STONE_BRICKS, "Dwemer Stone Bricks");
+        provider.addBlock(BlockRegistry.DWEMER_STONE_BRICK_WALL, "Dwemer Stone Brick Wall");
+        provider.addBlock(BlockRegistry.DWEMER_STONE_BRICK_SLAB, "Dwemer Stone Brick Slab");
+        provider.addBlock(BlockRegistry.DWEMER_STONE_BRICK_STAIRS, "Dwemer Stone Brick Stairs");
 
         provider.addBlock(BlockRegistry.STEEL_CELL_DOOR, "Steel Cell Door");
         provider.addBlock(BlockRegistry.STEEL_GATE_DOOR, "Steel Gate Door");
@@ -144,6 +117,13 @@ public class BlockData
         provider.addBlock(BlockRegistry.DWEMER_DAYLIGHT_DETECTOR, "Dwemer Daylight Detector");
         provider.addBlock(BlockRegistry.DWEMER_PISTON, "Dwemer Piston");
         provider.addBlock(BlockRegistry.DWEMER_STICKY_PISTON, "Dwemer Sticky Piston");
+
+        provider.addBlock(BlockRegistry.STEEL_TALL_GATE, "Steel Tall Gate");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_TALL_GATE, "Dwemer Metal Tall Gate");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_TALL_DOOR, "Dwemer Metal Tall Door");
+
+        provider.addBlock(BlockRegistry.STEEL_BARS, "Steel Bars");
+        provider.addBlock(BlockRegistry.DWEMER_METAL_BARS, "Dwemer Metal Bars");
     }
 
     public static void addBlockStateModels(BlockStateProvider provider) {
@@ -162,39 +142,8 @@ public class BlockData
         normalBlock(provider, BlockRegistry.SILVER_ORE.get());
         normalBlock(provider, BlockRegistry.DEEPSLATE_SILVER_ORE.get());
 
-        normalBlock(provider, BlockRegistry.STONE_BRICK_1.get());
-        normalBlock(provider, BlockRegistry.STONE_BRICK_2.get());
-        normalBlock(provider, BlockRegistry.STONE_BRICK_3.get());
-        normalBlock(provider, BlockRegistry.STONE_BRICK_4.get());
-        normalBlock(provider, BlockRegistry.STONE_BRICK_5.get());
-        normalBlock(provider, BlockRegistry.STONE_BRICK_6.get());
-        normalBlock(provider, BlockRegistry.COBBLESTONE_1.get());
-        normalBlock(provider, BlockRegistry.COBBLESTONE_2.get());
-        normalBlock(provider, BlockRegistry.SNOWY_PLANKS_1.get());
-        normalBlock(provider, BlockRegistry.PLANKS_1.get());
-        normalBlock(provider, BlockRegistry.PLANKS_2.get());
-        normalBlock(provider, BlockRegistry.PLANKS_3.get());
-        normalBlock(provider, BlockRegistry.PLANKS_4.get());
-
-        normalBlock(provider, BlockRegistry.STONE_1.get());
-        normalBlock(provider, BlockRegistry.STONE_2.get());
-        normalBlock(provider, BlockRegistry.STONE_3.get());
         normalBlock(provider, BlockRegistry.STONE_4.get());
         normalBlock(provider, BlockRegistry.STONE_5.get());
-        normalBlock(provider, BlockRegistry.STONE_6.get());
-        normalBlock(provider, BlockRegistry.STONE_7.get());
-        normalBlock(provider, BlockRegistry.STONE_8.get());
-        normalBlock(provider, BlockRegistry.STONE_9.get());
-        normalBlock(provider, BlockRegistry.STONE_10.get());
-
-        normalBlock(provider, BlockRegistry.DIRT_1.get());
-        normalBlock(provider, BlockRegistry.DIRT_2.get());
-        normalBlock(provider, BlockRegistry.DIRT_3.get());
-
-        normalBlock(provider, BlockRegistry.GRASS_1.get());
-        normalBlock(provider, BlockRegistry.GRASS_2.get());
-        normalBlock(provider, BlockRegistry.GRASS_3.get());
-        normalBlock(provider, BlockRegistry.GRASS_4.get());
 
         normalBlock(provider, BlockRegistry.SHOUT_BLOCK.get());
 
@@ -275,6 +224,7 @@ public class BlockData
                 ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/steel_gate_door_bottom"),
                 ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/steel_gate_door_top"), ResourceLocation.tryParse("cutout"));
         provider.itemModels().basicItem(BlockRegistry.STEEL_GATE_DOOR.get().asItem());
+        tallDoorBlock(provider, BlockRegistry.STEEL_TALL_GATE.get(), "block/steel_tall_gate");
 
 
         provider.trapdoorBlockWithRenderType(BlockRegistry.DWEMER_METAL_TRAPDOOR.get(), ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_trapdoor"), true, ResourceLocation.tryParse("cutout"));
@@ -291,10 +241,12 @@ public class BlockData
                 ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_door_bottom"),
                 ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_door_top"), ResourceLocation.tryParse("cutout"));
         provider.itemModels().basicItem(BlockRegistry.DWEMER_METAL_DOOR.get().asItem());
+        tallDoorBlock(provider, BlockRegistry.DWEMER_METAL_TALL_DOOR.get(), "block/dwemer_metal_tall_door");
         provider.doorBlockWithRenderType(BlockRegistry.DWEMER_METAL_GATE.get(),
                 ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_gate_bottom"),
                 ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_gate_top"), ResourceLocation.tryParse("cutout"));
         provider.itemModels().basicItem(BlockRegistry.DWEMER_METAL_GATE.get().asItem());
+        tallDoorBlock(provider, BlockRegistry.DWEMER_METAL_TALL_GATE.get(), "block/dwemer_metal_tall_gate");
         provider.axisBlock(BlockRegistry.DWEMER_METAL_PILLAR.get());
         provider.simpleBlockItem(BlockRegistry.DWEMER_METAL_PILLAR.get(), provider.models().getExistingFile(provider.modLoc("dwemer_metal_pillar")));
         provider.axisBlock(BlockRegistry.DWEMER_STONE_PILLAR.get());
@@ -318,16 +270,47 @@ public class BlockData
         provider.simpleBlockItem(BlockRegistry.DWEMER_COMPARATOR.get(), provider.models().getExistingFile(provider.modLoc("dwemer_comparator")));
         provider.simpleBlockItem(BlockRegistry.DWEMER_DROPPER.get(), provider.models().getExistingFile(provider.modLoc("dwemer_dropper")));
         provider.simpleBlockItem(BlockRegistry.DWEMER_DISPENSER.get(), provider.models().getExistingFile(provider.modLoc("dwemer_dispenser")));
-        provider.simpleBlockItem(BlockRegistry.DWEMER_PISTON.get(), provider.models().getExistingFile(provider.modLoc("dwemer_piston")));
-        provider.simpleBlockItem(BlockRegistry.DWEMER_STICKY_PISTON.get(), provider.models().getExistingFile(provider.modLoc("dwemer_sticky_piston")));
-
+        provider.simpleBlockItem(BlockRegistry.DWEMER_PISTON.get(), provider.models().getExistingFile(provider.modLoc("dwemer_piston_inventory")));
+        provider.simpleBlockItem(BlockRegistry.DWEMER_STICKY_PISTON.get(), provider.models().getExistingFile(provider.modLoc("dwemer_sticky_piston_inventory")));
+//        provider.simpleBlockItem(BlockRegistry.DWEMER_REPEATER.get(), provider.models().getExistingFile(provider.modLoc("dwemer_repeater_1tick")));
+        daylightDetector(provider, BlockRegistry.DWEMER_DAYLIGHT_DETECTOR.get());
 
         lampBlock(provider, BlockRegistry.DWEMER_REDSTONE_LAMP.get());
         lampBlock(provider, BlockRegistry.DWEMER_REDSTONE_SOUL_LAMP.get());
         lantern(provider, BlockRegistry.DWEMER_METAL_LANTERN.get());
         lantern(provider, BlockRegistry.DWEMER_SOUL_LANTERN.get());
 
-        daylightDetector(provider, BlockRegistry.DWEMER_DAYLIGHT_DETECTOR.get());
+        stairsBlock(provider, BlockRegistry.DWEMER_METAL_BRICK_STAIRS.get(), ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_bricks"));
+        provider.slabBlock(BlockRegistry.DWEMER_METAL_BRICK_SLAB.get(),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_bricks"),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_bricks"));
+        provider.wallBlockWithRenderType(BlockRegistry.DWEMER_METAL_BRICK_WALL.get(), ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_bricks"), "cutout");
+        provider.simpleBlockItem(BlockRegistry.DWEMER_METAL_BRICK_SLAB.get(), provider.models().getExistingFile(provider.modLoc("dwemer_metal_brick_slab")));
+//        provider.simpleBlockItem(BlockRegistry.DWEMER_METAL_BRICK_WALL.get(), provider.models().getExistingFile(provider.modLoc("dwemer_metal_brick_wall_side")));
+        provider.simpleBlockItem(BlockRegistry.DWEMER_METAL_BRICK_STAIRS.get(), provider.models().getExistingFile(provider.modLoc("dwemer_metal_brick_stairs")));
+
+        stairsBlock(provider, BlockRegistry.DWEMER_STONE_BRICK_STAIRS.get(), ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_stone_bricks"));
+        provider.slabBlock(BlockRegistry.DWEMER_STONE_BRICK_SLAB.get(),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_stone_bricks"),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_stone_bricks"));
+        provider.wallBlockWithRenderType(BlockRegistry.DWEMER_STONE_BRICK_WALL.get(), ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_stone_bricks"), "cutout");
+        provider.simpleBlockItem(BlockRegistry.DWEMER_STONE_BRICK_SLAB.get(), provider.models().getExistingFile(provider.modLoc("dwemer_stone_brick_slab")));
+//        provider.simpleBlockItem(BlockRegistry.DWEMER_METAL_BRICK_WALL.get(), provider.models().getExistingFile(provider.modLoc("dwemer_stone_brick_wall_side")));
+        provider.simpleBlockItem(BlockRegistry.DWEMER_STONE_BRICK_STAIRS.get(), provider.models().getExistingFile(provider.modLoc("dwemer_stone_brick_stairs")));
+
+        stairsBlock(provider, BlockRegistry.DWEMER_METAL_TILE_STAIRS.get(), ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_tiles"));
+        provider.slabBlock(BlockRegistry.DWEMER_METAL_TILE_SLAB.get(),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_tiles"),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_tiles"));
+        provider.simpleBlockItem(BlockRegistry.DWEMER_METAL_TILE_SLAB.get(), provider.models().getExistingFile(provider.modLoc("dwemer_metal_tile_slab")));
+        provider.simpleBlockItem(BlockRegistry.DWEMER_METAL_TILE_STAIRS.get(), provider.models().getExistingFile(provider.modLoc("dwemer_metal_tile_stairs")));
+
+        stairsBlock(provider, BlockRegistry.ORNATE_DWEMER_METAL_TILE_STAIRS.get(), ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/ornate_dwemer_metal_tiles"));
+        provider.slabBlock(BlockRegistry.ORNATE_DWEMER_METAL_TILE_SLAB.get(),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/ornate_dwemer_metal_tiles"),
+                ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/ornate_dwemer_metal_tiles"));
+        provider.simpleBlockItem(BlockRegistry.ORNATE_DWEMER_METAL_TILE_SLAB.get(), provider.models().getExistingFile(provider.modLoc("ornate_dwemer_metal_tile_slab")));
+        provider.simpleBlockItem(BlockRegistry.ORNATE_DWEMER_METAL_TILE_STAIRS.get(), provider.models().getExistingFile(provider.modLoc("ornate_dwemer_metal_tile_stairs")));
     }
 
     public static void addBlockItemModels(ItemModelProvider provider) {
@@ -337,6 +320,84 @@ public class BlockData
         provider.basicItem(BlockRegistry.FLY_AMANITA.get().asItem());
         provider.basicItem(BlockRegistry.WHITE_CAP.get().asItem());
         provider.basicItem(BlockRegistry.CREEP_CLUSTER.get().asItem());
+    }
+
+    public static void tallDoorBlock(BlockStateProvider provider, Block block, String baseName) {
+        internalTallDoorBlock(provider, (TallDoorBlock)block, baseName, ResourceLocation.fromNamespaceAndPath(Constants.MODID, "" + baseName + "_bottom"), ResourceLocation.fromNamespaceAndPath(Constants.MODID, "" + baseName + "_middle"), ResourceLocation.fromNamespaceAndPath(Constants.MODID, "" + baseName + "_top"));
+    }
+
+    private static void internalTallDoorBlock(BlockStateProvider provider, TallDoorBlock block, String baseName, ResourceLocation bottom, ResourceLocation middle, ResourceLocation top) {
+        ModelFile bottomLeft = provider.models().withExistingParent(baseName + "_bottom_left", ":" + ModelProvider.BLOCK_FOLDER + "/door_bottom_left").texture("bottom", bottom).texture("middle", middle).texture("top", top).renderType("cutout");
+        ModelFile bottomLeftOpen = provider.models().withExistingParent(baseName + "_bottom_left_open", "" + ModelProvider.BLOCK_FOLDER + "/door_bottom_left_open").texture("bottom", bottom).texture("middle", middle).texture("top", top).renderType("cutout");
+        ModelFile bottomRight = provider.models().withExistingParent(baseName + "_bottom_right", "" + ModelProvider.BLOCK_FOLDER + "/door_bottom_right").texture("bottom", bottom).texture("middle", middle).texture("top", top).renderType("cutout");
+        ModelFile bottomRightOpen = provider.models().withExistingParent(baseName + "_bottom_right_open", "" + ModelProvider.BLOCK_FOLDER + "/door_bottom_right_open").texture("bottom", bottom).texture("middle", middle).texture("top",top).renderType("cutout");
+        ModelFile middleLeft = provider.models().withExistingParent(baseName + "_middle_left", Constants.MODID + ":" + ModelProvider.BLOCK_FOLDER + "/door_middle_left").texture("bottom", middle).texture("middle", middle).texture("top", middle).renderType("cutout");
+        ModelFile middleLeftOpen = provider.models().withExistingParent(baseName + "_middle_left_open", Constants.MODID + ":" + ModelProvider.BLOCK_FOLDER + "/door_middle_left_open").texture("bottom", middle).texture("middle", middle).texture("top", middle).renderType("cutout");
+        ModelFile middleRight = provider.models().withExistingParent(baseName + "_middle_right", Constants.MODID + ":" + ModelProvider.BLOCK_FOLDER + "/door_middle_right").texture("bottom", middle).texture("middle", middle).texture("top", middle).renderType("cutout");
+        ModelFile middleRightOpen = provider.models().withExistingParent(baseName + "_middle_right_open", Constants.MODID + ":" + ModelProvider.BLOCK_FOLDER + "/door_middle_right_open").texture("bottom", middle).texture("middle", middle).texture("top", middle).renderType("cutout");
+        ModelFile topLeft = provider.models().withExistingParent(baseName + "_top_left", "" + ModelProvider.BLOCK_FOLDER + "/door_top_left").texture("bottom", bottom).texture("middle", middle).texture("top", top).renderType("cutout");
+        ModelFile topLeftOpen = provider.models().withExistingParent(baseName + "_top_left_open", "" + ModelProvider.BLOCK_FOLDER + "/door_top_left_open").texture("bottom", bottom).texture("middle", middle).texture("top", top).renderType("cutout");
+        ModelFile topRight = provider.models().withExistingParent(baseName + "_top_right", "" + ModelProvider.BLOCK_FOLDER + "/door_top_right").texture("bottom", bottom).texture("middle", middle).texture("top", top).renderType("cutout");
+        ModelFile topRightOpen = provider.models().withExistingParent(baseName + "_top_right_open", "" + ModelProvider.BLOCK_FOLDER + "/door_top_right_open").texture("bottom", bottom).texture("middle", middle).texture("top",top).renderType("cutout");
+        tallDoorBlock(provider, block, bottomLeft, bottomLeftOpen, bottomRight, bottomRightOpen, middleLeft, middleLeftOpen, middleRight, middleRightOpen, topLeft, topLeftOpen, topRight, topRightOpen);
+    }
+
+    public static void tallDoorBlock(BlockStateProvider provider, TallDoorBlock block, ModelFile bottomLeft, ModelFile bottomLeftOpen, ModelFile bottomRight, ModelFile bottomRightOpen, ModelFile middleLeft, ModelFile middleLeftOpen, ModelFile middleRight, ModelFile middleRightOpen, ModelFile topLeft, ModelFile topLeftOpen, ModelFile topRight, ModelFile topRightOpen) {
+        provider.getVariantBuilder(block).forAllStatesExcept(state -> {
+            int yRot = ((int) state.getValue(TallDoorBlock.FACING).toYRot()) + 90;
+            TripleBlockPart third = state.getValue(TallDoorBlock.THIRD);
+            boolean right = state.getValue(TallDoorBlock.HINGE) == DoorHingeSide.RIGHT;
+            boolean open = state.getValue(TallDoorBlock.OPEN);
+            if (open) {
+                yRot += 90;
+            }
+            if (right && open) {
+                yRot += 180;
+            }
+            yRot %= 360;
+
+            ModelFile model = null;
+            switch(third) {
+                case LOWER:
+                default:
+                    if (right && open) {
+                        model = bottomRightOpen;
+                    } else if (!right && open) {
+                        model = bottomLeftOpen;
+                    }
+                    if (right && !open) {
+                        model = bottomRight;
+                    } else if (!right && !open) {
+                        model = bottomLeft;
+                    }
+                    break;
+                case MIDDLE:
+                    if (right && open) {
+                        model = middleRightOpen;
+                    } else if (!right && open) {
+                        model = middleLeftOpen;
+                    }
+                    if (right && !open) {
+                        model = middleRight;
+                    } else if (!right && !open) {
+                        model = middleLeft;
+                    }
+                    break;
+                case UPPER:
+                    if (right && open) {
+                        model = topRightOpen;
+                    } else if (!right && open) {
+                        model = topLeftOpen;
+                    }
+                    if (right && !open) {
+                        model = topRight;
+                    } else if (!right && !open) {
+                        model = topLeft;
+                    }
+                    break;
+            }
+            return ConfiguredModel.builder().modelFile(model).rotationY(yRot).build();
+        }, TallDoorBlock.POWERED, TallDoorBlock.WATERLOGGED);
     }
 
     public static void lampBlock(BlockStateProvider provider, Block block) {
@@ -661,6 +722,88 @@ public class BlockData
                     .modelFile(mf)
                     .build();
         });
+    }
+
+    public static void stairsBlock(BlockStateProvider provider, SkyrimStairBlock block, ResourceLocation texture) {
+        stairsBlock(provider, block, texture, texture, texture);
+    }
+
+    public static void stairsBlock(BlockStateProvider provider, SkyrimStairBlock block, String name, ResourceLocation texture) {
+        stairsBlock(provider, block, name, texture, texture, texture);
+    }
+
+    public static void stairsBlock(BlockStateProvider provider, SkyrimStairBlock block, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
+        stairsBlockInternal(provider, block, key(block).toString(), side, bottom, top);
+    }
+
+    public static void stairsBlock(BlockStateProvider provider, SkyrimStairBlock block, String name, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
+        stairsBlockInternal(provider, block, name + "_stairs", side, bottom, top);
+    }
+
+    public static void stairsBlockWithRenderType(BlockStateProvider provider, SkyrimStairBlock block, ResourceLocation texture, String renderType) {
+        stairsBlockWithRenderType(provider, block, texture, texture, texture, renderType);
+    }
+
+    public static void stairsBlockWithRenderType(BlockStateProvider provider, SkyrimStairBlock block, String name, ResourceLocation texture, String renderType) {
+        stairsBlockWithRenderType(provider, block, name, texture, texture, texture, renderType);
+    }
+
+    public static void stairsBlockWithRenderType(BlockStateProvider provider, SkyrimStairBlock block, ResourceLocation side, ResourceLocation bottom, ResourceLocation top, String renderType) {
+        stairsBlockInternalWithRenderType(provider, block, key(block).toString(), side, bottom, top, ResourceLocation.tryParse(renderType));
+    }
+
+    public static void stairsBlockWithRenderType(BlockStateProvider provider, SkyrimStairBlock block, String name, ResourceLocation side, ResourceLocation bottom, ResourceLocation top, String renderType) {
+        stairsBlockInternalWithRenderType(provider, block, name + "_stairs", side, bottom, top, ResourceLocation.tryParse(renderType));
+    }
+
+    public static void stairsBlockWithRenderType(BlockStateProvider provider, SkyrimStairBlock block, ResourceLocation texture, ResourceLocation renderType) {
+        stairsBlockWithRenderType(provider, block, texture, texture, texture, renderType);
+    }
+
+    public static void stairsBlockWithRenderType(BlockStateProvider provider, SkyrimStairBlock block, String name, ResourceLocation texture, ResourceLocation renderType) {
+        stairsBlockWithRenderType(provider, block, name, texture, texture, texture, renderType);
+    }
+
+    public static void stairsBlockWithRenderType(BlockStateProvider provider, SkyrimStairBlock block, ResourceLocation side, ResourceLocation bottom, ResourceLocation top, ResourceLocation renderType) {
+        stairsBlockInternalWithRenderType(provider, block, key(block).toString(), side, bottom, top, renderType);
+    }
+
+    public static void stairsBlockWithRenderType(BlockStateProvider provider, SkyrimStairBlock block, String name, ResourceLocation side, ResourceLocation bottom, ResourceLocation top, ResourceLocation renderType) {
+        stairsBlockInternalWithRenderType(provider, block, name + "_stairs", side, bottom, top, renderType);
+    }
+
+    private static void stairsBlockInternal(BlockStateProvider provider, SkyrimStairBlock block, String baseName, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
+        ModelFile stairs = provider.models().stairs(baseName, side, bottom, top);
+        ModelFile stairsInner = provider.models().stairsInner(baseName + "_inner", side, bottom, top);
+        ModelFile stairsOuter = provider.models().stairsOuter(baseName + "_outer", side, bottom, top);
+        stairsBlock(provider, block, (ModelFile)stairs, (ModelFile)stairsInner, (ModelFile)stairsOuter);
+    }
+
+    private static void stairsBlockInternalWithRenderType(BlockStateProvider provider, SkyrimStairBlock block, String baseName, ResourceLocation side, ResourceLocation bottom, ResourceLocation top, ResourceLocation renderType) {
+        ModelFile stairs = ((BlockModelBuilder)provider.models().stairs(baseName, side, bottom, top)).renderType(renderType);
+        ModelFile stairsInner = ((BlockModelBuilder)provider.models().stairsInner(baseName + "_inner", side, bottom, top)).renderType(renderType);
+        ModelFile stairsOuter = ((BlockModelBuilder)provider.models().stairsOuter(baseName + "_outer", side, bottom, top)).renderType(renderType);
+        stairsBlock(provider, block, (ModelFile)stairs, (ModelFile)stairsInner, (ModelFile)stairsOuter);
+    }
+
+    public static void stairsBlock(BlockStateProvider provider, SkyrimStairBlock block, ModelFile stairs, ModelFile stairsInner, ModelFile stairsOuter) {
+        provider.getVariantBuilder(block).forAllStatesExcept((state) -> {
+            Direction facing = (Direction)state.getValue(SkyrimStairBlock.FACING);
+            Half half = (Half)state.getValue(SkyrimStairBlock.HALF);
+            StairsShape shape = (StairsShape)state.getValue(SkyrimStairBlock.SHAPE);
+            int yRot = (int)facing.getClockWise().toYRot();
+            if (shape == StairsShape.INNER_LEFT || shape == StairsShape.OUTER_LEFT) {
+                yRot += 270;
+            }
+
+            if (shape != StairsShape.STRAIGHT && half == Half.TOP) {
+                yRot += 90;
+            }
+
+            yRot %= 360;
+            boolean uvlock = yRot != 0 || half == Half.TOP;
+            return ConfiguredModel.builder().modelFile(shape == StairsShape.STRAIGHT ? stairs : (shape != StairsShape.INNER_LEFT && shape != StairsShape.INNER_RIGHT ? stairsOuter : stairsInner)).rotationX(half == Half.BOTTOM ? 0 : 180).rotationY(yRot).uvLock(uvlock).build();
+        }, new Property[]{SkyrimStairBlock.WATERLOGGED});
     }
 
     private static String name(Block block) {

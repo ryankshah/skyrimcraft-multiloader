@@ -24,26 +24,26 @@
       "y": 270
     },
     "extended=true,facing=down": {
-      "model": "skyrimcraft:block/dwemer_piston_base",
+      "model": "skyrimcraft:block/dwemer_piston_base_extended",
       "x": 90
     },
     "extended=true,facing=east": {
-      "model": "skyrimcraft:block/dwemer_piston_base",
+      "model": "skyrimcraft:block/dwemer_piston_base_extended",
       "y": 90
     },
     "extended=true,facing=north": {
-      "model": "skyrimcraft:block/dwemer_piston_base"
+      "model": "skyrimcraft:block/dwemer_piston_base_extended"
     },
     "extended=true,facing=south": {
-      "model": "skyrimcraft:block/dwemer_piston_base",
+      "model": "skyrimcraft:block/dwemer_piston_base_extended",
       "y": 180
     },
     "extended=true,facing=up": {
-      "model": "skyrimcraft:block/dwemer_piston_base",
+      "model": "skyrimcraft:block/dwemer_piston_base_extended",
       "x": 270
     },
     "extended=true,facing=west": {
-      "model": "skyrimcraft:block/dwemer_piston_base",
+      "model": "skyrimcraft:block/dwemer_piston_base_extended",
       "y": 270
     }
   }

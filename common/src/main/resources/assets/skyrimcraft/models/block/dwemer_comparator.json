@@ -1,11 +1,12 @@
 {
   "ambientocclusion": false,
+  "render_type": "minecraft:cutout",
   "textures": {
     "particle": "skyrimcraft:block/dwemer_comparator",
     "slab": "skyrimcraft:block/dwemer_comparator",
     "top": "skyrimcraft:block/dwemer_comparator",
-    "unlit": "minecraft:block/redstone_torch_off",
-    "lit": "minecraft:block/redstone_torch"
+    "unlit": "skyrimcraft:block/dwemer_redstone_torch_off",
+    "lit":  "skyrimcraft:block/dwemer_redstone_torch"
   },
   "elements": [
     {

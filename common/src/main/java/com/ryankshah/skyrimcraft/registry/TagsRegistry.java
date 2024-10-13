@@ -45,6 +45,14 @@ public class TagsRegistry
         public static TagKey<Block> NEEDS_DAEDRIC_TOOL = create(createResourceLocation("needs_daedric_tool"));
         public static TagKey<Block> NEEDS_EBONY_TOOL = create(createResourceLocation("needs_ebony_tool"));
 
+        public static final TagKey<Block> SHORT_DOORS = create(createResourceLocation("short_doors"));
+        public static final TagKey<Block> SHORT_WOODEN_DOORS = create(createResourceLocation("short_wooden_doors"));
+        public static final TagKey<Block> MOB_INTERACTABLE_SHORT_DOORS = create(createResourceLocation("mob_interactable_short_doors"));
+
+        public static final TagKey<Block> TALL_DOORS = create(createResourceLocation("tall_doors"));
+        public static final TagKey<Block> TALL_WOODEN_DOORS = create(createResourceLocation("tall_wooden_doors"));
+        public static final TagKey<Block> MOB_INTERACTABLE_TALL_DOORS = create(createResourceLocation("mob_interactable_tall_doors"));
+
         public static TagKey<Block> create(ResourceLocation location) {
             return TagKey.create(Registries.BLOCK, location);
         }
@@ -78,6 +86,14 @@ public class TagsRegistry
         public static TagKey<Item> DEEPSLATE_ORICHALCUM_ORE_ITEM_TAG = bind(createResourceLocation("ores/deepslate_orichalcum_ore"));
         public static TagKey<Item> DEEPSLATE_QUICKSILVER_ORE_ITEM_TAG = bind(createResourceLocation("ores/deepslate_quicksilver_ore"));
         public static TagKey<Item> DEEPSLATE_SILVER_ORE_ITEM_TAG = bind(createResourceLocation("ores/deepslate_silver_ore"));
+
+        public static final TagKey<Item> SHORT_DOORS = bind(createResourceLocation("short_doors"));
+        public static final TagKey<Item> SHORT_WOODEN_DOORS = bind(createResourceLocation("short_wooden_doors"));
+
+        public static final TagKey<Item> TALL_DOORS = bind(createResourceLocation("tall_doors"));
+        public static final TagKey<Item> TALL_WOODEN_DOORS = bind(createResourceLocation("tall_wooden_doors"));
+
+        public static final TagKey<Item> KEY = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("supplementaries", "key"));
 
         // Items
 

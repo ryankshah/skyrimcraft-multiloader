@@ -135,9 +135,26 @@ public class SkillScreen extends Screen {
         String level = "LEVEL"; //character.getCharacterLevel();
         drawScaledString(graphics, level, width / 2 - 55, 15, 0xFF949494, 0.75f);
         drawScaledString(graphics, "" + character.getCharacterLevel(), width / 2 - 30, 13, 0xFFFFFFFF, 1f);
+
+        // Modified race rendering code
         String raceName = character.getRace().getName();
-        drawScaledString(graphics, "RACE", width / 2 + 151 - font.width("RACE") - font.width(raceName) - 10, 15, 0xFF949494, 0.75f);
-        drawScaledString(graphics, raceName, width / 2 + 151 - font.width(raceName), 13, 0xFFFFFFFF, 1f);
+        int raceWidth = font.width(raceName);
+        int maxRaceWidth = 100; // Adjust this value as needed
+
+        // Calculate the position for "RACE" label and race name
+        int raceNameX = width / 2 + 151 - raceWidth - 5; // 5 pixels padding from right
+        int raceLabelX = raceNameX - font.width("RACE") - 5; // 5 pixels padding between label and name
+
+        // Draw "RACE" label
+        drawScaledString(graphics, "RACE", raceLabelX, 15, 0xFF949494, 0.75f);
+
+        // Draw race name without scaling
+        graphics.drawString(font, raceName, raceNameX, 13, 0xFFFFFFFF);
+
+
+//        String raceName = character.getRace().getName();
+//        drawScaledString(graphics, "RACE", width / 2 + 151 - font.width("RACE") - font.width(raceName) - 10, 15, 0xFF949494, 0.75f);
+//        drawScaledString(graphics, raceName, width / 2 + 151 - font.width(raceName), 13, 0xFFFFFFFF, 1f);
 
         if (character.getLevelPerkPoints() > 0)
             drawScaledCenteredString(graphics, "Perks to increase: " + perkPoints, width / 2, 35, 0x00FFFFFF, 0.75f);

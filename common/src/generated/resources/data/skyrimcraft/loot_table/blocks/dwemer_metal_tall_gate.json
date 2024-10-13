@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "skyrimcraft:dwemer_metal_tall_gate",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "third": "lower"
+              }
+            }
+          ],
+          "name": "skyrimcraft:dwemer_metal_tall_gate"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "skyrimcraft:blocks/dwemer_metal_tall_gate"
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "skyrimcraft:block/dwemer_piston_bottom",
+    "side": "skyrimcraft:block/dwemer_piston_side",
+    "top": "skyrimcraft:block/dwemer_piston_top"
+  }
+}

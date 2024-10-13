@@ -20,6 +20,10 @@ public class SkyrimcraftItemModelProvider extends ItemModelProvider
 
     @Override
     protected void registerModels() {
+        basicItem(BlockRegistry.DWEMER_METAL_TALL_DOOR_ITEM.get());
+        basicItem(BlockRegistry.DWEMER_METAL_TALL_GATE_ITEM.get());
+        basicItem(BlockRegistry.STEEL_TALL_GATE_ITEM.get());
+
         item(ItemRegistry.SWEET_ROLL.get());
         item(ItemRegistry.GARLIC_BREAD.get());
         item(ItemRegistry.POTATO_BREAD.get());
@@ -413,9 +417,11 @@ public class SkyrimcraftItemModelProvider extends ItemModelProvider
         item(ItemRegistry.PHILTER_OF_TRUE_SHOT.get());
         item(ItemRegistry.ELIXIR_OF_TRUE_SHOT.get());
 
+        wallInventory("dwemer_metal_brick_wall", ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_metal_bricks"));
+        wallInventory("dwemer_stone_brick_wall", ResourceLocation.fromNamespaceAndPath(Constants.MODID, "block/dwemer_stone_bricks"));
+
         BlockData.addBlockItemModels(this);
     }
-
 
     private void item(Item item) {
         String name = NameUtils.getItemName(item);

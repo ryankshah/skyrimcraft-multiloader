@@ -46,6 +46,10 @@ public class Perk
         this.unlocked = unlocked;
     }
 
+    public Perk(Perk perk) {
+        this(perk.name, perk.description, perk.levelRequirement, perk.parents, perk.unlocked);
+    }
+
     public String getName() {
         return this.name;
     }
